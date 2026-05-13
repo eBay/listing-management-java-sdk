@@ -1,0 +1,151 @@
+package com.ebay.listingmanagement.generated.inventory.models;
+
+import com.microsoft.kiota.serialization.AdditionalDataHolder;
+import com.microsoft.kiota.serialization.Parsable;
+import com.microsoft.kiota.serialization.ParseNode;
+import com.microsoft.kiota.serialization.SerializationWriter;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+/**
+ * This type is used to specify/indicate the motor vehicles that are compatible with the corresponding inventory item. 
+ */
+@jakarta.annotation.Generated("com.microsoft.kiota")
+public class CompatibleProduct implements AdditionalDataHolder, Parsable {
+    /**
+     * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     */
+    private Map<String, Object> additionalData;
+    /**
+     * This container consists of an array of motor vehicles that are compatible with the motor vehicle part or accessory specified by the SKU value in the call URI. Each motor vehicle is defined through a separate set of name/value pairs. In the &lt;strong&gt;name&lt;/strong&gt; field, the vehicle aspect (such as &apos;make&apos;, &apos;model&apos;, &apos;year&apos;, &apos;trim&apos;, or &apos;engine&apos;) will be identified, and the &lt;strong&gt;value&lt;/strong&gt; field will be used to identify the value of each aspect.&lt;br&gt;&lt;br&gt;The &lt;a href=&quot;/api-docs/commerce/taxonomy/resources/category_tree/methods/getCompatibilityProperties&quot; target=&quot;_blank&quot;&gt;getCompatibilityProperties&lt;/a&gt; method of the Taxonomy API can be used to retrieve applicable vehicle aspect names for a specified category, and the &lt;a href=&quot;/api-docs/commerce/taxonomy/resources/category_tree/methods/getCompatibilityPropertyValues&quot; target=&quot;_blank&quot;&gt;getCompatibilityPropertyValues&lt;/a&gt; method of the Taxonomy API can be used to retrieve possible values for these same vehicle aspect names.&lt;br&gt;&lt;br&gt;Below is an example of identifying one motor vehicle using the &lt;strong&gt;compatibilityProperties&lt;/strong&gt; container:&lt;br&gt;&lt;br&gt;&lt;code&gt;&amp;quot;compatibilityProperties&amp;quot; : &amp;#91;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;#123;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;quot;name&amp;quot; : &amp;quot;make&amp;quot;,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;quot;value&amp;quot; : &amp;quot;Subaru&amp;quot;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;#125;,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;#123;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;quot;name&amp;quot; : &amp;quot;model&amp;quot;,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;quot;value&amp;quot; : &amp;quot;GL&amp;quot;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;#125;,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;#123;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;quot;name&amp;quot; : &amp;quot;year&amp;quot;,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;quot;value&amp;quot; : &amp;quot;1983&amp;quot;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;#125;,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;#123;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;quot;name&amp;quot; : &amp;quot;trim&amp;quot;,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;quot;value&amp;quot; : &amp;quot;Base Wagon 4-Door&amp;quot;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;#125;,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;#123;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;quot;name&amp;quot; : &amp;quot;engine&amp;quot;,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;quot;value&amp;quot; : &amp;quot;1.8L Turbocharged&amp;quot;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;#125;&lt;br&gt;&amp;#93;&lt;/code&gt;&lt;br&gt;&lt;br&gt;Typically, the make, model, and year of the motor vehicle are always required, with the trim and engine being necessary sometimes, but it will be dependent on the part or accessory, and on the vehicle class.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt; &lt;strong&gt;Note:&lt;/strong&gt; The &lt;strong&gt;productFamilyProperties&lt;/strong&gt; container is deprecated and should no longer be used. The &lt;strong&gt;compatibilityProperties&lt;/strong&gt; container should be used instead.&lt;/span&gt;
+     */
+    private java.util.List<NameValueList> compatibilityProperties;
+    /**
+     * This field is used by the seller to input any notes pertaining to the compatible vehicle list being defined. The seller might use this field to specify the placement of the part on a vehicle or other applicable information.&lt;br&gt;&lt;br&gt;This field will only be returned if specified by the seller.&lt;br&gt;&lt;br&gt;&lt;strong&gt;Max Length&lt;/strong&gt;: 500&lt;br&gt;
+     */
+    private String notes;
+    /**
+     * This type is used to specify the details of a motor vehicle that is compatible with the inventory item specified through the SKU value in the call URI.
+     */
+    private ProductFamilyProperties productFamilyProperties;
+    /**
+     * This type is used to identify a motor vehicle that is compatible with the corresponding inventory item (the SKU that is passed in as part of the call URI). The motor vehicle can be identified through an eBay Product ID or a K-Type value. The &lt;strong&gt;gtin&lt;/strong&gt; field (for inputting Global Trade Item Numbers) is for future use only. If a motor vehicle is found in the eBay product catalog, the motor vehicle properties (engine, make, model, trim, and year) will automatically get picked up for that motor vehicle.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt; &lt;strong&gt;Note:&lt;/strong&gt; Currently, parts compatibility is only applicable for motor vehicles, but it is possible that the Product Compatibility feature is expanded to other (non-vehicle) products in the future.&lt;/span&gt;
+     */
+    private ProductIdentifier productIdentifier;
+    /**
+     * Instantiates a new {@link CompatibleProduct} and sets the default values.
+     */
+    public CompatibleProduct() {
+        this.setAdditionalData(new HashMap<>());
+    }
+    /**
+     * Creates a new instance of the appropriate class based on discriminator value
+     * @param parseNode The parse node to use to read the discriminator value and create the object
+     * @return a {@link CompatibleProduct}
+     */
+    @jakarta.annotation.Nonnull
+    public static CompatibleProduct createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new CompatibleProduct();
+    }
+    /**
+     * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @return a {@link Map<String, Object>}
+     */
+    @jakarta.annotation.Nonnull
+    public Map<String, Object> getAdditionalData() {
+        return this.additionalData;
+    }
+    /**
+     * Gets the compatibilityProperties property value. This container consists of an array of motor vehicles that are compatible with the motor vehicle part or accessory specified by the SKU value in the call URI. Each motor vehicle is defined through a separate set of name/value pairs. In the &lt;strong&gt;name&lt;/strong&gt; field, the vehicle aspect (such as &apos;make&apos;, &apos;model&apos;, &apos;year&apos;, &apos;trim&apos;, or &apos;engine&apos;) will be identified, and the &lt;strong&gt;value&lt;/strong&gt; field will be used to identify the value of each aspect.&lt;br&gt;&lt;br&gt;The &lt;a href=&quot;/api-docs/commerce/taxonomy/resources/category_tree/methods/getCompatibilityProperties&quot; target=&quot;_blank&quot;&gt;getCompatibilityProperties&lt;/a&gt; method of the Taxonomy API can be used to retrieve applicable vehicle aspect names for a specified category, and the &lt;a href=&quot;/api-docs/commerce/taxonomy/resources/category_tree/methods/getCompatibilityPropertyValues&quot; target=&quot;_blank&quot;&gt;getCompatibilityPropertyValues&lt;/a&gt; method of the Taxonomy API can be used to retrieve possible values for these same vehicle aspect names.&lt;br&gt;&lt;br&gt;Below is an example of identifying one motor vehicle using the &lt;strong&gt;compatibilityProperties&lt;/strong&gt; container:&lt;br&gt;&lt;br&gt;&lt;code&gt;&amp;quot;compatibilityProperties&amp;quot; : &amp;#91;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;#123;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;quot;name&amp;quot; : &amp;quot;make&amp;quot;,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;quot;value&amp;quot; : &amp;quot;Subaru&amp;quot;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;#125;,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;#123;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;quot;name&amp;quot; : &amp;quot;model&amp;quot;,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;quot;value&amp;quot; : &amp;quot;GL&amp;quot;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;#125;,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;#123;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;quot;name&amp;quot; : &amp;quot;year&amp;quot;,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;quot;value&amp;quot; : &amp;quot;1983&amp;quot;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;#125;,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;#123;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;quot;name&amp;quot; : &amp;quot;trim&amp;quot;,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;quot;value&amp;quot; : &amp;quot;Base Wagon 4-Door&amp;quot;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;#125;,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;#123;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;quot;name&amp;quot; : &amp;quot;engine&amp;quot;,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;quot;value&amp;quot; : &amp;quot;1.8L Turbocharged&amp;quot;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;#125;&lt;br&gt;&amp;#93;&lt;/code&gt;&lt;br&gt;&lt;br&gt;Typically, the make, model, and year of the motor vehicle are always required, with the trim and engine being necessary sometimes, but it will be dependent on the part or accessory, and on the vehicle class.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt; &lt;strong&gt;Note:&lt;/strong&gt; The &lt;strong&gt;productFamilyProperties&lt;/strong&gt; container is deprecated and should no longer be used. The &lt;strong&gt;compatibilityProperties&lt;/strong&gt; container should be used instead.&lt;/span&gt;
+     * @return a {@link java.util.List<NameValueList>}
+     */
+    @jakarta.annotation.Nullable
+    public java.util.List<NameValueList> getCompatibilityProperties() {
+        return this.compatibilityProperties;
+    }
+    /**
+     * The deserialization information for the current model
+     * @return a {@link Map<String, java.util.function.Consumer<ParseNode>>}
+     */
+    @jakarta.annotation.Nonnull
+    public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
+        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(4);
+        deserializerMap.put("compatibilityProperties", (n) -> { this.setCompatibilityProperties(n.getCollectionOfObjectValues(NameValueList::createFromDiscriminatorValue)); });
+        deserializerMap.put("notes", (n) -> { this.setNotes(n.getStringValue()); });
+        deserializerMap.put("productFamilyProperties", (n) -> { this.setProductFamilyProperties(n.getObjectValue(ProductFamilyProperties::createFromDiscriminatorValue)); });
+        deserializerMap.put("productIdentifier", (n) -> { this.setProductIdentifier(n.getObjectValue(ProductIdentifier::createFromDiscriminatorValue)); });
+        return deserializerMap;
+    }
+    /**
+     * Gets the notes property value. This field is used by the seller to input any notes pertaining to the compatible vehicle list being defined. The seller might use this field to specify the placement of the part on a vehicle or other applicable information.&lt;br&gt;&lt;br&gt;This field will only be returned if specified by the seller.&lt;br&gt;&lt;br&gt;&lt;strong&gt;Max Length&lt;/strong&gt;: 500&lt;br&gt;
+     * @return a {@link String}
+     */
+    @jakarta.annotation.Nullable
+    public String getNotes() {
+        return this.notes;
+    }
+    /**
+     * Gets the productFamilyProperties property value. This type is used to specify the details of a motor vehicle that is compatible with the inventory item specified through the SKU value in the call URI.
+     * @return a {@link ProductFamilyProperties}
+     */
+    @jakarta.annotation.Nullable
+    public ProductFamilyProperties getProductFamilyProperties() {
+        return this.productFamilyProperties;
+    }
+    /**
+     * Gets the productIdentifier property value. This type is used to identify a motor vehicle that is compatible with the corresponding inventory item (the SKU that is passed in as part of the call URI). The motor vehicle can be identified through an eBay Product ID or a K-Type value. The &lt;strong&gt;gtin&lt;/strong&gt; field (for inputting Global Trade Item Numbers) is for future use only. If a motor vehicle is found in the eBay product catalog, the motor vehicle properties (engine, make, model, trim, and year) will automatically get picked up for that motor vehicle.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt; &lt;strong&gt;Note:&lt;/strong&gt; Currently, parts compatibility is only applicable for motor vehicles, but it is possible that the Product Compatibility feature is expanded to other (non-vehicle) products in the future.&lt;/span&gt;
+     * @return a {@link ProductIdentifier}
+     */
+    @jakarta.annotation.Nullable
+    public ProductIdentifier getProductIdentifier() {
+        return this.productIdentifier;
+    }
+    /**
+     * Serializes information the current object
+     * @param writer Serialization writer to use to serialize this model
+     */
+    public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
+        Objects.requireNonNull(writer);
+        writer.writeCollectionOfObjectValues("compatibilityProperties", this.getCompatibilityProperties());
+        writer.writeStringValue("notes", this.getNotes());
+        writer.writeObjectValue("productFamilyProperties", this.getProductFamilyProperties());
+        writer.writeObjectValue("productIdentifier", this.getProductIdentifier());
+        writer.writeAdditionalData(this.getAdditionalData());
+    }
+    /**
+     * Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @param value Value to set for the AdditionalData property.
+     */
+    public void setAdditionalData(@jakarta.annotation.Nullable final Map<String, Object> value) {
+        this.additionalData = value;
+    }
+    /**
+     * Sets the compatibilityProperties property value. This container consists of an array of motor vehicles that are compatible with the motor vehicle part or accessory specified by the SKU value in the call URI. Each motor vehicle is defined through a separate set of name/value pairs. In the &lt;strong&gt;name&lt;/strong&gt; field, the vehicle aspect (such as &apos;make&apos;, &apos;model&apos;, &apos;year&apos;, &apos;trim&apos;, or &apos;engine&apos;) will be identified, and the &lt;strong&gt;value&lt;/strong&gt; field will be used to identify the value of each aspect.&lt;br&gt;&lt;br&gt;The &lt;a href=&quot;/api-docs/commerce/taxonomy/resources/category_tree/methods/getCompatibilityProperties&quot; target=&quot;_blank&quot;&gt;getCompatibilityProperties&lt;/a&gt; method of the Taxonomy API can be used to retrieve applicable vehicle aspect names for a specified category, and the &lt;a href=&quot;/api-docs/commerce/taxonomy/resources/category_tree/methods/getCompatibilityPropertyValues&quot; target=&quot;_blank&quot;&gt;getCompatibilityPropertyValues&lt;/a&gt; method of the Taxonomy API can be used to retrieve possible values for these same vehicle aspect names.&lt;br&gt;&lt;br&gt;Below is an example of identifying one motor vehicle using the &lt;strong&gt;compatibilityProperties&lt;/strong&gt; container:&lt;br&gt;&lt;br&gt;&lt;code&gt;&amp;quot;compatibilityProperties&amp;quot; : &amp;#91;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;#123;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;quot;name&amp;quot; : &amp;quot;make&amp;quot;,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;quot;value&amp;quot; : &amp;quot;Subaru&amp;quot;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;#125;,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;#123;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;quot;name&amp;quot; : &amp;quot;model&amp;quot;,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;quot;value&amp;quot; : &amp;quot;GL&amp;quot;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;#125;,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;#123;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;quot;name&amp;quot; : &amp;quot;year&amp;quot;,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;quot;value&amp;quot; : &amp;quot;1983&amp;quot;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;#125;,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;#123;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;quot;name&amp;quot; : &amp;quot;trim&amp;quot;,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;quot;value&amp;quot; : &amp;quot;Base Wagon 4-Door&amp;quot;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;#125;,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;#123;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;quot;name&amp;quot; : &amp;quot;engine&amp;quot;,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;quot;value&amp;quot; : &amp;quot;1.8L Turbocharged&amp;quot;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;#125;&lt;br&gt;&amp;#93;&lt;/code&gt;&lt;br&gt;&lt;br&gt;Typically, the make, model, and year of the motor vehicle are always required, with the trim and engine being necessary sometimes, but it will be dependent on the part or accessory, and on the vehicle class.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt; &lt;strong&gt;Note:&lt;/strong&gt; The &lt;strong&gt;productFamilyProperties&lt;/strong&gt; container is deprecated and should no longer be used. The &lt;strong&gt;compatibilityProperties&lt;/strong&gt; container should be used instead.&lt;/span&gt;
+     * @param value Value to set for the compatibilityProperties property.
+     */
+    public void setCompatibilityProperties(@jakarta.annotation.Nullable final java.util.List<NameValueList> value) {
+        this.compatibilityProperties = value;
+    }
+    /**
+     * Sets the notes property value. This field is used by the seller to input any notes pertaining to the compatible vehicle list being defined. The seller might use this field to specify the placement of the part on a vehicle or other applicable information.&lt;br&gt;&lt;br&gt;This field will only be returned if specified by the seller.&lt;br&gt;&lt;br&gt;&lt;strong&gt;Max Length&lt;/strong&gt;: 500&lt;br&gt;
+     * @param value Value to set for the notes property.
+     */
+    public void setNotes(@jakarta.annotation.Nullable final String value) {
+        this.notes = value;
+    }
+    /**
+     * Sets the productFamilyProperties property value. This type is used to specify the details of a motor vehicle that is compatible with the inventory item specified through the SKU value in the call URI.
+     * @param value Value to set for the productFamilyProperties property.
+     */
+    public void setProductFamilyProperties(@jakarta.annotation.Nullable final ProductFamilyProperties value) {
+        this.productFamilyProperties = value;
+    }
+    /**
+     * Sets the productIdentifier property value. This type is used to identify a motor vehicle that is compatible with the corresponding inventory item (the SKU that is passed in as part of the call URI). The motor vehicle can be identified through an eBay Product ID or a K-Type value. The &lt;strong&gt;gtin&lt;/strong&gt; field (for inputting Global Trade Item Numbers) is for future use only. If a motor vehicle is found in the eBay product catalog, the motor vehicle properties (engine, make, model, trim, and year) will automatically get picked up for that motor vehicle.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt; &lt;strong&gt;Note:&lt;/strong&gt; Currently, parts compatibility is only applicable for motor vehicles, but it is possible that the Product Compatibility feature is expanded to other (non-vehicle) products in the future.&lt;/span&gt;
+     * @param value Value to set for the productIdentifier property.
+     */
+    public void setProductIdentifier(@jakarta.annotation.Nullable final ProductIdentifier value) {
+        this.productIdentifier = value;
+    }
+}

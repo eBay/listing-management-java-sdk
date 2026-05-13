@@ -1,0 +1,99 @@
+package com.ebay.listingmanagement.generated.inventory.bulk_publish_offer;
+
+import com.ebay.listingmanagement.generated.inventory.models.BulkOffer;
+import com.ebay.listingmanagement.generated.inventory.models.BulkPublishResponse;
+import com.microsoft.kiota.BaseRequestBuilder;
+import com.microsoft.kiota.BaseRequestConfiguration;
+import com.microsoft.kiota.HttpMethod;
+import com.microsoft.kiota.RequestAdapter;
+import com.microsoft.kiota.RequestInformation;
+import com.microsoft.kiota.RequestOption;
+import com.microsoft.kiota.serialization.Parsable;
+import com.microsoft.kiota.serialization.ParsableFactory;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+/**
+ * Builds and executes requests for operations under /bulk_publish_offer
+ */
+@jakarta.annotation.Generated("com.microsoft.kiota")
+public class BulkPublishOfferRequestBuilder extends BaseRequestBuilder {
+    /**
+     * Instantiates a new {@link BulkPublishOfferRequestBuilder} and sets the default values.
+     * @param pathParameters Path parameters for the request
+     * @param requestAdapter The request adapter to use to execute the requests.
+     */
+    public BulkPublishOfferRequestBuilder(@jakarta.annotation.Nonnull final HashMap<String, Object> pathParameters, @jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {
+        super(requestAdapter, "{+baseurl}/bulk_publish_offer", pathParameters);
+    }
+    /**
+     * Instantiates a new {@link BulkPublishOfferRequestBuilder} and sets the default values.
+     * @param rawUrl The raw URL to use for the request builder.
+     * @param requestAdapter The request adapter to use to execute the requests.
+     */
+    public BulkPublishOfferRequestBuilder(@jakarta.annotation.Nonnull final String rawUrl, @jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {
+        super(requestAdapter, "{+baseurl}/bulk_publish_offer", rawUrl);
+    }
+    /**
+     * &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Each listing can be revised up to 250 times in one calendar day. If this revision threshold is reached, the seller will be blocked from revising the item until the next calendar day.&lt;/span&gt;&lt;br&gt;This call is used to convert unpublished offers (up to 25) into  published offers, or live eBay listings. The unique identifier (&lt;strong&gt;offerId&lt;/strong&gt;) of each offer to publish is passed into the request payload. It is possible that some unpublished offers will be successfully created into eBay listings, but others may fail. The response payload will show the results for each &lt;strong&gt;offerId&lt;/strong&gt; value that is passed into the request payload. The &lt;strong&gt;errors&lt;/strong&gt; and &lt;strong&gt;warnings&lt;/strong&gt; containers will be returned for an offer that had one or more issues being published. &lt;br&gt;&lt;br&gt;&lt;div class=&quot;msgbox_important&quot;&gt;&lt;p class=&quot;msgbox_importantInDiv&quot; data-mc-autonum=&quot;&amp;lt;b&amp;gt;&amp;lt;span style=&amp;quot;color: #dd1e31;&amp;quot; class=&amp;quot;mcFormatColor&amp;quot;&amp;gt;Important! &amp;lt;/span&amp;gt;&amp;lt;/b&amp;gt;&quot;&gt;&lt;span class=&quot;autonumber&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important!&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;/span&gt;Publish offer note: Fields may be optional or conditionally required when calling the create or update methods, but become required when publishing the offer to create active listings. For this method, see &lt;a href=&quot;/api-docs/sell/static/inventory/publishing-offers.html#offer&quot; target=&quot;_blank&quot;&gt;Offer fields&lt;/a&gt; for a list of fields required to publish an offer.&lt;/p&gt;&lt;/span&gt;&lt;/div&gt;&lt;br&gt;For those who prefer to publish one offer per call, the &lt;strong&gt;publishOffer&lt;/strong&gt; method can be used instead. In the case of a multiple-variation listing, the &lt;strong&gt;publishOfferByInventoryItemGroup&lt;/strong&gt; call should be used instead, as this call will convert all unpublished offers associated with an inventory item group into a multiple-variation listing.
+     * @param body This type is used by the base request of the &lt;strong&gt;bulkPublishOffer&lt;/strong&gt; method, which is used to publish up to 25 different offers.
+     * @return a {@link BulkPublishResponse}
+     */
+    @jakarta.annotation.Nullable
+    public BulkPublishResponse post(@jakarta.annotation.Nonnull final BulkOffer body) {
+        return post(body, null);
+    }
+    /**
+     * &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Each listing can be revised up to 250 times in one calendar day. If this revision threshold is reached, the seller will be blocked from revising the item until the next calendar day.&lt;/span&gt;&lt;br&gt;This call is used to convert unpublished offers (up to 25) into  published offers, or live eBay listings. The unique identifier (&lt;strong&gt;offerId&lt;/strong&gt;) of each offer to publish is passed into the request payload. It is possible that some unpublished offers will be successfully created into eBay listings, but others may fail. The response payload will show the results for each &lt;strong&gt;offerId&lt;/strong&gt; value that is passed into the request payload. The &lt;strong&gt;errors&lt;/strong&gt; and &lt;strong&gt;warnings&lt;/strong&gt; containers will be returned for an offer that had one or more issues being published. &lt;br&gt;&lt;br&gt;&lt;div class=&quot;msgbox_important&quot;&gt;&lt;p class=&quot;msgbox_importantInDiv&quot; data-mc-autonum=&quot;&amp;lt;b&amp;gt;&amp;lt;span style=&amp;quot;color: #dd1e31;&amp;quot; class=&amp;quot;mcFormatColor&amp;quot;&amp;gt;Important! &amp;lt;/span&amp;gt;&amp;lt;/b&amp;gt;&quot;&gt;&lt;span class=&quot;autonumber&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important!&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;/span&gt;Publish offer note: Fields may be optional or conditionally required when calling the create or update methods, but become required when publishing the offer to create active listings. For this method, see &lt;a href=&quot;/api-docs/sell/static/inventory/publishing-offers.html#offer&quot; target=&quot;_blank&quot;&gt;Offer fields&lt;/a&gt; for a list of fields required to publish an offer.&lt;/p&gt;&lt;/span&gt;&lt;/div&gt;&lt;br&gt;For those who prefer to publish one offer per call, the &lt;strong&gt;publishOffer&lt;/strong&gt; method can be used instead. In the case of a multiple-variation listing, the &lt;strong&gt;publishOfferByInventoryItemGroup&lt;/strong&gt; call should be used instead, as this call will convert all unpublished offers associated with an inventory item group into a multiple-variation listing.
+     * @param body This type is used by the base request of the &lt;strong&gt;bulkPublishOffer&lt;/strong&gt; method, which is used to publish up to 25 different offers.
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @return a {@link BulkPublishResponse}
+     */
+    @jakarta.annotation.Nullable
+    public BulkPublishResponse post(@jakarta.annotation.Nonnull final BulkOffer body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
+        Objects.requireNonNull(body);
+        final RequestInformation requestInfo = toPostRequestInformation(body, requestConfiguration);
+        return this.requestAdapter.send(requestInfo, null, BulkPublishResponse::createFromDiscriminatorValue);
+    }
+    /**
+     * &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Each listing can be revised up to 250 times in one calendar day. If this revision threshold is reached, the seller will be blocked from revising the item until the next calendar day.&lt;/span&gt;&lt;br&gt;This call is used to convert unpublished offers (up to 25) into  published offers, or live eBay listings. The unique identifier (&lt;strong&gt;offerId&lt;/strong&gt;) of each offer to publish is passed into the request payload. It is possible that some unpublished offers will be successfully created into eBay listings, but others may fail. The response payload will show the results for each &lt;strong&gt;offerId&lt;/strong&gt; value that is passed into the request payload. The &lt;strong&gt;errors&lt;/strong&gt; and &lt;strong&gt;warnings&lt;/strong&gt; containers will be returned for an offer that had one or more issues being published. &lt;br&gt;&lt;br&gt;&lt;div class=&quot;msgbox_important&quot;&gt;&lt;p class=&quot;msgbox_importantInDiv&quot; data-mc-autonum=&quot;&amp;lt;b&amp;gt;&amp;lt;span style=&amp;quot;color: #dd1e31;&amp;quot; class=&amp;quot;mcFormatColor&amp;quot;&amp;gt;Important! &amp;lt;/span&amp;gt;&amp;lt;/b&amp;gt;&quot;&gt;&lt;span class=&quot;autonumber&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important!&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;/span&gt;Publish offer note: Fields may be optional or conditionally required when calling the create or update methods, but become required when publishing the offer to create active listings. For this method, see &lt;a href=&quot;/api-docs/sell/static/inventory/publishing-offers.html#offer&quot; target=&quot;_blank&quot;&gt;Offer fields&lt;/a&gt; for a list of fields required to publish an offer.&lt;/p&gt;&lt;/span&gt;&lt;/div&gt;&lt;br&gt;For those who prefer to publish one offer per call, the &lt;strong&gt;publishOffer&lt;/strong&gt; method can be used instead. In the case of a multiple-variation listing, the &lt;strong&gt;publishOfferByInventoryItemGroup&lt;/strong&gt; call should be used instead, as this call will convert all unpublished offers associated with an inventory item group into a multiple-variation listing.
+     * @param body This type is used by the base request of the &lt;strong&gt;bulkPublishOffer&lt;/strong&gt; method, which is used to publish up to 25 different offers.
+     * @return a {@link RequestInformation}
+     */
+    @jakarta.annotation.Nonnull
+    public RequestInformation toPostRequestInformation(@jakarta.annotation.Nonnull final BulkOffer body) {
+        return toPostRequestInformation(body, null);
+    }
+    /**
+     * &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Each listing can be revised up to 250 times in one calendar day. If this revision threshold is reached, the seller will be blocked from revising the item until the next calendar day.&lt;/span&gt;&lt;br&gt;This call is used to convert unpublished offers (up to 25) into  published offers, or live eBay listings. The unique identifier (&lt;strong&gt;offerId&lt;/strong&gt;) of each offer to publish is passed into the request payload. It is possible that some unpublished offers will be successfully created into eBay listings, but others may fail. The response payload will show the results for each &lt;strong&gt;offerId&lt;/strong&gt; value that is passed into the request payload. The &lt;strong&gt;errors&lt;/strong&gt; and &lt;strong&gt;warnings&lt;/strong&gt; containers will be returned for an offer that had one or more issues being published. &lt;br&gt;&lt;br&gt;&lt;div class=&quot;msgbox_important&quot;&gt;&lt;p class=&quot;msgbox_importantInDiv&quot; data-mc-autonum=&quot;&amp;lt;b&amp;gt;&amp;lt;span style=&amp;quot;color: #dd1e31;&amp;quot; class=&amp;quot;mcFormatColor&amp;quot;&amp;gt;Important! &amp;lt;/span&amp;gt;&amp;lt;/b&amp;gt;&quot;&gt;&lt;span class=&quot;autonumber&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important!&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;/span&gt;Publish offer note: Fields may be optional or conditionally required when calling the create or update methods, but become required when publishing the offer to create active listings. For this method, see &lt;a href=&quot;/api-docs/sell/static/inventory/publishing-offers.html#offer&quot; target=&quot;_blank&quot;&gt;Offer fields&lt;/a&gt; for a list of fields required to publish an offer.&lt;/p&gt;&lt;/span&gt;&lt;/div&gt;&lt;br&gt;For those who prefer to publish one offer per call, the &lt;strong&gt;publishOffer&lt;/strong&gt; method can be used instead. In the case of a multiple-variation listing, the &lt;strong&gt;publishOfferByInventoryItemGroup&lt;/strong&gt; call should be used instead, as this call will convert all unpublished offers associated with an inventory item group into a multiple-variation listing.
+     * @param body This type is used by the base request of the &lt;strong&gt;bulkPublishOffer&lt;/strong&gt; method, which is used to publish up to 25 different offers.
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @return a {@link RequestInformation}
+     */
+    @jakarta.annotation.Nonnull
+    public RequestInformation toPostRequestInformation(@jakarta.annotation.Nonnull final BulkOffer body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
+        Objects.requireNonNull(body);
+        final RequestInformation requestInfo = new RequestInformation(HttpMethod.POST, urlTemplate, pathParameters);
+        requestInfo.configure(requestConfiguration, PostRequestConfiguration::new);
+        requestInfo.headers.tryAdd("Accept", "application/json");
+        requestInfo.setContentFromParsable(requestAdapter, "application/json", body);
+        return requestInfo;
+    }
+    /**
+     * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+     * @param rawUrl The raw URL to use for the request builder.
+     * @return a {@link BulkPublishOfferRequestBuilder}
+     */
+    @jakarta.annotation.Nonnull
+    public BulkPublishOfferRequestBuilder withUrl(@jakarta.annotation.Nonnull final String rawUrl) {
+        Objects.requireNonNull(rawUrl);
+        return new BulkPublishOfferRequestBuilder(rawUrl, requestAdapter);
+    }
+    /**
+     * Configuration for the request such as headers, query parameters, and middleware options.
+     */
+    @jakarta.annotation.Generated("com.microsoft.kiota")
+    public class PostRequestConfiguration extends BaseRequestConfiguration {
+    }
+}

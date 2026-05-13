@@ -1,0 +1,109 @@
+package com.ebay.listingmanagement.generated.inventory.models;
+
+import com.microsoft.kiota.serialization.AdditionalDataHolder;
+import com.microsoft.kiota.serialization.Parsable;
+import com.microsoft.kiota.serialization.ParseNode;
+import com.microsoft.kiota.serialization.SerializationWriter;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+/**
+ * This type describes the weekly schedule for cut-off times.
+ */
+@jakarta.annotation.Generated("com.microsoft.kiota")
+public class WeeklySchedule implements AdditionalDataHolder, Parsable {
+    /**
+     * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     */
+    private Map<String, Object> additionalData;
+    /**
+     * This field specifies the cut-off times (in 24-hour format) for the business day(s) specified in the &lt;b&gt;dayOfWeekEnum&lt;/b&gt; array.&lt;br&gt;&lt;br&gt;Cut-off times default to the time zone of the specified address if the &lt;b&gt;timeZoneId&lt;/b&gt; is not provided.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; If cut-off hours are not specified for a particular day, the fulfillment center is considered to be on holiday for that day.&lt;/span&gt;&lt;br&gt;&lt;b&gt;Format:&lt;/b&gt; &lt;code&gt;00:00&lt;/code&gt;
+     */
+    private String cutOffTime;
+    /**
+     * This comma-separated array defines the days of week for which the specified &lt;b&gt;cutOffTime&lt;/b&gt; is used.
+     */
+    private java.util.List<String> dayOfWeekEnum;
+    /**
+     * Instantiates a new {@link WeeklySchedule} and sets the default values.
+     */
+    public WeeklySchedule() {
+        this.setAdditionalData(new HashMap<>());
+    }
+    /**
+     * Creates a new instance of the appropriate class based on discriminator value
+     * @param parseNode The parse node to use to read the discriminator value and create the object
+     * @return a {@link WeeklySchedule}
+     */
+    @jakarta.annotation.Nonnull
+    public static WeeklySchedule createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new WeeklySchedule();
+    }
+    /**
+     * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @return a {@link Map<String, Object>}
+     */
+    @jakarta.annotation.Nonnull
+    public Map<String, Object> getAdditionalData() {
+        return this.additionalData;
+    }
+    /**
+     * Gets the cutOffTime property value. This field specifies the cut-off times (in 24-hour format) for the business day(s) specified in the &lt;b&gt;dayOfWeekEnum&lt;/b&gt; array.&lt;br&gt;&lt;br&gt;Cut-off times default to the time zone of the specified address if the &lt;b&gt;timeZoneId&lt;/b&gt; is not provided.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; If cut-off hours are not specified for a particular day, the fulfillment center is considered to be on holiday for that day.&lt;/span&gt;&lt;br&gt;&lt;b&gt;Format:&lt;/b&gt; &lt;code&gt;00:00&lt;/code&gt;
+     * @return a {@link String}
+     */
+    @jakarta.annotation.Nullable
+    public String getCutOffTime() {
+        return this.cutOffTime;
+    }
+    /**
+     * Gets the dayOfWeekEnum property value. This comma-separated array defines the days of week for which the specified &lt;b&gt;cutOffTime&lt;/b&gt; is used.
+     * @return a {@link java.util.List<String>}
+     */
+    @jakarta.annotation.Nullable
+    public java.util.List<String> getDayOfWeekEnum() {
+        return this.dayOfWeekEnum;
+    }
+    /**
+     * The deserialization information for the current model
+     * @return a {@link Map<String, java.util.function.Consumer<ParseNode>>}
+     */
+    @jakarta.annotation.Nonnull
+    public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
+        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(2);
+        deserializerMap.put("cutOffTime", (n) -> { this.setCutOffTime(n.getStringValue()); });
+        deserializerMap.put("dayOfWeekEnum", (n) -> { this.setDayOfWeekEnum(n.getCollectionOfPrimitiveValues(String.class)); });
+        return deserializerMap;
+    }
+    /**
+     * Serializes information the current object
+     * @param writer Serialization writer to use to serialize this model
+     */
+    public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
+        Objects.requireNonNull(writer);
+        writer.writeStringValue("cutOffTime", this.getCutOffTime());
+        writer.writeCollectionOfPrimitiveValues("dayOfWeekEnum", this.getDayOfWeekEnum());
+        writer.writeAdditionalData(this.getAdditionalData());
+    }
+    /**
+     * Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @param value Value to set for the AdditionalData property.
+     */
+    public void setAdditionalData(@jakarta.annotation.Nullable final Map<String, Object> value) {
+        this.additionalData = value;
+    }
+    /**
+     * Sets the cutOffTime property value. This field specifies the cut-off times (in 24-hour format) for the business day(s) specified in the &lt;b&gt;dayOfWeekEnum&lt;/b&gt; array.&lt;br&gt;&lt;br&gt;Cut-off times default to the time zone of the specified address if the &lt;b&gt;timeZoneId&lt;/b&gt; is not provided.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; If cut-off hours are not specified for a particular day, the fulfillment center is considered to be on holiday for that day.&lt;/span&gt;&lt;br&gt;&lt;b&gt;Format:&lt;/b&gt; &lt;code&gt;00:00&lt;/code&gt;
+     * @param value Value to set for the cutOffTime property.
+     */
+    public void setCutOffTime(@jakarta.annotation.Nullable final String value) {
+        this.cutOffTime = value;
+    }
+    /**
+     * Sets the dayOfWeekEnum property value. This comma-separated array defines the days of week for which the specified &lt;b&gt;cutOffTime&lt;/b&gt; is used.
+     * @param value Value to set for the dayOfWeekEnum property.
+     */
+    public void setDayOfWeekEnum(@jakarta.annotation.Nullable final java.util.List<String> value) {
+        this.dayOfWeekEnum = value;
+    }
+}

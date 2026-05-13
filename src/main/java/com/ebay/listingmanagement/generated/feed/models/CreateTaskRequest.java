@@ -1,0 +1,109 @@
+package com.ebay.listingmanagement.generated.feed.models;
+
+import com.microsoft.kiota.serialization.AdditionalDataHolder;
+import com.microsoft.kiota.serialization.Parsable;
+import com.microsoft.kiota.serialization.ParseNode;
+import com.microsoft.kiota.serialization.SerializationWriter;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+/**
+ * The type that defines the fields for the &lt;b&gt; createTask&lt;/b&gt; method.
+ */
+@jakarta.annotation.Generated("com.microsoft.kiota")
+public class CreateTaskRequest implements AdditionalDataHolder, Parsable {
+    /**
+     * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     */
+    private Map<String, Object> additionalData;
+    /**
+     * The feed type associated with the task. Available feed types:&lt;br&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/api-docs/sell/static/feed/lms-feeds-quick-reference.html#trading-upload-feed-types&quot; target=&quot;_blank&quot;&gt;Inventory upload feed types&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;/api-docs/sell/static/feed/lms-feeds-quick-reference.html#merchant-data-upload-feed-types&quot; target=&quot;_blank&quot;&gt;Fulfillment upload feed types&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;/api-docs/sell/static/feed/fx-feeds-quick-reference.html#availabl&quot; target=&quot;_blank&quot;&gt;Seller Hub feed types&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+     */
+    private String feedType;
+    /**
+     * The schemaVersion/version number of the file format:&lt;br&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/api-docs/sell/static/feed/lms-feeds-quick-reference.html#Version&quot; target=&quot;_blank&quot;&gt;Version Details / Schema Version&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;/api-docs/sell/static/feed/fx-feeds-quick-reference.html#schema&quot; target=&quot;_blank&quot;&gt;Seller Hub feed schema version&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+     */
+    private String schemaVersion;
+    /**
+     * Instantiates a new {@link CreateTaskRequest} and sets the default values.
+     */
+    public CreateTaskRequest() {
+        this.setAdditionalData(new HashMap<>());
+    }
+    /**
+     * Creates a new instance of the appropriate class based on discriminator value
+     * @param parseNode The parse node to use to read the discriminator value and create the object
+     * @return a {@link CreateTaskRequest}
+     */
+    @jakarta.annotation.Nonnull
+    public static CreateTaskRequest createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new CreateTaskRequest();
+    }
+    /**
+     * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @return a {@link Map<String, Object>}
+     */
+    @jakarta.annotation.Nonnull
+    public Map<String, Object> getAdditionalData() {
+        return this.additionalData;
+    }
+    /**
+     * Gets the feedType property value. The feed type associated with the task. Available feed types:&lt;br&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/api-docs/sell/static/feed/lms-feeds-quick-reference.html#trading-upload-feed-types&quot; target=&quot;_blank&quot;&gt;Inventory upload feed types&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;/api-docs/sell/static/feed/lms-feeds-quick-reference.html#merchant-data-upload-feed-types&quot; target=&quot;_blank&quot;&gt;Fulfillment upload feed types&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;/api-docs/sell/static/feed/fx-feeds-quick-reference.html#availabl&quot; target=&quot;_blank&quot;&gt;Seller Hub feed types&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+     * @return a {@link String}
+     */
+    @jakarta.annotation.Nullable
+    public String getFeedType() {
+        return this.feedType;
+    }
+    /**
+     * The deserialization information for the current model
+     * @return a {@link Map<String, java.util.function.Consumer<ParseNode>>}
+     */
+    @jakarta.annotation.Nonnull
+    public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
+        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(2);
+        deserializerMap.put("feedType", (n) -> { this.setFeedType(n.getStringValue()); });
+        deserializerMap.put("schemaVersion", (n) -> { this.setSchemaVersion(n.getStringValue()); });
+        return deserializerMap;
+    }
+    /**
+     * Gets the schemaVersion property value. The schemaVersion/version number of the file format:&lt;br&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/api-docs/sell/static/feed/lms-feeds-quick-reference.html#Version&quot; target=&quot;_blank&quot;&gt;Version Details / Schema Version&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;/api-docs/sell/static/feed/fx-feeds-quick-reference.html#schema&quot; target=&quot;_blank&quot;&gt;Seller Hub feed schema version&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+     * @return a {@link String}
+     */
+    @jakarta.annotation.Nullable
+    public String getSchemaVersion() {
+        return this.schemaVersion;
+    }
+    /**
+     * Serializes information the current object
+     * @param writer Serialization writer to use to serialize this model
+     */
+    public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
+        Objects.requireNonNull(writer);
+        writer.writeStringValue("feedType", this.getFeedType());
+        writer.writeStringValue("schemaVersion", this.getSchemaVersion());
+        writer.writeAdditionalData(this.getAdditionalData());
+    }
+    /**
+     * Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @param value Value to set for the AdditionalData property.
+     */
+    public void setAdditionalData(@jakarta.annotation.Nullable final Map<String, Object> value) {
+        this.additionalData = value;
+    }
+    /**
+     * Sets the feedType property value. The feed type associated with the task. Available feed types:&lt;br&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/api-docs/sell/static/feed/lms-feeds-quick-reference.html#trading-upload-feed-types&quot; target=&quot;_blank&quot;&gt;Inventory upload feed types&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;/api-docs/sell/static/feed/lms-feeds-quick-reference.html#merchant-data-upload-feed-types&quot; target=&quot;_blank&quot;&gt;Fulfillment upload feed types&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;/api-docs/sell/static/feed/fx-feeds-quick-reference.html#availabl&quot; target=&quot;_blank&quot;&gt;Seller Hub feed types&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+     * @param value Value to set for the feedType property.
+     */
+    public void setFeedType(@jakarta.annotation.Nullable final String value) {
+        this.feedType = value;
+    }
+    /**
+     * Sets the schemaVersion property value. The schemaVersion/version number of the file format:&lt;br&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;/api-docs/sell/static/feed/lms-feeds-quick-reference.html#Version&quot; target=&quot;_blank&quot;&gt;Version Details / Schema Version&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;/api-docs/sell/static/feed/fx-feeds-quick-reference.html#schema&quot; target=&quot;_blank&quot;&gt;Seller Hub feed schema version&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+     * @param value Value to set for the schemaVersion property.
+     */
+    public void setSchemaVersion(@jakarta.annotation.Nullable final String value) {
+        this.schemaVersion = value;
+    }
+}

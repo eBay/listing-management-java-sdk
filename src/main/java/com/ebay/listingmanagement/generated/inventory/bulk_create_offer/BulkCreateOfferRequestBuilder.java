@@ -1,0 +1,99 @@
+package com.ebay.listingmanagement.generated.inventory.bulk_create_offer;
+
+import com.ebay.listingmanagement.generated.inventory.models.BulkEbayOfferDetailsWithKeys;
+import com.ebay.listingmanagement.generated.inventory.models.BulkOfferResponse;
+import com.microsoft.kiota.BaseRequestBuilder;
+import com.microsoft.kiota.BaseRequestConfiguration;
+import com.microsoft.kiota.HttpMethod;
+import com.microsoft.kiota.RequestAdapter;
+import com.microsoft.kiota.RequestInformation;
+import com.microsoft.kiota.RequestOption;
+import com.microsoft.kiota.serialization.Parsable;
+import com.microsoft.kiota.serialization.ParsableFactory;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+/**
+ * Builds and executes requests for operations under /bulk_create_offer
+ */
+@jakarta.annotation.Generated("com.microsoft.kiota")
+public class BulkCreateOfferRequestBuilder extends BaseRequestBuilder {
+    /**
+     * Instantiates a new {@link BulkCreateOfferRequestBuilder} and sets the default values.
+     * @param pathParameters Path parameters for the request
+     * @param requestAdapter The request adapter to use to execute the requests.
+     */
+    public BulkCreateOfferRequestBuilder(@jakarta.annotation.Nonnull final HashMap<String, Object> pathParameters, @jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {
+        super(requestAdapter, "{+baseurl}/bulk_create_offer", pathParameters);
+    }
+    /**
+     * Instantiates a new {@link BulkCreateOfferRequestBuilder} and sets the default values.
+     * @param rawUrl The raw URL to use for the request builder.
+     * @param requestAdapter The request adapter to use to execute the requests.
+     */
+    public BulkCreateOfferRequestBuilder(@jakarta.annotation.Nonnull final String rawUrl, @jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {
+        super(requestAdapter, "{+baseurl}/bulk_create_offer", rawUrl);
+    }
+    /**
+     * This call creates multiple offers (up to 25) for specific inventory items on a specific eBay marketplace. Although it is not a requirement for the seller to create complete offers (with all necessary details) right from the start, eBay recommends that the seller provide all necessary details with this call since there is currently no bulk operation available to update multiple offers with one call. The following fields are always required in the request payload:  &lt;strong&gt;sku&lt;/strong&gt;, &lt;strong&gt;marketplaceId&lt;/strong&gt;, and (listing) &lt;strong&gt;format&lt;/strong&gt;. &lt;br&gt;&lt;br&gt;&lt;div class=&quot;msgbox_important&quot;&gt;&lt;p class=&quot;msgbox_importantInDiv&quot; data-mc-autonum=&quot;&amp;lt;b&amp;gt;&amp;lt;span style=&amp;quot;color: #dd1e31;&amp;quot; class=&amp;quot;mcFormatColor&amp;quot;&amp;gt;Important! &amp;lt;/span&amp;gt;&amp;lt;/b&amp;gt;&quot;&gt;&lt;span class=&quot;autonumber&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important!&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;/span&gt;Publish offer note: Fields may be optional or conditionally required when calling this method, but become required when publishing the offer to create an active listing. For this method, see &lt;a href=&quot;/api-docs/sell/static/inventory/publishing-offers.html#offer&quot; target=&quot;_blank&quot;&gt;Offer fields&lt;/a&gt; for a list of fields required to publish an offer.&lt;/p&gt;&lt;/span&gt;&lt;/div&gt;&lt;br&gt;Other information that will be required before a offer can be published are highlighted below: &lt;ul&gt;&lt;li&gt;Inventory location&lt;/li&gt; &lt;li&gt;Offer price&lt;/li&gt; &lt;li&gt;Available quantity&lt;/li&gt; &lt;li&gt;eBay listing category&lt;/li&gt; &lt;li&gt;Referenced listing policy profiles to set payment, return, and fulfillment values/settings&lt;/li&gt; &lt;/ul&gt;&lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Though the &lt;strong&gt;includeCatalogProductDetails&lt;/strong&gt; parameter is not required to be submitted in the request, the parameter defaults to &lt;code&gt;true&lt;/code&gt; if omitted.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; In addition to the &lt;code&gt;authorization&lt;/code&gt; header, which is required for all Inventory API calls, this call also requires the &lt;code&gt;Content-Type&lt;/code&gt; and &lt;code&gt;Content-Language&lt;/code&gt; headers. See the &lt;a href=&quot;/api-docs/sell/inventory/resources/offer/methods/bulkCreateOffer#h3-request-headers&quot;&gt;HTTP request headers&lt;/a&gt; for more information.&lt;/span&gt;&lt;/p&gt; &lt;p&gt;If the call is successful, unique &lt;strong&gt;offerId&lt;/strong&gt; values are returned in the response for each successfully created offer. The &lt;strong&gt;offerId&lt;/strong&gt; value will be required for many other offer-related calls. Note that this call only stages an offer for publishing. The seller must run either the &lt;strong&gt;publishOffer&lt;/strong&gt;, &lt;strong&gt;bulkPublishOffer&lt;/strong&gt;, or &lt;strong&gt;publishOfferByInventoryItemGroup&lt;/strong&gt; call to convert offer(s) into an active single- or multiple-variation listing.&lt;/p&gt;&lt;p&gt;For those who prefer to create a single offer per call, the &lt;strong&gt;createOffer&lt;/strong&gt; method can be used instead.&lt;/p&gt;
+     * @param body This type is used by the base request of the &lt;strong&gt;bulkCreateOffer&lt;/strong&gt; method, which is used to create up to 25 new offers.
+     * @return a {@link BulkOfferResponse}
+     */
+    @jakarta.annotation.Nullable
+    public BulkOfferResponse post(@jakarta.annotation.Nonnull final BulkEbayOfferDetailsWithKeys body) {
+        return post(body, null);
+    }
+    /**
+     * This call creates multiple offers (up to 25) for specific inventory items on a specific eBay marketplace. Although it is not a requirement for the seller to create complete offers (with all necessary details) right from the start, eBay recommends that the seller provide all necessary details with this call since there is currently no bulk operation available to update multiple offers with one call. The following fields are always required in the request payload:  &lt;strong&gt;sku&lt;/strong&gt;, &lt;strong&gt;marketplaceId&lt;/strong&gt;, and (listing) &lt;strong&gt;format&lt;/strong&gt;. &lt;br&gt;&lt;br&gt;&lt;div class=&quot;msgbox_important&quot;&gt;&lt;p class=&quot;msgbox_importantInDiv&quot; data-mc-autonum=&quot;&amp;lt;b&amp;gt;&amp;lt;span style=&amp;quot;color: #dd1e31;&amp;quot; class=&amp;quot;mcFormatColor&amp;quot;&amp;gt;Important! &amp;lt;/span&amp;gt;&amp;lt;/b&amp;gt;&quot;&gt;&lt;span class=&quot;autonumber&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important!&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;/span&gt;Publish offer note: Fields may be optional or conditionally required when calling this method, but become required when publishing the offer to create an active listing. For this method, see &lt;a href=&quot;/api-docs/sell/static/inventory/publishing-offers.html#offer&quot; target=&quot;_blank&quot;&gt;Offer fields&lt;/a&gt; for a list of fields required to publish an offer.&lt;/p&gt;&lt;/span&gt;&lt;/div&gt;&lt;br&gt;Other information that will be required before a offer can be published are highlighted below: &lt;ul&gt;&lt;li&gt;Inventory location&lt;/li&gt; &lt;li&gt;Offer price&lt;/li&gt; &lt;li&gt;Available quantity&lt;/li&gt; &lt;li&gt;eBay listing category&lt;/li&gt; &lt;li&gt;Referenced listing policy profiles to set payment, return, and fulfillment values/settings&lt;/li&gt; &lt;/ul&gt;&lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Though the &lt;strong&gt;includeCatalogProductDetails&lt;/strong&gt; parameter is not required to be submitted in the request, the parameter defaults to &lt;code&gt;true&lt;/code&gt; if omitted.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; In addition to the &lt;code&gt;authorization&lt;/code&gt; header, which is required for all Inventory API calls, this call also requires the &lt;code&gt;Content-Type&lt;/code&gt; and &lt;code&gt;Content-Language&lt;/code&gt; headers. See the &lt;a href=&quot;/api-docs/sell/inventory/resources/offer/methods/bulkCreateOffer#h3-request-headers&quot;&gt;HTTP request headers&lt;/a&gt; for more information.&lt;/span&gt;&lt;/p&gt; &lt;p&gt;If the call is successful, unique &lt;strong&gt;offerId&lt;/strong&gt; values are returned in the response for each successfully created offer. The &lt;strong&gt;offerId&lt;/strong&gt; value will be required for many other offer-related calls. Note that this call only stages an offer for publishing. The seller must run either the &lt;strong&gt;publishOffer&lt;/strong&gt;, &lt;strong&gt;bulkPublishOffer&lt;/strong&gt;, or &lt;strong&gt;publishOfferByInventoryItemGroup&lt;/strong&gt; call to convert offer(s) into an active single- or multiple-variation listing.&lt;/p&gt;&lt;p&gt;For those who prefer to create a single offer per call, the &lt;strong&gt;createOffer&lt;/strong&gt; method can be used instead.&lt;/p&gt;
+     * @param body This type is used by the base request of the &lt;strong&gt;bulkCreateOffer&lt;/strong&gt; method, which is used to create up to 25 new offers.
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @return a {@link BulkOfferResponse}
+     */
+    @jakarta.annotation.Nullable
+    public BulkOfferResponse post(@jakarta.annotation.Nonnull final BulkEbayOfferDetailsWithKeys body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
+        Objects.requireNonNull(body);
+        final RequestInformation requestInfo = toPostRequestInformation(body, requestConfiguration);
+        return this.requestAdapter.send(requestInfo, null, BulkOfferResponse::createFromDiscriminatorValue);
+    }
+    /**
+     * This call creates multiple offers (up to 25) for specific inventory items on a specific eBay marketplace. Although it is not a requirement for the seller to create complete offers (with all necessary details) right from the start, eBay recommends that the seller provide all necessary details with this call since there is currently no bulk operation available to update multiple offers with one call. The following fields are always required in the request payload:  &lt;strong&gt;sku&lt;/strong&gt;, &lt;strong&gt;marketplaceId&lt;/strong&gt;, and (listing) &lt;strong&gt;format&lt;/strong&gt;. &lt;br&gt;&lt;br&gt;&lt;div class=&quot;msgbox_important&quot;&gt;&lt;p class=&quot;msgbox_importantInDiv&quot; data-mc-autonum=&quot;&amp;lt;b&amp;gt;&amp;lt;span style=&amp;quot;color: #dd1e31;&amp;quot; class=&amp;quot;mcFormatColor&amp;quot;&amp;gt;Important! &amp;lt;/span&amp;gt;&amp;lt;/b&amp;gt;&quot;&gt;&lt;span class=&quot;autonumber&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important!&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;/span&gt;Publish offer note: Fields may be optional or conditionally required when calling this method, but become required when publishing the offer to create an active listing. For this method, see &lt;a href=&quot;/api-docs/sell/static/inventory/publishing-offers.html#offer&quot; target=&quot;_blank&quot;&gt;Offer fields&lt;/a&gt; for a list of fields required to publish an offer.&lt;/p&gt;&lt;/span&gt;&lt;/div&gt;&lt;br&gt;Other information that will be required before a offer can be published are highlighted below: &lt;ul&gt;&lt;li&gt;Inventory location&lt;/li&gt; &lt;li&gt;Offer price&lt;/li&gt; &lt;li&gt;Available quantity&lt;/li&gt; &lt;li&gt;eBay listing category&lt;/li&gt; &lt;li&gt;Referenced listing policy profiles to set payment, return, and fulfillment values/settings&lt;/li&gt; &lt;/ul&gt;&lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Though the &lt;strong&gt;includeCatalogProductDetails&lt;/strong&gt; parameter is not required to be submitted in the request, the parameter defaults to &lt;code&gt;true&lt;/code&gt; if omitted.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; In addition to the &lt;code&gt;authorization&lt;/code&gt; header, which is required for all Inventory API calls, this call also requires the &lt;code&gt;Content-Type&lt;/code&gt; and &lt;code&gt;Content-Language&lt;/code&gt; headers. See the &lt;a href=&quot;/api-docs/sell/inventory/resources/offer/methods/bulkCreateOffer#h3-request-headers&quot;&gt;HTTP request headers&lt;/a&gt; for more information.&lt;/span&gt;&lt;/p&gt; &lt;p&gt;If the call is successful, unique &lt;strong&gt;offerId&lt;/strong&gt; values are returned in the response for each successfully created offer. The &lt;strong&gt;offerId&lt;/strong&gt; value will be required for many other offer-related calls. Note that this call only stages an offer for publishing. The seller must run either the &lt;strong&gt;publishOffer&lt;/strong&gt;, &lt;strong&gt;bulkPublishOffer&lt;/strong&gt;, or &lt;strong&gt;publishOfferByInventoryItemGroup&lt;/strong&gt; call to convert offer(s) into an active single- or multiple-variation listing.&lt;/p&gt;&lt;p&gt;For those who prefer to create a single offer per call, the &lt;strong&gt;createOffer&lt;/strong&gt; method can be used instead.&lt;/p&gt;
+     * @param body This type is used by the base request of the &lt;strong&gt;bulkCreateOffer&lt;/strong&gt; method, which is used to create up to 25 new offers.
+     * @return a {@link RequestInformation}
+     */
+    @jakarta.annotation.Nonnull
+    public RequestInformation toPostRequestInformation(@jakarta.annotation.Nonnull final BulkEbayOfferDetailsWithKeys body) {
+        return toPostRequestInformation(body, null);
+    }
+    /**
+     * This call creates multiple offers (up to 25) for specific inventory items on a specific eBay marketplace. Although it is not a requirement for the seller to create complete offers (with all necessary details) right from the start, eBay recommends that the seller provide all necessary details with this call since there is currently no bulk operation available to update multiple offers with one call. The following fields are always required in the request payload:  &lt;strong&gt;sku&lt;/strong&gt;, &lt;strong&gt;marketplaceId&lt;/strong&gt;, and (listing) &lt;strong&gt;format&lt;/strong&gt;. &lt;br&gt;&lt;br&gt;&lt;div class=&quot;msgbox_important&quot;&gt;&lt;p class=&quot;msgbox_importantInDiv&quot; data-mc-autonum=&quot;&amp;lt;b&amp;gt;&amp;lt;span style=&amp;quot;color: #dd1e31;&amp;quot; class=&amp;quot;mcFormatColor&amp;quot;&amp;gt;Important! &amp;lt;/span&amp;gt;&amp;lt;/b&amp;gt;&quot;&gt;&lt;span class=&quot;autonumber&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important!&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;/span&gt;Publish offer note: Fields may be optional or conditionally required when calling this method, but become required when publishing the offer to create an active listing. For this method, see &lt;a href=&quot;/api-docs/sell/static/inventory/publishing-offers.html#offer&quot; target=&quot;_blank&quot;&gt;Offer fields&lt;/a&gt; for a list of fields required to publish an offer.&lt;/p&gt;&lt;/span&gt;&lt;/div&gt;&lt;br&gt;Other information that will be required before a offer can be published are highlighted below: &lt;ul&gt;&lt;li&gt;Inventory location&lt;/li&gt; &lt;li&gt;Offer price&lt;/li&gt; &lt;li&gt;Available quantity&lt;/li&gt; &lt;li&gt;eBay listing category&lt;/li&gt; &lt;li&gt;Referenced listing policy profiles to set payment, return, and fulfillment values/settings&lt;/li&gt; &lt;/ul&gt;&lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Though the &lt;strong&gt;includeCatalogProductDetails&lt;/strong&gt; parameter is not required to be submitted in the request, the parameter defaults to &lt;code&gt;true&lt;/code&gt; if omitted.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; In addition to the &lt;code&gt;authorization&lt;/code&gt; header, which is required for all Inventory API calls, this call also requires the &lt;code&gt;Content-Type&lt;/code&gt; and &lt;code&gt;Content-Language&lt;/code&gt; headers. See the &lt;a href=&quot;/api-docs/sell/inventory/resources/offer/methods/bulkCreateOffer#h3-request-headers&quot;&gt;HTTP request headers&lt;/a&gt; for more information.&lt;/span&gt;&lt;/p&gt; &lt;p&gt;If the call is successful, unique &lt;strong&gt;offerId&lt;/strong&gt; values are returned in the response for each successfully created offer. The &lt;strong&gt;offerId&lt;/strong&gt; value will be required for many other offer-related calls. Note that this call only stages an offer for publishing. The seller must run either the &lt;strong&gt;publishOffer&lt;/strong&gt;, &lt;strong&gt;bulkPublishOffer&lt;/strong&gt;, or &lt;strong&gt;publishOfferByInventoryItemGroup&lt;/strong&gt; call to convert offer(s) into an active single- or multiple-variation listing.&lt;/p&gt;&lt;p&gt;For those who prefer to create a single offer per call, the &lt;strong&gt;createOffer&lt;/strong&gt; method can be used instead.&lt;/p&gt;
+     * @param body This type is used by the base request of the &lt;strong&gt;bulkCreateOffer&lt;/strong&gt; method, which is used to create up to 25 new offers.
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @return a {@link RequestInformation}
+     */
+    @jakarta.annotation.Nonnull
+    public RequestInformation toPostRequestInformation(@jakarta.annotation.Nonnull final BulkEbayOfferDetailsWithKeys body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
+        Objects.requireNonNull(body);
+        final RequestInformation requestInfo = new RequestInformation(HttpMethod.POST, urlTemplate, pathParameters);
+        requestInfo.configure(requestConfiguration, PostRequestConfiguration::new);
+        requestInfo.headers.tryAdd("Accept", "application/json");
+        requestInfo.setContentFromParsable(requestAdapter, "application/json", body);
+        return requestInfo;
+    }
+    /**
+     * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+     * @param rawUrl The raw URL to use for the request builder.
+     * @return a {@link BulkCreateOfferRequestBuilder}
+     */
+    @jakarta.annotation.Nonnull
+    public BulkCreateOfferRequestBuilder withUrl(@jakarta.annotation.Nonnull final String rawUrl) {
+        Objects.requireNonNull(rawUrl);
+        return new BulkCreateOfferRequestBuilder(rawUrl, requestAdapter);
+    }
+    /**
+     * Configuration for the request such as headers, query parameters, and middleware options.
+     */
+    @jakarta.annotation.Generated("com.microsoft.kiota")
+    public class PostRequestConfiguration extends BaseRequestConfiguration {
+    }
+}
