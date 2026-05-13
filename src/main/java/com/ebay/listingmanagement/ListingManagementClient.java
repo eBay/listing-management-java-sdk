@@ -1,5 +1,7 @@
 package com.ebay.listingmanagement;
 
+import com.ebay.listingmanagement.clients.graphql.DynamicGraphQLClient;
+import com.ebay.listingmanagement.clients.graphql.ListingGraphQLClient;
 import com.ebay.listingmanagement.clients.rest.FeedClient;
 import com.ebay.listingmanagement.clients.rest.InventoryClient;
 import com.ebay.listingmanagement.clients.rest.MediaClient;
@@ -36,6 +38,7 @@ public final class ListingManagementClient implements Closeable {
     public final InventoryClient inventory;
     public final MediaClient media;
     public final StoresClient stores;
+    public final ListingGraphQLClient graphQL;
 
     public ListingManagementClient(ListingManagementConfiguration config) {
         // Shared OkHttpClient for all REST clients
@@ -63,6 +66,9 @@ public final class ListingManagementClient implements Closeable {
         var storesAdapter = new OkHttpRequestAdapter(authProvider, null, null, sharedHttpClient);
         storesAdapter.setBaseUrl(config.getStoresBaseUrl());
         this.stores = new StoresClient(new StoresApiClient(storesAdapter), config);
+
+        // GraphQL client
+        this.graphQL = new ListingGraphQLClient(new DynamicGraphQLClient(sharedHttpClient, config));
     }
 
     @Override

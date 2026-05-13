@@ -11,6 +11,7 @@ public final class ListingManagementConfiguration {
     public String inventoryBaseUrl = "https://api.ebay.com/sell/inventory/v1";
     public String mediaBaseUrl = "https://apim.ebay.com/commerce/media/v1_beta";
     public String storesBaseUrl = "https://api.ebay.com/sell/stores/v1";
+    public String graphQLBaseUrl = "https://api.ebay.com/graphql";
 
     public void setAccessToken(String token) {
         this.accessToken = token;
@@ -45,5 +46,13 @@ public final class ListingManagementConfiguration {
 
     public String getStoresBaseUrl() {
         return storesBaseUrl;
+    }
+
+    public String getGraphQLBaseUrl() {
+        return graphQLBaseUrl;
+    }
+
+    public void setGraphQLBaseUrl(String graphQLBaseUrl) {
+        this.graphQLBaseUrl = graphQLBaseUrl;
     }
 }
