@@ -1,0 +1,89 @@
+mutation BulkUpdateInventory($input: BulkUpdateInventoryInput!) {
+  bulkUpdateInventory(input: $input) {
+    __typename
+    ... on BulkUpdateInventorySuccess {
+      successes {
+        listingItemIdentifier {
+          listingId
+          sku
+        }
+        warnings {
+          warningCode
+          warningMessage
+          additionalInformation {
+            name
+            value
+          }
+        }
+      }
+    }
+    ... on BulkUpdateInventoryPartialFailure {
+      errorCode
+      errorMessage
+      successes {
+        listingItemIdentifier {
+          listingId
+          sku
+        }
+        warnings {
+          warningCode
+          warningMessage
+          additionalInformation {
+            name
+            value
+          }
+        }
+      }
+      failures {
+        listingItemIdentifier {
+          listingId
+          sku
+        }
+        violations {
+          violationCode
+          violationDescription
+          inputPath
+          additionalInformation {
+            name
+            value
+          }
+        }
+        warnings {
+          warningCode
+          warningMessage
+          additionalInformation {
+            name
+            value
+          }
+        }
+      }
+    }
+    ... on BulkUpdateInventoryFailure {
+      errorCode
+      errorMessage
+      failures {
+        listingItemIdentifier {
+          listingId
+          sku
+        }
+        violations {
+          violationCode
+          violationDescription
+          inputPath
+          additionalInformation {
+            name
+            value
+          }
+        }
+        warnings {
+          warningCode
+          warningMessage
+          additionalInformation {
+            name
+            value
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,102 @@
+query ListingPreviewsCreationTaskById($input: ListingPreviewsCreationTaskByIdInput!) {
+  listingPreviewsCreationTaskById(input: $input) {
+    listingPreviewsCreationTask {
+      id
+      result {
+        completionStatus
+        invalidProducts {
+          description
+          clientProvidedProductDetails {
+            category
+            externalProductIdentifier {
+              productId
+              productType
+            }
+            images
+            sku
+            title
+            aspects {
+              name
+              values
+            }
+          }
+        }
+        listingPreviews {
+          aspects {
+            aspectValues
+            name
+            values {
+              confidence
+              value
+            }
+          }
+          category {
+            categoryId
+          }
+          clientProvidedProductDetails {
+            aspects {
+              name
+              values
+            }
+            category
+            externalProductIdentifier {
+              productId
+              productType
+            }
+            images
+            sku
+            title
+          }
+          description
+          images
+          mappingReferenceId
+          product {
+            id
+            imageUrls
+            productId
+            title
+            category {
+              id
+            }
+            aspects {
+              aspectValues
+              displayName
+            }
+            epid
+          }
+          sku
+          title
+        }
+        unmappedProducts {
+          category
+          aspects {
+            name
+            values
+          }
+          externalProductIdentifier {
+            productId
+            productType
+          }
+          images
+          sku
+          title
+        }
+        unprocessedProducts {
+          category
+          aspects {
+            name
+            values
+          }
+          externalProductIdentifier {
+            productId
+            productType
+          }
+          images
+          sku
+          title
+        }
+      }
+    }
+    requestedId
+  }
+}

@@ -1,0 +1,245 @@
+mutation CreateSecondChanceListing($input: CreateSecondChanceListingInput!) {
+  createSecondChanceListing(input: $input) {
+    __typename
+    ... on CreateSecondChanceListingSuccess {
+      listing {
+        listingId
+        sku
+        marketplace
+        sellerProduct {
+          title
+          description
+          aspects {
+            name
+            values
+          }
+          images {
+            ebayImageUrl
+          }
+          categories {
+            primaryCategory {
+              id
+            }
+          }
+          itemCondition {
+            itemConditionId
+          }
+        }
+        items {
+          sku
+          itemTerms {
+            availability {
+              quantityAvailable
+            }
+            pricingTerms {
+              fixedPrice {
+                original {
+                  value
+                  currency
+                }
+              }
+              auctionPrice {
+                startingBidPrice {
+                  original {
+                    value
+                    currency
+                  }
+                }
+                reservePrice {
+                  original {
+                    value
+                    currency
+                  }
+                }
+              }
+            }
+            extendedProducerResponsibility {
+              listingEcoParticipationFee {
+                original {
+                  currency
+                  value
+                }
+              }
+            }
+          }
+          itemId
+        }
+        listingTerms {
+          fulfillmentTerms {
+            __typename
+            ... on FulfillmentTerms {
+              packageSpecifications {
+                packageDimensions {
+                  length
+                  width
+                  height
+                }
+                packageWeight {
+                  majorUnit
+                  minorUnit
+                }
+                listingUnitOfMeasure
+              }
+              shippingTerms {
+                handlingTimeDuration
+                shippingServices {
+                  rank
+                }
+              }
+            }
+          }
+          paymentTerms {
+            __typename
+            ... on PaymentTerms {
+              immediatePay
+            }
+          }
+          listingFormat
+          lifecycleTerms {
+            listingDurationInDays
+            startAt
+          }
+          itemLocation {
+            country
+            postalCode
+            location
+          }
+        }
+      }
+      warnings {
+        warningCode
+        warningMessage
+        additionalInformation {
+          name
+          value
+        }
+      }
+    }
+    ... on CreateSecondChanceListingValidationError {
+      errorCode
+      errorMessage
+      violations {
+        violationCode
+        violationDescription
+        inputPath
+        additionalInformation {
+          name
+          value
+        }
+      }
+      warnings {
+        warningCode
+        warningMessage
+        additionalInformation {
+          name
+          value
+        }
+      }
+    }
+    ... on CreateSecondChanceListingValidationSuccess {
+      listing {
+        listingId
+        sku
+        marketplace
+        sellerProduct {
+          title
+          description
+          aspects {
+            name
+            values
+          }
+          images {
+            ebayImageUrl
+          }
+          categories {
+            primaryCategory {
+              id
+            }
+          }
+          itemCondition {
+            itemConditionId
+          }
+        }
+        items {
+          sku
+          itemTerms {
+            availability {
+              quantityAvailable
+            }
+            pricingTerms {
+              fixedPrice {
+                original {
+                  value
+                  currency
+                }
+              }
+              auctionPrice {
+                startingBidPrice {
+                  original {
+                    value
+                    currency
+                  }
+                }
+                reservePrice {
+                  original {
+                    value
+                    currency
+                  }
+                }
+              }
+            }
+          }
+        }
+        listingTerms {
+          fulfillmentTerms {
+            __typename
+            ... on FulfillmentTerms {
+              packageSpecifications {
+                packageDimensions {
+                  length
+                  width
+                  height
+                }
+                packageWeight {
+                  majorUnit
+                  minorUnit
+                }
+                listingUnitOfMeasure
+              }
+              shippingTerms {
+                handlingTimeDuration
+                shippingServices {
+                  rank
+                }
+              }
+            }
+          }
+          paymentTerms {
+            __typename
+            ... on PaymentTerms {
+              immediatePay
+            }
+          }
+          listingFormat
+          lifecycleTerms {
+            listingDurationInDays
+            startAt
+          }
+          itemLocation {
+            country
+            postalCode
+            location
+          }
+        }
+      }
+      warnings {
+        warningCode
+        warningMessage
+        additionalInformation {
+          name
+          value
+        }
+      }
+    }
+  }
+}

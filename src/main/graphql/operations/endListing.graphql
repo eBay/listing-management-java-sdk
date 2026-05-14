@@ -1,0 +1,143 @@
+mutation EndListing($input: EndListingInput!) {
+  endListing(input: $input) {
+    __typename
+    ... on EndListingSuccess {
+      listing {
+        listingId
+        sku
+        marketplace
+        sellerProduct {
+          title
+          description
+          aspects {
+            name
+            values
+          }
+          images {
+            ebayImageUrl
+          }
+          categories {
+            primaryCategory {
+              id
+            }
+          }
+          itemCondition {
+            itemConditionId
+          }
+        }
+        items {
+          sku
+          itemTerms {
+            availability {
+              quantityAvailable
+            }
+            pricingTerms {
+              fixedPrice {
+                original {
+                  value
+                  currency
+                }
+              }
+            }
+          }
+          itemId
+        }
+        listingTerms {
+          fulfillmentTerms {
+            __typename
+            ... on FulfillmentTerms {
+              packageSpecifications {
+                packageDimensions {
+                  length
+                  width
+                  height
+                }
+                packageWeight {
+                  majorUnit
+                  minorUnit
+                }
+                listingUnitOfMeasure
+              }
+              shippingTerms {
+                handlingTimeDuration
+                shippingServices {
+                  rank
+                }
+              }
+              digitalDeliverySupported
+              freeShippingAvailable
+              globalShippingSupported
+              inStorePickupSupported
+            }
+            ... on BusinessPolicy {
+              businessPolicyId
+            }
+          }
+          paymentTerms {
+            __typename
+            ... on PaymentTerms {
+              immediatePay
+            }
+            ... on BusinessPolicy {
+              businessPolicyId
+            }
+          }
+          listingFormat
+          lifecycleTerms {
+            listingDurationInDays
+            startAt
+          }
+          bestOfferTerms {
+            acceptBestOffer
+            autoAcceptThresholdAmount {
+              original {
+                value
+                currency
+              }
+            }
+            autoDeclineThresholdAmount {
+              original {
+                value
+                currency
+              }
+            }
+          }
+          itemLocation {
+            country
+            postalCode
+            location
+          }
+        }
+      }
+      warnings {
+        warningCode
+        warningMessage
+        additionalInformation {
+          name
+          value
+        }
+      }
+    }
+    ... on EndListingValidationError {
+      errorCode
+      errorMessage
+      violations {
+        violationCode
+        violationDescription
+        inputPath
+        additionalInformation {
+          name
+          value
+        }
+      }
+      warnings {
+        warningCode
+        warningMessage
+        additionalInformation {
+          name
+          value
+        }
+      }
+    }
+  }
+}

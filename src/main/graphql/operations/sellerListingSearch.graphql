@@ -1,0 +1,73 @@
+query SellerListingSearch($activeListings_searchInput: SellerActiveListingSearchInput, $endedListings_searchInput: SellerEndedListingSearchInput, $scheduledListings_searchInput: SellerScheduledListingSearchInput) {
+  sellerListingSearch {
+    activeListings(searchInput: $activeListings_searchInput) {
+      __typename
+      ... on SellerListings {
+        listings {
+          listingId
+        }
+        pagination {
+          nextCursor
+          previousCursor
+          totalElements
+          totalPages
+        }
+      }
+      ... on SellerListingSearchInvalidInput {
+        displayableErrorMessage
+        errorCode
+        errorMessage
+        validationErrors {
+          errorDescription
+          remedy
+        }
+      }
+    }
+    scheduledListings(searchInput: $scheduledListings_searchInput) {
+      __typename
+      ... on SellerListings {
+        listings {
+          listingId
+        }
+        pagination {
+          nextCursor
+          previousCursor
+          totalElements
+          totalPages
+        }
+      }
+      ... on SellerListingSearchInvalidInput {
+        displayableErrorMessage
+        errorCode
+        validationErrors {
+          errorDescription
+          remedy
+        }
+        errorMessage
+      }
+    }
+    endedListings(searchInput: $endedListings_searchInput) {
+      __typename
+      ... on SellerListingSearchInvalidInput {
+        displayableErrorMessage
+        errorCode
+        errorMessage
+        validationErrors {
+          errorDescription
+          remedy
+        }
+      }
+      ... on SellerListings {
+        listings {
+          listingId
+        }
+        pagination {
+          nextCursor
+          previousCursor
+          totalElements
+          totalPages
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,156 @@
+query SellerListings($input: SellerListingsInput!) {
+  sellerListings(input: $input) {
+    listings {
+      __typename
+      ... on ListingSuccess {
+        listing {
+          sellerProduct {
+            title
+            ebayGeneratedTitle
+            description
+            images {
+              ebayImageUrl
+              externalImageUrl
+              order
+            }
+          }
+          listingId
+          marketplace
+          listingTerms {
+            listingFormat
+            lifecycleTerms {
+              listingDurationInDays
+              createdAt
+              actualEndAt
+              endListingReason
+              listingStatus
+              scheduledEndAt
+              startAt
+            }
+            fulfillmentTerms {
+              __typename
+              ... on BusinessPolicy {
+                businessPolicyId
+                description
+                marketplace
+                name
+              }
+              ... on FulfillmentTerms {
+                inStorePickupSupported
+                globalShippingSupported
+                freeShippingAvailable
+                digitalDeliverySupported
+                packageSpecifications {
+                  irregularPackage
+                  listingPackageType
+                  listingUnitOfMeasure
+                  packageDimensions {
+                    height
+                    length
+                    unit
+                    width
+                  }
+                  packageWeight {
+                    majorUnit
+                    minorUnit
+                    unit
+                  }
+                }
+                shippingTerms {
+                  buyerResponsibleForShipping
+                  handlingTimeDuration
+                  includedShipToLocations {
+                    country
+                    continent
+                    sellerShippingRegion
+                  }
+                  excludedShipToLocations {
+                    continent
+                    country
+                    sellerShippingRegion
+                  }
+                }
+              }
+            }
+            returnTerms {
+              __typename
+              ... on BusinessPolicy {
+                businessPolicyId
+                description
+                marketplace
+                name
+              }
+              ... on ReturnTerms {
+                domesticReturnTerms {
+                  listingRefundMethod
+                  returnAccepted
+                  returnDuration
+                  returnShipmentInvoicee
+                }
+                returnInstructions
+                internationalReturnTerms {
+                  listingRefundMethod
+                  returnAccepted
+                  returnDuration
+                  returnShipmentInvoicee
+                }
+                businessPolicy {
+                  businessPolicyId
+                }
+              }
+            }
+            paymentTerms {
+              __typename
+              ... on PaymentTerms {
+                immediatePay
+                paymentInstructions
+              }
+              ... on BusinessPolicy {
+                businessPolicyId
+              }
+            }
+            internationalSiteVisibility
+            hideParticipation
+            visualEnhancements {
+              boldTitle
+              galleryPlus
+              subtitle
+            }
+            bestOfferTerms {
+              acceptBestOffer
+              autoAcceptThresholdAmount {
+                original {
+                  currency
+                  value
+                }
+              }
+              autoDeclineThresholdAmount {
+                original {
+                  currency
+                  value
+                }
+              }
+            }
+            taxTerms {
+              salesTaxApplicableToShipping
+              salesTaxJurisdictionId
+              salesTaxPercentage
+              salesTaxTableUsed
+              thirdPartyTaxCategoryCode
+              vatPercentage
+              vatRecognizedBusinessSeller
+              vatRestrictedToBusinessUser
+            }
+            itemLocation {
+              country
+              location
+              postalCode
+            }
+            totalQuantityAvailable
+          }
+        }
+        listingId
+      }
+    }
+  }
+}
