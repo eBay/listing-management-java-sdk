@@ -29,6 +29,7 @@ dependencies {
 
     // GraphQL: Apollo Kotlin runtime
     implementation("com.apollographql.apollo:apollo-runtime:4.3.1")
+    implementation("com.apollographql.apollo:apollo-http-cache:4.3.1")
 
     // HTTP: OkHttp (shared by Kiota adapter and Apollo)
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
@@ -36,8 +37,9 @@ dependencies {
     // JSON for DynamicGraphQLClient escape hatch
     implementation("com.fasterxml.jackson.core:jackson-databind:2.18.+")
 
-    // Kotlin coroutines for Future integration
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.8.+")
+    // Kotlin coroutines for Future integration (matches eBay Android)
+    api(platform("org.jetbrains.kotlinx:kotlinx-coroutines-bom:1.10.2"))
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8")
 
     // SLF4J for logging
     implementation("org.slf4j:slf4j-api:2.0.+")

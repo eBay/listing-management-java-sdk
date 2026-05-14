@@ -1,5 +1,7 @@
 package com.ebay.listingmanagement;
 
+import com.apollographql.apollo.ApolloClient;
+import com.ebay.listingmanagement.clients.graphql.BearerTokenInterceptor;
 import com.ebay.listingmanagement.clients.graphql.DynamicGraphQLClient;
 import com.ebay.listingmanagement.clients.graphql.ListingGraphQLClient;
 import com.ebay.listingmanagement.clients.rest.FeedClient;
@@ -67,8 +69,21 @@ public final class ListingManagementClient implements Closeable {
         storesAdapter.setBaseUrl(config.getStoresBaseUrl());
         this.stores = new StoresClient(new StoresApiClient(storesAdapter), config);
 
-        // GraphQL client
-        this.graphQL = new ListingGraphQLClient(new DynamicGraphQLClient(sharedHttpClient, config));
+        // Apollo client with token interceptor for GraphQL
+        var apolloHttp = new OkHttpClient.Builder()
+            .addInterceptor(new BearerTokenInterceptor(config))
+            .build();
+        var apolloClient = com.ebay.listingmanagement.clients.graphql.ApolloClientFactory.create(
+            config.getGraphQLBaseUrl(),
+            apolloHttp
+        );
+
+        // GraphQL client (Apollo Kotlin with type safety)
+        this.graphQL = new com.ebay.listingmanagement.clients.graphql.ListingGraphQLClient(
+            apolloClient,
+            new DynamicGraphQLClient(sharedHttpClient, config),
+            config
+        );
     }
 
     @Override
