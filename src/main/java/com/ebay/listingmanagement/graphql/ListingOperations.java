@@ -5,56 +5,6 @@ package com.ebay.listingmanagement.graphql;
  */
 public final class ListingOperations {
 
-    public static final String ITEM_BIDDING_ACTIVITY = """
-        query ItemBiddingActivity($input: ItemBiddingActivityInput!) {
-            itemBiddingActivity(input: $input) {
-                itemBiddingActivity {
-                    activeBidHistoryRecords {
-                        paginationOutput { previousCursor nextCursor }
-                        bidHistoryRecords {
-                            bidAmount { original { value currency } }
-                            bidder { username userId }
-                        }
-                    }
-                    cancelledBidHistoryRecords {
-                        paginationOutput { previousCursor nextCursor }
-                        bidHistoryRecords {
-                            bidAmount { original { value currency } }
-                            bidder { username userId }
-                        }
-                    }
-                    retractedBidHistoryRecords {
-                        paginationOutput { previousCursor nextCursor }
-                        bidHistoryRecords {
-                            bidAmount { original { value currency } }
-                        }
-                    }
-                    leadingBid {
-                        buyerBiddingSummary {
-                            bidsWithSellerPercentage
-                            retractedBidCount
-                            totalBidCount
-                            uniqueListingCategoryBidCount
-                            uniqueSellerBidCount
-                            itemBids { bidCount mostRecentBidAt }
-                        }
-                        bidder { username userId }
-                        bidAmount {
-                            original { value currency }
-                            converted { value currency }
-                        }
-                        bidMetadata {
-                            ... on ActiveBidMetadata {
-                                placedAt
-                                isHighestBid
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        """;
-
     public static final String SELLER_LISTINGS = """
         query SellerListings($input: SellerListingsInput!) {
             sellerListings(input: $input) {
@@ -708,6 +658,112 @@ public final class ListingOperations {
                         promotionalDiscount { value currency }
                     }
                     warnings { warningCode warningMessage additionalInformation { name value } }
+                }
+            }
+        }
+        """;
+
+    public static final String LISTING_PREVIEWS_CREATION_TASK_BY_ID = """
+        query ListingPreviewsCreationTaskById($input: ListingPreviewsCreationTaskByIdInput!) {
+            listingPreviewsCreationTaskById(input: $input) {
+                listingPreviewsCreationTask {
+                    id
+                    result {
+                        completionStatus
+                        invalidProducts {
+                            description
+                            clientProvidedProductDetails {
+                                category
+                                externalProductIdentifier { productId productType }
+                                images sku title
+                                aspects { name values }
+                            }
+                        }
+                        listingPreviews {
+                            aspects { aspectValues name values { confidence value } }
+                            category { categoryId }
+                            clientProvidedProductDetails {
+                                aspects { name values }
+                                category
+                                externalProductIdentifier { productId productType }
+                                images sku title
+                            }
+                            description images mappingReferenceId
+                            product {
+                                id imageUrls productId title
+                                category { id }
+                                aspects { aspectValues displayName }
+                                epid
+                            }
+                            sku title
+                        }
+                        unmappedProducts {
+                            category
+                            aspects { name values }
+                            externalProductIdentifier { productId productType }
+                            images sku title
+                        }
+                        unprocessedProducts {
+                            category
+                            aspects { name values }
+                            externalProductIdentifier { productId productType }
+                            images sku title
+                        }
+                    }
+                }
+                requestedId
+            }
+        }
+        """;
+
+    public static final String START_LISTING_PREVIEWS_CREATION = """
+        mutation StartListingPreviewsCreation($input: StartListingPreviewsCreationInput!) {
+            startListingPreviewsCreation(input: $input) {
+                errors { errorDescription }
+                listingPreviewsCreationTask {
+                    id
+                    result {
+                        completionStatus
+                        invalidProducts {
+                            clientProvidedProductDetails {
+                                category
+                                aspects { name values }
+                                externalProductIdentifier { productType productId }
+                                images sku title
+                            }
+                            description
+                        }
+                        listingPreviews {
+                            aspects { aspectValues name values { confidence value } }
+                            category { categoryId }
+                            clientProvidedProductDetails {
+                                aspects { name values }
+                                category
+                                externalProductIdentifier { productId productType }
+                                images sku title
+                            }
+                            description images mappingReferenceId
+                            product {
+                                id epid
+                                aspects { aspectValues displayName }
+                                category { categoryId }
+                                imageUrls productId title
+                            }
+                            sku title
+                        }
+                        unmappedProducts {
+                            aspects { name values }
+                            category
+                            externalProductIdentifier { productId productType }
+                            images sku title
+                        }
+                        unprocessedProducts {
+                            aspects { name values }
+                            category
+                            externalProductIdentifier { productId productType }
+                            images sku title
+                        }
+                    }
                 }
             }
         }

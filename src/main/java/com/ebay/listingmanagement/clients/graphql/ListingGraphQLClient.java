@@ -23,32 +23,6 @@ public final class ListingGraphQLClient {
     // ── Queries ──────────────────────────────────────────────────────────────
 
     /**
-     * Returns auction and bid information for a specified listing.
-     *
-     * @param input Filter criteria (typed ItemBiddingActivityInput)
-     * @param accessToken Per-call access token (optional)
-     * @param requestOptions Optional custom headers
-     * @return CompletableFuture with bidding activity data as JsonNode
-     */
-    public CompletableFuture<JsonNode> itemBiddingActivityAsync(
-            ItemBiddingActivityInput input,
-            String accessToken,
-            RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            Map<String, Object> variables = new HashMap<>();
-            variables.put("input", input != null ? input.toMap() : Map.of());
-
-            JsonNode data = dynamic.execute(
-                ListingOperations.ITEM_BIDDING_ACTIVITY,
-                variables,
-                accessToken,
-                requestOptions
-            );
-            return data.get("itemBiddingActivity");
-        });
-    }
-
-    /**
      * Retrieve details of one or more seller listings by listing ID.
      *
      * @param input Filter criteria (typed SellerListingsInput)
@@ -250,6 +224,58 @@ public final class ListingGraphQLClient {
                 requestOptions
             );
             return data.get("updateListing");
+        });
+    }
+
+    /**
+     * Retrieve a listing previews creation task by its ID.
+     *
+     * @param input Map containing the task ID and other filter criteria
+     * @param accessToken Per-call access token (optional)
+     * @param requestOptions Optional custom headers
+     * @return CompletableFuture with listing previews creation task data as JsonNode
+     */
+    public CompletableFuture<JsonNode> listingPreviewsCreationTaskByIdAsync(
+            Map<String, Object> input,
+            String accessToken,
+            RequestOptions requestOptions) {
+        return CompletableFuture.supplyAsync(() -> {
+            Map<String, Object> variables = new HashMap<>();
+            variables.put("input", input != null ? input : Map.of());
+
+            JsonNode data = dynamic.execute(
+                ListingOperations.LISTING_PREVIEWS_CREATION_TASK_BY_ID,
+                variables,
+                accessToken,
+                requestOptions
+            );
+            return data.get("listingPreviewsCreationTaskById");
+        });
+    }
+
+    /**
+     * Start a listing previews creation task for one or more products.
+     *
+     * @param input Map containing the products and other configuration for previews creation
+     * @param accessToken Per-call access token (optional)
+     * @param requestOptions Optional custom headers
+     * @return CompletableFuture with start listing previews creation result as JsonNode
+     */
+    public CompletableFuture<JsonNode> startListingPreviewsCreationAsync(
+            Map<String, Object> input,
+            String accessToken,
+            RequestOptions requestOptions) {
+        return CompletableFuture.supplyAsync(() -> {
+            Map<String, Object> variables = new HashMap<>();
+            variables.put("input", input != null ? input : Map.of());
+
+            JsonNode data = dynamic.execute(
+                ListingOperations.START_LISTING_PREVIEWS_CREATION,
+                variables,
+                accessToken,
+                requestOptions
+            );
+            return data.get("startListingPreviewsCreation");
         });
     }
 
