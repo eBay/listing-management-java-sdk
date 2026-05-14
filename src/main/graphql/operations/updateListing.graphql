@@ -1,0 +1,274 @@
+mutation UpdateListing($input: UpdateListingInput!) {
+  updateListing(input: $input) {
+    __typename
+    ... on UpdateListingValidationError {
+      errorCode
+      errorMessage
+      violations {
+        inputPath
+        additionalInformation {
+          name
+          value
+        }
+        violationCode
+        violationDescription
+      }
+      warnings {
+        additionalInformation {
+          name
+          value
+        }
+        warningCode
+        warningMessage
+      }
+    }
+    ... on UpdateListingValidationSuccess {
+      listingDiscount
+      listingFees {
+        feeAmount {
+          currency
+          value
+        }
+        listingFeeType
+        promotionalDiscount {
+          currency
+          value
+        }
+      }
+      warnings {
+        additionalInformation {
+          name
+          value
+        }
+        warningMessage
+        warningCode
+      }
+      listing {
+        listingId
+        sku
+        marketplace
+        sellerProduct {
+          title
+          description
+          aspects {
+            name
+            values
+          }
+          images {
+            ebayImageUrl
+            externalImageUrl
+            order
+          }
+          categories {
+            primaryCategory {
+              id
+            }
+            secondaryCategory {
+              id
+            }
+          }
+          itemCondition {
+            itemConditionId
+          }
+        }
+        items {
+          sku
+          itemId
+          itemTerms {
+            availability {
+              quantityAvailable
+            }
+            pricingTerms {
+              fixedPrice {
+                original {
+                  value
+                  currency
+                }
+              }
+            }
+          }
+        }
+        listingTerms {
+          fulfillmentTerms {
+            __typename
+            ... on FulfillmentTerms {
+              digitalDeliverySupported
+              freeShippingAvailable
+              globalShippingSupported
+              inStorePickupSupported
+              packageSpecifications {
+                irregularPackage
+                listingPackageType
+                listingUnitOfMeasure
+                packageWeight {
+                  minorUnit
+                  majorUnit
+                }
+                packageDimensions {
+                  height
+                  length
+                  width
+                }
+              }
+              shippingTerms {
+                handlingTimeDuration
+                shippingServices {
+                  rank
+                  shippingService {
+                    shippingServiceCode
+                    displayName
+                  }
+                }
+              }
+            }
+            ... on BusinessPolicy {
+              businessPolicyId
+            }
+          }
+          paymentTerms {
+            __typename
+            ... on BusinessPolicy {
+              businessPolicyId
+            }
+            ... on PaymentTerms {
+              businessPolicy {
+                businessPolicyId
+              }
+              immediatePay
+              listingPaymentMethods
+              motorVehicleDeposit {
+                daysToMakeFullPayment
+                depositRequired
+              }
+              paymentInstructions
+            }
+          }
+        }
+      }
+    }
+    ... on UpdateListingSuccess {
+      listingDiscount
+      listingFees {
+        feeAmount {
+          currency
+          value
+        }
+        listingFeeType
+        promotionalDiscount {
+          currency
+          value
+        }
+      }
+      warnings {
+        additionalInformation {
+          name
+          value
+        }
+        warningMessage
+        warningCode
+      }
+      listing {
+        listingId
+        sku
+        marketplace
+        sellerProduct {
+          title
+          description
+          aspects {
+            name
+            values
+          }
+          images {
+            ebayImageUrl
+            externalImageUrl
+            order
+          }
+          categories {
+            primaryCategory {
+              id
+            }
+            secondaryCategory {
+              id
+            }
+          }
+          itemCondition {
+            itemConditionId
+          }
+        }
+        items {
+          sku
+          itemId
+          itemTerms {
+            availability {
+              quantityAvailable
+            }
+            pricingTerms {
+              fixedPrice {
+                original {
+                  value
+                  currency
+                }
+              }
+            }
+          }
+        }
+        listingTerms {
+          fulfillmentTerms {
+            __typename
+            ... on FulfillmentTerms {
+              digitalDeliverySupported
+              freeShippingAvailable
+              globalShippingSupported
+              inStorePickupSupported
+              packageSpecifications {
+                irregularPackage
+                listingPackageType
+                listingUnitOfMeasure
+                packageWeight {
+                  minorUnit
+                  majorUnit
+                }
+                packageDimensions {
+                  height
+                  length
+                  width
+                }
+              }
+              shippingTerms {
+                handlingTimeDuration
+                shippingServices {
+                  rank
+                  shippingService {
+                    shippingServiceCode
+                    displayName
+                  }
+                }
+              }
+            }
+            ... on BusinessPolicy {
+              businessPolicyId
+            }
+          }
+          paymentTerms {
+            __typename
+            ... on BusinessPolicy {
+              businessPolicyId
+            }
+            ... on PaymentTerms {
+              businessPolicy {
+                businessPolicyId
+              }
+              immediatePay
+              listingPaymentMethods
+              motorVehicleDeposit {
+                daysToMakeFullPayment
+                depositRequired
+              }
+              paymentInstructions
+            }
+          }
+        }
+      }
+    }
+  }
+}
