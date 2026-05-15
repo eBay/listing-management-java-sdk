@@ -28,26 +28,6 @@ class ListingGraphQLClient @JvmOverloads internal constructor(
     // ══════════════════════════════════════════════════════════════════════════
 
     /**
-     * Get bidding activity for a specific item.
-     */
-    suspend fun itemBiddingActivityAsync(
-        input: ItemBiddingActivityInput,
-        accessToken: String? = null
-    ): ItemBiddingActivityQuery.ItemBiddingActivity? {
-        val prev = TokenContext.CURRENT.get()
-        TokenContext.CURRENT.set(accessToken ?: prev)
-        try {
-            val response = apolloClient.query(ItemBiddingActivityQuery(input)).execute()
-            if (response.hasErrors()) {
-                throw GraphQLException(response.errors!!.map { it.message })
-            }
-            return response.dataAssertNoErrors.itemBiddingActivity
-        } finally {
-            TokenContext.CURRENT.set(prev)
-        }
-    }
-
-    /**
      * Get seller listings by filter criteria.
      */
     suspend fun sellerListingsAsync(
@@ -213,9 +193,6 @@ class ListingGraphQLClient @JvmOverloads internal constructor(
     // ══════════════════════════════════════════════════════════════════════════
     // JAVA-FRIENDLY COMPLETABLE FUTURE WRAPPERS
     // ══════════════════════════════════════════════════════════════════════════
-
-    fun itemBiddingActivityFuture(input: ItemBiddingActivityInput, accessToken: String?) =
-        scope.future { itemBiddingActivityAsync(input, accessToken) }
 
     fun sellerListingsFuture(input: SellerListingsInput, accessToken: String?) =
         scope.future { sellerListingsAsync(input, accessToken) }
