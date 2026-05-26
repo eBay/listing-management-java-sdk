@@ -23,4 +23,7 @@ kiota generate -l java -d specs/sell_stores_v1_oas3.yaml \
   -c StoresApiClient -n com.ebay.listingmanagement.generated.stores \
   -o src/main/java/com/ebay/listingmanagement/generated/stores --ebc --co
 
+
+echo "Adding license headers to generated files..."
+./add-license-headers.sh ./src
 echo "Code generation complete!"
