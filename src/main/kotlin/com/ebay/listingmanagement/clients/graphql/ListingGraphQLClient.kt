@@ -245,5 +245,5 @@ class ListingGraphQLClient @JvmOverloads internal constructor(
         variables: Any?,
         accessToken: String?,
         requestOptions: RequestOptions? = null
-    ) = dynamicClient.execute(query, variables, accessToken, requestOptions)
+    ) = dynamicClient.executeRawUnsafe(query, variables, accessToken, requestOptions)
 }
