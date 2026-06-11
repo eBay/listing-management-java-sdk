@@ -237,10 +237,24 @@ class ListingGraphQLClient @JvmOverloads internal constructor(
     // ══════════════════════════════════════════════════════════════════════════
 
     /**
-     * Execute arbitrary GraphQL query/mutation.
-     * Escape hatch for operations not yet wrapped in typed methods.
+     * Execute an arbitrary GraphQL query or mutation (escape hatch).
+     *
+     * **WARNING — GraphQL injection risk.** Never interpolate user-supplied input
+     * directly into the query string. Always pass dynamic values via [variables]
+     * so the server handles escaping.
+     *
+     * Unsafe:
+     * ```
+     * executeRawUnsafe("query { listing(id: \"$userId\") { title } }", null, token)  // ❌
+     * ```
+     * Safe:
+     * ```
+     * executeRawUnsafe("query(\$id: ID!) { listing(id: \$id) { title } }", mapOf("id" to userId), token)  // ✅
+     * ```
+     *
+     * Prefer the typed methods ([sellerListingsAsync], [createListingAsync], etc.) whenever possible.
      */
-    fun executeRaw(
+    fun executeRawUnsafe(
         query: String,
         variables: Any?,
         accessToken: String?,

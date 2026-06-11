@@ -32,6 +32,7 @@ import com.microsoft.kiota.authentication.BaseBearerTokenAuthenticationProvider;
 import com.microsoft.kiota.http.OkHttpRequestAdapter;
 import okhttp3.OkHttpClient;
 import java.io.Closeable;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Main facade for the Listing Management SDK.
@@ -49,6 +50,7 @@ import java.io.Closeable;
  */
 public final class ListingManagementClient implements Closeable {
     private final OkHttpClient sharedHttpClient;
+    private final OkHttpClient apolloHttpClient;
 
     public final FeedClient feed;
     public final InventoryClient inventory;
@@ -59,6 +61,9 @@ public final class ListingManagementClient implements Closeable {
     public ListingManagementClient(ListingManagementConfiguration config) {
         // Shared OkHttpClient for all REST clients
         this.sharedHttpClient = new OkHttpClient.Builder()
+            .connectTimeout(10, TimeUnit.SECONDS)
+            .readTimeout(30, TimeUnit.SECONDS)
+            .writeTimeout(30, TimeUnit.SECONDS)
             .build();
 
         var authProvider = new BaseBearerTokenAuthenticationProvider(new KiotaAuthProvider(config));
@@ -84,12 +89,15 @@ public final class ListingManagementClient implements Closeable {
         this.stores = new StoresClient(new StoresApiClient(storesAdapter), config);
 
         // Apollo client with token interceptor for GraphQL
-        var apolloHttp = new OkHttpClient.Builder()
+        this.apolloHttpClient = new OkHttpClient.Builder()
+            .connectTimeout(10, TimeUnit.SECONDS)
+            .readTimeout(30, TimeUnit.SECONDS)
+            .writeTimeout(30, TimeUnit.SECONDS)
             .addInterceptor(new BearerTokenInterceptor(config))
             .build();
         var apolloClient = com.ebay.listingmanagement.clients.graphql.ApolloClientFactory.create(
             config.getGraphQLBaseUrl(),
-            apolloHttp
+            apolloHttpClient
         );
 
         // GraphQL client (Apollo Kotlin with type safety)
@@ -104,5 +112,7 @@ public final class ListingManagementClient implements Closeable {
     public void close() {
         sharedHttpClient.dispatcher().executorService().shutdown();
         sharedHttpClient.connectionPool().evictAll();
+        apolloHttpClient.dispatcher().executorService().shutdown();
+        apolloHttpClient.connectionPool().evictAll();
     }
 }

@@ -71,7 +71,7 @@ public final class DynamicGraphQLClient {
      * @return The GraphQL response data as JsonNode.
      * @throws GraphQLException if the response contains errors.
      */
-    public JsonNode executeRawUnsafe(String query, Object variables, String accessToken, RequestOptions requestOptions) {
+    JsonNode executeRawUnsafe(String query, Object variables, String accessToken, RequestOptions requestOptions) {
         String token = accessToken != null ? accessToken
             : TokenContext.CURRENT.get() != null ? TokenContext.CURRENT.get()
             : config.getAccessToken();
