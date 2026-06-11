@@ -24,13 +24,31 @@ public final class TokenContext {
     private TokenContext() {}
 
     /**
-     * Sets the token for the duration of the supplier, then restores the previous value.
+     * Sets the token for the duration of the callable, then restores the previous value.
+     * Any checked exception from op is wrapped in RuntimeException.
      */
-    public static <T> T runWith(String accessToken, java.util.concurrent.Callable<T> op) throws Exception {
+    public static <T> T runWith(String accessToken, java.util.concurrent.Callable<T> op) {
         String prev = CURRENT.get();
         CURRENT.set(accessToken);
         try {
             return op.call();
+        } catch (RuntimeException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        } finally {
+            CURRENT.set(prev);
+        }
+    }
+
+    /**
+     * Sets the token for the duration of the runnable, then restores the previous value.
+     */
+    public static void runWith(String accessToken, Runnable op) {
+        String prev = CURRENT.get();
+        CURRENT.set(accessToken);
+        try {
+            op.run();
         } finally {
             CURRENT.set(prev);
         }

@@ -55,13 +55,14 @@ public final class InventoryClient {
      */
     public CompletableFuture<InventoryItemWithSkuLocaleGroupid> getInventoryItemAsync(
             String sku, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.inventoryItem().bySku(sku).get(config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.inventoryItem().bySku(sku).get(config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+            })
+        );
     }
 
     /**
@@ -69,13 +70,14 @@ public final class InventoryClient {
      */
     public CompletableFuture<BaseResponse> createOrReplaceInventoryItemAsync(
             String sku, InventoryItem body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.inventoryItem().bySku(sku).put(body, config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.inventoryItem().bySku(sku).put(body, config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+            })
+        );
     }
 
     /**
@@ -83,14 +85,15 @@ public final class InventoryClient {
      */
     public CompletableFuture<Void> deleteInventoryItemAsync(
             String sku, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            kiota.inventoryItem().bySku(sku).delete(config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-            return null;
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                kiota.inventoryItem().bySku(sku).delete(config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+                return null;
+            })
+        );
     }
 
     /**
@@ -98,15 +101,16 @@ public final class InventoryClient {
      */
     public CompletableFuture<InventoryItems> getInventoryItemsAsync(
             String limit, String offset, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.inventoryItem().get(config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-                if (limit != null) config.queryParameters.limit = limit;
-                if (offset != null) config.queryParameters.offset = offset;
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.inventoryItem().get(config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                    if (limit != null) config.queryParameters.limit = limit;
+                    if (offset != null) config.queryParameters.offset = offset;
+                });
+            })
+        );
     }
 
     /**
@@ -114,13 +118,14 @@ public final class InventoryClient {
      */
     public CompletableFuture<Object> bulkGetInventoryItemAsync(
             BulkGetInventoryItem body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.bulkGetInventoryItem().post(body, config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.bulkGetInventoryItem().post(body, config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+            })
+        );
     }
 
     /**
@@ -128,13 +133,14 @@ public final class InventoryClient {
      */
     public CompletableFuture<Object> bulkCreateOrReplaceInventoryItemAsync(
             BulkInventoryItem body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.bulkCreateOrReplaceInventoryItem().post(body, config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.bulkCreateOrReplaceInventoryItem().post(body, config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+            })
+        );
     }
 
     // ── Inventory Item Groups ────────────────────────────────────────────────
@@ -144,13 +150,14 @@ public final class InventoryClient {
      */
     public CompletableFuture<InventoryItemGroup> getInventoryItemGroupAsync(
             String inventoryItemGroupKey, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.inventoryItemGroup().byInventoryItemGroupKey(inventoryItemGroupKey).get(config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.inventoryItemGroup().byInventoryItemGroupKey(inventoryItemGroupKey).get(config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+            })
+        );
     }
 
     /**
@@ -159,13 +166,14 @@ public final class InventoryClient {
     public CompletableFuture<BaseResponse> createOrReplaceInventoryItemGroupAsync(
             String inventoryItemGroupKey, InventoryItemGroup body,
             String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.inventoryItemGroup().byInventoryItemGroupKey(inventoryItemGroupKey).put(body, config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.inventoryItemGroup().byInventoryItemGroupKey(inventoryItemGroupKey).put(body, config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+            })
+        );
     }
 
     /**
@@ -173,14 +181,15 @@ public final class InventoryClient {
      */
     public CompletableFuture<Void> deleteInventoryItemGroupAsync(
             String inventoryItemGroupKey, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            kiota.inventoryItemGroup().byInventoryItemGroupKey(inventoryItemGroupKey).delete(config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-            return null;
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                kiota.inventoryItemGroup().byInventoryItemGroupKey(inventoryItemGroupKey).delete(config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+                return null;
+            })
+        );
     }
 
     // ── Product Compatibility ────────────────────────────────────────────────
@@ -190,13 +199,14 @@ public final class InventoryClient {
      */
     public CompletableFuture<Compatibility> getProductCompatibilityAsync(
             String sku, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.inventoryItem().bySku(sku).productCompatibility().get(config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.inventoryItem().bySku(sku).productCompatibility().get(config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+            })
+        );
     }
 
     /**
@@ -204,13 +214,14 @@ public final class InventoryClient {
      */
     public CompletableFuture<BaseResponse> createOrReplaceProductCompatibilityAsync(
             String sku, Compatibility body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.inventoryItem().bySku(sku).productCompatibility().put(body, config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.inventoryItem().bySku(sku).productCompatibility().put(body, config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+            })
+        );
     }
 
     /**
@@ -218,14 +229,15 @@ public final class InventoryClient {
      */
     public CompletableFuture<Void> deleteProductCompatibilityAsync(
             String sku, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            kiota.inventoryItem().bySku(sku).productCompatibility().delete(config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-            return null;
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                kiota.inventoryItem().bySku(sku).productCompatibility().delete(config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+                return null;
+            })
+        );
     }
 
     // ── SKU-Location Mapping ─────────────────────────────────────────────────
@@ -235,13 +247,14 @@ public final class InventoryClient {
      */
     public CompletableFuture<Object> getSkuLocationMappingAsync(
             String listingId, String sku, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.listing().byListingId(listingId).sku().bySku(sku).locations().get(config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.listing().byListingId(listingId).sku().bySku(sku).locations().get(config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+            })
+        );
     }
 
     /**
@@ -250,13 +263,14 @@ public final class InventoryClient {
     public CompletableFuture<Void> createOrReplaceSkuLocationMappingAsync(
             String listingId, String sku, LocationMapping body,
             String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.runAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            kiota.listing().byListingId(listingId).sku().bySku(sku).locations().put(body, config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-        });
+        return CompletableFuture.runAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                kiota.listing().byListingId(listingId).sku().bySku(sku).locations().put(body, config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+            })
+        );
     }
 
     /**
@@ -264,14 +278,15 @@ public final class InventoryClient {
      */
     public CompletableFuture<Void> deleteSkuLocationMappingAsync(
             String listingId, String sku, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            kiota.listing().byListingId(listingId).sku().bySku(sku).locations().delete(config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-            return null;
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                kiota.listing().byListingId(listingId).sku().bySku(sku).locations().delete(config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+                return null;
+            })
+        );
     }
 
     // ── Inventory Locations ──────────────────────────────────────────────────
@@ -281,13 +296,14 @@ public final class InventoryClient {
      */
     public CompletableFuture<InventoryLocationResponse> getInventoryLocationAsync(
             String merchantLocationKey, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.location().byMerchantLocationKey(merchantLocationKey).get(config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.location().byMerchantLocationKey(merchantLocationKey).get(config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+            })
+        );
     }
 
     /**
@@ -295,15 +311,16 @@ public final class InventoryClient {
      */
     public CompletableFuture<LocationResponse> getInventoryLocationsAsync(
             String limit, String offset, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.location().get(config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-                if (limit != null) config.queryParameters.limit = limit;
-                if (offset != null) config.queryParameters.offset = offset;
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.location().get(config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                    if (limit != null) config.queryParameters.limit = limit;
+                    if (offset != null) config.queryParameters.offset = offset;
+                });
+            })
+        );
     }
 
     /**
@@ -312,14 +329,15 @@ public final class InventoryClient {
     public CompletableFuture<Void> createInventoryLocationAsync(
             String merchantLocationKey, InventoryLocationFull body,
             String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            kiota.location().byMerchantLocationKey(merchantLocationKey).post(body, config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-            return null;
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                kiota.location().byMerchantLocationKey(merchantLocationKey).post(body, config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+                return null;
+            })
+        );
     }
 
     /**
@@ -327,14 +345,15 @@ public final class InventoryClient {
      */
     public CompletableFuture<Void> deleteInventoryLocationAsync(
             String merchantLocationKey, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            kiota.location().byMerchantLocationKey(merchantLocationKey).delete(config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-            return null;
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                kiota.location().byMerchantLocationKey(merchantLocationKey).delete(config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+                return null;
+            })
+        );
     }
 
     /**
@@ -343,13 +362,14 @@ public final class InventoryClient {
     public CompletableFuture<Void> updateInventoryLocationAsync(
             String merchantLocationKey, InventoryLocation body,
             String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.runAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            kiota.location().byMerchantLocationKey(merchantLocationKey).updateLocationDetails().post(body, config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-        });
+        return CompletableFuture.runAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                kiota.location().byMerchantLocationKey(merchantLocationKey).updateLocationDetails().post(body, config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+            })
+        );
     }
 
     /**
@@ -357,13 +377,14 @@ public final class InventoryClient {
      */
     public CompletableFuture<Object> disableInventoryLocationAsync(
             String merchantLocationKey, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.location().byMerchantLocationKey(merchantLocationKey).disable().post(config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.location().byMerchantLocationKey(merchantLocationKey).disable().post(config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+            })
+        );
     }
 
     /**
@@ -371,13 +392,14 @@ public final class InventoryClient {
      */
     public CompletableFuture<Object> enableInventoryLocationAsync(
             String merchantLocationKey, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.location().byMerchantLocationKey(merchantLocationKey).enable().post(config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.location().byMerchantLocationKey(merchantLocationKey).enable().post(config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+            })
+        );
     }
 
     // ── Offers ───────────────────────────────────────────────────────────────
@@ -387,13 +409,14 @@ public final class InventoryClient {
      */
     public CompletableFuture<Object> getOfferAsync(
             String offerId, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.offer().byOfferId(offerId).get(config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.offer().byOfferId(offerId).get(config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+            })
+        );
     }
 
     /**
@@ -402,18 +425,19 @@ public final class InventoryClient {
     public CompletableFuture<Offers> getOffersAsync(
             String format, String limit, String marketplaceId, String offset, String sku,
             String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.offer().get(config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-                if (format != null) config.queryParameters.format = format;
-                if (limit != null) config.queryParameters.limit = limit;
-                if (marketplaceId != null) config.queryParameters.marketplaceId = marketplaceId;
-                if (offset != null) config.queryParameters.offset = offset;
-                if (sku != null) config.queryParameters.sku = sku;
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.offer().get(config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                    if (format != null) config.queryParameters.format = format;
+                    if (limit != null) config.queryParameters.limit = limit;
+                    if (marketplaceId != null) config.queryParameters.marketplaceId = marketplaceId;
+                    if (offset != null) config.queryParameters.offset = offset;
+                    if (sku != null) config.queryParameters.sku = sku;
+                });
+            })
+        );
     }
 
     /**
@@ -421,13 +445,14 @@ public final class InventoryClient {
      */
     public CompletableFuture<OfferResponse> createOfferAsync(
             EbayOfferDetailsWithKeys body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.offer().post(body, config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.offer().post(body, config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+            })
+        );
     }
 
     /**
@@ -436,13 +461,14 @@ public final class InventoryClient {
     public CompletableFuture<Object> updateOfferAsync(
             String offerId, EbayOfferDetailsWithId body,
             String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.offer().byOfferId(offerId).put(body, config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.offer().byOfferId(offerId).put(body, config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+            })
+        );
     }
 
     /**
@@ -450,14 +476,15 @@ public final class InventoryClient {
      */
     public CompletableFuture<Void> deleteOfferAsync(
             String offerId, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            kiota.offer().byOfferId(offerId).delete(config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-            return null;
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                kiota.offer().byOfferId(offerId).delete(config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+                return null;
+            })
+        );
     }
 
     /**
@@ -465,13 +492,14 @@ public final class InventoryClient {
      */
     public CompletableFuture<PublishResponse> publishOfferAsync(
             String offerId, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.offer().byOfferId(offerId).publish().post(config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.offer().byOfferId(offerId).publish().post(config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+            })
+        );
     }
 
     /**
@@ -479,13 +507,14 @@ public final class InventoryClient {
      */
     public CompletableFuture<WithdrawResponse> withdrawOfferAsync(
             String offerId, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.offer().byOfferId(offerId).withdraw().post(config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.offer().byOfferId(offerId).withdraw().post(config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+            })
+        );
     }
 
     /**
@@ -493,13 +522,14 @@ public final class InventoryClient {
      */
     public CompletableFuture<FeesSummaryResponse> getListingFeesAsync(
             OfferKeysWithId body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.offer().getListingFees().post(body, config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.offer().getListingFees().post(body, config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+            })
+        );
     }
 
     /**
@@ -507,13 +537,14 @@ public final class InventoryClient {
      */
     public CompletableFuture<BulkOfferResponse> bulkCreateOfferAsync(
             BulkEbayOfferDetailsWithKeys body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.bulkCreateOffer().post(body, config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.bulkCreateOffer().post(body, config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+            })
+        );
     }
 
     /**
@@ -521,13 +552,14 @@ public final class InventoryClient {
      */
     public CompletableFuture<BulkPublishResponse> bulkPublishOfferAsync(
             BulkOffer body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.bulkPublishOffer().post(body, config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.bulkPublishOffer().post(body, config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+            })
+        );
     }
 
     /**
@@ -535,13 +567,14 @@ public final class InventoryClient {
      */
     public CompletableFuture<PublishResponse> publishOfferByInventoryItemGroupAsync(
             PublishByInventoryItemGroupRequest body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.offer().publishByInventoryItemGroup().post(body, config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.offer().publishByInventoryItemGroup().post(body, config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+            })
+        );
     }
 
     /**
@@ -549,13 +582,14 @@ public final class InventoryClient {
      */
     public CompletableFuture<Void> withdrawOfferByInventoryItemGroupAsync(
             WithdrawByInventoryItemGroupRequest body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.runAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            kiota.offer().withdrawByInventoryItemGroup().post(body, config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-        });
+        return CompletableFuture.runAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                kiota.offer().withdrawByInventoryItemGroup().post(body, config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+            })
+        );
     }
 
     // ── Bulk Operations ──────────────────────────────────────────────────────
@@ -565,13 +599,14 @@ public final class InventoryClient {
      */
     public CompletableFuture<Object> bulkMigrateListingAsync(
             BulkMigrateListing body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.bulkMigrateListing().post(body, config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.bulkMigrateListing().post(body, config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+            })
+        );
     }
 
     /**
@@ -579,12 +614,13 @@ public final class InventoryClient {
      */
     public CompletableFuture<Object> bulkUpdatePriceQuantityAsync(
             BulkPriceQuantity body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.bulkUpdatePriceQuantity().post(body, config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.bulkUpdatePriceQuantity().post(body, config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+            })
+        );
     }
 }

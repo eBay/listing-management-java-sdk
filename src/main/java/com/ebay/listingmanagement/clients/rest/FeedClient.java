@@ -56,19 +56,20 @@ public final class FeedClient {
     public CompletableFuture<TaskCollection> getTasksAsync(
             String dateRange, String feedType, String limit, String lookBackDays,
             String offset, String scheduleId, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.task().get(config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-                if (dateRange != null) config.queryParameters.dateRange = dateRange;
-                if (feedType != null) config.queryParameters.feedType = feedType;
-                if (limit != null) config.queryParameters.limit = limit;
-                if (lookBackDays != null) config.queryParameters.lookBackDays = lookBackDays;
-                if (offset != null) config.queryParameters.offset = offset;
-                if (scheduleId != null) config.queryParameters.scheduleId = scheduleId;
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.task().get(config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                    if (dateRange != null) config.queryParameters.dateRange = dateRange;
+                    if (feedType != null) config.queryParameters.feedType = feedType;
+                    if (limit != null) config.queryParameters.limit = limit;
+                    if (lookBackDays != null) config.queryParameters.lookBackDays = lookBackDays;
+                    if (offset != null) config.queryParameters.offset = offset;
+                    if (scheduleId != null) config.queryParameters.scheduleId = scheduleId;
+                });
+            })
+        );
     }
 
     /**
@@ -76,13 +77,14 @@ public final class FeedClient {
      */
     public CompletableFuture<Task> getTaskAsync(
             String taskId, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.task().byTask_id(taskId).get(config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.task().byTask_id(taskId).get(config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+            })
+        );
     }
 
     /**
@@ -90,14 +92,15 @@ public final class FeedClient {
      */
     public CompletableFuture<Void> createTaskAsync(
             CreateTaskRequest body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            kiota.task().post(body, config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-            return null;
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                kiota.task().post(body, config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+                return null;
+            })
+        );
     }
 
     /**
@@ -105,13 +108,14 @@ public final class FeedClient {
      */
     public CompletableFuture<Object> getInputFileAsync(
             String taskId, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.task().byTask_id(taskId).downloadInputFile().get(config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.task().byTask_id(taskId).downloadInputFile().get(config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+            })
+        );
     }
 
     /**
@@ -119,13 +123,14 @@ public final class FeedClient {
      */
     public CompletableFuture<Object> getResultFileAsync(
             String taskId, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.task().byTask_id(taskId).downloadResultFile().get(config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.task().byTask_id(taskId).downloadResultFile().get(config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+            })
+        );
     }
 
     /**
@@ -133,14 +138,15 @@ public final class FeedClient {
      */
     public CompletableFuture<Void> uploadFileAsync(
             String taskId, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            kiota.task().byTask_id(taskId).uploadFile().post(config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-            return null;
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                kiota.task().byTask_id(taskId).uploadFile().post(config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+                return null;
+            })
+        );
     }
 
     // ── Customer Service Metric Tasks ────────────────────────────────────────
@@ -151,18 +157,19 @@ public final class FeedClient {
     public CompletableFuture<CustomerServiceMetricTaskCollection> getCustomerServiceMetricTasksAsync(
             String dateRange, String feedType, String limit, String lookBackDays,
             String offset, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.customerServiceMetricTask().get(config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-                if (dateRange != null) config.queryParameters.dateRange = dateRange;
-                if (feedType != null) config.queryParameters.feedType = feedType;
-                if (limit != null) config.queryParameters.limit = limit;
-                if (lookBackDays != null) config.queryParameters.lookBackDays = lookBackDays;
-                if (offset != null) config.queryParameters.offset = offset;
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.customerServiceMetricTask().get(config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                    if (dateRange != null) config.queryParameters.dateRange = dateRange;
+                    if (feedType != null) config.queryParameters.feedType = feedType;
+                    if (limit != null) config.queryParameters.limit = limit;
+                    if (lookBackDays != null) config.queryParameters.lookBackDays = lookBackDays;
+                    if (offset != null) config.queryParameters.offset = offset;
+                });
+            })
+        );
     }
 
     /**
@@ -170,13 +177,14 @@ public final class FeedClient {
      */
     public CompletableFuture<ServiceMetricsTask> getCustomerServiceMetricTaskAsync(
             String taskId, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.customerServiceMetricTask().byTask_id(taskId).get(config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.customerServiceMetricTask().byTask_id(taskId).get(config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+            })
+        );
     }
 
     /**
@@ -184,14 +192,15 @@ public final class FeedClient {
      */
     public CompletableFuture<Void> createCustomerServiceMetricTaskAsync(
             CreateServiceMetricsTaskRequest body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            kiota.customerServiceMetricTask().post(body, config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-            return null;
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                kiota.customerServiceMetricTask().post(body, config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+                return null;
+            })
+        );
     }
 
     // ── Inventory Tasks ──────────────────────────────────────────────────────
@@ -202,19 +211,20 @@ public final class FeedClient {
     public CompletableFuture<Object> getInventoryTasksAsync(
             String dateRange, String feedType, String limit, String lookBackDays,
             String offset, String scheduleId, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.inventoryTask().get(config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-                if (dateRange != null) config.queryParameters.dateRange = dateRange;
-                if (feedType != null) config.queryParameters.feedType = feedType;
-                if (limit != null) config.queryParameters.limit = limit;
-                if (lookBackDays != null) config.queryParameters.lookBackDays = lookBackDays;
-                if (offset != null) config.queryParameters.offset = offset;
-                if (scheduleId != null) config.queryParameters.scheduleId = scheduleId;
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.inventoryTask().get(config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                    if (dateRange != null) config.queryParameters.dateRange = dateRange;
+                    if (feedType != null) config.queryParameters.feedType = feedType;
+                    if (limit != null) config.queryParameters.limit = limit;
+                    if (lookBackDays != null) config.queryParameters.lookBackDays = lookBackDays;
+                    if (offset != null) config.queryParameters.offset = offset;
+                    if (scheduleId != null) config.queryParameters.scheduleId = scheduleId;
+                });
+            })
+        );
     }
 
     /**
@@ -222,13 +232,14 @@ public final class FeedClient {
      */
     public CompletableFuture<Object> getInventoryTaskAsync(
             String taskId, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.inventoryTask().byTask_id(taskId).get(config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.inventoryTask().byTask_id(taskId).get(config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+            })
+        );
     }
 
     /**
@@ -236,14 +247,15 @@ public final class FeedClient {
      */
     public CompletableFuture<Void> createInventoryTaskAsync(
             CreateInventoryTaskRequest body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            kiota.inventoryTask().post(body, config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-            return null;
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                kiota.inventoryTask().post(body, config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+                return null;
+            })
+        );
     }
 
     // ── Order Tasks ──────────────────────────────────────────────────────────
@@ -254,19 +266,20 @@ public final class FeedClient {
     public CompletableFuture<Object> getOrderTasksAsync(
             String dateRange, String feedType, String limit, String lookBackDays,
             String offset, String scheduleId, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.orderTask().get(config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-                if (dateRange != null) config.queryParameters.dateRange = dateRange;
-                if (feedType != null) config.queryParameters.feedType = feedType;
-                if (limit != null) config.queryParameters.limit = limit;
-                if (lookBackDays != null) config.queryParameters.lookBackDays = lookBackDays;
-                if (offset != null) config.queryParameters.offset = offset;
-                if (scheduleId != null) config.queryParameters.scheduleId = scheduleId;
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.orderTask().get(config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                    if (dateRange != null) config.queryParameters.dateRange = dateRange;
+                    if (feedType != null) config.queryParameters.feedType = feedType;
+                    if (limit != null) config.queryParameters.limit = limit;
+                    if (lookBackDays != null) config.queryParameters.lookBackDays = lookBackDays;
+                    if (offset != null) config.queryParameters.offset = offset;
+                    if (scheduleId != null) config.queryParameters.scheduleId = scheduleId;
+                });
+            })
+        );
     }
 
     /**
@@ -274,13 +287,14 @@ public final class FeedClient {
      */
     public CompletableFuture<Object> getOrderTaskAsync(
             String taskId, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.orderTask().byTask_id(taskId).get(config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.orderTask().byTask_id(taskId).get(config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+            })
+        );
     }
 
     /**
@@ -288,14 +302,15 @@ public final class FeedClient {
      */
     public CompletableFuture<Void> createOrderTaskAsync(
             CreateOrderTaskRequest body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            kiota.orderTask().post(body, config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-            return null;
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                kiota.orderTask().post(body, config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+                return null;
+            })
+        );
     }
 
     // ── Schedules ────────────────────────────────────────────────────────────
@@ -306,16 +321,17 @@ public final class FeedClient {
     public CompletableFuture<UserScheduleCollection> getSchedulesAsync(
             String feedType, String limit, String offset,
             String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.schedule().get(config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-                if (feedType != null) config.queryParameters.feedType = feedType;
-                if (limit != null) config.queryParameters.limit = limit;
-                if (offset != null) config.queryParameters.offset = offset;
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.schedule().get(config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                    if (feedType != null) config.queryParameters.feedType = feedType;
+                    if (limit != null) config.queryParameters.limit = limit;
+                    if (offset != null) config.queryParameters.offset = offset;
+                });
+            })
+        );
     }
 
     /**
@@ -323,13 +339,14 @@ public final class FeedClient {
      */
     public CompletableFuture<UserScheduleResponse> getScheduleAsync(
             String scheduleId, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.schedule().bySchedule_id(scheduleId).get(config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.schedule().bySchedule_id(scheduleId).get(config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+            })
+        );
     }
 
     /**
@@ -337,13 +354,14 @@ public final class FeedClient {
      */
     public CompletableFuture<Object> createScheduleAsync(
             CreateUserScheduleRequest body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.schedule().post(body, config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.schedule().post(body, config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+            })
+        );
     }
 
     /**
@@ -352,14 +370,15 @@ public final class FeedClient {
     public CompletableFuture<Void> updateScheduleAsync(
             String scheduleId, UpdateUserScheduleRequest body,
             String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            kiota.schedule().bySchedule_id(scheduleId).put(body, config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-            return null;
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                kiota.schedule().bySchedule_id(scheduleId).put(body, config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+                return null;
+            })
+        );
     }
 
     /**
@@ -367,14 +386,15 @@ public final class FeedClient {
      */
     public CompletableFuture<Void> deleteScheduleAsync(
             String scheduleId, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            kiota.schedule().bySchedule_id(scheduleId).delete(config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-            return null;
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                kiota.schedule().bySchedule_id(scheduleId).delete(config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+                return null;
+            })
+        );
     }
 
     /**
@@ -382,13 +402,14 @@ public final class FeedClient {
      */
     public CompletableFuture<Object> getLatestResultFileAsync(
             String scheduleId, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.schedule().bySchedule_id(scheduleId).downloadResultFile().get(config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.schedule().bySchedule_id(scheduleId).downloadResultFile().get(config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+            })
+        );
     }
 
     // ── Schedule Templates ───────────────────────────────────────────────────
@@ -399,16 +420,17 @@ public final class FeedClient {
     public CompletableFuture<ScheduleTemplateCollection> getScheduleTemplatesAsync(
             String feedType, String limit, String offset,
             String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.scheduleTemplate().get(config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-                if (feedType != null) config.queryParameters.feedType = feedType;
-                if (limit != null) config.queryParameters.limit = limit;
-                if (offset != null) config.queryParameters.offset = offset;
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.scheduleTemplate().get(config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                    if (feedType != null) config.queryParameters.feedType = feedType;
+                    if (limit != null) config.queryParameters.limit = limit;
+                    if (offset != null) config.queryParameters.offset = offset;
+                });
+            })
+        );
     }
 
     /**
@@ -416,12 +438,13 @@ public final class FeedClient {
      */
     public CompletableFuture<ScheduleTemplateResponse> getScheduleTemplateAsync(
             String scheduleTemplateId, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() -> {
-            TokenContext.CURRENT.set(accessToken);
-            Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.scheduleTemplate().bySchedule_template_id(scheduleTemplateId).get(config -> {
-                headers.forEach((k, v) -> config.headers.add(k, v));
-            });
-        });
+        return CompletableFuture.supplyAsync(() ->
+            TokenContext.runWith(accessToken, () -> {
+                Map<String, String> headers = mergedHeaders(requestOptions);
+                return kiota.scheduleTemplate().bySchedule_template_id(scheduleTemplateId).get(config -> {
+                    headers.forEach((k, v) -> config.headers.add(k, v));
+                });
+            })
+        );
     }
 }

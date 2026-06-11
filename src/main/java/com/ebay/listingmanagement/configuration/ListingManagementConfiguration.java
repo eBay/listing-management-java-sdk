@@ -21,11 +21,41 @@ public final class ListingManagementConfiguration {
     private String accessToken;
     private RequestOptions defaultRequestOptions = new RequestOptions();
 
-    public String feedBaseUrl = "https://api.ebay.com/sell/feed/v1";
-    public String inventoryBaseUrl = "https://api.ebay.com/sell/inventory/v1";
-    public String mediaBaseUrl = "https://apim.ebay.com/commerce/media/v1_beta";
-    public String storesBaseUrl = "https://api.ebay.com/sell/stores/v1";
-    public String graphQLBaseUrl = "https://api.ebay.com/graphql";
+    private final String feedBaseUrl;
+    private final String inventoryBaseUrl;
+    private final String mediaBaseUrl;
+    private final String storesBaseUrl;
+    private final String graphQLBaseUrl;
+
+    public ListingManagementConfiguration() {
+        this.feedBaseUrl = "https://api.ebay.com/sell/feed/v1";
+        this.inventoryBaseUrl = "https://api.ebay.com/sell/inventory/v1";
+        this.mediaBaseUrl = "https://apim.ebay.com/commerce/media/v1_beta";
+        this.storesBaseUrl = "https://api.ebay.com/sell/stores/v1";
+        this.graphQLBaseUrl = "https://api.ebay.com/graphql";
+    }
+
+    public ListingManagementConfiguration(
+            String feedBaseUrl, String inventoryBaseUrl,
+            String mediaBaseUrl, String storesBaseUrl, String graphQLBaseUrl) {
+        this.feedBaseUrl = validateHost(feedBaseUrl);
+        this.inventoryBaseUrl = validateHost(inventoryBaseUrl);
+        this.mediaBaseUrl = validateHost(mediaBaseUrl);
+        this.storesBaseUrl = validateHost(storesBaseUrl);
+        this.graphQLBaseUrl = validateHost(graphQLBaseUrl);
+    }
+
+    private String validateHost(String url) {
+        try {
+            String host = new java.net.URI(url).getHost();
+            if (host == null || !getAllowedHosts().contains(host)) {
+                throw new IllegalArgumentException("URL host not in allowed list: " + url);
+            }
+        } catch (java.net.URISyntaxException e) {
+            throw new IllegalArgumentException("Invalid URL: " + url, e);
+        }
+        return url;
+    }
 
     public void setAccessToken(String token) {
         this.accessToken = token;
@@ -64,9 +94,5 @@ public final class ListingManagementConfiguration {
 
     public String getGraphQLBaseUrl() {
         return graphQLBaseUrl;
-    }
-
-    public void setGraphQLBaseUrl(String graphQLBaseUrl) {
-        this.graphQLBaseUrl = graphQLBaseUrl;
     }
 }
