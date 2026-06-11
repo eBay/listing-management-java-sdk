@@ -57,6 +57,14 @@ public final class ListingManagementConfiguration {
         return url;
     }
 
+    /**
+     * Sets the OAuth Bearer token used for API calls when no per-call token is provided.
+     *
+     * <p><b>Security note:</b> The token is stored as a Java {@code String} and will remain
+     * in heap memory until garbage collected. To minimize exposure: do not log this
+     * configuration object, null out the token reference when it is no longer needed,
+     * and avoid storing the configuration longer than the client lifecycle.
+     */
     public void setAccessToken(String token) {
         this.accessToken = token;
     }

@@ -36,10 +36,6 @@ public final class StoresClient {
         this.config = config;
     }
 
-    /**
-     * Merges default headers from config with per-call headers.
-     * Per-call headers override defaults.
-     */
     private Map<String, String> mergedHeaders(RequestOptions requestOptions) {
         Map<String, String> headers = new HashMap<>(config.getDefaultRequestOptions().getHeaders());
         if (requestOptions != null) {
@@ -50,9 +46,6 @@ public final class StoresClient {
 
     // ── Store ────────────────────────────────────────────────────────────────
 
-    /**
-     * Get store details.
-     */
     public CompletableFuture<Object> getStoreAsync(
             String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() ->
@@ -67,9 +60,6 @@ public final class StoresClient {
 
     // ── Store Categories ─────────────────────────────────────────────────────
 
-    /**
-     * Get all store categories.
-     */
     public CompletableFuture<Object> getStoreCategoriesAsync(
             String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() ->
@@ -82,9 +72,6 @@ public final class StoresClient {
         );
     }
 
-    /**
-     * Add a store category.
-     */
     public CompletableFuture<Void> addStoreCategoryAsync(
             AddStoreCategoryRequestType body, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.runAsync(() ->
@@ -97,12 +84,10 @@ public final class StoresClient {
         );
     }
 
-    /**
-     * Delete a store category.
-     */
     public CompletableFuture<Void> deleteStoreCategoryAsync(
             String categoryId, DeleteStoreCategoryRequestType body,
             String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("categoryId", categoryId);
         return CompletableFuture.runAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -113,12 +98,10 @@ public final class StoresClient {
         );
     }
 
-    /**
-     * Rename a store category.
-     */
     public CompletableFuture<Void> renameStoreCategoryAsync(
             String categoryId, RenameStoreCategoryRequestType body,
             String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("categoryId", categoryId);
         return CompletableFuture.runAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -129,9 +112,6 @@ public final class StoresClient {
         );
     }
 
-    /**
-     * Move a store category.
-     */
     public CompletableFuture<Void> moveStoreCategoryAsync(
             MoveStoreCategoryRequestType body, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.runAsync(() ->
@@ -146,9 +126,6 @@ public final class StoresClient {
 
     // ── Store Tasks ──────────────────────────────────────────────────────────
 
-    /**
-     * Get all store tasks.
-     */
     public CompletableFuture<Object> getStoreTasksAsync(
             String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() ->
@@ -161,11 +138,9 @@ public final class StoresClient {
         );
     }
 
-    /**
-     * Get a specific store task.
-     */
     public CompletableFuture<Object> getStoreTaskAsync(
             String taskId, String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("taskId", taskId);
         return CompletableFuture.supplyAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);

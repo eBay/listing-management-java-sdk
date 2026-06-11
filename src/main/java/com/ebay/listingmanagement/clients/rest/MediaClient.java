@@ -37,10 +37,6 @@ public final class MediaClient {
         this.config = config;
     }
 
-    /**
-     * Merges default headers from config with per-call headers.
-     * Per-call headers override defaults.
-     */
     private Map<String, String> mergedHeaders(RequestOptions requestOptions) {
         Map<String, String> headers = new HashMap<>(config.getDefaultRequestOptions().getHeaders());
         if (requestOptions != null) {
@@ -51,11 +47,9 @@ public final class MediaClient {
 
     // ── Documents ────────────────────────────────────────────────────────────
 
-    /**
-     * Get a specific document by ID.
-     */
     public CompletableFuture<Object> getDocumentAsync(
             String documentId, String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("documentId", documentId);
         return CompletableFuture.supplyAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -66,9 +60,6 @@ public final class MediaClient {
         );
     }
 
-    /**
-     * Create a document.
-     */
     public CompletableFuture<Object> createDocumentAsync(
             CreateDocumentRequest body, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() ->
@@ -81,9 +72,6 @@ public final class MediaClient {
         );
     }
 
-    /**
-     * Create a document from URL.
-     */
     public CompletableFuture<Object> createDocumentFromUrlAsync(
             CreateDocumentFromUrlRequest body, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() ->
@@ -96,11 +84,9 @@ public final class MediaClient {
         );
     }
 
-    /**
-     * Upload a document.
-     */
     public CompletableFuture<Object> uploadDocumentAsync(
             String documentId, String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("documentId", documentId);
         return CompletableFuture.supplyAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -113,11 +99,9 @@ public final class MediaClient {
 
     // ── Images ───────────────────────────────────────────────────────────────
 
-    /**
-     * Get a specific image by ID.
-     */
     public CompletableFuture<Object> getImageAsync(
             String imageId, String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("imageId", imageId);
         return CompletableFuture.supplyAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -128,9 +112,6 @@ public final class MediaClient {
         );
     }
 
-    /**
-     * Create an image from file.
-     */
     public CompletableFuture<Object> createImageFromFileAsync(
             String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() ->
@@ -143,9 +124,6 @@ public final class MediaClient {
         );
     }
 
-    /**
-     * Create an image from URL.
-     */
     public CompletableFuture<Object> createImageFromUrlAsync(
             CreateImageFromUrlRequest body, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() ->
@@ -160,11 +138,9 @@ public final class MediaClient {
 
     // ── Videos ───────────────────────────────────────────────────────────────
 
-    /**
-     * Get a specific video by ID.
-     */
     public CompletableFuture<Object> getVideoAsync(
             String videoId, String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("videoId", videoId);
         return CompletableFuture.supplyAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -175,9 +151,6 @@ public final class MediaClient {
         );
     }
 
-    /**
-     * Create a video.
-     */
     public CompletableFuture<Void> createVideoAsync(
             CreateVideoRequest body, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.runAsync(() ->
@@ -190,11 +163,9 @@ public final class MediaClient {
         );
     }
 
-    /**
-     * Upload a video.
-     */
     public CompletableFuture<Void> uploadVideoAsync(
             String videoId, InputStream body, String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("videoId", videoId);
         return CompletableFuture.runAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);

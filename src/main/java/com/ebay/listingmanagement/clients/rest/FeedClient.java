@@ -36,10 +36,6 @@ public final class FeedClient {
         this.config = config;
     }
 
-    /**
-     * Merges default headers from config with per-call headers.
-     * Per-call headers override defaults.
-     */
     private Map<String, String> mergedHeaders(RequestOptions requestOptions) {
         Map<String, String> headers = new HashMap<>(config.getDefaultRequestOptions().getHeaders());
         if (requestOptions != null) {
@@ -50,9 +46,6 @@ public final class FeedClient {
 
     // ── Generic Tasks ────────────────────────────────────────────────────────
 
-    /**
-     * Get tasks based on feed type or schedule ID.
-     */
     public CompletableFuture<TaskCollection> getTasksAsync(
             String dateRange, String feedType, String limit, String lookBackDays,
             String offset, String scheduleId, String accessToken, RequestOptions requestOptions) {
@@ -72,11 +65,9 @@ public final class FeedClient {
         );
     }
 
-    /**
-     * Get a specific task by ID.
-     */
     public CompletableFuture<Task> getTaskAsync(
             String taskId, String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("taskId", taskId);
         return CompletableFuture.supplyAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -87,9 +78,6 @@ public final class FeedClient {
         );
     }
 
-    /**
-     * Create a new task.
-     */
     public CompletableFuture<Void> createTaskAsync(
             CreateTaskRequest body, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() ->
@@ -103,11 +91,9 @@ public final class FeedClient {
         );
     }
 
-    /**
-     * Get the input file for a task.
-     */
     public CompletableFuture<Object> getInputFileAsync(
             String taskId, String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("taskId", taskId);
         return CompletableFuture.supplyAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -118,11 +104,9 @@ public final class FeedClient {
         );
     }
 
-    /**
-     * Get the result file for a task.
-     */
     public CompletableFuture<Object> getResultFileAsync(
             String taskId, String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("taskId", taskId);
         return CompletableFuture.supplyAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -133,11 +117,9 @@ public final class FeedClient {
         );
     }
 
-    /**
-     * Upload a file for a task.
-     */
     public CompletableFuture<Void> uploadFileAsync(
             String taskId, String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("taskId", taskId);
         return CompletableFuture.supplyAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -151,9 +133,6 @@ public final class FeedClient {
 
     // ── Customer Service Metric Tasks ────────────────────────────────────────
 
-    /**
-     * Get customer service metric tasks.
-     */
     public CompletableFuture<CustomerServiceMetricTaskCollection> getCustomerServiceMetricTasksAsync(
             String dateRange, String feedType, String limit, String lookBackDays,
             String offset, String accessToken, RequestOptions requestOptions) {
@@ -172,11 +151,9 @@ public final class FeedClient {
         );
     }
 
-    /**
-     * Get a specific customer service metric task.
-     */
     public CompletableFuture<ServiceMetricsTask> getCustomerServiceMetricTaskAsync(
             String taskId, String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("taskId", taskId);
         return CompletableFuture.supplyAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -187,9 +164,6 @@ public final class FeedClient {
         );
     }
 
-    /**
-     * Create a customer service metric task.
-     */
     public CompletableFuture<Void> createCustomerServiceMetricTaskAsync(
             CreateServiceMetricsTaskRequest body, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() ->
@@ -205,9 +179,6 @@ public final class FeedClient {
 
     // ── Inventory Tasks ──────────────────────────────────────────────────────
 
-    /**
-     * Get inventory tasks.
-     */
     public CompletableFuture<Object> getInventoryTasksAsync(
             String dateRange, String feedType, String limit, String lookBackDays,
             String offset, String scheduleId, String accessToken, RequestOptions requestOptions) {
@@ -227,11 +198,9 @@ public final class FeedClient {
         );
     }
 
-    /**
-     * Get a specific inventory task.
-     */
     public CompletableFuture<Object> getInventoryTaskAsync(
             String taskId, String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("taskId", taskId);
         return CompletableFuture.supplyAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -242,9 +211,6 @@ public final class FeedClient {
         );
     }
 
-    /**
-     * Create an inventory task.
-     */
     public CompletableFuture<Void> createInventoryTaskAsync(
             CreateInventoryTaskRequest body, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() ->
@@ -260,9 +226,6 @@ public final class FeedClient {
 
     // ── Order Tasks ──────────────────────────────────────────────────────────
 
-    /**
-     * Get order tasks.
-     */
     public CompletableFuture<Object> getOrderTasksAsync(
             String dateRange, String feedType, String limit, String lookBackDays,
             String offset, String scheduleId, String accessToken, RequestOptions requestOptions) {
@@ -282,11 +245,9 @@ public final class FeedClient {
         );
     }
 
-    /**
-     * Get a specific order task.
-     */
     public CompletableFuture<Object> getOrderTaskAsync(
             String taskId, String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("taskId", taskId);
         return CompletableFuture.supplyAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -297,9 +258,6 @@ public final class FeedClient {
         );
     }
 
-    /**
-     * Create an order task.
-     */
     public CompletableFuture<Void> createOrderTaskAsync(
             CreateOrderTaskRequest body, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() ->
@@ -315,9 +273,6 @@ public final class FeedClient {
 
     // ── Schedules ────────────────────────────────────────────────────────────
 
-    /**
-     * Get schedules.
-     */
     public CompletableFuture<UserScheduleCollection> getSchedulesAsync(
             String feedType, String limit, String offset,
             String accessToken, RequestOptions requestOptions) {
@@ -334,11 +289,9 @@ public final class FeedClient {
         );
     }
 
-    /**
-     * Get a specific schedule.
-     */
     public CompletableFuture<UserScheduleResponse> getScheduleAsync(
             String scheduleId, String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("scheduleId", scheduleId);
         return CompletableFuture.supplyAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -349,9 +302,6 @@ public final class FeedClient {
         );
     }
 
-    /**
-     * Create a schedule.
-     */
     public CompletableFuture<Object> createScheduleAsync(
             CreateUserScheduleRequest body, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() ->
@@ -364,12 +314,10 @@ public final class FeedClient {
         );
     }
 
-    /**
-     * Update a schedule.
-     */
     public CompletableFuture<Void> updateScheduleAsync(
             String scheduleId, UpdateUserScheduleRequest body,
             String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("scheduleId", scheduleId);
         return CompletableFuture.supplyAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -381,11 +329,9 @@ public final class FeedClient {
         );
     }
 
-    /**
-     * Delete a schedule.
-     */
     public CompletableFuture<Void> deleteScheduleAsync(
             String scheduleId, String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("scheduleId", scheduleId);
         return CompletableFuture.supplyAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -397,11 +343,9 @@ public final class FeedClient {
         );
     }
 
-    /**
-     * Get the latest result file for a schedule.
-     */
     public CompletableFuture<Object> getLatestResultFileAsync(
             String scheduleId, String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("scheduleId", scheduleId);
         return CompletableFuture.supplyAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -414,9 +358,6 @@ public final class FeedClient {
 
     // ── Schedule Templates ───────────────────────────────────────────────────
 
-    /**
-     * Get schedule templates.
-     */
     public CompletableFuture<ScheduleTemplateCollection> getScheduleTemplatesAsync(
             String feedType, String limit, String offset,
             String accessToken, RequestOptions requestOptions) {
@@ -433,11 +374,9 @@ public final class FeedClient {
         );
     }
 
-    /**
-     * Get a specific schedule template.
-     */
     public CompletableFuture<ScheduleTemplateResponse> getScheduleTemplateAsync(
             String scheduleTemplateId, String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("scheduleTemplateId", scheduleTemplateId);
         return CompletableFuture.supplyAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);

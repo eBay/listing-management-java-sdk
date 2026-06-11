@@ -36,10 +36,6 @@ public final class InventoryClient {
         this.config = config;
     }
 
-    /**
-     * Merges default headers from config with per-call headers.
-     * Per-call headers override defaults.
-     */
     private Map<String, String> mergedHeaders(RequestOptions requestOptions) {
         Map<String, String> headers = new HashMap<>(config.getDefaultRequestOptions().getHeaders());
         if (requestOptions != null) {
@@ -50,11 +46,9 @@ public final class InventoryClient {
 
     // ── Inventory Items ──────────────────────────────────────────────────────
 
-    /**
-     * Get a specific inventory item by SKU.
-     */
     public CompletableFuture<InventoryItemWithSkuLocaleGroupid> getInventoryItemAsync(
             String sku, String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("sku", sku);
         return CompletableFuture.supplyAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -65,11 +59,9 @@ public final class InventoryClient {
         );
     }
 
-    /**
-     * Create or replace an inventory item.
-     */
     public CompletableFuture<BaseResponse> createOrReplaceInventoryItemAsync(
             String sku, InventoryItem body, String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("sku", sku);
         return CompletableFuture.supplyAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -80,11 +72,9 @@ public final class InventoryClient {
         );
     }
 
-    /**
-     * Delete an inventory item.
-     */
     public CompletableFuture<Void> deleteInventoryItemAsync(
             String sku, String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("sku", sku);
         return CompletableFuture.supplyAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -96,9 +86,6 @@ public final class InventoryClient {
         );
     }
 
-    /**
-     * Get inventory items with pagination.
-     */
     public CompletableFuture<InventoryItems> getInventoryItemsAsync(
             String limit, String offset, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() ->
@@ -113,9 +100,6 @@ public final class InventoryClient {
         );
     }
 
-    /**
-     * Bulk get inventory items.
-     */
     public CompletableFuture<Object> bulkGetInventoryItemAsync(
             BulkGetInventoryItem body, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() ->
@@ -128,9 +112,6 @@ public final class InventoryClient {
         );
     }
 
-    /**
-     * Bulk create or replace inventory items.
-     */
     public CompletableFuture<Object> bulkCreateOrReplaceInventoryItemAsync(
             BulkInventoryItem body, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() ->
@@ -145,11 +126,9 @@ public final class InventoryClient {
 
     // ── Inventory Item Groups ────────────────────────────────────────────────
 
-    /**
-     * Get an inventory item group.
-     */
     public CompletableFuture<InventoryItemGroup> getInventoryItemGroupAsync(
             String inventoryItemGroupKey, String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("inventoryItemGroupKey", inventoryItemGroupKey);
         return CompletableFuture.supplyAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -160,12 +139,10 @@ public final class InventoryClient {
         );
     }
 
-    /**
-     * Create or replace an inventory item group.
-     */
     public CompletableFuture<BaseResponse> createOrReplaceInventoryItemGroupAsync(
             String inventoryItemGroupKey, InventoryItemGroup body,
             String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("inventoryItemGroupKey", inventoryItemGroupKey);
         return CompletableFuture.supplyAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -176,11 +153,9 @@ public final class InventoryClient {
         );
     }
 
-    /**
-     * Delete an inventory item group.
-     */
     public CompletableFuture<Void> deleteInventoryItemGroupAsync(
             String inventoryItemGroupKey, String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("inventoryItemGroupKey", inventoryItemGroupKey);
         return CompletableFuture.supplyAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -194,11 +169,9 @@ public final class InventoryClient {
 
     // ── Product Compatibility ────────────────────────────────────────────────
 
-    /**
-     * Get product compatibility for an inventory item.
-     */
     public CompletableFuture<Compatibility> getProductCompatibilityAsync(
             String sku, String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("sku", sku);
         return CompletableFuture.supplyAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -209,11 +182,9 @@ public final class InventoryClient {
         );
     }
 
-    /**
-     * Create or replace product compatibility.
-     */
     public CompletableFuture<BaseResponse> createOrReplaceProductCompatibilityAsync(
             String sku, Compatibility body, String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("sku", sku);
         return CompletableFuture.supplyAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -224,11 +195,9 @@ public final class InventoryClient {
         );
     }
 
-    /**
-     * Delete product compatibility.
-     */
     public CompletableFuture<Void> deleteProductCompatibilityAsync(
             String sku, String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("sku", sku);
         return CompletableFuture.supplyAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -242,11 +211,10 @@ public final class InventoryClient {
 
     // ── SKU-Location Mapping ─────────────────────────────────────────────────
 
-    /**
-     * Get SKU-to-location mapping.
-     */
     public CompletableFuture<Object> getSkuLocationMappingAsync(
             String listingId, String sku, String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("listingId", listingId);
+        Params.requireValid("sku", sku);
         return CompletableFuture.supplyAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -257,12 +225,11 @@ public final class InventoryClient {
         );
     }
 
-    /**
-     * Create or replace SKU-to-location mapping.
-     */
     public CompletableFuture<Void> createOrReplaceSkuLocationMappingAsync(
             String listingId, String sku, LocationMapping body,
             String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("listingId", listingId);
+        Params.requireValid("sku", sku);
         return CompletableFuture.runAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -273,11 +240,10 @@ public final class InventoryClient {
         );
     }
 
-    /**
-     * Delete SKU-to-location mapping.
-     */
     public CompletableFuture<Void> deleteSkuLocationMappingAsync(
             String listingId, String sku, String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("listingId", listingId);
+        Params.requireValid("sku", sku);
         return CompletableFuture.supplyAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -291,11 +257,9 @@ public final class InventoryClient {
 
     // ── Inventory Locations ──────────────────────────────────────────────────
 
-    /**
-     * Get a specific inventory location.
-     */
     public CompletableFuture<InventoryLocationResponse> getInventoryLocationAsync(
             String merchantLocationKey, String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("merchantLocationKey", merchantLocationKey);
         return CompletableFuture.supplyAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -306,9 +270,6 @@ public final class InventoryClient {
         );
     }
 
-    /**
-     * Get inventory locations with pagination.
-     */
     public CompletableFuture<LocationResponse> getInventoryLocationsAsync(
             String limit, String offset, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() ->
@@ -323,12 +284,10 @@ public final class InventoryClient {
         );
     }
 
-    /**
-     * Create an inventory location.
-     */
     public CompletableFuture<Void> createInventoryLocationAsync(
             String merchantLocationKey, InventoryLocationFull body,
             String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("merchantLocationKey", merchantLocationKey);
         return CompletableFuture.supplyAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -340,11 +299,9 @@ public final class InventoryClient {
         );
     }
 
-    /**
-     * Delete an inventory location.
-     */
     public CompletableFuture<Void> deleteInventoryLocationAsync(
             String merchantLocationKey, String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("merchantLocationKey", merchantLocationKey);
         return CompletableFuture.supplyAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -356,12 +313,10 @@ public final class InventoryClient {
         );
     }
 
-    /**
-     * Update inventory location details.
-     */
     public CompletableFuture<Void> updateInventoryLocationAsync(
             String merchantLocationKey, InventoryLocation body,
             String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("merchantLocationKey", merchantLocationKey);
         return CompletableFuture.runAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -372,11 +327,9 @@ public final class InventoryClient {
         );
     }
 
-    /**
-     * Disable an inventory location.
-     */
     public CompletableFuture<Object> disableInventoryLocationAsync(
             String merchantLocationKey, String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("merchantLocationKey", merchantLocationKey);
         return CompletableFuture.supplyAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -387,11 +340,9 @@ public final class InventoryClient {
         );
     }
 
-    /**
-     * Enable an inventory location.
-     */
     public CompletableFuture<Object> enableInventoryLocationAsync(
             String merchantLocationKey, String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("merchantLocationKey", merchantLocationKey);
         return CompletableFuture.supplyAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -404,11 +355,9 @@ public final class InventoryClient {
 
     // ── Offers ───────────────────────────────────────────────────────────────
 
-    /**
-     * Get a specific offer by ID.
-     */
     public CompletableFuture<Object> getOfferAsync(
             String offerId, String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("offerId", offerId);
         return CompletableFuture.supplyAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -419,9 +368,6 @@ public final class InventoryClient {
         );
     }
 
-    /**
-     * Get offers with filtering and pagination.
-     */
     public CompletableFuture<Offers> getOffersAsync(
             String format, String limit, String marketplaceId, String offset, String sku,
             String accessToken, RequestOptions requestOptions) {
@@ -440,9 +386,6 @@ public final class InventoryClient {
         );
     }
 
-    /**
-     * Create an offer.
-     */
     public CompletableFuture<OfferResponse> createOfferAsync(
             EbayOfferDetailsWithKeys body, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() ->
@@ -455,12 +398,10 @@ public final class InventoryClient {
         );
     }
 
-    /**
-     * Update an offer.
-     */
     public CompletableFuture<Object> updateOfferAsync(
             String offerId, EbayOfferDetailsWithId body,
             String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("offerId", offerId);
         return CompletableFuture.supplyAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -471,11 +412,9 @@ public final class InventoryClient {
         );
     }
 
-    /**
-     * Delete an offer.
-     */
     public CompletableFuture<Void> deleteOfferAsync(
             String offerId, String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("offerId", offerId);
         return CompletableFuture.supplyAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -487,11 +426,9 @@ public final class InventoryClient {
         );
     }
 
-    /**
-     * Publish an offer.
-     */
     public CompletableFuture<PublishResponse> publishOfferAsync(
             String offerId, String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("offerId", offerId);
         return CompletableFuture.supplyAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -502,11 +439,9 @@ public final class InventoryClient {
         );
     }
 
-    /**
-     * Withdraw an offer.
-     */
     public CompletableFuture<WithdrawResponse> withdrawOfferAsync(
             String offerId, String accessToken, RequestOptions requestOptions) {
+        Params.requireValid("offerId", offerId);
         return CompletableFuture.supplyAsync(() ->
             TokenContext.runWith(accessToken, () -> {
                 Map<String, String> headers = mergedHeaders(requestOptions);
@@ -517,9 +452,6 @@ public final class InventoryClient {
         );
     }
 
-    /**
-     * Get listing fees for offers.
-     */
     public CompletableFuture<FeesSummaryResponse> getListingFeesAsync(
             OfferKeysWithId body, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() ->
@@ -532,9 +464,6 @@ public final class InventoryClient {
         );
     }
 
-    /**
-     * Bulk create offers.
-     */
     public CompletableFuture<BulkOfferResponse> bulkCreateOfferAsync(
             BulkEbayOfferDetailsWithKeys body, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() ->
@@ -547,9 +476,6 @@ public final class InventoryClient {
         );
     }
 
-    /**
-     * Bulk publish offers.
-     */
     public CompletableFuture<BulkPublishResponse> bulkPublishOfferAsync(
             BulkOffer body, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() ->
@@ -562,9 +488,6 @@ public final class InventoryClient {
         );
     }
 
-    /**
-     * Publish offer by inventory item group.
-     */
     public CompletableFuture<PublishResponse> publishOfferByInventoryItemGroupAsync(
             PublishByInventoryItemGroupRequest body, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() ->
@@ -577,9 +500,6 @@ public final class InventoryClient {
         );
     }
 
-    /**
-     * Withdraw offer by inventory item group.
-     */
     public CompletableFuture<Void> withdrawOfferByInventoryItemGroupAsync(
             WithdrawByInventoryItemGroupRequest body, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.runAsync(() ->
@@ -594,9 +514,6 @@ public final class InventoryClient {
 
     // ── Bulk Operations ──────────────────────────────────────────────────────
 
-    /**
-     * Bulk migrate listings.
-     */
     public CompletableFuture<Object> bulkMigrateListingAsync(
             BulkMigrateListing body, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() ->
@@ -609,9 +526,6 @@ public final class InventoryClient {
         );
     }
 
-    /**
-     * Bulk update price and quantity.
-     */
     public CompletableFuture<Object> bulkUpdatePriceQuantityAsync(
             BulkPriceQuantity body, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() ->
