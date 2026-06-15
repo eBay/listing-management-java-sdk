@@ -3,7 +3,7 @@ plugins {
     `maven-publish`
     embeddedKotlin("jvm")
     id("com.apollographql.apollo") version "4.3.1"
-    id("org.owasp.dependencycheck") version "10.0.4"
+    id("org.owasp.dependencycheck") version "12.1.3"
 }
 
 group = "com.ebay"
@@ -65,6 +65,10 @@ dependencyCheck {
     suppressionFile = "dependency-check-suppressions.xml"
     analyzers {
         assemblyEnabled = false     // Not needed for JVM-only project
+        ossIndexEnabled = false     // Requires Sonatype credentials — disabled
+    }
+    nvd {
+        apiKey = System.getenv("NVD_API_KEY") ?: ""
     }
 }
 
