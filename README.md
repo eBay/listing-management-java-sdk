@@ -198,6 +198,42 @@ JsonNode data = sdk.graphQL.dynamic().executeRawUnsafe(query, Map.of("id", "list
 
 > **Warning:** Never interpolate user input directly into the query string — always pass dynamic values through `variables` to avoid GraphQL injection.
 
+## Rate Limiting and Retry
+
+The SDK does not include built-in retry logic or rate-limit handling. eBay's APIs return HTTP `429 Too Many Requests` when rate limits are exceeded.
+
+If you call bulk endpoints (e.g., `bulkCreateOrReplaceInventoryItemAsync`, `bulkPublishOfferAsync`) in tight loops, you may hit these limits. Implement exponential back-off in your application layer:
+
+```java
+int attempt = 0;
+while (attempt < 5) {
+    try {
+        return sdk.inventory.bulkCreateOrReplaceInventoryItemAsync(body, token, null).join();
+    } catch (CompletionException ex) {
+        if (isRateLimitError(ex) && ++attempt < 5) {
+            Thread.sleep((long) Math.pow(2, attempt) * 1000);
+        } else {
+            throw ex;
+        }
+    }
+}
+```
+
+Refer to [eBay's API call limits documentation](https://developer.ebay.com/support/api-call-limits) for per-endpoint rate limit details.
+
+---
+
+## Apollo GraphQL HTTP Cache
+
+The `apollo-http-cache` dependency is included in this SDK. If you enable Apollo's HTTP cache in your application, GraphQL responses — which may include inventory details, pricing, and seller data — **will be written to the local filesystem**.
+
+To prevent sensitive listing data from being persisted to disk, either:
+
+1. **Do not enable the Apollo HTTP cache** (the default — no action needed if you have not explicitly configured it).
+2. **If you do enable it**, restrict file permissions on the cache directory and exclude it from backups, log aggregation, and crash reporting pipelines.
+
+---
+
 ## Error Handling
 
 ```java
