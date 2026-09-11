@@ -1,8 +1,8 @@
 {
   "descriptionHash": "54DC315E6D711F74C9283175DDCEC27A8BC8603D4C8F0C3E7AEC5F1A61D1E786755EE880C81B1C5418F868A96F2CBA632868F0F42EAD0EBF9ECC50D4768484F0",
-  "descriptionLocation": "../../../../../../../../specs/sell_feed_v1_oas3.yaml",
+  "descriptionLocation": "../../../../../../../../specs/openapi/feed.yaml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.31.1",
+  "kiotaVersion": "1.35.0",
   "clientClassName": "FeedApiClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "com.ebay.listingmanagement.generated.feed",
@@ -30,5 +30,6 @@
   ],
   "includePatterns": [],
   "excludePatterns": [],
-  "disabledValidationRules": []
+  "disabledValidationRules": [],
+  "allowedExternalOrigins": []
 }
