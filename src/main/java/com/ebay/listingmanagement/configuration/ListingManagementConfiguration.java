@@ -14,11 +14,12 @@
 
 package com.ebay.listingmanagement.configuration;
 
+import jakarta.annotation.Nullable;
 import java.util.HashSet;
 import java.util.Set;
 
 public final class ListingManagementConfiguration {
-    private String accessToken;
+    private @Nullable String accessToken;
     private RequestOptions defaultRequestOptions = new RequestOptions();
 
     private final String feedBaseUrl;
@@ -65,11 +66,11 @@ public final class ListingManagementConfiguration {
      * configuration object, null out the token reference when it is no longer needed,
      * and avoid storing the configuration longer than the client lifecycle.
      */
-    public void setAccessToken(String token) {
+    public void setAccessToken(@Nullable String token) {
         this.accessToken = token;
     }
 
-    public String getAccessToken() {
+    public @Nullable String getAccessToken() {
         return accessToken;
     }
 
