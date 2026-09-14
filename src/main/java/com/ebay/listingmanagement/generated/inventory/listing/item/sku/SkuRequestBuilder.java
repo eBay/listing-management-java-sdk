@@ -26,7 +26,7 @@ import java.util.Objects;
 public class SkuRequestBuilder extends BaseRequestBuilder {
     /**
      * Gets an item from the com.ebay.listingmanagement.generated.inventory.listing.item.sku.item collection
-     * @param sku This path parameter specifies the seller-defined SKU value of the item/variation for which location mappings will be retrieved. This SKU value must be defined in the listing specified in &lt;b&gt;listingId&lt;/b&gt; parameter&lt;br&gt;&lt;br&gt;Use the &lt;a href=&quot;/api-docs/sell/inventory/resources/offer/methods/getOffers&quot; target=&quot;_blank &quot;&gt;getOffers&lt;/a&gt; method of the &lt;b&gt;Inventory API&lt;/b&gt; or the &lt;a href=&quot;/devzone/xml/docs/reference/ebay/getmyebayselling.html&quot; target=&quot;_blank &quot;&gt;GetMyEbaySelling&lt;/a&gt; method of the &lt;b&gt;Trading API&lt;/b&gt; to retrieve all SKUs for all active listings.
+     * @param sku This path parameter specifies the seller-defined SKU value of the item/variation for which location mappings will be retrieved. This SKU value must be defined in the listing specified in &lt;b&gt;listingId&lt;/b&gt; parameter&lt;br&gt;&lt;br&gt;Use the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-getoffers&quot; target=&quot;_blank &quot;&gt;getOffers&lt;/a&gt; method of the &lt;b&gt;Inventory API&lt;/b&gt; or the &lt;a href=&quot;/devzone/xml/docs/reference/ebay/getmyebayselling.html&quot; target=&quot;_blank &quot;&gt;GetMyEbaySelling&lt;/a&gt; method of the &lt;b&gt;Trading API&lt;/b&gt; to retrieve all SKUs for all active listings.
      * @return a {@link WithSkuItemRequestBuilder}
      */
     @jakarta.annotation.Nonnull

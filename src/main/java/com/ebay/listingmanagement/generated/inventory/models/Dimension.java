@@ -31,19 +31,19 @@ public class Dimension implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * The actual height (in the measurement unit specified in the &lt;strong&gt;unit&lt;/strong&gt; field) of the shipping package. All fields of the &lt;strong&gt;dimensions&lt;/strong&gt; container are required if package dimensions are specified. &lt;br&gt;&lt;br&gt;If a shipping package measured 21.5 inches in length, 15.0 inches in width, and 12.0 inches in height, the &lt;strong&gt;dimensions&lt;/strong&gt; container would look as follows: &lt;br&gt; &lt;pre&gt;&lt;code&gt;&quot;dimensions&quot;: {&lt;br&gt; &quot;length&quot;: 21.5,&lt;br&gt; &quot;width&quot;: 15.0,&lt;br&gt; &quot;height&quot;: 12.0,&lt;br&gt; &quot;unit&quot;: &quot;INCH&quot;&lt;br&gt; } &lt;/pre&gt;&lt;/code&gt;
+     * The actual height (in the measurement unit specified in the &lt;strong&gt;unit&lt;/strong&gt; field) of the shipping package. All fields of the &lt;strong&gt;dimensions&lt;/strong&gt; container are required if package dimensions are specified. &lt;br&gt;&lt;br&gt;If a shipping package measured 21.5 inches in length, 15.0 inches in width, and 12.0 inches in height, the &lt;strong&gt;dimensions&lt;/strong&gt; container would look as follows: &lt;br&gt; &lt;pre&gt;&quot;dimensions&quot;: {&lt;br&gt; &quot;length&quot;: 21.5,&lt;br&gt; &quot;width&quot;: 15.0,&lt;br&gt; &quot;height&quot;: 12.0,&lt;br&gt; &quot;unit&quot;: &quot;INCH&quot;&lt;br&gt; } &lt;/pre&gt;
      */
     private Double height;
     /**
-     * The actual length (in the measurement unit specified in the &lt;strong&gt;unit&lt;/strong&gt; field) of the shipping package. All fields of the &lt;strong&gt;dimensions&lt;/strong&gt; container are required if package dimensions are specified. &lt;br&gt;&lt;br&gt;If a shipping package measured 21.5 inches in length, 15.0 inches in width, and 12.0 inches in height,  the &lt;strong&gt;dimensions&lt;/strong&gt; container would look as follows: &lt;br&gt; &lt;pre&gt;&lt;code&gt;&quot;dimensions&quot;: {&lt;br&gt; &quot;length&quot;: 21.5,&lt;br&gt; &quot;width&quot;: 15.0,&lt;br&gt; &quot;height&quot;: 12.0,&lt;br&gt; &quot;unit&quot;: &quot;INCH&quot;&lt;br&gt; } &lt;/pre&gt;&lt;/code&gt;
+     * The actual length (in the measurement unit specified in the &lt;strong&gt;unit&lt;/strong&gt; field) of the shipping package. All fields of the &lt;strong&gt;dimensions&lt;/strong&gt; container are required if package dimensions are specified. &lt;br&gt;&lt;br&gt;If a shipping package measured 21.5 inches in length, 15.0 inches in width, and 12.0 inches in height,  the &lt;strong&gt;dimensions&lt;/strong&gt; container would look as follows: &lt;br&gt; &lt;pre&gt;&quot;dimensions&quot;: {&lt;br&gt; &quot;length&quot;: 21.5,&lt;br&gt; &quot;width&quot;: 15.0,&lt;br&gt; &quot;height&quot;: 12.0,&lt;br&gt; &quot;unit&quot;: &quot;INCH&quot;&lt;br&gt; } &lt;/pre&gt;
      */
     private Double length;
     /**
-     * The unit of measurement used to specify the dimensions of a shipping package. All fields of the &lt;strong&gt;dimensions&lt;/strong&gt; container are required if package dimensions are specified. If the English system of measurement is being used, the applicable values for dimension units are &lt;code&gt;FEET&lt;/code&gt; and &lt;code&gt;INCH&lt;/code&gt;. If the metric system of measurement is being used, the applicable values for weight units are &lt;code&gt;METER&lt;/code&gt; and &lt;code&gt;CENTIMETER&lt;/code&gt;. The metric system is used by most countries outside of the US. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/slr:LengthUnitOfMeasureEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * The unit of measurement used to specify the dimensions of a shipping package. All fields of the &lt;strong&gt;dimensions&lt;/strong&gt; container are required if package dimensions are specified. If the English system of measurement is being used, the applicable values for dimension units are &lt;code&gt;FEET&lt;/code&gt; and &lt;code&gt;INCH&lt;/code&gt;. If the metric system of measurement is being used, the applicable values for weight units are &lt;code&gt;METER&lt;/code&gt; and &lt;code&gt;CENTIMETER&lt;/code&gt;. The metric system is used by most countries outside of the US.
      */
-    private String unit;
+    private LengthUnitOfMeasureEnum unit;
     /**
-     * The actual width (in the measurement unit specified in the &lt;strong&gt;unit&lt;/strong&gt; field) of the shipping package. All fields of the &lt;strong&gt;dimensions&lt;/strong&gt; container are required if package dimensions are specified.&lt;br&gt;&lt;br&gt;If a shipping package measured 21.5 inches in length, 15.0 inches in width, and 12.0 inches in height,  the &lt;strong&gt;dimensions&lt;/strong&gt; container would look as follows: &lt;br&gt; &lt;pre&gt;&lt;code&gt;&quot;dimensions&quot;: {&lt;br&gt; &quot;length&quot;: 21.5,&lt;br&gt; &quot;width&quot;: 15.0,&lt;br&gt; &quot;height&quot;: 12.0,&lt;br&gt; &quot;unit&quot;: &quot;INCH&quot;&lt;br&gt; } &lt;/pre&gt;&lt;/code&gt;
+     * The actual width (in the measurement unit specified in the &lt;strong&gt;unit&lt;/strong&gt; field) of the shipping package. All fields of the &lt;strong&gt;dimensions&lt;/strong&gt; container are required if package dimensions are specified.&lt;br&gt;&lt;br&gt;If a shipping package measured 21.5 inches in length, 15.0 inches in width, and 12.0 inches in height,  the &lt;strong&gt;dimensions&lt;/strong&gt; container would look as follows: &lt;br&gt; &lt;pre&gt;&quot;dimensions&quot;: {&lt;br&gt; &quot;length&quot;: 21.5,&lt;br&gt; &quot;width&quot;: 15.0,&lt;br&gt; &quot;height&quot;: 12.0,&lt;br&gt; &quot;unit&quot;: &quot;INCH&quot;&lt;br&gt; } &lt;/pre&gt;
      */
     private Double width;
     /**
@@ -79,12 +79,12 @@ public class Dimension implements AdditionalDataHolder, Parsable {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(4);
         deserializerMap.put("height", (n) -> { this.setHeight(n.getDoubleValue()); });
         deserializerMap.put("length", (n) -> { this.setLength(n.getDoubleValue()); });
-        deserializerMap.put("unit", (n) -> { this.setUnit(n.getStringValue()); });
+        deserializerMap.put("unit", (n) -> { this.setUnit(n.getEnumValue(LengthUnitOfMeasureEnum::forValue)); });
         deserializerMap.put("width", (n) -> { this.setWidth(n.getDoubleValue()); });
         return deserializerMap;
     }
     /**
-     * Gets the height property value. The actual height (in the measurement unit specified in the &lt;strong&gt;unit&lt;/strong&gt; field) of the shipping package. All fields of the &lt;strong&gt;dimensions&lt;/strong&gt; container are required if package dimensions are specified. &lt;br&gt;&lt;br&gt;If a shipping package measured 21.5 inches in length, 15.0 inches in width, and 12.0 inches in height, the &lt;strong&gt;dimensions&lt;/strong&gt; container would look as follows: &lt;br&gt; &lt;pre&gt;&lt;code&gt;&quot;dimensions&quot;: {&lt;br&gt; &quot;length&quot;: 21.5,&lt;br&gt; &quot;width&quot;: 15.0,&lt;br&gt; &quot;height&quot;: 12.0,&lt;br&gt; &quot;unit&quot;: &quot;INCH&quot;&lt;br&gt; } &lt;/pre&gt;&lt;/code&gt;
+     * Gets the height property value. The actual height (in the measurement unit specified in the &lt;strong&gt;unit&lt;/strong&gt; field) of the shipping package. All fields of the &lt;strong&gt;dimensions&lt;/strong&gt; container are required if package dimensions are specified. &lt;br&gt;&lt;br&gt;If a shipping package measured 21.5 inches in length, 15.0 inches in width, and 12.0 inches in height, the &lt;strong&gt;dimensions&lt;/strong&gt; container would look as follows: &lt;br&gt; &lt;pre&gt;&quot;dimensions&quot;: {&lt;br&gt; &quot;length&quot;: 21.5,&lt;br&gt; &quot;width&quot;: 15.0,&lt;br&gt; &quot;height&quot;: 12.0,&lt;br&gt; &quot;unit&quot;: &quot;INCH&quot;&lt;br&gt; } &lt;/pre&gt;
      * @return a {@link Double}
      */
     @jakarta.annotation.Nullable
@@ -92,7 +92,7 @@ public class Dimension implements AdditionalDataHolder, Parsable {
         return this.height;
     }
     /**
-     * Gets the length property value. The actual length (in the measurement unit specified in the &lt;strong&gt;unit&lt;/strong&gt; field) of the shipping package. All fields of the &lt;strong&gt;dimensions&lt;/strong&gt; container are required if package dimensions are specified. &lt;br&gt;&lt;br&gt;If a shipping package measured 21.5 inches in length, 15.0 inches in width, and 12.0 inches in height,  the &lt;strong&gt;dimensions&lt;/strong&gt; container would look as follows: &lt;br&gt; &lt;pre&gt;&lt;code&gt;&quot;dimensions&quot;: {&lt;br&gt; &quot;length&quot;: 21.5,&lt;br&gt; &quot;width&quot;: 15.0,&lt;br&gt; &quot;height&quot;: 12.0,&lt;br&gt; &quot;unit&quot;: &quot;INCH&quot;&lt;br&gt; } &lt;/pre&gt;&lt;/code&gt;
+     * Gets the length property value. The actual length (in the measurement unit specified in the &lt;strong&gt;unit&lt;/strong&gt; field) of the shipping package. All fields of the &lt;strong&gt;dimensions&lt;/strong&gt; container are required if package dimensions are specified. &lt;br&gt;&lt;br&gt;If a shipping package measured 21.5 inches in length, 15.0 inches in width, and 12.0 inches in height,  the &lt;strong&gt;dimensions&lt;/strong&gt; container would look as follows: &lt;br&gt; &lt;pre&gt;&quot;dimensions&quot;: {&lt;br&gt; &quot;length&quot;: 21.5,&lt;br&gt; &quot;width&quot;: 15.0,&lt;br&gt; &quot;height&quot;: 12.0,&lt;br&gt; &quot;unit&quot;: &quot;INCH&quot;&lt;br&gt; } &lt;/pre&gt;
      * @return a {@link Double}
      */
     @jakarta.annotation.Nullable
@@ -100,15 +100,15 @@ public class Dimension implements AdditionalDataHolder, Parsable {
         return this.length;
     }
     /**
-     * Gets the unit property value. The unit of measurement used to specify the dimensions of a shipping package. All fields of the &lt;strong&gt;dimensions&lt;/strong&gt; container are required if package dimensions are specified. If the English system of measurement is being used, the applicable values for dimension units are &lt;code&gt;FEET&lt;/code&gt; and &lt;code&gt;INCH&lt;/code&gt;. If the metric system of measurement is being used, the applicable values for weight units are &lt;code&gt;METER&lt;/code&gt; and &lt;code&gt;CENTIMETER&lt;/code&gt;. The metric system is used by most countries outside of the US. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/slr:LengthUnitOfMeasureEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the unit property value. The unit of measurement used to specify the dimensions of a shipping package. All fields of the &lt;strong&gt;dimensions&lt;/strong&gt; container are required if package dimensions are specified. If the English system of measurement is being used, the applicable values for dimension units are &lt;code&gt;FEET&lt;/code&gt; and &lt;code&gt;INCH&lt;/code&gt;. If the metric system of measurement is being used, the applicable values for weight units are &lt;code&gt;METER&lt;/code&gt; and &lt;code&gt;CENTIMETER&lt;/code&gt;. The metric system is used by most countries outside of the US.
+     * @return a {@link LengthUnitOfMeasureEnum}
      */
     @jakarta.annotation.Nullable
-    public String getUnit() {
+    public LengthUnitOfMeasureEnum getUnit() {
         return this.unit;
     }
     /**
-     * Gets the width property value. The actual width (in the measurement unit specified in the &lt;strong&gt;unit&lt;/strong&gt; field) of the shipping package. All fields of the &lt;strong&gt;dimensions&lt;/strong&gt; container are required if package dimensions are specified.&lt;br&gt;&lt;br&gt;If a shipping package measured 21.5 inches in length, 15.0 inches in width, and 12.0 inches in height,  the &lt;strong&gt;dimensions&lt;/strong&gt; container would look as follows: &lt;br&gt; &lt;pre&gt;&lt;code&gt;&quot;dimensions&quot;: {&lt;br&gt; &quot;length&quot;: 21.5,&lt;br&gt; &quot;width&quot;: 15.0,&lt;br&gt; &quot;height&quot;: 12.0,&lt;br&gt; &quot;unit&quot;: &quot;INCH&quot;&lt;br&gt; } &lt;/pre&gt;&lt;/code&gt;
+     * Gets the width property value. The actual width (in the measurement unit specified in the &lt;strong&gt;unit&lt;/strong&gt; field) of the shipping package. All fields of the &lt;strong&gt;dimensions&lt;/strong&gt; container are required if package dimensions are specified.&lt;br&gt;&lt;br&gt;If a shipping package measured 21.5 inches in length, 15.0 inches in width, and 12.0 inches in height,  the &lt;strong&gt;dimensions&lt;/strong&gt; container would look as follows: &lt;br&gt; &lt;pre&gt;&quot;dimensions&quot;: {&lt;br&gt; &quot;length&quot;: 21.5,&lt;br&gt; &quot;width&quot;: 15.0,&lt;br&gt; &quot;height&quot;: 12.0,&lt;br&gt; &quot;unit&quot;: &quot;INCH&quot;&lt;br&gt; } &lt;/pre&gt;
      * @return a {@link Double}
      */
     @jakarta.annotation.Nullable
@@ -123,7 +123,7 @@ public class Dimension implements AdditionalDataHolder, Parsable {
         Objects.requireNonNull(writer);
         writer.writeDoubleValue("height", this.getHeight());
         writer.writeDoubleValue("length", this.getLength());
-        writer.writeStringValue("unit", this.getUnit());
+        writer.writeEnumValue("unit", this.getUnit());
         writer.writeDoubleValue("width", this.getWidth());
         writer.writeAdditionalData(this.getAdditionalData());
     }
@@ -135,28 +135,28 @@ public class Dimension implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the height property value. The actual height (in the measurement unit specified in the &lt;strong&gt;unit&lt;/strong&gt; field) of the shipping package. All fields of the &lt;strong&gt;dimensions&lt;/strong&gt; container are required if package dimensions are specified. &lt;br&gt;&lt;br&gt;If a shipping package measured 21.5 inches in length, 15.0 inches in width, and 12.0 inches in height, the &lt;strong&gt;dimensions&lt;/strong&gt; container would look as follows: &lt;br&gt; &lt;pre&gt;&lt;code&gt;&quot;dimensions&quot;: {&lt;br&gt; &quot;length&quot;: 21.5,&lt;br&gt; &quot;width&quot;: 15.0,&lt;br&gt; &quot;height&quot;: 12.0,&lt;br&gt; &quot;unit&quot;: &quot;INCH&quot;&lt;br&gt; } &lt;/pre&gt;&lt;/code&gt;
+     * Sets the height property value. The actual height (in the measurement unit specified in the &lt;strong&gt;unit&lt;/strong&gt; field) of the shipping package. All fields of the &lt;strong&gt;dimensions&lt;/strong&gt; container are required if package dimensions are specified. &lt;br&gt;&lt;br&gt;If a shipping package measured 21.5 inches in length, 15.0 inches in width, and 12.0 inches in height, the &lt;strong&gt;dimensions&lt;/strong&gt; container would look as follows: &lt;br&gt; &lt;pre&gt;&quot;dimensions&quot;: {&lt;br&gt; &quot;length&quot;: 21.5,&lt;br&gt; &quot;width&quot;: 15.0,&lt;br&gt; &quot;height&quot;: 12.0,&lt;br&gt; &quot;unit&quot;: &quot;INCH&quot;&lt;br&gt; } &lt;/pre&gt;
      * @param value Value to set for the height property.
      */
     public void setHeight(@jakarta.annotation.Nullable final Double value) {
         this.height = value;
     }
     /**
-     * Sets the length property value. The actual length (in the measurement unit specified in the &lt;strong&gt;unit&lt;/strong&gt; field) of the shipping package. All fields of the &lt;strong&gt;dimensions&lt;/strong&gt; container are required if package dimensions are specified. &lt;br&gt;&lt;br&gt;If a shipping package measured 21.5 inches in length, 15.0 inches in width, and 12.0 inches in height,  the &lt;strong&gt;dimensions&lt;/strong&gt; container would look as follows: &lt;br&gt; &lt;pre&gt;&lt;code&gt;&quot;dimensions&quot;: {&lt;br&gt; &quot;length&quot;: 21.5,&lt;br&gt; &quot;width&quot;: 15.0,&lt;br&gt; &quot;height&quot;: 12.0,&lt;br&gt; &quot;unit&quot;: &quot;INCH&quot;&lt;br&gt; } &lt;/pre&gt;&lt;/code&gt;
+     * Sets the length property value. The actual length (in the measurement unit specified in the &lt;strong&gt;unit&lt;/strong&gt; field) of the shipping package. All fields of the &lt;strong&gt;dimensions&lt;/strong&gt; container are required if package dimensions are specified. &lt;br&gt;&lt;br&gt;If a shipping package measured 21.5 inches in length, 15.0 inches in width, and 12.0 inches in height,  the &lt;strong&gt;dimensions&lt;/strong&gt; container would look as follows: &lt;br&gt; &lt;pre&gt;&quot;dimensions&quot;: {&lt;br&gt; &quot;length&quot;: 21.5,&lt;br&gt; &quot;width&quot;: 15.0,&lt;br&gt; &quot;height&quot;: 12.0,&lt;br&gt; &quot;unit&quot;: &quot;INCH&quot;&lt;br&gt; } &lt;/pre&gt;
      * @param value Value to set for the length property.
      */
     public void setLength(@jakarta.annotation.Nullable final Double value) {
         this.length = value;
     }
     /**
-     * Sets the unit property value. The unit of measurement used to specify the dimensions of a shipping package. All fields of the &lt;strong&gt;dimensions&lt;/strong&gt; container are required if package dimensions are specified. If the English system of measurement is being used, the applicable values for dimension units are &lt;code&gt;FEET&lt;/code&gt; and &lt;code&gt;INCH&lt;/code&gt;. If the metric system of measurement is being used, the applicable values for weight units are &lt;code&gt;METER&lt;/code&gt; and &lt;code&gt;CENTIMETER&lt;/code&gt;. The metric system is used by most countries outside of the US. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/slr:LengthUnitOfMeasureEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the unit property value. The unit of measurement used to specify the dimensions of a shipping package. All fields of the &lt;strong&gt;dimensions&lt;/strong&gt; container are required if package dimensions are specified. If the English system of measurement is being used, the applicable values for dimension units are &lt;code&gt;FEET&lt;/code&gt; and &lt;code&gt;INCH&lt;/code&gt;. If the metric system of measurement is being used, the applicable values for weight units are &lt;code&gt;METER&lt;/code&gt; and &lt;code&gt;CENTIMETER&lt;/code&gt;. The metric system is used by most countries outside of the US.
      * @param value Value to set for the unit property.
      */
-    public void setUnit(@jakarta.annotation.Nullable final String value) {
+    public void setUnit(@jakarta.annotation.Nullable final LengthUnitOfMeasureEnum value) {
         this.unit = value;
     }
     /**
-     * Sets the width property value. The actual width (in the measurement unit specified in the &lt;strong&gt;unit&lt;/strong&gt; field) of the shipping package. All fields of the &lt;strong&gt;dimensions&lt;/strong&gt; container are required if package dimensions are specified.&lt;br&gt;&lt;br&gt;If a shipping package measured 21.5 inches in length, 15.0 inches in width, and 12.0 inches in height,  the &lt;strong&gt;dimensions&lt;/strong&gt; container would look as follows: &lt;br&gt; &lt;pre&gt;&lt;code&gt;&quot;dimensions&quot;: {&lt;br&gt; &quot;length&quot;: 21.5,&lt;br&gt; &quot;width&quot;: 15.0,&lt;br&gt; &quot;height&quot;: 12.0,&lt;br&gt; &quot;unit&quot;: &quot;INCH&quot;&lt;br&gt; } &lt;/pre&gt;&lt;/code&gt;
+     * Sets the width property value. The actual width (in the measurement unit specified in the &lt;strong&gt;unit&lt;/strong&gt; field) of the shipping package. All fields of the &lt;strong&gt;dimensions&lt;/strong&gt; container are required if package dimensions are specified.&lt;br&gt;&lt;br&gt;If a shipping package measured 21.5 inches in length, 15.0 inches in width, and 12.0 inches in height,  the &lt;strong&gt;dimensions&lt;/strong&gt; container would look as follows: &lt;br&gt; &lt;pre&gt;&quot;dimensions&quot;: {&lt;br&gt; &quot;length&quot;: 21.5,&lt;br&gt; &quot;width&quot;: 15.0,&lt;br&gt; &quot;height&quot;: 12.0,&lt;br&gt; &quot;unit&quot;: &quot;INCH&quot;&lt;br&gt; } &lt;/pre&gt;
      * @param value Value to set for the width property.
      */
     public void setWidth(@jakarta.annotation.Nullable final Double value) {

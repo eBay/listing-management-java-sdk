@@ -31,27 +31,27 @@ public class InventoryLocation implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * This type is used to provide shipping specification details, such as the weekly cut-off schedule for order handling and cut-off override(s), for a fulfillment center location. 
+     * This container is used to update information about a fulfillment center&apos;s shipping specifications, such as the weekly cut-off time schedule for order handling and any cut-off overrides.
      */
     private FulfillmentCenterSpecifications fulfillmentCenterSpecifications;
     /**
-     * This type is used by the &lt;b&gt;createInventoryLocation&lt;/b&gt; call to provide an full or partial address of an inventory location.
+     * This container is used to add any addition physical address and geographical coordinate information for a warehouse, store, or fulfillment center inventory location.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; For warehouse and store inventory locations, address fields can be updated any number of times. For fulfilment center locations, address fields cannot be updated. However, if any address fields were omitted during the &lt;b&gt;createInventoryLocation&lt;/b&gt; call, they can be added through this method.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; When updating a warehouse location to a fulfillment center, sellers can update any of the address fields a single time during the same call used to make this update. After this, they can no longer be updated.&lt;/span&gt; 
      */
     private LocationDetails location;
     /**
-     * This text field is used by the merchant to provide/update additional information about an inventory location. Whatever text is passed in this field will replace the current text string defined for this field. If the text will not change, the same text should be passed in once again. &lt;br&gt;&lt;br&gt;&lt;b&gt;Max length&lt;/b&gt;: 256
+     * This text field is used by the merchant to provide/update additional information about an inventory location. Whatever text is passed in this field will replace the current text string defined for this field. If the text will not change, the same text should be passed in once again. &lt;br&gt;&lt;br&gt;&lt;b&gt;Maximum length&lt;/b&gt;: 256
      */
     private String locationAdditionalInformation;
     /**
-     * This text field is generally used by the merchant to provide/update special pickup instructions for a store inventory location. Although this field is optional, it is recommended that merchants provide this field to create a pleasant and easy pickup experience for In-Store Pickup and Click and Collect orders. If this field is not included in the call request payload, eBay will use the default pickup instructions contained in the merchant&apos;s profile (if available). Whatever text is passed in this field will replace the current text string defined for this field. If the text will not change, the same text should be passed in once again. &lt;br&gt;&lt;br&gt;&lt;b&gt;Max length&lt;/b&gt;: 1000
+     * This text field is generally used by the merchant to provide/update special pickup instructions for a store inventory location. Although this field is optional, it is recommended that merchants provide this field to create a pleasant and easy pickup experience for In-Store Pickup and Click and Collect orders. If this field is not included in the call request payload, eBay will use the default pickup instructions contained in the merchant&apos;s profile (if available). Whatever text is passed in this field will replace the current text string defined for this field. If the text will not change, the same text should be passed in once again. &lt;br&gt;&lt;br&gt;&lt;b&gt;Maximum length&lt;/b&gt;: 1000
      */
     private String locationInstructions;
     /**
      * This container is used to update the location type(s) associated with an inventory location.
      */
-    private java.util.List<String> locationTypes;
+    private java.util.List<StoreTypeEnum> locationTypes;
     /**
-     * This text field is used by the merchant to provide/update the Website address (URL) associated with the inventory location. The URL that is passed in this field will replace any other URL that may be defined for this field. &lt;br&gt;&lt;br&gt;&lt;b&gt;Max length&lt;/b&gt;: 512
+     * This text field is used by the merchant to provide/update the Website address (URL) associated with the inventory location. The URL that is passed in this field will replace any other URL that may be defined for this field. &lt;br&gt;&lt;br&gt;&lt;b&gt;Maximum length&lt;/b&gt;: 512
      */
     private String locationWebUrl;
     /**
@@ -63,7 +63,7 @@ public class InventoryLocation implements AdditionalDataHolder, Parsable {
      */
     private java.util.List<OperatingHours> operatingHours;
     /**
-     * This text field is used by the merchant to provide/update the phone number for the inventory location. The phone number that is passed in this field will replace any other phone number that may be defined for this field. &lt;br&gt;&lt;br&gt;&lt;b&gt;Max length&lt;/b&gt;: 36
+     * This text field is used by the merchant to provide/update the phone number for the inventory location. The phone number that is passed in this field will replace any other phone number that may be defined for this field. &lt;br&gt;&lt;br&gt;&lt;b&gt;Maximum length&lt;/b&gt;: 36
      */
     private String phone;
     /**
@@ -109,7 +109,7 @@ public class InventoryLocation implements AdditionalDataHolder, Parsable {
         deserializerMap.put("location", (n) -> { this.setLocation(n.getObjectValue(LocationDetails::createFromDiscriminatorValue)); });
         deserializerMap.put("locationAdditionalInformation", (n) -> { this.setLocationAdditionalInformation(n.getStringValue()); });
         deserializerMap.put("locationInstructions", (n) -> { this.setLocationInstructions(n.getStringValue()); });
-        deserializerMap.put("locationTypes", (n) -> { this.setLocationTypes(n.getCollectionOfPrimitiveValues(String.class)); });
+        deserializerMap.put("locationTypes", (n) -> { this.setLocationTypes(n.getCollectionOfEnumValues(StoreTypeEnum::forValue)); });
         deserializerMap.put("locationWebUrl", (n) -> { this.setLocationWebUrl(n.getStringValue()); });
         deserializerMap.put("name", (n) -> { this.setName(n.getStringValue()); });
         deserializerMap.put("operatingHours", (n) -> { this.setOperatingHours(n.getCollectionOfObjectValues(OperatingHours::createFromDiscriminatorValue)); });
@@ -119,7 +119,7 @@ public class InventoryLocation implements AdditionalDataHolder, Parsable {
         return deserializerMap;
     }
     /**
-     * Gets the fulfillmentCenterSpecifications property value. This type is used to provide shipping specification details, such as the weekly cut-off schedule for order handling and cut-off override(s), for a fulfillment center location. 
+     * Gets the fulfillmentCenterSpecifications property value. This container is used to update information about a fulfillment center&apos;s shipping specifications, such as the weekly cut-off time schedule for order handling and any cut-off overrides.
      * @return a {@link FulfillmentCenterSpecifications}
      */
     @jakarta.annotation.Nullable
@@ -127,7 +127,7 @@ public class InventoryLocation implements AdditionalDataHolder, Parsable {
         return this.fulfillmentCenterSpecifications;
     }
     /**
-     * Gets the location property value. This type is used by the &lt;b&gt;createInventoryLocation&lt;/b&gt; call to provide an full or partial address of an inventory location.
+     * Gets the location property value. This container is used to add any addition physical address and geographical coordinate information for a warehouse, store, or fulfillment center inventory location.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; For warehouse and store inventory locations, address fields can be updated any number of times. For fulfilment center locations, address fields cannot be updated. However, if any address fields were omitted during the &lt;b&gt;createInventoryLocation&lt;/b&gt; call, they can be added through this method.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; When updating a warehouse location to a fulfillment center, sellers can update any of the address fields a single time during the same call used to make this update. After this, they can no longer be updated.&lt;/span&gt; 
      * @return a {@link LocationDetails}
      */
     @jakarta.annotation.Nullable
@@ -135,7 +135,7 @@ public class InventoryLocation implements AdditionalDataHolder, Parsable {
         return this.location;
     }
     /**
-     * Gets the locationAdditionalInformation property value. This text field is used by the merchant to provide/update additional information about an inventory location. Whatever text is passed in this field will replace the current text string defined for this field. If the text will not change, the same text should be passed in once again. &lt;br&gt;&lt;br&gt;&lt;b&gt;Max length&lt;/b&gt;: 256
+     * Gets the locationAdditionalInformation property value. This text field is used by the merchant to provide/update additional information about an inventory location. Whatever text is passed in this field will replace the current text string defined for this field. If the text will not change, the same text should be passed in once again. &lt;br&gt;&lt;br&gt;&lt;b&gt;Maximum length&lt;/b&gt;: 256
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -143,7 +143,7 @@ public class InventoryLocation implements AdditionalDataHolder, Parsable {
         return this.locationAdditionalInformation;
     }
     /**
-     * Gets the locationInstructions property value. This text field is generally used by the merchant to provide/update special pickup instructions for a store inventory location. Although this field is optional, it is recommended that merchants provide this field to create a pleasant and easy pickup experience for In-Store Pickup and Click and Collect orders. If this field is not included in the call request payload, eBay will use the default pickup instructions contained in the merchant&apos;s profile (if available). Whatever text is passed in this field will replace the current text string defined for this field. If the text will not change, the same text should be passed in once again. &lt;br&gt;&lt;br&gt;&lt;b&gt;Max length&lt;/b&gt;: 1000
+     * Gets the locationInstructions property value. This text field is generally used by the merchant to provide/update special pickup instructions for a store inventory location. Although this field is optional, it is recommended that merchants provide this field to create a pleasant and easy pickup experience for In-Store Pickup and Click and Collect orders. If this field is not included in the call request payload, eBay will use the default pickup instructions contained in the merchant&apos;s profile (if available). Whatever text is passed in this field will replace the current text string defined for this field. If the text will not change, the same text should be passed in once again. &lt;br&gt;&lt;br&gt;&lt;b&gt;Maximum length&lt;/b&gt;: 1000
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -152,14 +152,14 @@ public class InventoryLocation implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the locationTypes property value. This container is used to update the location type(s) associated with an inventory location.
-     * @return a {@link java.util.List<String>}
+     * @return a {@link java.util.List<StoreTypeEnum>}
      */
     @jakarta.annotation.Nullable
-    public java.util.List<String> getLocationTypes() {
+    public java.util.List<StoreTypeEnum> getLocationTypes() {
         return this.locationTypes;
     }
     /**
-     * Gets the locationWebUrl property value. This text field is used by the merchant to provide/update the Website address (URL) associated with the inventory location. The URL that is passed in this field will replace any other URL that may be defined for this field. &lt;br&gt;&lt;br&gt;&lt;b&gt;Max length&lt;/b&gt;: 512
+     * Gets the locationWebUrl property value. This text field is used by the merchant to provide/update the Website address (URL) associated with the inventory location. The URL that is passed in this field will replace any other URL that may be defined for this field. &lt;br&gt;&lt;br&gt;&lt;b&gt;Maximum length&lt;/b&gt;: 512
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -183,7 +183,7 @@ public class InventoryLocation implements AdditionalDataHolder, Parsable {
         return this.operatingHours;
     }
     /**
-     * Gets the phone property value. This text field is used by the merchant to provide/update the phone number for the inventory location. The phone number that is passed in this field will replace any other phone number that may be defined for this field. &lt;br&gt;&lt;br&gt;&lt;b&gt;Max length&lt;/b&gt;: 36
+     * Gets the phone property value. This text field is used by the merchant to provide/update the phone number for the inventory location. The phone number that is passed in this field will replace any other phone number that may be defined for this field. &lt;br&gt;&lt;br&gt;&lt;b&gt;Maximum length&lt;/b&gt;: 36
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -216,7 +216,7 @@ public class InventoryLocation implements AdditionalDataHolder, Parsable {
         writer.writeObjectValue("location", this.getLocation());
         writer.writeStringValue("locationAdditionalInformation", this.getLocationAdditionalInformation());
         writer.writeStringValue("locationInstructions", this.getLocationInstructions());
-        writer.writeCollectionOfPrimitiveValues("locationTypes", this.getLocationTypes());
+        writer.writeCollectionOfEnumValues("locationTypes", this.getLocationTypes());
         writer.writeStringValue("locationWebUrl", this.getLocationWebUrl());
         writer.writeStringValue("name", this.getName());
         writer.writeCollectionOfObjectValues("operatingHours", this.getOperatingHours());
@@ -233,28 +233,28 @@ public class InventoryLocation implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the fulfillmentCenterSpecifications property value. This type is used to provide shipping specification details, such as the weekly cut-off schedule for order handling and cut-off override(s), for a fulfillment center location. 
+     * Sets the fulfillmentCenterSpecifications property value. This container is used to update information about a fulfillment center&apos;s shipping specifications, such as the weekly cut-off time schedule for order handling and any cut-off overrides.
      * @param value Value to set for the fulfillmentCenterSpecifications property.
      */
     public void setFulfillmentCenterSpecifications(@jakarta.annotation.Nullable final FulfillmentCenterSpecifications value) {
         this.fulfillmentCenterSpecifications = value;
     }
     /**
-     * Sets the location property value. This type is used by the &lt;b&gt;createInventoryLocation&lt;/b&gt; call to provide an full or partial address of an inventory location.
+     * Sets the location property value. This container is used to add any addition physical address and geographical coordinate information for a warehouse, store, or fulfillment center inventory location.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; For warehouse and store inventory locations, address fields can be updated any number of times. For fulfilment center locations, address fields cannot be updated. However, if any address fields were omitted during the &lt;b&gt;createInventoryLocation&lt;/b&gt; call, they can be added through this method.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; When updating a warehouse location to a fulfillment center, sellers can update any of the address fields a single time during the same call used to make this update. After this, they can no longer be updated.&lt;/span&gt; 
      * @param value Value to set for the location property.
      */
     public void setLocation(@jakarta.annotation.Nullable final LocationDetails value) {
         this.location = value;
     }
     /**
-     * Sets the locationAdditionalInformation property value. This text field is used by the merchant to provide/update additional information about an inventory location. Whatever text is passed in this field will replace the current text string defined for this field. If the text will not change, the same text should be passed in once again. &lt;br&gt;&lt;br&gt;&lt;b&gt;Max length&lt;/b&gt;: 256
+     * Sets the locationAdditionalInformation property value. This text field is used by the merchant to provide/update additional information about an inventory location. Whatever text is passed in this field will replace the current text string defined for this field. If the text will not change, the same text should be passed in once again. &lt;br&gt;&lt;br&gt;&lt;b&gt;Maximum length&lt;/b&gt;: 256
      * @param value Value to set for the locationAdditionalInformation property.
      */
     public void setLocationAdditionalInformation(@jakarta.annotation.Nullable final String value) {
         this.locationAdditionalInformation = value;
     }
     /**
-     * Sets the locationInstructions property value. This text field is generally used by the merchant to provide/update special pickup instructions for a store inventory location. Although this field is optional, it is recommended that merchants provide this field to create a pleasant and easy pickup experience for In-Store Pickup and Click and Collect orders. If this field is not included in the call request payload, eBay will use the default pickup instructions contained in the merchant&apos;s profile (if available). Whatever text is passed in this field will replace the current text string defined for this field. If the text will not change, the same text should be passed in once again. &lt;br&gt;&lt;br&gt;&lt;b&gt;Max length&lt;/b&gt;: 1000
+     * Sets the locationInstructions property value. This text field is generally used by the merchant to provide/update special pickup instructions for a store inventory location. Although this field is optional, it is recommended that merchants provide this field to create a pleasant and easy pickup experience for In-Store Pickup and Click and Collect orders. If this field is not included in the call request payload, eBay will use the default pickup instructions contained in the merchant&apos;s profile (if available). Whatever text is passed in this field will replace the current text string defined for this field. If the text will not change, the same text should be passed in once again. &lt;br&gt;&lt;br&gt;&lt;b&gt;Maximum length&lt;/b&gt;: 1000
      * @param value Value to set for the locationInstructions property.
      */
     public void setLocationInstructions(@jakarta.annotation.Nullable final String value) {
@@ -264,11 +264,11 @@ public class InventoryLocation implements AdditionalDataHolder, Parsable {
      * Sets the locationTypes property value. This container is used to update the location type(s) associated with an inventory location.
      * @param value Value to set for the locationTypes property.
      */
-    public void setLocationTypes(@jakarta.annotation.Nullable final java.util.List<String> value) {
+    public void setLocationTypes(@jakarta.annotation.Nullable final java.util.List<StoreTypeEnum> value) {
         this.locationTypes = value;
     }
     /**
-     * Sets the locationWebUrl property value. This text field is used by the merchant to provide/update the Website address (URL) associated with the inventory location. The URL that is passed in this field will replace any other URL that may be defined for this field. &lt;br&gt;&lt;br&gt;&lt;b&gt;Max length&lt;/b&gt;: 512
+     * Sets the locationWebUrl property value. This text field is used by the merchant to provide/update the Website address (URL) associated with the inventory location. The URL that is passed in this field will replace any other URL that may be defined for this field. &lt;br&gt;&lt;br&gt;&lt;b&gt;Maximum length&lt;/b&gt;: 512
      * @param value Value to set for the locationWebUrl property.
      */
     public void setLocationWebUrl(@jakarta.annotation.Nullable final String value) {
@@ -289,7 +289,7 @@ public class InventoryLocation implements AdditionalDataHolder, Parsable {
         this.operatingHours = value;
     }
     /**
-     * Sets the phone property value. This text field is used by the merchant to provide/update the phone number for the inventory location. The phone number that is passed in this field will replace any other phone number that may be defined for this field. &lt;br&gt;&lt;br&gt;&lt;b&gt;Max length&lt;/b&gt;: 36
+     * Sets the phone property value. This text field is used by the merchant to provide/update the phone number for the inventory location. The phone number that is passed in this field will replace any other phone number that may be defined for this field. &lt;br&gt;&lt;br&gt;&lt;b&gt;Maximum length&lt;/b&gt;: 36
      * @param value Value to set for the phone property.
      */
     public void setPhone(@jakarta.annotation.Nullable final String value) {

@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 /**
- * This type is used to provide details about a customized eBay Store category.
+ * This type is used to express details about a customized eBay Store category.
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class StoreCategoryType implements AdditionalDataHolder, Parsable {
@@ -31,7 +31,7 @@ public class StoreCategoryType implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * Unique identifier of an eBay Store&apos;s custom category. eBay auto-generates this identifier when a seller establishes a custom store category. This category ID should not be confused with an eBay category ID.
+     * Unique identifier of an eBay Store&apos;s custom category. eBay auto-generates this identifier when a sellerestablishes a custom store category. This category ID should not be confused with an eBay category ID.
      */
     private String categoryId;
     /**
@@ -75,7 +75,7 @@ public class StoreCategoryType implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the categoryId property value. Unique identifier of an eBay Store&apos;s custom category. eBay auto-generates this identifier when a seller establishes a custom store category. This category ID should not be confused with an eBay category ID.
+     * Gets the categoryId property value. Unique identifier of an eBay Store&apos;s custom category. eBay auto-generates this identifier when a sellerestablishes a custom store category. This category ID should not be confused with an eBay category ID.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -149,7 +149,7 @@ public class StoreCategoryType implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the categoryId property value. Unique identifier of an eBay Store&apos;s custom category. eBay auto-generates this identifier when a seller establishes a custom store category. This category ID should not be confused with an eBay category ID.
+     * Sets the categoryId property value. Unique identifier of an eBay Store&apos;s custom category. eBay auto-generates this identifier when a sellerestablishes a custom store category. This category ID should not be confused with an eBay category ID.
      * @param value Value to set for the categoryId property.
      */
     public void setCategoryId(@jakarta.annotation.Nullable final String value) {

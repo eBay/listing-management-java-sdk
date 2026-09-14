@@ -14,6 +14,7 @@
 
 package com.ebay.listingmanagement.generated.inventory.models;
 
+import com.microsoft.kiota.ApiException;
 import com.microsoft.kiota.serialization.AdditionalDataHolder;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParseNode;
@@ -22,48 +23,48 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 /**
- * This type is used to express detailed information on errors and warnings that may occur with a call request.
+ * This type defines the fields that can be returned in an error.
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
-public class Error implements AdditionalDataHolder, Parsable {
+public class Error extends ApiException implements AdditionalDataHolder, Parsable {
     /**
      * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      */
     private Map<String, Object> additionalData;
     /**
-     * This string value indicates the error category. There are three categories of errors: request errors, application errors, and system errors. 
+     * Identifies the type of erro.
      */
     private String category;
     /**
-     * The name of the domain in which the error or warning occurred.
+     * Name for the primary system where the error occurred. This is relevant for application errors.
      */
     private String domain;
     /**
-     * A unique code that identifies the particular error or warning that occurred. Your application can use error codes as identifiers in your customized error-handling algorithms.
+     * A unique number to identify the error.
      */
     private Integer errorId;
     /**
-     * An array of one or more reference IDs which identify the specific request element(s) most closely associated to the error or warning, if any.
+     * An array of request elements most closely associated to the error.
      */
     private java.util.List<String> inputRefIds;
     /**
-     * A detailed description of the condition that caused the error or warning, and information on what to do to correct the problem.
+     * A more detailed explanation of the error.
      */
     private String longMessage;
     /**
-     * A description of the condition that caused the error or warning.
+     * Information on how to correct the problem, in the end user&apos;s terms and language where applicable.
      */
     private String message;
     /**
-     * An array of one or more reference IDs which identify the specific response element(s) most closely associated to the error or warning, if any.
+     * An array of request elements most closely associated to the error.
      */
     private java.util.List<String> outputRefIds;
     /**
-     * Various warning and error messages return one or more variables that contain contextual information about the error or waring. This is often the field or value that triggered the error or warning.
+     * An array of name/value pairs that describe details the error condition. These are useful when multiple errors are returned.
      */
     private java.util.List<ErrorParameter> parameters;
     /**
-     * The name of the subdomain in which the error or warning occurred.
+     * Further helps indicate which subsystem the error is coming from. System subcategories include: Initialization, Serialization, Security, Monitoring, Rate Limiting, etc.
      */
     private String subdomain;
     /**
@@ -91,7 +92,7 @@ public class Error implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the category property value. This string value indicates the error category. There are three categories of errors: request errors, application errors, and system errors. 
+     * Gets the category property value. Identifies the type of erro.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -99,7 +100,7 @@ public class Error implements AdditionalDataHolder, Parsable {
         return this.category;
     }
     /**
-     * Gets the domain property value. The name of the domain in which the error or warning occurred.
+     * Gets the domain property value. Name for the primary system where the error occurred. This is relevant for application errors.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -107,7 +108,7 @@ public class Error implements AdditionalDataHolder, Parsable {
         return this.domain;
     }
     /**
-     * Gets the errorId property value. A unique code that identifies the particular error or warning that occurred. Your application can use error codes as identifiers in your customized error-handling algorithms.
+     * Gets the errorId property value. A unique number to identify the error.
      * @return a {@link Integer}
      */
     @jakarta.annotation.Nullable
@@ -133,7 +134,7 @@ public class Error implements AdditionalDataHolder, Parsable {
         return deserializerMap;
     }
     /**
-     * Gets the inputRefIds property value. An array of one or more reference IDs which identify the specific request element(s) most closely associated to the error or warning, if any.
+     * Gets the inputRefIds property value. An array of request elements most closely associated to the error.
      * @return a {@link java.util.List<String>}
      */
     @jakarta.annotation.Nullable
@@ -141,7 +142,7 @@ public class Error implements AdditionalDataHolder, Parsable {
         return this.inputRefIds;
     }
     /**
-     * Gets the longMessage property value. A detailed description of the condition that caused the error or warning, and information on what to do to correct the problem.
+     * Gets the longMessage property value. A more detailed explanation of the error.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -149,15 +150,24 @@ public class Error implements AdditionalDataHolder, Parsable {
         return this.longMessage;
     }
     /**
-     * Gets the message property value. A description of the condition that caused the error or warning.
+     * The primary error message.
+     * @return a {@link String}
+     */
+    @jakarta.annotation.Nonnull
+    @Override
+    public String getMessage() {
+        return super.getMessage();
+    }
+    /**
+     * Gets the message property value. Information on how to correct the problem, in the end user&apos;s terms and language where applicable.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
-    public String getMessage() {
+    public String getMessageEscaped() {
         return this.message;
     }
     /**
-     * Gets the outputRefIds property value. An array of one or more reference IDs which identify the specific response element(s) most closely associated to the error or warning, if any.
+     * Gets the outputRefIds property value. An array of request elements most closely associated to the error.
      * @return a {@link java.util.List<String>}
      */
     @jakarta.annotation.Nullable
@@ -165,7 +175,7 @@ public class Error implements AdditionalDataHolder, Parsable {
         return this.outputRefIds;
     }
     /**
-     * Gets the parameters property value. Various warning and error messages return one or more variables that contain contextual information about the error or waring. This is often the field or value that triggered the error or warning.
+     * Gets the parameters property value. An array of name/value pairs that describe details the error condition. These are useful when multiple errors are returned.
      * @return a {@link java.util.List<ErrorParameter>}
      */
     @jakarta.annotation.Nullable
@@ -173,7 +183,7 @@ public class Error implements AdditionalDataHolder, Parsable {
         return this.parameters;
     }
     /**
-     * Gets the subdomain property value. The name of the subdomain in which the error or warning occurred.
+     * Gets the subdomain property value. Further helps indicate which subsystem the error is coming from. System subcategories include: Initialization, Serialization, Security, Monitoring, Rate Limiting, etc.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -191,7 +201,7 @@ public class Error implements AdditionalDataHolder, Parsable {
         writer.writeIntegerValue("errorId", this.getErrorId());
         writer.writeCollectionOfPrimitiveValues("inputRefIds", this.getInputRefIds());
         writer.writeStringValue("longMessage", this.getLongMessage());
-        writer.writeStringValue("message", this.getMessage());
+        writer.writeStringValue("message", this.getMessageEscaped());
         writer.writeCollectionOfPrimitiveValues("outputRefIds", this.getOutputRefIds());
         writer.writeCollectionOfObjectValues("parameters", this.getParameters());
         writer.writeStringValue("subdomain", this.getSubdomain());
@@ -205,63 +215,63 @@ public class Error implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the category property value. This string value indicates the error category. There are three categories of errors: request errors, application errors, and system errors. 
+     * Sets the category property value. Identifies the type of erro.
      * @param value Value to set for the category property.
      */
     public void setCategory(@jakarta.annotation.Nullable final String value) {
         this.category = value;
     }
     /**
-     * Sets the domain property value. The name of the domain in which the error or warning occurred.
+     * Sets the domain property value. Name for the primary system where the error occurred. This is relevant for application errors.
      * @param value Value to set for the domain property.
      */
     public void setDomain(@jakarta.annotation.Nullable final String value) {
         this.domain = value;
     }
     /**
-     * Sets the errorId property value. A unique code that identifies the particular error or warning that occurred. Your application can use error codes as identifiers in your customized error-handling algorithms.
+     * Sets the errorId property value. A unique number to identify the error.
      * @param value Value to set for the errorId property.
      */
     public void setErrorId(@jakarta.annotation.Nullable final Integer value) {
         this.errorId = value;
     }
     /**
-     * Sets the inputRefIds property value. An array of one or more reference IDs which identify the specific request element(s) most closely associated to the error or warning, if any.
+     * Sets the inputRefIds property value. An array of request elements most closely associated to the error.
      * @param value Value to set for the inputRefIds property.
      */
     public void setInputRefIds(@jakarta.annotation.Nullable final java.util.List<String> value) {
         this.inputRefIds = value;
     }
     /**
-     * Sets the longMessage property value. A detailed description of the condition that caused the error or warning, and information on what to do to correct the problem.
+     * Sets the longMessage property value. A more detailed explanation of the error.
      * @param value Value to set for the longMessage property.
      */
     public void setLongMessage(@jakarta.annotation.Nullable final String value) {
         this.longMessage = value;
     }
     /**
-     * Sets the message property value. A description of the condition that caused the error or warning.
+     * Sets the message property value. Information on how to correct the problem, in the end user&apos;s terms and language where applicable.
      * @param value Value to set for the message property.
      */
     public void setMessage(@jakarta.annotation.Nullable final String value) {
         this.message = value;
     }
     /**
-     * Sets the outputRefIds property value. An array of one or more reference IDs which identify the specific response element(s) most closely associated to the error or warning, if any.
+     * Sets the outputRefIds property value. An array of request elements most closely associated to the error.
      * @param value Value to set for the outputRefIds property.
      */
     public void setOutputRefIds(@jakarta.annotation.Nullable final java.util.List<String> value) {
         this.outputRefIds = value;
     }
     /**
-     * Sets the parameters property value. Various warning and error messages return one or more variables that contain contextual information about the error or waring. This is often the field or value that triggered the error or warning.
+     * Sets the parameters property value. An array of name/value pairs that describe details the error condition. These are useful when multiple errors are returned.
      * @param value Value to set for the parameters property.
      */
     public void setParameters(@jakarta.annotation.Nullable final java.util.List<ErrorParameter> value) {
         this.parameters = value;
     }
     /**
-     * Sets the subdomain property value. The name of the subdomain in which the error or warning occurred.
+     * Sets the subdomain property value. Further helps indicate which subsystem the error is coming from. System subcategories include: Initialization, Serialization, Security, Monitoring, Rate Limiting, etc.
      * @param value Value to set for the subdomain property.
      */
     public void setSubdomain(@jakarta.annotation.Nullable final String value) {

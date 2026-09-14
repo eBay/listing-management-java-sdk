@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 /**
- * The two streaming video URLs available for a successfully uploaded video with a status of &lt;code&gt;LIVE&lt;/code&gt;. The supported streaming video protocols are DASH (Dynamic Adaptive Streaming over HTTP) and HLS (HTTPLive Streaming).
+ * The two streaming video URLs available for a successfully uploaded video with a status of &lt;code&gt;LIVE&lt;/code&gt;. The supported streaming video protocols are DASH (Dynamic Adaptive Streaming over HTTP) and HLS (HTTP Live Streaming).
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class Play implements AdditionalDataHolder, Parsable {
@@ -35,9 +35,9 @@ public class Play implements AdditionalDataHolder, Parsable {
      */
     private String playUrl;
     /**
-     * The protocol for the video playlist. Supported protocols are DASH (Dynamic Adaptive Streaming over HTTP) and HLS (HTTPLive Streaming). For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/commerce/media/types/api:ProtocolEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * The protocol for the video playlist. Supported protocols are DASH (Dynamic Adaptive Streaming over HTTP) and HLS (HTTP Live Streaming).
      */
-    private String protocol;
+    private ProtocolEnum protocol;
     /**
      * Instantiates a new {@link Play} and sets the default values.
      */
@@ -70,7 +70,7 @@ public class Play implements AdditionalDataHolder, Parsable {
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(2);
         deserializerMap.put("playUrl", (n) -> { this.setPlayUrl(n.getStringValue()); });
-        deserializerMap.put("protocol", (n) -> { this.setProtocol(n.getStringValue()); });
+        deserializerMap.put("protocol", (n) -> { this.setProtocol(n.getEnumValue(ProtocolEnum::forValue)); });
         return deserializerMap;
     }
     /**
@@ -82,11 +82,11 @@ public class Play implements AdditionalDataHolder, Parsable {
         return this.playUrl;
     }
     /**
-     * Gets the protocol property value. The protocol for the video playlist. Supported protocols are DASH (Dynamic Adaptive Streaming over HTTP) and HLS (HTTPLive Streaming). For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/commerce/media/types/api:ProtocolEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the protocol property value. The protocol for the video playlist. Supported protocols are DASH (Dynamic Adaptive Streaming over HTTP) and HLS (HTTP Live Streaming).
+     * @return a {@link ProtocolEnum}
      */
     @jakarta.annotation.Nullable
-    public String getProtocol() {
+    public ProtocolEnum getProtocol() {
         return this.protocol;
     }
     /**
@@ -96,7 +96,7 @@ public class Play implements AdditionalDataHolder, Parsable {
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         writer.writeStringValue("playUrl", this.getPlayUrl());
-        writer.writeStringValue("protocol", this.getProtocol());
+        writer.writeEnumValue("protocol", this.getProtocol());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -114,10 +114,10 @@ public class Play implements AdditionalDataHolder, Parsable {
         this.playUrl = value;
     }
     /**
-     * Sets the protocol property value. The protocol for the video playlist. Supported protocols are DASH (Dynamic Adaptive Streaming over HTTP) and HLS (HTTPLive Streaming). For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/commerce/media/types/api:ProtocolEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the protocol property value. The protocol for the video playlist. Supported protocols are DASH (Dynamic Adaptive Streaming over HTTP) and HLS (HTTP Live Streaming).
      * @param value Value to set for the protocol property.
      */
-    public void setProtocol(@jakarta.annotation.Nullable final String value) {
+    public void setProtocol(@jakarta.annotation.Nullable final ProtocolEnum value) {
         this.protocol = value;
     }
 }

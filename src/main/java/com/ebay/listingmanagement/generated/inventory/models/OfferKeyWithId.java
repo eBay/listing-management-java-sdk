@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 /**
- * This type is used by the &lt;strong&gt;getListingFees&lt;/strong&gt; call to indicate the unpublished offer(s) for which expected listing fees will be retrieved. The user passes in one or more &lt;strong&gt;offerId&lt;/strong&gt; values (a maximum of 250). See the &lt;a href=&quot;https://pages.ebay.com/help/sell/fees.html &quot; target=&quot;_blank&quot;&gt;Standard selling fees&lt;/a&gt; help page for more information on listing fees.
+ * This type is used by the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-getlistingfees&quot; target=&quot;_blank&quot;&gt;getListingFees&lt;/a&gt; call to indicate the unpublished offer(s) for which expected listing fees will be retrieved. The user passes in one or more &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-bulkpublishoffer.offerkeywithid.offerid&quot; target=&quot;_blank&quot;&gt;offerId&lt;/a&gt; values (a maximum of 250). See the &lt;a href=&quot;https://pages.ebay.com/help/sell/fees.html&quot; target=&quot;_blank&quot;&gt;Standard selling fees&lt;/a&gt; help page for more information on listing fees.
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class OfferKeyWithId implements AdditionalDataHolder, Parsable {
@@ -31,7 +31,7 @@ public class OfferKeyWithId implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * The unique identifier of an unpublished offer for which expected listing fees will be retrieved. One to 250 &lt;strong&gt;offerId&lt;/strong&gt; values can be passed in to the &lt;strong&gt;offers&lt;/strong&gt; container for one &lt;strong&gt;getListingFees&lt;/strong&gt; call. &lt;br&gt;&lt;br&gt;Use the &lt;a href=&quot;/api-docs/sell/inventory/resources/offer/methods/getOffers&quot;&gt;getOffers&lt;/a&gt; method to retrieve offer IDs.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; Errors will occur if &lt;strong&gt;offerId&lt;/strong&gt; values representing published offers are passed in.&lt;/span&gt;
+     * The unique identifier of an unpublished offer for which expected listing fees will be retrieved. One to 250 &lt;strong&gt;offerId&lt;/strong&gt; values can be passed in to the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-getlistingfees.offerkeyswithid.offers&quot; target=&quot;_blank&quot;&gt;offers&lt;/a&gt; container for one &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-getlistingfees.offerkeyswithid.offers&quot; target=&quot;_blank&quot;&gt;getListingFees&lt;/a&gt; call. &lt;br&gt;&lt;br&gt;Use the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-getoffers&quot;&gt;getOffers&lt;/a&gt; method to retrieve offer IDs.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; Errors will occur if &lt;strong&gt;offerId&lt;/strong&gt; values representing published offers are passed in.&lt;/span&gt;
      */
     private String offerId;
     /**
@@ -69,7 +69,7 @@ public class OfferKeyWithId implements AdditionalDataHolder, Parsable {
         return deserializerMap;
     }
     /**
-     * Gets the offerId property value. The unique identifier of an unpublished offer for which expected listing fees will be retrieved. One to 250 &lt;strong&gt;offerId&lt;/strong&gt; values can be passed in to the &lt;strong&gt;offers&lt;/strong&gt; container for one &lt;strong&gt;getListingFees&lt;/strong&gt; call. &lt;br&gt;&lt;br&gt;Use the &lt;a href=&quot;/api-docs/sell/inventory/resources/offer/methods/getOffers&quot;&gt;getOffers&lt;/a&gt; method to retrieve offer IDs.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; Errors will occur if &lt;strong&gt;offerId&lt;/strong&gt; values representing published offers are passed in.&lt;/span&gt;
+     * Gets the offerId property value. The unique identifier of an unpublished offer for which expected listing fees will be retrieved. One to 250 &lt;strong&gt;offerId&lt;/strong&gt; values can be passed in to the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-getlistingfees.offerkeyswithid.offers&quot; target=&quot;_blank&quot;&gt;offers&lt;/a&gt; container for one &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-getlistingfees.offerkeyswithid.offers&quot; target=&quot;_blank&quot;&gt;getListingFees&lt;/a&gt; call. &lt;br&gt;&lt;br&gt;Use the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-getoffers&quot;&gt;getOffers&lt;/a&gt; method to retrieve offer IDs.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; Errors will occur if &lt;strong&gt;offerId&lt;/strong&gt; values representing published offers are passed in.&lt;/span&gt;
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -93,7 +93,7 @@ public class OfferKeyWithId implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the offerId property value. The unique identifier of an unpublished offer for which expected listing fees will be retrieved. One to 250 &lt;strong&gt;offerId&lt;/strong&gt; values can be passed in to the &lt;strong&gt;offers&lt;/strong&gt; container for one &lt;strong&gt;getListingFees&lt;/strong&gt; call. &lt;br&gt;&lt;br&gt;Use the &lt;a href=&quot;/api-docs/sell/inventory/resources/offer/methods/getOffers&quot;&gt;getOffers&lt;/a&gt; method to retrieve offer IDs.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; Errors will occur if &lt;strong&gt;offerId&lt;/strong&gt; values representing published offers are passed in.&lt;/span&gt;
+     * Sets the offerId property value. The unique identifier of an unpublished offer for which expected listing fees will be retrieved. One to 250 &lt;strong&gt;offerId&lt;/strong&gt; values can be passed in to the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-getlistingfees.offerkeyswithid.offers&quot; target=&quot;_blank&quot;&gt;offers&lt;/a&gt; container for one &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-getlistingfees.offerkeyswithid.offers&quot; target=&quot;_blank&quot;&gt;getListingFees&lt;/a&gt; call. &lt;br&gt;&lt;br&gt;Use the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-getoffers&quot;&gt;getOffers&lt;/a&gt; method to retrieve offer IDs.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; Errors will occur if &lt;strong&gt;offerId&lt;/strong&gt; values representing published offers are passed in.&lt;/span&gt;
      * @param value Value to set for the offerId property.
      */
     public void setOfferId(@jakarta.annotation.Nullable final String value) {

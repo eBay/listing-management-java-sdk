@@ -33,13 +33,13 @@ public class PriceQuantityResponse implements AdditionalDataHolder, Parsable {
     /**
      * This array will be returned if there were one or more errors associated with the update to the offer or inventory item record.
      */
-    private java.util.List<Error> errors;
+    private java.util.List<ErrorDetailV3> errors;
     /**
      * The unique identifier of the offer that was updated. This field will not be returned in situations where the seller is only updating the total &apos;ship-to-home&apos; quantity of an inventory item record.
      */
     private String offerId;
     /**
-     * This is the seller-defined SKU value of the product. This field is returned whether the seller attempted to update an offer with the SKU value or just attempted to update the total &apos;ship-to-home&apos; quantity of an inventory item record.&lt;br&gt;&lt;br&gt;&lt;strong&gt;Max Length&lt;/strong&gt;: 50&lt;br&gt;
+     * This is the seller-defined SKU value of the product. This field is returned whether the seller attempted to update an offer with the SKU value or just attempted to update the total &apos;ship-to-home&apos; quantity of an inventory item record.&lt;br&gt;&lt;br&gt;&lt;strong&gt;Maximum length&lt;/strong&gt;: 50&lt;br&gt;
      */
     private String sku;
     /**
@@ -49,7 +49,7 @@ public class PriceQuantityResponse implements AdditionalDataHolder, Parsable {
     /**
      * This array will be returned if there were one or more warnings associated with the update to the offer or inventory item record.
      */
-    private java.util.List<Error> warnings;
+    private java.util.List<ErrorDetailV3> warnings;
     /**
      * Instantiates a new {@link PriceQuantityResponse} and sets the default values.
      */
@@ -76,10 +76,10 @@ public class PriceQuantityResponse implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the errors property value. This array will be returned if there were one or more errors associated with the update to the offer or inventory item record.
-     * @return a {@link java.util.List<Error>}
+     * @return a {@link java.util.List<ErrorDetailV3>}
      */
     @jakarta.annotation.Nullable
-    public java.util.List<Error> getErrors() {
+    public java.util.List<ErrorDetailV3> getErrors() {
         return this.errors;
     }
     /**
@@ -89,11 +89,11 @@ public class PriceQuantityResponse implements AdditionalDataHolder, Parsable {
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(5);
-        deserializerMap.put("errors", (n) -> { this.setErrors(n.getCollectionOfObjectValues(Error::createFromDiscriminatorValue)); });
+        deserializerMap.put("errors", (n) -> { this.setErrors(n.getCollectionOfObjectValues(ErrorDetailV3::createFromDiscriminatorValue)); });
         deserializerMap.put("offerId", (n) -> { this.setOfferId(n.getStringValue()); });
         deserializerMap.put("sku", (n) -> { this.setSku(n.getStringValue()); });
         deserializerMap.put("statusCode", (n) -> { this.setStatusCode(n.getIntegerValue()); });
-        deserializerMap.put("warnings", (n) -> { this.setWarnings(n.getCollectionOfObjectValues(Error::createFromDiscriminatorValue)); });
+        deserializerMap.put("warnings", (n) -> { this.setWarnings(n.getCollectionOfObjectValues(ErrorDetailV3::createFromDiscriminatorValue)); });
         return deserializerMap;
     }
     /**
@@ -105,7 +105,7 @@ public class PriceQuantityResponse implements AdditionalDataHolder, Parsable {
         return this.offerId;
     }
     /**
-     * Gets the sku property value. This is the seller-defined SKU value of the product. This field is returned whether the seller attempted to update an offer with the SKU value or just attempted to update the total &apos;ship-to-home&apos; quantity of an inventory item record.&lt;br&gt;&lt;br&gt;&lt;strong&gt;Max Length&lt;/strong&gt;: 50&lt;br&gt;
+     * Gets the sku property value. This is the seller-defined SKU value of the product. This field is returned whether the seller attempted to update an offer with the SKU value or just attempted to update the total &apos;ship-to-home&apos; quantity of an inventory item record.&lt;br&gt;&lt;br&gt;&lt;strong&gt;Maximum length&lt;/strong&gt;: 50&lt;br&gt;
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -122,10 +122,10 @@ public class PriceQuantityResponse implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the warnings property value. This array will be returned if there were one or more warnings associated with the update to the offer or inventory item record.
-     * @return a {@link java.util.List<Error>}
+     * @return a {@link java.util.List<ErrorDetailV3>}
      */
     @jakarta.annotation.Nullable
-    public java.util.List<Error> getWarnings() {
+    public java.util.List<ErrorDetailV3> getWarnings() {
         return this.warnings;
     }
     /**
@@ -152,7 +152,7 @@ public class PriceQuantityResponse implements AdditionalDataHolder, Parsable {
      * Sets the errors property value. This array will be returned if there were one or more errors associated with the update to the offer or inventory item record.
      * @param value Value to set for the errors property.
      */
-    public void setErrors(@jakarta.annotation.Nullable final java.util.List<Error> value) {
+    public void setErrors(@jakarta.annotation.Nullable final java.util.List<ErrorDetailV3> value) {
         this.errors = value;
     }
     /**
@@ -163,7 +163,7 @@ public class PriceQuantityResponse implements AdditionalDataHolder, Parsable {
         this.offerId = value;
     }
     /**
-     * Sets the sku property value. This is the seller-defined SKU value of the product. This field is returned whether the seller attempted to update an offer with the SKU value or just attempted to update the total &apos;ship-to-home&apos; quantity of an inventory item record.&lt;br&gt;&lt;br&gt;&lt;strong&gt;Max Length&lt;/strong&gt;: 50&lt;br&gt;
+     * Sets the sku property value. This is the seller-defined SKU value of the product. This field is returned whether the seller attempted to update an offer with the SKU value or just attempted to update the total &apos;ship-to-home&apos; quantity of an inventory item record.&lt;br&gt;&lt;br&gt;&lt;strong&gt;Maximum length&lt;/strong&gt;: 50&lt;br&gt;
      * @param value Value to set for the sku property.
      */
     public void setSku(@jakarta.annotation.Nullable final String value) {
@@ -180,7 +180,7 @@ public class PriceQuantityResponse implements AdditionalDataHolder, Parsable {
      * Sets the warnings property value. This array will be returned if there were one or more warnings associated with the update to the offer or inventory item record.
      * @param value Value to set for the warnings property.
      */
-    public void setWarnings(@jakarta.annotation.Nullable final java.util.List<Error> value) {
+    public void setWarnings(@jakarta.annotation.Nullable final java.util.List<ErrorDetailV3> value) {
         this.warnings = value;
     }
 }

@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 /**
- * The base response type of the &lt;b&gt;getStoreTasks&lt;/b&gt; method.
+ * The base response of a getStoreTasks call.
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class GetStoreTasksResponseType implements AdditionalDataHolder, Parsable {

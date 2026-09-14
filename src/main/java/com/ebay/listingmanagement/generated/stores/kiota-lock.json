@@ -1,8 +1,8 @@
 {
-  "descriptionHash": "E416BBA06DC7CD464415B39CD12721364DEEFD003D47DD91EE4640063DA1DF9A030641ED1AF1B554A9E39CACCE9D86BB419DF9CD619E77F6157277C7B4087DC4",
-  "descriptionLocation": "../../../../../../../../specs/openapi/stores.yaml",
+  "descriptionHash": "A4C8DB78A5628E2F4D43F5260C16743F25747272A94F5DA54B8AA14FCB923A5F844DB111307D190C8BBEF472D377CE45180FEAA2C3DF0348F883B3FB7B017FCD",
+  "descriptionLocation": "../../../../../../../../specs/openapi/stores.json",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.31.1",
+  "kiotaVersion": "1.35.0",
   "clientClassName": "StoresApiClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "com.ebay.listingmanagement.generated.stores",
@@ -30,5 +30,6 @@
   ],
   "includePatterns": [],
   "excludePatterns": [],
-  "disabledValidationRules": []
+  "disabledValidationRules": [],
+  "allowedExternalOrigins": []
 }

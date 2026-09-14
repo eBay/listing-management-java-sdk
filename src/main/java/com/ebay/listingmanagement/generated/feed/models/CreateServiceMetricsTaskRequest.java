@@ -35,11 +35,11 @@ public class CreateServiceMetricsTaskRequest implements AdditionalDataHolder, Pa
      */
     private String feedType;
     /**
-     * A complex data type that filters data for report creation. See &lt;strong&gt;CustomerServiceMetricsFilterCriteria&lt;/strong&gt; for fields and descriptions.
+     * This container is used to customize and set criteria for the Customer Service Metric report that will be associated with the task.
      */
     private CustomerServiceMetricsFilterCriteria filterCriteria;
     /**
-     * The version number of the customer service metric.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; This field &lt;b&gt;must&lt;/b&gt; have a value of &lt;code&gt;1.0&lt;/code&gt;.&lt;/span&gt;
+     * The version number of the customer service metric.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; This field &lt;strong&gt;must&lt;/strong&gt; have a value of &lt;code&gt;1.0&lt;/code&gt;.&lt;/span&gt;
      */
     private String schemaVersion;
     /**
@@ -87,7 +87,7 @@ public class CreateServiceMetricsTaskRequest implements AdditionalDataHolder, Pa
         return deserializerMap;
     }
     /**
-     * Gets the filterCriteria property value. A complex data type that filters data for report creation. See &lt;strong&gt;CustomerServiceMetricsFilterCriteria&lt;/strong&gt; for fields and descriptions.
+     * Gets the filterCriteria property value. This container is used to customize and set criteria for the Customer Service Metric report that will be associated with the task.
      * @return a {@link CustomerServiceMetricsFilterCriteria}
      */
     @jakarta.annotation.Nullable
@@ -95,7 +95,7 @@ public class CreateServiceMetricsTaskRequest implements AdditionalDataHolder, Pa
         return this.filterCriteria;
     }
     /**
-     * Gets the schemaVersion property value. The version number of the customer service metric.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; This field &lt;b&gt;must&lt;/b&gt; have a value of &lt;code&gt;1.0&lt;/code&gt;.&lt;/span&gt;
+     * Gets the schemaVersion property value. The version number of the customer service metric.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; This field &lt;strong&gt;must&lt;/strong&gt; have a value of &lt;code&gt;1.0&lt;/code&gt;.&lt;/span&gt;
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -128,14 +128,14 @@ public class CreateServiceMetricsTaskRequest implements AdditionalDataHolder, Pa
         this.feedType = value;
     }
     /**
-     * Sets the filterCriteria property value. A complex data type that filters data for report creation. See &lt;strong&gt;CustomerServiceMetricsFilterCriteria&lt;/strong&gt; for fields and descriptions.
+     * Sets the filterCriteria property value. This container is used to customize and set criteria for the Customer Service Metric report that will be associated with the task.
      * @param value Value to set for the filterCriteria property.
      */
     public void setFilterCriteria(@jakarta.annotation.Nullable final CustomerServiceMetricsFilterCriteria value) {
         this.filterCriteria = value;
     }
     /**
-     * Sets the schemaVersion property value. The version number of the customer service metric.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; This field &lt;b&gt;must&lt;/b&gt; have a value of &lt;code&gt;1.0&lt;/code&gt;.&lt;/span&gt;
+     * Sets the schemaVersion property value. The version number of the customer service metric.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; This field &lt;strong&gt;must&lt;/strong&gt; have a value of &lt;code&gt;1.0&lt;/code&gt;.&lt;/span&gt;
      * @param value Value to set for the schemaVersion property.
      */
     public void setSchemaVersion(@jakarta.annotation.Nullable final String value) {

@@ -31,11 +31,11 @@ public class NameValueList implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * This string value identifies the motor vehicle aspect, such as &apos;make&apos;, &apos;model&apos;, &apos;year&apos;, &apos;trim&apos;, and &apos;engine&apos;. Typically, the make, model, and year of the motor vehicle are always required, with the trim and engine being necessary sometimes, but it will be dependent on the part or accessory, and on the vehicle class.&lt;br&gt;&lt;br&gt;The &lt;a href=&quot;/api-docs/commerce/taxonomy/resources/category_tree/methods/getCompatibilityProperties&quot; target=&quot;_blank&quot;&gt;getCompatibilityProperties&lt;/a&gt; method of the Taxonomy API can be used to retrieve applicable vehicle aspect names for a specified category.
+     * This string value identifies the motor vehicle aspect, such as &apos;make&apos;, &apos;model&apos;, &apos;year&apos;, &apos;trim&apos;, and &apos;engine&apos;. Typically, the make, model, and year of the motor vehicle are always required, with the trim and engine being necessary sometimes, but it will be dependent on the part or accessory, and on the vehicle class.&lt;br&gt;&lt;br&gt;The &lt;a href=&quot;/develop/api/sell/taxonomy_api#sell-taxonomy_api-category_tree-getcompatibilityproperties&quot; target=&quot;_blank&quot;&gt;getCompatibilityProperties&lt;/a&gt; method of the Taxonomy API can be used to retrieve applicable vehicle aspect names for a specified category.
      */
     private String name;
     /**
-     * This string value identifies the motor vehicle aspect specified in the corresponding &lt;strong&gt;name&lt;/strong&gt; field. For example, if the &lt;strong&gt;name&lt;/strong&gt; field is &apos;make&apos;, this field may be &apos;Toyota&apos;, or if the &lt;strong&gt;name&lt;/strong&gt; field is &apos;model&apos;, this field may be &apos;Camry&apos;.&lt;br&gt;&lt;br&gt;The &lt;a href=&quot;/api-docs/commerce/taxonomy/resources/category_tree/methods/getCompatibilityPropertyValues&quot; target=&quot;_blank&quot;&gt;getCompatibilityPropertyValues&lt;/a&gt; method of the Taxonomy API can be used to retrieve possible values for vehicle aspect names.
+     * This string value identifies the motor vehicle aspect specified in the corresponding &lt;strong&gt;name&lt;/strong&gt; field. For example, if the &lt;strong&gt;name&lt;/strong&gt; field is &apos;make&apos;, this field may be &apos;Toyota&apos;, or if the &lt;strong&gt;name&lt;/strong&gt; field is &apos;model&apos;, this field may be &apos;Camry&apos;.&lt;br&gt;&lt;br&gt;The &lt;a href=&quot;/develop/api/sell/taxonomy_api#sell-taxonomy_api-category_tree-getcompatibilitypropertyvalues&quot; target=&quot;_blank&quot;&gt;getCompatibilityPropertyValues&lt;/a&gt; method of the Taxonomy API can be used to retrieve possible values for vehicle aspect names.
      */
     private String value;
     /**
@@ -74,7 +74,7 @@ public class NameValueList implements AdditionalDataHolder, Parsable {
         return deserializerMap;
     }
     /**
-     * Gets the name property value. This string value identifies the motor vehicle aspect, such as &apos;make&apos;, &apos;model&apos;, &apos;year&apos;, &apos;trim&apos;, and &apos;engine&apos;. Typically, the make, model, and year of the motor vehicle are always required, with the trim and engine being necessary sometimes, but it will be dependent on the part or accessory, and on the vehicle class.&lt;br&gt;&lt;br&gt;The &lt;a href=&quot;/api-docs/commerce/taxonomy/resources/category_tree/methods/getCompatibilityProperties&quot; target=&quot;_blank&quot;&gt;getCompatibilityProperties&lt;/a&gt; method of the Taxonomy API can be used to retrieve applicable vehicle aspect names for a specified category.
+     * Gets the name property value. This string value identifies the motor vehicle aspect, such as &apos;make&apos;, &apos;model&apos;, &apos;year&apos;, &apos;trim&apos;, and &apos;engine&apos;. Typically, the make, model, and year of the motor vehicle are always required, with the trim and engine being necessary sometimes, but it will be dependent on the part or accessory, and on the vehicle class.&lt;br&gt;&lt;br&gt;The &lt;a href=&quot;/develop/api/sell/taxonomy_api#sell-taxonomy_api-category_tree-getcompatibilityproperties&quot; target=&quot;_blank&quot;&gt;getCompatibilityProperties&lt;/a&gt; method of the Taxonomy API can be used to retrieve applicable vehicle aspect names for a specified category.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -82,7 +82,7 @@ public class NameValueList implements AdditionalDataHolder, Parsable {
         return this.name;
     }
     /**
-     * Gets the value property value. This string value identifies the motor vehicle aspect specified in the corresponding &lt;strong&gt;name&lt;/strong&gt; field. For example, if the &lt;strong&gt;name&lt;/strong&gt; field is &apos;make&apos;, this field may be &apos;Toyota&apos;, or if the &lt;strong&gt;name&lt;/strong&gt; field is &apos;model&apos;, this field may be &apos;Camry&apos;.&lt;br&gt;&lt;br&gt;The &lt;a href=&quot;/api-docs/commerce/taxonomy/resources/category_tree/methods/getCompatibilityPropertyValues&quot; target=&quot;_blank&quot;&gt;getCompatibilityPropertyValues&lt;/a&gt; method of the Taxonomy API can be used to retrieve possible values for vehicle aspect names.
+     * Gets the value property value. This string value identifies the motor vehicle aspect specified in the corresponding &lt;strong&gt;name&lt;/strong&gt; field. For example, if the &lt;strong&gt;name&lt;/strong&gt; field is &apos;make&apos;, this field may be &apos;Toyota&apos;, or if the &lt;strong&gt;name&lt;/strong&gt; field is &apos;model&apos;, this field may be &apos;Camry&apos;.&lt;br&gt;&lt;br&gt;The &lt;a href=&quot;/develop/api/sell/taxonomy_api#sell-taxonomy_api-category_tree-getcompatibilitypropertyvalues&quot; target=&quot;_blank&quot;&gt;getCompatibilityPropertyValues&lt;/a&gt; method of the Taxonomy API can be used to retrieve possible values for vehicle aspect names.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -107,14 +107,14 @@ public class NameValueList implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the name property value. This string value identifies the motor vehicle aspect, such as &apos;make&apos;, &apos;model&apos;, &apos;year&apos;, &apos;trim&apos;, and &apos;engine&apos;. Typically, the make, model, and year of the motor vehicle are always required, with the trim and engine being necessary sometimes, but it will be dependent on the part or accessory, and on the vehicle class.&lt;br&gt;&lt;br&gt;The &lt;a href=&quot;/api-docs/commerce/taxonomy/resources/category_tree/methods/getCompatibilityProperties&quot; target=&quot;_blank&quot;&gt;getCompatibilityProperties&lt;/a&gt; method of the Taxonomy API can be used to retrieve applicable vehicle aspect names for a specified category.
+     * Sets the name property value. This string value identifies the motor vehicle aspect, such as &apos;make&apos;, &apos;model&apos;, &apos;year&apos;, &apos;trim&apos;, and &apos;engine&apos;. Typically, the make, model, and year of the motor vehicle are always required, with the trim and engine being necessary sometimes, but it will be dependent on the part or accessory, and on the vehicle class.&lt;br&gt;&lt;br&gt;The &lt;a href=&quot;/develop/api/sell/taxonomy_api#sell-taxonomy_api-category_tree-getcompatibilityproperties&quot; target=&quot;_blank&quot;&gt;getCompatibilityProperties&lt;/a&gt; method of the Taxonomy API can be used to retrieve applicable vehicle aspect names for a specified category.
      * @param value Value to set for the name property.
      */
     public void setName(@jakarta.annotation.Nullable final String value) {
         this.name = value;
     }
     /**
-     * Sets the value property value. This string value identifies the motor vehicle aspect specified in the corresponding &lt;strong&gt;name&lt;/strong&gt; field. For example, if the &lt;strong&gt;name&lt;/strong&gt; field is &apos;make&apos;, this field may be &apos;Toyota&apos;, or if the &lt;strong&gt;name&lt;/strong&gt; field is &apos;model&apos;, this field may be &apos;Camry&apos;.&lt;br&gt;&lt;br&gt;The &lt;a href=&quot;/api-docs/commerce/taxonomy/resources/category_tree/methods/getCompatibilityPropertyValues&quot; target=&quot;_blank&quot;&gt;getCompatibilityPropertyValues&lt;/a&gt; method of the Taxonomy API can be used to retrieve possible values for vehicle aspect names.
+     * Sets the value property value. This string value identifies the motor vehicle aspect specified in the corresponding &lt;strong&gt;name&lt;/strong&gt; field. For example, if the &lt;strong&gt;name&lt;/strong&gt; field is &apos;make&apos;, this field may be &apos;Toyota&apos;, or if the &lt;strong&gt;name&lt;/strong&gt; field is &apos;model&apos;, this field may be &apos;Camry&apos;.&lt;br&gt;&lt;br&gt;The &lt;a href=&quot;/develop/api/sell/taxonomy_api#sell-taxonomy_api-category_tree-getcompatibilitypropertyvalues&quot; target=&quot;_blank&quot;&gt;getCompatibilityPropertyValues&lt;/a&gt; method of the Taxonomy API can be used to retrieve possible values for vehicle aspect names.
      * @param value Value to set for the value property.
      */
     public void setValue(@jakarta.annotation.Nullable final String value) {

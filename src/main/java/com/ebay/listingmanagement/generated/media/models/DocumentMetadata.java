@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 /**
- * This type provides information about the &lt;b&gt;documentId&lt;/b&gt;.
+ * This type provides information about the &lt;strong&gt;documentId&lt;/strong&gt;.
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class DocumentMetadata implements AdditionalDataHolder, Parsable {

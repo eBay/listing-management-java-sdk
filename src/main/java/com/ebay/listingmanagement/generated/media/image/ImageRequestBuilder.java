@@ -44,7 +44,7 @@ public class ImageRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Gets an item from the com.ebay.listingmanagement.generated.media.image.item collection
-     * @param image_id This path parameter is the unique identifier of a created image. Use the value returned in the location header of the method used to create the image (&lt;b&gt;createImageFromFile&lt;/b&gt; or &lt;b&gt;createImageFromUrl&lt;/b&gt;, as applicable).
+     * @param image_id This path parameter is the unique identifier of a created image. Use the value returned in the location header of the method used to create the image (&lt;strong&gt;createImageFromFile&lt;/strong&gt; or &lt;strong&gt;createImageFromUrl&lt;/strong&gt;, as applicable).
      * @return a {@link WithImageItemRequestBuilder}
      */
     @jakarta.annotation.Nonnull

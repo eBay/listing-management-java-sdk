@@ -31,7 +31,7 @@ public class Task implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * The timestamp when the task went into the &lt;code&gt;COMPLETED&lt;/code&gt; or &lt;code&gt;COMPLETED_WITH_ERROR&lt;/code&gt; state. This state means that eBay has compiled the report for the seller based on the sellers filter criteria, and the seller can run a &lt;strong&gt;getResultFile&lt;/strong&gt; call to download the report.
+     * The timestamp when the task went into the &lt;code&gt;COMPLETED&lt;/code&gt; or &lt;code&gt;COMPLETED_WITH_ERROR&lt;/code&gt; state. This state means that eBay has compiled the report for the seller based on the seller&apos;s filter criteria, and the seller can run a &lt;strong&gt;getResultFile&lt;/strong&gt; call to download the report.
      */
     private String completionDate;
     /**
@@ -39,7 +39,7 @@ public class Task implements AdditionalDataHolder, Parsable {
      */
     private String creationDate;
     /**
-     * The path to the call URI used to retrieve the task. This field points to the GetOrderTask URI if the task is for &lt;code&gt;LMS_ORDER_REPORT&lt;/code&gt; or will be null if this task is for &lt;code&gt;LMS_ORDER_ACK&lt;/code&gt;.
+     * The path to the call URI used to retrieve the task. This field points to the &lt;strong&gt;GetOrderTask&lt;/strong&gt; URI if the task is for &lt;code&gt;LMS_ORDER_REPORT&lt;/code&gt;, or it will be null if this task is for &lt;code&gt;LMS_ORDER_ACK&lt;/code&gt;.
      */
     private String detailHref;
     /**
@@ -51,9 +51,9 @@ public class Task implements AdditionalDataHolder, Parsable {
      */
     private String schemaVersion;
     /**
-     * The enumeration value that indicates the state of the task that was submitted in the request. See &lt;strong&gt;FeedStatusEnum&lt;/strong&gt; for information. &lt;p&gt;The values &lt;code&gt;COMPLETED &lt;/code&gt;and&lt;code&gt; COMPLETED_WITH_ERROR&lt;/code&gt; indicate the Order Report file is ready to download.&lt;/p&gt; For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:FeedStatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * The enumeration value that indicates the state of the task that was submitted in the request. See &lt;strong&gt;FeedStatusEnum&lt;/strong&gt; for information. &lt;p&gt;The values &lt;code&gt;COMPLETED&lt;/code&gt; and &lt;code&gt;COMPLETED_WITH_ERROR&lt;/code&gt; indicate the Order Report file is ready to download.&lt;/p&gt;
      */
-    private String status;
+    private FeedStatusEnum status;
     /**
      * The ID of the task that was submitted in the request.
      */
@@ -87,7 +87,7 @@ public class Task implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the completionDate property value. The timestamp when the task went into the &lt;code&gt;COMPLETED&lt;/code&gt; or &lt;code&gt;COMPLETED_WITH_ERROR&lt;/code&gt; state. This state means that eBay has compiled the report for the seller based on the sellers filter criteria, and the seller can run a &lt;strong&gt;getResultFile&lt;/strong&gt; call to download the report.
+     * Gets the completionDate property value. The timestamp when the task went into the &lt;code&gt;COMPLETED&lt;/code&gt; or &lt;code&gt;COMPLETED_WITH_ERROR&lt;/code&gt; state. This state means that eBay has compiled the report for the seller based on the seller&apos;s filter criteria, and the seller can run a &lt;strong&gt;getResultFile&lt;/strong&gt; call to download the report.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -103,7 +103,7 @@ public class Task implements AdditionalDataHolder, Parsable {
         return this.creationDate;
     }
     /**
-     * Gets the detailHref property value. The path to the call URI used to retrieve the task. This field points to the GetOrderTask URI if the task is for &lt;code&gt;LMS_ORDER_REPORT&lt;/code&gt; or will be null if this task is for &lt;code&gt;LMS_ORDER_ACK&lt;/code&gt;.
+     * Gets the detailHref property value. The path to the call URI used to retrieve the task. This field points to the &lt;strong&gt;GetOrderTask&lt;/strong&gt; URI if the task is for &lt;code&gt;LMS_ORDER_REPORT&lt;/code&gt;, or it will be null if this task is for &lt;code&gt;LMS_ORDER_ACK&lt;/code&gt;.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -130,7 +130,7 @@ public class Task implements AdditionalDataHolder, Parsable {
         deserializerMap.put("detailHref", (n) -> { this.setDetailHref(n.getStringValue()); });
         deserializerMap.put("feedType", (n) -> { this.setFeedType(n.getStringValue()); });
         deserializerMap.put("schemaVersion", (n) -> { this.setSchemaVersion(n.getStringValue()); });
-        deserializerMap.put("status", (n) -> { this.setStatus(n.getStringValue()); });
+        deserializerMap.put("status", (n) -> { this.setStatus(n.getEnumValue(FeedStatusEnum::forValue)); });
         deserializerMap.put("taskId", (n) -> { this.setTaskId(n.getStringValue()); });
         deserializerMap.put("uploadSummary", (n) -> { this.setUploadSummary(n.getObjectValue(UploadSummary::createFromDiscriminatorValue)); });
         return deserializerMap;
@@ -144,11 +144,11 @@ public class Task implements AdditionalDataHolder, Parsable {
         return this.schemaVersion;
     }
     /**
-     * Gets the status property value. The enumeration value that indicates the state of the task that was submitted in the request. See &lt;strong&gt;FeedStatusEnum&lt;/strong&gt; for information. &lt;p&gt;The values &lt;code&gt;COMPLETED &lt;/code&gt;and&lt;code&gt; COMPLETED_WITH_ERROR&lt;/code&gt; indicate the Order Report file is ready to download.&lt;/p&gt; For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:FeedStatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the status property value. The enumeration value that indicates the state of the task that was submitted in the request. See &lt;strong&gt;FeedStatusEnum&lt;/strong&gt; for information. &lt;p&gt;The values &lt;code&gt;COMPLETED&lt;/code&gt; and &lt;code&gt;COMPLETED_WITH_ERROR&lt;/code&gt; indicate the Order Report file is ready to download.&lt;/p&gt;
+     * @return a {@link FeedStatusEnum}
      */
     @jakarta.annotation.Nullable
-    public String getStatus() {
+    public FeedStatusEnum getStatus() {
         return this.status;
     }
     /**
@@ -178,7 +178,7 @@ public class Task implements AdditionalDataHolder, Parsable {
         writer.writeStringValue("detailHref", this.getDetailHref());
         writer.writeStringValue("feedType", this.getFeedType());
         writer.writeStringValue("schemaVersion", this.getSchemaVersion());
-        writer.writeStringValue("status", this.getStatus());
+        writer.writeEnumValue("status", this.getStatus());
         writer.writeStringValue("taskId", this.getTaskId());
         writer.writeObjectValue("uploadSummary", this.getUploadSummary());
         writer.writeAdditionalData(this.getAdditionalData());
@@ -191,7 +191,7 @@ public class Task implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the completionDate property value. The timestamp when the task went into the &lt;code&gt;COMPLETED&lt;/code&gt; or &lt;code&gt;COMPLETED_WITH_ERROR&lt;/code&gt; state. This state means that eBay has compiled the report for the seller based on the sellers filter criteria, and the seller can run a &lt;strong&gt;getResultFile&lt;/strong&gt; call to download the report.
+     * Sets the completionDate property value. The timestamp when the task went into the &lt;code&gt;COMPLETED&lt;/code&gt; or &lt;code&gt;COMPLETED_WITH_ERROR&lt;/code&gt; state. This state means that eBay has compiled the report for the seller based on the seller&apos;s filter criteria, and the seller can run a &lt;strong&gt;getResultFile&lt;/strong&gt; call to download the report.
      * @param value Value to set for the completionDate property.
      */
     public void setCompletionDate(@jakarta.annotation.Nullable final String value) {
@@ -205,7 +205,7 @@ public class Task implements AdditionalDataHolder, Parsable {
         this.creationDate = value;
     }
     /**
-     * Sets the detailHref property value. The path to the call URI used to retrieve the task. This field points to the GetOrderTask URI if the task is for &lt;code&gt;LMS_ORDER_REPORT&lt;/code&gt; or will be null if this task is for &lt;code&gt;LMS_ORDER_ACK&lt;/code&gt;.
+     * Sets the detailHref property value. The path to the call URI used to retrieve the task. This field points to the &lt;strong&gt;GetOrderTask&lt;/strong&gt; URI if the task is for &lt;code&gt;LMS_ORDER_REPORT&lt;/code&gt;, or it will be null if this task is for &lt;code&gt;LMS_ORDER_ACK&lt;/code&gt;.
      * @param value Value to set for the detailHref property.
      */
     public void setDetailHref(@jakarta.annotation.Nullable final String value) {
@@ -226,10 +226,10 @@ public class Task implements AdditionalDataHolder, Parsable {
         this.schemaVersion = value;
     }
     /**
-     * Sets the status property value. The enumeration value that indicates the state of the task that was submitted in the request. See &lt;strong&gt;FeedStatusEnum&lt;/strong&gt; for information. &lt;p&gt;The values &lt;code&gt;COMPLETED &lt;/code&gt;and&lt;code&gt; COMPLETED_WITH_ERROR&lt;/code&gt; indicate the Order Report file is ready to download.&lt;/p&gt; For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:FeedStatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the status property value. The enumeration value that indicates the state of the task that was submitted in the request. See &lt;strong&gt;FeedStatusEnum&lt;/strong&gt; for information. &lt;p&gt;The values &lt;code&gt;COMPLETED&lt;/code&gt; and &lt;code&gt;COMPLETED_WITH_ERROR&lt;/code&gt; indicate the Order Report file is ready to download.&lt;/p&gt;
      * @param value Value to set for the status property.
      */
-    public void setStatus(@jakarta.annotation.Nullable final String value) {
+    public void setStatus(@jakarta.annotation.Nullable final FeedStatusEnum value) {
         this.status = value;
     }
     /**

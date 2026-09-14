@@ -31,7 +31,7 @@ public class ServiceMetricsTask implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * The timestamp when the customer service metrics task went into the &lt;code&gt;COMPLETED&lt;/code&gt; or &lt;code&gt;COMPLETED_WITH_ERROR&lt;/code&gt; state. This field is only returned if the status is one of the two completed values. This state means that eBay has compiled the report for the seller based on the sellers filter criteria, and the seller can run a &lt;strong&gt;getResultFile&lt;/strong&gt; call to download the report.
+     * The timestamp when the customer service metrics task went into the &lt;code&gt;COMPLETED&lt;/code&gt; or &lt;code&gt;COMPLETED_WITH_ERROR&lt;/code&gt; state. This field is only returned if the status is one of the two completed values. This state means that eBay has compiled the report for the seller based on the seller&apos;s filter criteria, and the seller can run a &lt;strong&gt;getResultFile&lt;/strong&gt; call to download the report.
      */
     private String completionDate;
     /**
@@ -47,17 +47,17 @@ public class ServiceMetricsTask implements AdditionalDataHolder, Parsable {
      */
     private String feedType;
     /**
-     * A complex data type that filters data for report creation. See &lt;strong&gt;CustomerServiceMetricsFilterCriteria&lt;/strong&gt; for fields and descriptions.
+     * This container shows the criteria set for the report.
      */
     private CustomerServiceMetricsFilterCriteria filterCriteria;
     /**
-     * The schema version number of the file format. If omitted, the default value is used. &lt;p&gt;&lt;b&gt;Default value: &lt;/b&gt;&lt;code&gt;1.0&lt;/code&gt;&lt;p&gt;
+     * The schema version number of the file format. If omitted, the default value is used. &lt;p&gt;&lt;strong&gt;Default value: &lt;/strong&gt;&lt;code&gt;1.0&lt;/code&gt;&lt;p&gt;
      */
     private String schemaVersion;
     /**
-     * An enumeration value that indicates the state of the task. See &lt;strong&gt;FeedStatusEnum&lt;/strong&gt; for values. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:FeedStatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * An enumeration value that indicates the state of the task.
      */
-    private String status;
+    private FeedStatusEnum status;
     /**
      * The unique eBay-assigned ID of the task.
      */
@@ -87,7 +87,7 @@ public class ServiceMetricsTask implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the completionDate property value. The timestamp when the customer service metrics task went into the &lt;code&gt;COMPLETED&lt;/code&gt; or &lt;code&gt;COMPLETED_WITH_ERROR&lt;/code&gt; state. This field is only returned if the status is one of the two completed values. This state means that eBay has compiled the report for the seller based on the sellers filter criteria, and the seller can run a &lt;strong&gt;getResultFile&lt;/strong&gt; call to download the report.
+     * Gets the completionDate property value. The timestamp when the customer service metrics task went into the &lt;code&gt;COMPLETED&lt;/code&gt; or &lt;code&gt;COMPLETED_WITH_ERROR&lt;/code&gt; state. This field is only returned if the status is one of the two completed values. This state means that eBay has compiled the report for the seller based on the seller&apos;s filter criteria, and the seller can run a &lt;strong&gt;getResultFile&lt;/strong&gt; call to download the report.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -131,12 +131,12 @@ public class ServiceMetricsTask implements AdditionalDataHolder, Parsable {
         deserializerMap.put("feedType", (n) -> { this.setFeedType(n.getStringValue()); });
         deserializerMap.put("filterCriteria", (n) -> { this.setFilterCriteria(n.getObjectValue(CustomerServiceMetricsFilterCriteria::createFromDiscriminatorValue)); });
         deserializerMap.put("schemaVersion", (n) -> { this.setSchemaVersion(n.getStringValue()); });
-        deserializerMap.put("status", (n) -> { this.setStatus(n.getStringValue()); });
+        deserializerMap.put("status", (n) -> { this.setStatus(n.getEnumValue(FeedStatusEnum::forValue)); });
         deserializerMap.put("taskId", (n) -> { this.setTaskId(n.getStringValue()); });
         return deserializerMap;
     }
     /**
-     * Gets the filterCriteria property value. A complex data type that filters data for report creation. See &lt;strong&gt;CustomerServiceMetricsFilterCriteria&lt;/strong&gt; for fields and descriptions.
+     * Gets the filterCriteria property value. This container shows the criteria set for the report.
      * @return a {@link CustomerServiceMetricsFilterCriteria}
      */
     @jakarta.annotation.Nullable
@@ -144,7 +144,7 @@ public class ServiceMetricsTask implements AdditionalDataHolder, Parsable {
         return this.filterCriteria;
     }
     /**
-     * Gets the schemaVersion property value. The schema version number of the file format. If omitted, the default value is used. &lt;p&gt;&lt;b&gt;Default value: &lt;/b&gt;&lt;code&gt;1.0&lt;/code&gt;&lt;p&gt;
+     * Gets the schemaVersion property value. The schema version number of the file format. If omitted, the default value is used. &lt;p&gt;&lt;strong&gt;Default value: &lt;/strong&gt;&lt;code&gt;1.0&lt;/code&gt;&lt;p&gt;
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -152,11 +152,11 @@ public class ServiceMetricsTask implements AdditionalDataHolder, Parsable {
         return this.schemaVersion;
     }
     /**
-     * Gets the status property value. An enumeration value that indicates the state of the task. See &lt;strong&gt;FeedStatusEnum&lt;/strong&gt; for values. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:FeedStatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the status property value. An enumeration value that indicates the state of the task.
+     * @return a {@link FeedStatusEnum}
      */
     @jakarta.annotation.Nullable
-    public String getStatus() {
+    public FeedStatusEnum getStatus() {
         return this.status;
     }
     /**
@@ -179,7 +179,7 @@ public class ServiceMetricsTask implements AdditionalDataHolder, Parsable {
         writer.writeStringValue("feedType", this.getFeedType());
         writer.writeObjectValue("filterCriteria", this.getFilterCriteria());
         writer.writeStringValue("schemaVersion", this.getSchemaVersion());
-        writer.writeStringValue("status", this.getStatus());
+        writer.writeEnumValue("status", this.getStatus());
         writer.writeStringValue("taskId", this.getTaskId());
         writer.writeAdditionalData(this.getAdditionalData());
     }
@@ -191,7 +191,7 @@ public class ServiceMetricsTask implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the completionDate property value. The timestamp when the customer service metrics task went into the &lt;code&gt;COMPLETED&lt;/code&gt; or &lt;code&gt;COMPLETED_WITH_ERROR&lt;/code&gt; state. This field is only returned if the status is one of the two completed values. This state means that eBay has compiled the report for the seller based on the sellers filter criteria, and the seller can run a &lt;strong&gt;getResultFile&lt;/strong&gt; call to download the report.
+     * Sets the completionDate property value. The timestamp when the customer service metrics task went into the &lt;code&gt;COMPLETED&lt;/code&gt; or &lt;code&gt;COMPLETED_WITH_ERROR&lt;/code&gt; state. This field is only returned if the status is one of the two completed values. This state means that eBay has compiled the report for the seller based on the seller&apos;s filter criteria, and the seller can run a &lt;strong&gt;getResultFile&lt;/strong&gt; call to download the report.
      * @param value Value to set for the completionDate property.
      */
     public void setCompletionDate(@jakarta.annotation.Nullable final String value) {
@@ -219,24 +219,24 @@ public class ServiceMetricsTask implements AdditionalDataHolder, Parsable {
         this.feedType = value;
     }
     /**
-     * Sets the filterCriteria property value. A complex data type that filters data for report creation. See &lt;strong&gt;CustomerServiceMetricsFilterCriteria&lt;/strong&gt; for fields and descriptions.
+     * Sets the filterCriteria property value. This container shows the criteria set for the report.
      * @param value Value to set for the filterCriteria property.
      */
     public void setFilterCriteria(@jakarta.annotation.Nullable final CustomerServiceMetricsFilterCriteria value) {
         this.filterCriteria = value;
     }
     /**
-     * Sets the schemaVersion property value. The schema version number of the file format. If omitted, the default value is used. &lt;p&gt;&lt;b&gt;Default value: &lt;/b&gt;&lt;code&gt;1.0&lt;/code&gt;&lt;p&gt;
+     * Sets the schemaVersion property value. The schema version number of the file format. If omitted, the default value is used. &lt;p&gt;&lt;strong&gt;Default value: &lt;/strong&gt;&lt;code&gt;1.0&lt;/code&gt;&lt;p&gt;
      * @param value Value to set for the schemaVersion property.
      */
     public void setSchemaVersion(@jakarta.annotation.Nullable final String value) {
         this.schemaVersion = value;
     }
     /**
-     * Sets the status property value. An enumeration value that indicates the state of the task. See &lt;strong&gt;FeedStatusEnum&lt;/strong&gt; for values. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:FeedStatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the status property value. An enumeration value that indicates the state of the task.
      * @param value Value to set for the status property.
      */
-    public void setStatus(@jakarta.annotation.Nullable final String value) {
+    public void setStatus(@jakarta.annotation.Nullable final FeedStatusEnum value) {
         this.status = value;
     }
     /**

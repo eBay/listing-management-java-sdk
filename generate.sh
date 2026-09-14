@@ -20,22 +20,22 @@ echo "Generating Listing Management Java SDK with Kiota..."
 rm -rf src/main/java/com/ebay/listingmanagement/generated
 
 echo "Generating FeedApiClient..."
-kiota generate -l java -d specs/openapi/feed.yaml \
+kiota generate -l java -d specs/openapi/feed.json \
   -c FeedApiClient -n com.ebay.listingmanagement.generated.feed \
   -o src/main/java/com/ebay/listingmanagement/generated/feed --ebc --co
 
 echo "Generating InventoryApiClient..."
-kiota generate -l java -d specs/openapi/inventory.yaml \
+kiota generate -l java -d specs/openapi/inventory.json \
   -c InventoryApiClient -n com.ebay.listingmanagement.generated.inventory \
   -o src/main/java/com/ebay/listingmanagement/generated/inventory --ebc --co
 
 echo "Generating MediaApiClient..."
-kiota generate -l java -d specs/openapi/media.yaml \
+kiota generate -l java -d specs/openapi/media.json \
   -c MediaApiClient -n com.ebay.listingmanagement.generated.media \
   -o src/main/java/com/ebay/listingmanagement/generated/media --ebc --co
 
 echo "Generating StoresApiClient..."
-kiota generate -l java -d specs/openapi/stores.yaml \
+kiota generate -l java -d specs/openapi/stores.json \
   -c StoresApiClient -n com.ebay.listingmanagement.generated.stores \
   -o src/main/java/com/ebay/listingmanagement/generated/stores --ebc --co
 

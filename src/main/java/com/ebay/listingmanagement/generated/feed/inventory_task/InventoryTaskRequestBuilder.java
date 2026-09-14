@@ -16,6 +16,7 @@ package com.ebay.listingmanagement.generated.feed.inventory_task;
 
 import com.ebay.listingmanagement.generated.feed.inventory_task.item.WithTaskItemRequestBuilder;
 import com.ebay.listingmanagement.generated.feed.models.CreateInventoryTaskRequest;
+import com.ebay.listingmanagement.generated.feed.models.Error;
 import com.ebay.listingmanagement.generated.feed.models.InventoryTaskCollection;
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.BaseRequestConfiguration;
@@ -37,7 +38,7 @@ import java.util.Objects;
 public class InventoryTaskRequestBuilder extends BaseRequestBuilder {
     /**
      * Gets an item from the com.ebay.listingmanagement.generated.feed.inventory_task.item collection
-     * @param task_id This path parameter is the unique identifier of the inventory task being retrieved.&lt;br&gt;&lt;br&gt; Use the &lt;a href=&quot;/api-docs/sell/feed/resources/inventory_task/methods/getInventoryTasks&quot;&gt;getInventoryTasks&lt;/a&gt; method to retrieve inventory task IDs.
+     * @param task_id This path parameter is the unique identifier of the inventory task being retrieved.&lt;br&gt;&lt;br&gt; Use the &lt;strong&gt;getInventoryTasks&lt;/strong&gt; method to retrieve inventory task IDs.
      * @return a {@link WithTaskItemRequestBuilder}
      */
     @jakarta.annotation.Nonnull
@@ -53,7 +54,7 @@ public class InventoryTaskRequestBuilder extends BaseRequestBuilder {
      * @param requestAdapter The request adapter to use to execute the requests.
      */
     public InventoryTaskRequestBuilder(@jakarta.annotation.Nonnull final HashMap<String, Object> pathParameters, @jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {
-        super(requestAdapter, "{+baseurl}/inventory_task{?date_range*,feed_type*,limit*,look_back_days*,offset*,schedule_id*}", pathParameters);
+        super(requestAdapter, "{+baseurl}/inventory_task{?date_range*,limit*,look_back_days*,offset*,schedule_id*}", pathParameters);
     }
     /**
      * Instantiates a new {@link InventoryTaskRequestBuilder} and sets the default values.
@@ -61,45 +62,74 @@ public class InventoryTaskRequestBuilder extends BaseRequestBuilder {
      * @param requestAdapter The request adapter to use to execute the requests.
      */
     public InventoryTaskRequestBuilder(@jakarta.annotation.Nonnull final String rawUrl, @jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {
-        super(requestAdapter, "{+baseurl}/inventory_task{?date_range*,feed_type*,limit*,look_back_days*,offset*,schedule_id*}", rawUrl);
+        super(requestAdapter, "{+baseurl}/inventory_task{?date_range*,limit*,look_back_days*,offset*,schedule_id*}", rawUrl);
     }
     /**
-     * This method searches for multiple tasks of a specific feed type, and includes date filters and pagination.
+     * This method searches for multiple tasks of a specific feed type and includes date filters and pagination.
      * @return a {@link InventoryTaskCollection}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 401 status code
+     * @throws Error When receiving a 403 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public InventoryTaskCollection get() {
         return get(null);
     }
     /**
-     * This method searches for multiple tasks of a specific feed type, and includes date filters and pagination.
+     * This method searches for multiple tasks of a specific feed type and includes date filters and pagination.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link InventoryTaskCollection}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 401 status code
+     * @throws Error When receiving a 403 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public InventoryTaskCollection get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
-        return this.requestAdapter.send(requestInfo, null, InventoryTaskCollection::createFromDiscriminatorValue);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("400", Error::createFromDiscriminatorValue);
+        errorMapping.put("401", Error::createFromDiscriminatorValue);
+        errorMapping.put("403", Error::createFromDiscriminatorValue);
+        errorMapping.put("500", Error::createFromDiscriminatorValue);
+        return this.requestAdapter.send(requestInfo, errorMapping, InventoryTaskCollection::createFromDiscriminatorValue);
     }
     /**
      * This method creates an inventory-related download task for a specified feed type with optional filter criteria. When using this method, specify the &lt;strong&gt;feedType&lt;/strong&gt;. &lt;br/&gt;&lt;br/&gt;This method returns the location response header containing the &lt;strong&gt;getInventoryTask&lt;/strong&gt; call URI to retrieve the inventory task you just created. The URL includes the eBay-assigned task ID, which you can use to reference the inventory task.&lt;br/&gt;&lt;br/&gt;To retrieve the status of the task, use the &lt;strong&gt;getInventoryTask&lt;/strong&gt; method to retrieve a single task ID or the &lt;strong&gt;getInventoryTasks&lt;/strong&gt; method to retrieve multiple task IDs.&lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; The scope depends on the feed type. An error message results when an unsupported scope or feed type is specified.&lt;/span&gt;&lt;/p&gt;Presently, this method supports Active Inventory Report. The &lt;strong&gt;ActiveInventoryReport&lt;/strong&gt; returns a report that contains price and quantity information for all of the active listings for a specific seller. A seller can use this information to maintain their inventory on eBay.
-     * @param body This type defines inventory-related download task request fields.
+     * @param body The request payload containing the version, feedType, and optional filterCriteria.
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 401 status code
+     * @throws Error When receiving a 403 status code
+     * @throws Error When receiving a 409 status code
+     * @throws Error When receiving a 500 status code
      */
     public void post(@jakarta.annotation.Nonnull final CreateInventoryTaskRequest body) {
         post(body, null);
     }
     /**
      * This method creates an inventory-related download task for a specified feed type with optional filter criteria. When using this method, specify the &lt;strong&gt;feedType&lt;/strong&gt;. &lt;br/&gt;&lt;br/&gt;This method returns the location response header containing the &lt;strong&gt;getInventoryTask&lt;/strong&gt; call URI to retrieve the inventory task you just created. The URL includes the eBay-assigned task ID, which you can use to reference the inventory task.&lt;br/&gt;&lt;br/&gt;To retrieve the status of the task, use the &lt;strong&gt;getInventoryTask&lt;/strong&gt; method to retrieve a single task ID or the &lt;strong&gt;getInventoryTasks&lt;/strong&gt; method to retrieve multiple task IDs.&lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; The scope depends on the feed type. An error message results when an unsupported scope or feed type is specified.&lt;/span&gt;&lt;/p&gt;Presently, this method supports Active Inventory Report. The &lt;strong&gt;ActiveInventoryReport&lt;/strong&gt; returns a report that contains price and quantity information for all of the active listings for a specific seller. A seller can use this information to maintain their inventory on eBay.
-     * @param body This type defines inventory-related download task request fields.
+     * @param body The request payload containing the version, feedType, and optional filterCriteria.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 401 status code
+     * @throws Error When receiving a 403 status code
+     * @throws Error When receiving a 409 status code
+     * @throws Error When receiving a 500 status code
      */
     public void post(@jakarta.annotation.Nonnull final CreateInventoryTaskRequest body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = toPostRequestInformation(body, requestConfiguration);
-        this.requestAdapter.sendPrimitive(requestInfo, null, Void.class);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("400", Error::createFromDiscriminatorValue);
+        errorMapping.put("401", Error::createFromDiscriminatorValue);
+        errorMapping.put("403", Error::createFromDiscriminatorValue);
+        errorMapping.put("409", Error::createFromDiscriminatorValue);
+        errorMapping.put("500", Error::createFromDiscriminatorValue);
+        this.requestAdapter.sendPrimitive(requestInfo, errorMapping, Void.class);
     }
     /**
-     * This method searches for multiple tasks of a specific feed type, and includes date filters and pagination.
+     * This method searches for multiple tasks of a specific feed type and includes date filters and pagination.
      * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
@@ -107,20 +137,20 @@ public class InventoryTaskRequestBuilder extends BaseRequestBuilder {
         return toGetRequestInformation(null);
     }
     /**
-     * This method searches for multiple tasks of a specific feed type, and includes date filters and pagination.
+     * This method searches for multiple tasks of a specific feed type and includes date filters and pagination.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toGetRequestInformation(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
-        final RequestInformation requestInfo = new RequestInformation(HttpMethod.GET, urlTemplate, pathParameters);
+        final RequestInformation requestInfo = new RequestInformation(HttpMethod.GET, "{+baseurl}/inventory_task?feed_type={feed_type}{&date_range*,limit*,look_back_days*,offset*,schedule_id*}", pathParameters);
         requestInfo.configure(requestConfiguration, GetRequestConfiguration::new, x -> x.queryParameters);
         requestInfo.headers.tryAdd("Accept", "application/json");
         return requestInfo;
     }
     /**
      * This method creates an inventory-related download task for a specified feed type with optional filter criteria. When using this method, specify the &lt;strong&gt;feedType&lt;/strong&gt;. &lt;br/&gt;&lt;br/&gt;This method returns the location response header containing the &lt;strong&gt;getInventoryTask&lt;/strong&gt; call URI to retrieve the inventory task you just created. The URL includes the eBay-assigned task ID, which you can use to reference the inventory task.&lt;br/&gt;&lt;br/&gt;To retrieve the status of the task, use the &lt;strong&gt;getInventoryTask&lt;/strong&gt; method to retrieve a single task ID or the &lt;strong&gt;getInventoryTasks&lt;/strong&gt; method to retrieve multiple task IDs.&lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; The scope depends on the feed type. An error message results when an unsupported scope or feed type is specified.&lt;/span&gt;&lt;/p&gt;Presently, this method supports Active Inventory Report. The &lt;strong&gt;ActiveInventoryReport&lt;/strong&gt; returns a report that contains price and quantity information for all of the active listings for a specific seller. A seller can use this information to maintain their inventory on eBay.
-     * @param body This type defines inventory-related download task request fields.
+     * @param body The request payload containing the version, feedType, and optional filterCriteria.
      * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
@@ -129,7 +159,7 @@ public class InventoryTaskRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * This method creates an inventory-related download task for a specified feed type with optional filter criteria. When using this method, specify the &lt;strong&gt;feedType&lt;/strong&gt;. &lt;br/&gt;&lt;br/&gt;This method returns the location response header containing the &lt;strong&gt;getInventoryTask&lt;/strong&gt; call URI to retrieve the inventory task you just created. The URL includes the eBay-assigned task ID, which you can use to reference the inventory task.&lt;br/&gt;&lt;br/&gt;To retrieve the status of the task, use the &lt;strong&gt;getInventoryTask&lt;/strong&gt; method to retrieve a single task ID or the &lt;strong&gt;getInventoryTasks&lt;/strong&gt; method to retrieve multiple task IDs.&lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; The scope depends on the feed type. An error message results when an unsupported scope or feed type is specified.&lt;/span&gt;&lt;/p&gt;Presently, this method supports Active Inventory Report. The &lt;strong&gt;ActiveInventoryReport&lt;/strong&gt; returns a report that contains price and quantity information for all of the active listings for a specific seller. A seller can use this information to maintain their inventory on eBay.
-     * @param body This type defines inventory-related download task request fields.
+     * @param body The request payload containing the version, feedType, and optional filterCriteria.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link RequestInformation}
      */
@@ -138,6 +168,7 @@ public class InventoryTaskRequestBuilder extends BaseRequestBuilder {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = new RequestInformation(HttpMethod.POST, urlTemplate, pathParameters);
         requestInfo.configure(requestConfiguration, PostRequestConfiguration::new);
+        requestInfo.headers.tryAdd("Accept", "application/json");
         requestInfo.setContentFromParsable(requestAdapter, "application/json", body);
         return requestInfo;
     }
@@ -152,12 +183,12 @@ public class InventoryTaskRequestBuilder extends BaseRequestBuilder {
         return new InventoryTaskRequestBuilder(rawUrl, requestAdapter);
     }
     /**
-     * This method searches for multiple tasks of a specific feed type, and includes date filters and pagination.
+     * This method searches for multiple tasks of a specific feed type and includes date filters and pagination.
      */
     @jakarta.annotation.Generated("com.microsoft.kiota")
     public class GetQueryParameters implements QueryParameters {
         /**
-         * Specifies the range of task creation dates used to filter the results. The results are filtered to include only tasks with a creation date that is equal to this date or is within specified range. &lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Maximum date range window size is 90 days.&lt;/span&gt;&lt;/p&gt;&lt;br /&gt;&lt;b&gt;Valid Format (UTC): &lt;/b&gt;&lt;code&gt;yyyy-MM-ddThh:mm:ss.SSSZ..yyyy-MM-ddThh:mm:ss.SSSZ&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;For example: Tasks created on March 31, 2021&lt;br /&gt; &lt;code&gt;2021-03-31T00:00:00.000Z..2021-03-31T00:00:00.000Z&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;
+         * Specifies the range of task creation dates used to filter the results. The results are filtered to include only tasks with a creation date that is equal to this date or is within the specified range. &lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Maximum date range window size is 90 days.&lt;/span&gt;&lt;/p&gt;&lt;br /&gt;&lt;strong&gt;Valid Format (UTC):&lt;/strong&gt; &lt;code&gt;yyyy-MM-ddThh:mm:ss.SSSZ..yyyy-MM-ddThh:mm:ss.SSSZ&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;For example: Tasks created on March 31, 2021&lt;br /&gt; &lt;code&gt;2021-03-31T00:00:00.000Z..2021-03-31T00:00:00.000Z&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;
          */
         @jakarta.annotation.Nullable
         public String dateRange;
@@ -167,22 +198,22 @@ public class InventoryTaskRequestBuilder extends BaseRequestBuilder {
         @jakarta.annotation.Nullable
         public String feedType;
         /**
-         * The maximum number of tasks that can be returned on each page of the paginated response. Use this parameter in conjunction with the &lt;strong&gt;offset&lt;/strong&gt; parameter to control the pagination of the output. &lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; This feature employs a zero-based list, where the first item in the list has an offset of &lt;code&gt;0&lt;/code&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;For example, if &lt;strong&gt;offset&lt;/strong&gt; is set to 10 and &lt;strong&gt;limit&lt;/strong&gt; is set to 10, the call retrieves tasks 11 thru 20 from the result set.&lt;/p&gt;&lt;p&gt;If this parameter is omitted, the default value is used. &lt;br /&gt;&lt;br /&gt;&lt;b&gt;Default: &lt;/b&gt; 10 &lt;br /&gt;&lt;br /&gt;&lt;b&gt;Maximum: &lt;/b&gt;500
+         * The maximum number of tasks that can be returned on each page of the paginated response. Use this parameter in conjunction with the &lt;strong&gt;offset&lt;/strong&gt; parameter to control the pagination of the output. &lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; This feature employs a zero-based list, where the first item in the list has an offset of &lt;code&gt;0&lt;/code&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;For example, if &lt;strong&gt;offset&lt;/strong&gt; is set to 10 and &lt;strong&gt;limit&lt;/strong&gt; is set to 10, the call retrieves tasks 11 thru 20 from the result set.&lt;/p&gt;&lt;p&gt;If this parameter is omitted, the default value is used. &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Default: &lt;/strong&gt; 10 &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Maximum: &lt;/strong&gt;500
          */
         @jakarta.annotation.Nullable
-        public String limit;
+        public Integer limit;
         /**
-         * The number of previous days in which to search for tasks. Do not use with the &lt;code&gt;date_range&lt;/code&gt; parameter. If both &lt;code&gt;date_range&lt;/code&gt; and &lt;code&gt;look_back_days&lt;/code&gt; are omitted, this parameter&apos;s default value is used.  &lt;br /&gt;&lt;br /&gt;&lt;b&gt;Default: &lt;/b&gt; 7 &lt;br /&gt;&lt;br /&gt;&lt;b&gt;Range: &lt;/b&gt; 1-90 (inclusive)
+         * The number of previous days in which to search for tasks. Do not use with the &lt;code&gt;date_range&lt;/code&gt; parameter. If both &lt;code&gt;date_range&lt;/code&gt; and &lt;code&gt;look_back_days&lt;/code&gt; are omitted, this parameter&apos;s default value is used.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Default: &lt;/strong&gt; 7 &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Range: &lt;/strong&gt; 1-90 (inclusive)
          */
         @jakarta.annotation.Nullable
-        public String lookBackDays;
+        public Integer lookBackDays;
         /**
-         * The number of tasks to skip in the result set before returning the first task in the paginated response. &lt;p&gt;Combine &lt;strong&gt;offset&lt;/strong&gt; with the &lt;strong&gt;limit&lt;/strong&gt; query parameter to control the items returned in the response. For example, if you supply an &lt;strong&gt;offset&lt;/strong&gt; of &lt;code&gt;0&lt;/code&gt; and a &lt;strong&gt;limit&lt;/strong&gt; of &lt;code&gt;10&lt;/code&gt;, the first page of the response contains the first 10 items from the complete list of items retrieved by the call. If &lt;strong&gt;offset&lt;/strong&gt; is &lt;code&gt;10&lt;/code&gt; and &lt;strong&gt;limit&lt;/strong&gt; is &lt;code&gt;20&lt;/code&gt;, the first page of the response contains items 11-30 from the complete result set. If this query parameter is not set, the default value is used and the first page of records is returned. &lt;br /&gt;&lt;br /&gt;&lt;b&gt;Default: &lt;/b&gt;0
+         * The number of tasks to skip in the result set before returning the first task in the paginated response. &lt;p&gt;Combine &lt;strong&gt;offset&lt;/strong&gt; with the &lt;strong&gt;limit&lt;/strong&gt; query parameter to control the items returned in the response. For example, if you supply an &lt;strong&gt;offset&lt;/strong&gt; of &lt;code&gt;0&lt;/code&gt; and a &lt;strong&gt;limit&lt;/strong&gt; of &lt;code&gt;10&lt;/code&gt;, the first page of the response contains the first 10 items from the complete list of items retrieved by the call. If &lt;strong&gt;offset&lt;/strong&gt; is &lt;code&gt;10&lt;/code&gt; and &lt;strong&gt;limit&lt;/strong&gt; is &lt;code&gt;20&lt;/code&gt;, the first page of the response contains items 11-30 from the complete result set. If this query parameter is not set, the default value is used and the first page of records is returned. &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Default: &lt;/strong&gt;0
          */
         @jakarta.annotation.Nullable
-        public String offset;
+        public Integer offset;
         /**
-         * &lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; Schedule functionality for ActiveInventoryReport is currently unavailable, so this field is not usable.&lt;/span&gt;
+         * &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Schedule functionality for ActiveInventoryReport is currently unavailable, so this field is not usable.&lt;/span&gt;
          */
         @jakarta.annotation.Nullable
         public String scheduleId;

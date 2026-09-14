@@ -14,6 +14,7 @@
 
 package com.ebay.listingmanagement.generated.inventory.offer.item.withdraw;
 
+import com.ebay.listingmanagement.generated.inventory.models.Error;
 import com.ebay.listingmanagement.generated.inventory.models.WithdrawResponse;
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.BaseRequestConfiguration;
@@ -49,25 +50,35 @@ public class WithdrawRequestBuilder extends BaseRequestBuilder {
         super(requestAdapter, "{+baseurl}/offer/{offerId}/withdraw", rawUrl);
     }
     /**
-     * This call is used to end a single-variation listing that is associated with the specified offer. This call is used in place of the &lt;strong&gt;deleteOffer&lt;/strong&gt; call if the seller only wants to end the listing associated with the offer but does not want to delete the offer object. With this call, the offer object remains, but it goes into the unpublished state, and will require a &lt;strong&gt;publishOffer&lt;/strong&gt; call to relist the offer.&lt;br&gt;&lt;br&gt;To end a multiple-variation listing that is associated with an inventory item group, the &lt;strong&gt;withdrawOfferByInventoryItemGroup&lt;/strong&gt; method can be used. This call only ends the multiple-variation listing associated with an inventory item group but does not delete the inventory item group object, nor does it delete any of the offers associated with the inventory item group, but instead all of these offers go into the unpublished state.
+     * This call is used to end a single-variation listing that is associated with the specified offer. This call is used in place of the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-deleteoffer&quot; target=&quot;_blank&quot;&gt;deleteOffer&lt;/a&gt; call if the seller only wants to end the listing associated with the offer but does not want to delete the offer object. With this call, the offer object remains, but it goes into the unpublished state, and will require a &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-publishoffer&quot; target=&quot;_blank&quot;&gt;publishOffer&lt;/a&gt; call to relist the offer.&lt;br&gt;&lt;br&gt;To end a multiple-variation listing that is associated with an inventory item group, the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-withdrawofferbyinventoryitemgroup&quot; target=&quot;_blank&quot;&gt;withdrawOfferByInventoryItemGroup&lt;/a&gt; method can be used. This call only ends the multiple-variation listing associated with an inventory item group but does not delete the inventory item group object, nor does it delete any of the offers associated with the inventory item group, but instead all of these offers go into the unpublished state.
      * @return a {@link WithdrawResponse}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 404 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public WithdrawResponse post() {
         return post(null);
     }
     /**
-     * This call is used to end a single-variation listing that is associated with the specified offer. This call is used in place of the &lt;strong&gt;deleteOffer&lt;/strong&gt; call if the seller only wants to end the listing associated with the offer but does not want to delete the offer object. With this call, the offer object remains, but it goes into the unpublished state, and will require a &lt;strong&gt;publishOffer&lt;/strong&gt; call to relist the offer.&lt;br&gt;&lt;br&gt;To end a multiple-variation listing that is associated with an inventory item group, the &lt;strong&gt;withdrawOfferByInventoryItemGroup&lt;/strong&gt; method can be used. This call only ends the multiple-variation listing associated with an inventory item group but does not delete the inventory item group object, nor does it delete any of the offers associated with the inventory item group, but instead all of these offers go into the unpublished state.
+     * This call is used to end a single-variation listing that is associated with the specified offer. This call is used in place of the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-deleteoffer&quot; target=&quot;_blank&quot;&gt;deleteOffer&lt;/a&gt; call if the seller only wants to end the listing associated with the offer but does not want to delete the offer object. With this call, the offer object remains, but it goes into the unpublished state, and will require a &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-publishoffer&quot; target=&quot;_blank&quot;&gt;publishOffer&lt;/a&gt; call to relist the offer.&lt;br&gt;&lt;br&gt;To end a multiple-variation listing that is associated with an inventory item group, the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-withdrawofferbyinventoryitemgroup&quot; target=&quot;_blank&quot;&gt;withdrawOfferByInventoryItemGroup&lt;/a&gt; method can be used. This call only ends the multiple-variation listing associated with an inventory item group but does not delete the inventory item group object, nor does it delete any of the offers associated with the inventory item group, but instead all of these offers go into the unpublished state.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link WithdrawResponse}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 404 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public WithdrawResponse post(@jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toPostRequestInformation(requestConfiguration);
-        return this.requestAdapter.send(requestInfo, null, WithdrawResponse::createFromDiscriminatorValue);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("400", Error::createFromDiscriminatorValue);
+        errorMapping.put("404", Error::createFromDiscriminatorValue);
+        errorMapping.put("500", Error::createFromDiscriminatorValue);
+        return this.requestAdapter.send(requestInfo, errorMapping, WithdrawResponse::createFromDiscriminatorValue);
     }
     /**
-     * This call is used to end a single-variation listing that is associated with the specified offer. This call is used in place of the &lt;strong&gt;deleteOffer&lt;/strong&gt; call if the seller only wants to end the listing associated with the offer but does not want to delete the offer object. With this call, the offer object remains, but it goes into the unpublished state, and will require a &lt;strong&gt;publishOffer&lt;/strong&gt; call to relist the offer.&lt;br&gt;&lt;br&gt;To end a multiple-variation listing that is associated with an inventory item group, the &lt;strong&gt;withdrawOfferByInventoryItemGroup&lt;/strong&gt; method can be used. This call only ends the multiple-variation listing associated with an inventory item group but does not delete the inventory item group object, nor does it delete any of the offers associated with the inventory item group, but instead all of these offers go into the unpublished state.
+     * This call is used to end a single-variation listing that is associated with the specified offer. This call is used in place of the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-deleteoffer&quot; target=&quot;_blank&quot;&gt;deleteOffer&lt;/a&gt; call if the seller only wants to end the listing associated with the offer but does not want to delete the offer object. With this call, the offer object remains, but it goes into the unpublished state, and will require a &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-publishoffer&quot; target=&quot;_blank&quot;&gt;publishOffer&lt;/a&gt; call to relist the offer.&lt;br&gt;&lt;br&gt;To end a multiple-variation listing that is associated with an inventory item group, the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-withdrawofferbyinventoryitemgroup&quot; target=&quot;_blank&quot;&gt;withdrawOfferByInventoryItemGroup&lt;/a&gt; method can be used. This call only ends the multiple-variation listing associated with an inventory item group but does not delete the inventory item group object, nor does it delete any of the offers associated with the inventory item group, but instead all of these offers go into the unpublished state.
      * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
@@ -75,7 +86,7 @@ public class WithdrawRequestBuilder extends BaseRequestBuilder {
         return toPostRequestInformation(null);
     }
     /**
-     * This call is used to end a single-variation listing that is associated with the specified offer. This call is used in place of the &lt;strong&gt;deleteOffer&lt;/strong&gt; call if the seller only wants to end the listing associated with the offer but does not want to delete the offer object. With this call, the offer object remains, but it goes into the unpublished state, and will require a &lt;strong&gt;publishOffer&lt;/strong&gt; call to relist the offer.&lt;br&gt;&lt;br&gt;To end a multiple-variation listing that is associated with an inventory item group, the &lt;strong&gt;withdrawOfferByInventoryItemGroup&lt;/strong&gt; method can be used. This call only ends the multiple-variation listing associated with an inventory item group but does not delete the inventory item group object, nor does it delete any of the offers associated with the inventory item group, but instead all of these offers go into the unpublished state.
+     * This call is used to end a single-variation listing that is associated with the specified offer. This call is used in place of the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-deleteoffer&quot; target=&quot;_blank&quot;&gt;deleteOffer&lt;/a&gt; call if the seller only wants to end the listing associated with the offer but does not want to delete the offer object. With this call, the offer object remains, but it goes into the unpublished state, and will require a &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-publishoffer&quot; target=&quot;_blank&quot;&gt;publishOffer&lt;/a&gt; call to relist the offer.&lt;br&gt;&lt;br&gt;To end a multiple-variation listing that is associated with an inventory item group, the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-withdrawofferbyinventoryitemgroup&quot; target=&quot;_blank&quot;&gt;withdrawOfferByInventoryItemGroup&lt;/a&gt; method can be used. This call only ends the multiple-variation listing associated with an inventory item group but does not delete the inventory item group object, nor does it delete any of the offers associated with the inventory item group, but instead all of these offers go into the unpublished state.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link RequestInformation}
      */

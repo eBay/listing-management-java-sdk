@@ -31,21 +31,21 @@ public class CreateDocumentResponse implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * The unique identifier of the document to be uploaded.&lt;br&gt;&lt;br&gt;This value is returned in the response and &lt;b&gt;location&lt;/b&gt; header of the &lt;b&gt;createDocument&lt;/b&gt; and &lt;b&gt;createDocumentFromUrl&lt;/b&gt; methods. This ID can be used with the &lt;b&gt;getDocument&lt;/b&gt; and &lt;b&gt;uploadDocument&lt;/b&gt; methods, and to add an uploaded document to a listing. See &lt;a href=&quot;/api-docs/sell/static/inventory/managing-document-media.html#add-documents&quot; target=&quot;_blank&quot;&gt;Adding documents to listings&lt;/a&gt; for more information. 
+     * The unique identifier of the document to be uploaded.&lt;br&gt;&lt;br&gt;This value is returned in the response and &lt;strong&gt;location&lt;/strong&gt; header of the &lt;strong&gt;createDocument&lt;/strong&gt; and &lt;strong&gt;createDocumentFromUrl&lt;/strong&gt; methods. This ID can be used with the &lt;strong&gt;getDocument&lt;/strong&gt; and &lt;strong&gt;uploadDocument&lt;/strong&gt; methods, and to add an uploaded document to a listing. See &lt;a href=&quot;/api-docs/sell/static/inventory/managing-document-media.html#add-documents&quot; target=&quot;_blank&quot;&gt;Adding documents to listings&lt;/a&gt; for more information. 
      */
     private String documentId;
     /**
-     * The status of the document resource.&lt;br&gt;&lt;br&gt;For example, the value &lt;code&gt;PENDING_UPLOAD&lt;/code&gt; is the initial state when the reference to the document has been created using the &lt;b&gt;createDocument&lt;/b&gt; method. When creating a document using the &lt;b&gt;createDocumentFromUrl&lt;/b&gt; method, the initial state will be &lt;code&gt;SUBMITTED&lt;/code&gt;. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/commerce/media/types/api:DocumentStatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * The status of the document resource.&lt;br&gt;&lt;br&gt;For example, the value &lt;code&gt;PENDING_UPLOAD&lt;/code&gt; is the initial state when the reference to the document has been created using the &lt;strong&gt;createDocument&lt;/strong&gt; method. When creating a document using the &lt;strong&gt;createDocumentFromUrl&lt;/strong&gt; method, the initial state will be &lt;code&gt;SUBMITTED&lt;/code&gt;.
      */
-    private String documentStatus;
+    private DocumentStatusEnum documentStatus;
     /**
-     * The type of the document uploaded. For example, &lt;code&gt;USER_GUIDE_OR_MANUAL&lt;/code&gt;. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/commerce/media/types/api:DocumentTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * The type of the document uploaded. For example, &lt;code&gt;USER_GUIDE_OR_MANUAL&lt;/code&gt;.
      */
-    private String documentType;
+    private DocumentTypeEnum documentType;
     /**
      * This array shows the language(s) used in the document.
      */
-    private java.util.List<String> languages;
+    private java.util.List<LanguageEnum> languages;
     /**
      * Instantiates a new {@link CreateDocumentResponse} and sets the default values.
      */
@@ -71,7 +71,7 @@ public class CreateDocumentResponse implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the documentId property value. The unique identifier of the document to be uploaded.&lt;br&gt;&lt;br&gt;This value is returned in the response and &lt;b&gt;location&lt;/b&gt; header of the &lt;b&gt;createDocument&lt;/b&gt; and &lt;b&gt;createDocumentFromUrl&lt;/b&gt; methods. This ID can be used with the &lt;b&gt;getDocument&lt;/b&gt; and &lt;b&gt;uploadDocument&lt;/b&gt; methods, and to add an uploaded document to a listing. See &lt;a href=&quot;/api-docs/sell/static/inventory/managing-document-media.html#add-documents&quot; target=&quot;_blank&quot;&gt;Adding documents to listings&lt;/a&gt; for more information. 
+     * Gets the documentId property value. The unique identifier of the document to be uploaded.&lt;br&gt;&lt;br&gt;This value is returned in the response and &lt;strong&gt;location&lt;/strong&gt; header of the &lt;strong&gt;createDocument&lt;/strong&gt; and &lt;strong&gt;createDocumentFromUrl&lt;/strong&gt; methods. This ID can be used with the &lt;strong&gt;getDocument&lt;/strong&gt; and &lt;strong&gt;uploadDocument&lt;/strong&gt; methods, and to add an uploaded document to a listing. See &lt;a href=&quot;/api-docs/sell/static/inventory/managing-document-media.html#add-documents&quot; target=&quot;_blank&quot;&gt;Adding documents to listings&lt;/a&gt; for more information. 
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -79,19 +79,19 @@ public class CreateDocumentResponse implements AdditionalDataHolder, Parsable {
         return this.documentId;
     }
     /**
-     * Gets the documentStatus property value. The status of the document resource.&lt;br&gt;&lt;br&gt;For example, the value &lt;code&gt;PENDING_UPLOAD&lt;/code&gt; is the initial state when the reference to the document has been created using the &lt;b&gt;createDocument&lt;/b&gt; method. When creating a document using the &lt;b&gt;createDocumentFromUrl&lt;/b&gt; method, the initial state will be &lt;code&gt;SUBMITTED&lt;/code&gt;. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/commerce/media/types/api:DocumentStatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the documentStatus property value. The status of the document resource.&lt;br&gt;&lt;br&gt;For example, the value &lt;code&gt;PENDING_UPLOAD&lt;/code&gt; is the initial state when the reference to the document has been created using the &lt;strong&gt;createDocument&lt;/strong&gt; method. When creating a document using the &lt;strong&gt;createDocumentFromUrl&lt;/strong&gt; method, the initial state will be &lt;code&gt;SUBMITTED&lt;/code&gt;.
+     * @return a {@link DocumentStatusEnum}
      */
     @jakarta.annotation.Nullable
-    public String getDocumentStatus() {
+    public DocumentStatusEnum getDocumentStatus() {
         return this.documentStatus;
     }
     /**
-     * Gets the documentType property value. The type of the document uploaded. For example, &lt;code&gt;USER_GUIDE_OR_MANUAL&lt;/code&gt;. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/commerce/media/types/api:DocumentTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the documentType property value. The type of the document uploaded. For example, &lt;code&gt;USER_GUIDE_OR_MANUAL&lt;/code&gt;.
+     * @return a {@link DocumentTypeEnum}
      */
     @jakarta.annotation.Nullable
-    public String getDocumentType() {
+    public DocumentTypeEnum getDocumentType() {
         return this.documentType;
     }
     /**
@@ -102,17 +102,17 @@ public class CreateDocumentResponse implements AdditionalDataHolder, Parsable {
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(4);
         deserializerMap.put("documentId", (n) -> { this.setDocumentId(n.getStringValue()); });
-        deserializerMap.put("documentStatus", (n) -> { this.setDocumentStatus(n.getStringValue()); });
-        deserializerMap.put("documentType", (n) -> { this.setDocumentType(n.getStringValue()); });
-        deserializerMap.put("languages", (n) -> { this.setLanguages(n.getCollectionOfPrimitiveValues(String.class)); });
+        deserializerMap.put("documentStatus", (n) -> { this.setDocumentStatus(n.getEnumValue(DocumentStatusEnum::forValue)); });
+        deserializerMap.put("documentType", (n) -> { this.setDocumentType(n.getEnumValue(DocumentTypeEnum::forValue)); });
+        deserializerMap.put("languages", (n) -> { this.setLanguages(n.getCollectionOfEnumValues(LanguageEnum::forValue)); });
         return deserializerMap;
     }
     /**
      * Gets the languages property value. This array shows the language(s) used in the document.
-     * @return a {@link java.util.List<String>}
+     * @return a {@link java.util.List<LanguageEnum>}
      */
     @jakarta.annotation.Nullable
-    public java.util.List<String> getLanguages() {
+    public java.util.List<LanguageEnum> getLanguages() {
         return this.languages;
     }
     /**
@@ -122,9 +122,9 @@ public class CreateDocumentResponse implements AdditionalDataHolder, Parsable {
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         writer.writeStringValue("documentId", this.getDocumentId());
-        writer.writeStringValue("documentStatus", this.getDocumentStatus());
-        writer.writeStringValue("documentType", this.getDocumentType());
-        writer.writeCollectionOfPrimitiveValues("languages", this.getLanguages());
+        writer.writeEnumValue("documentStatus", this.getDocumentStatus());
+        writer.writeEnumValue("documentType", this.getDocumentType());
+        writer.writeCollectionOfEnumValues("languages", this.getLanguages());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -135,31 +135,31 @@ public class CreateDocumentResponse implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the documentId property value. The unique identifier of the document to be uploaded.&lt;br&gt;&lt;br&gt;This value is returned in the response and &lt;b&gt;location&lt;/b&gt; header of the &lt;b&gt;createDocument&lt;/b&gt; and &lt;b&gt;createDocumentFromUrl&lt;/b&gt; methods. This ID can be used with the &lt;b&gt;getDocument&lt;/b&gt; and &lt;b&gt;uploadDocument&lt;/b&gt; methods, and to add an uploaded document to a listing. See &lt;a href=&quot;/api-docs/sell/static/inventory/managing-document-media.html#add-documents&quot; target=&quot;_blank&quot;&gt;Adding documents to listings&lt;/a&gt; for more information. 
+     * Sets the documentId property value. The unique identifier of the document to be uploaded.&lt;br&gt;&lt;br&gt;This value is returned in the response and &lt;strong&gt;location&lt;/strong&gt; header of the &lt;strong&gt;createDocument&lt;/strong&gt; and &lt;strong&gt;createDocumentFromUrl&lt;/strong&gt; methods. This ID can be used with the &lt;strong&gt;getDocument&lt;/strong&gt; and &lt;strong&gt;uploadDocument&lt;/strong&gt; methods, and to add an uploaded document to a listing. See &lt;a href=&quot;/api-docs/sell/static/inventory/managing-document-media.html#add-documents&quot; target=&quot;_blank&quot;&gt;Adding documents to listings&lt;/a&gt; for more information. 
      * @param value Value to set for the documentId property.
      */
     public void setDocumentId(@jakarta.annotation.Nullable final String value) {
         this.documentId = value;
     }
     /**
-     * Sets the documentStatus property value. The status of the document resource.&lt;br&gt;&lt;br&gt;For example, the value &lt;code&gt;PENDING_UPLOAD&lt;/code&gt; is the initial state when the reference to the document has been created using the &lt;b&gt;createDocument&lt;/b&gt; method. When creating a document using the &lt;b&gt;createDocumentFromUrl&lt;/b&gt; method, the initial state will be &lt;code&gt;SUBMITTED&lt;/code&gt;. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/commerce/media/types/api:DocumentStatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the documentStatus property value. The status of the document resource.&lt;br&gt;&lt;br&gt;For example, the value &lt;code&gt;PENDING_UPLOAD&lt;/code&gt; is the initial state when the reference to the document has been created using the &lt;strong&gt;createDocument&lt;/strong&gt; method. When creating a document using the &lt;strong&gt;createDocumentFromUrl&lt;/strong&gt; method, the initial state will be &lt;code&gt;SUBMITTED&lt;/code&gt;.
      * @param value Value to set for the documentStatus property.
      */
-    public void setDocumentStatus(@jakarta.annotation.Nullable final String value) {
+    public void setDocumentStatus(@jakarta.annotation.Nullable final DocumentStatusEnum value) {
         this.documentStatus = value;
     }
     /**
-     * Sets the documentType property value. The type of the document uploaded. For example, &lt;code&gt;USER_GUIDE_OR_MANUAL&lt;/code&gt;. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/commerce/media/types/api:DocumentTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the documentType property value. The type of the document uploaded. For example, &lt;code&gt;USER_GUIDE_OR_MANUAL&lt;/code&gt;.
      * @param value Value to set for the documentType property.
      */
-    public void setDocumentType(@jakarta.annotation.Nullable final String value) {
+    public void setDocumentType(@jakarta.annotation.Nullable final DocumentTypeEnum value) {
         this.documentType = value;
     }
     /**
      * Sets the languages property value. This array shows the language(s) used in the document.
      * @param value Value to set for the languages property.
      */
-    public void setLanguages(@jakarta.annotation.Nullable final java.util.List<String> value) {
+    public void setLanguages(@jakarta.annotation.Nullable final java.util.List<LanguageEnum> value) {
         this.languages = value;
     }
 }

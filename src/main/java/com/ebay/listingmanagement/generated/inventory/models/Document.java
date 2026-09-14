@@ -31,7 +31,7 @@ public class Document implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * The unique identifier of a regulatory document associated with the listing.&lt;br&gt;&lt;br&gt;This value can be found in the response of the &lt;a href=&quot;/api-docs/commerce/media/resources/document/methods/createDocument&quot; target=&quot;_blank&quot;&gt;createDocument&lt;/a&gt; method of the Media API.
+     * The unique identifier of a regulatory document associated with the listing.&lt;br&gt;&lt;br&gt;This value can be found in the response of the &lt;a href=&quot;/develop/api/sell/media_api#sell-media_api-document-createdocument&quot; target=&quot;_blank&quot;&gt;createDocument&lt;/a&gt; method of the Media API.
      */
     private String documentId;
     /**
@@ -59,7 +59,7 @@ public class Document implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the documentId property value. The unique identifier of a regulatory document associated with the listing.&lt;br&gt;&lt;br&gt;This value can be found in the response of the &lt;a href=&quot;/api-docs/commerce/media/resources/document/methods/createDocument&quot; target=&quot;_blank&quot;&gt;createDocument&lt;/a&gt; method of the Media API.
+     * Gets the documentId property value. The unique identifier of a regulatory document associated with the listing.&lt;br&gt;&lt;br&gt;This value can be found in the response of the &lt;a href=&quot;/develop/api/sell/media_api#sell-media_api-document-createdocument&quot; target=&quot;_blank&quot;&gt;createDocument&lt;/a&gt; method of the Media API.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -93,7 +93,7 @@ public class Document implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the documentId property value. The unique identifier of a regulatory document associated with the listing.&lt;br&gt;&lt;br&gt;This value can be found in the response of the &lt;a href=&quot;/api-docs/commerce/media/resources/document/methods/createDocument&quot; target=&quot;_blank&quot;&gt;createDocument&lt;/a&gt; method of the Media API.
+     * Sets the documentId property value. The unique identifier of a regulatory document associated with the listing.&lt;br&gt;&lt;br&gt;This value can be found in the response of the &lt;a href=&quot;/develop/api/sell/media_api#sell-media_api-document-createdocument&quot; target=&quot;_blank&quot;&gt;createDocument&lt;/a&gt; method of the Media API.
      * @param value Value to set for the documentId property.
      */
     public void setDocumentId(@jakarta.annotation.Nullable final String value) {

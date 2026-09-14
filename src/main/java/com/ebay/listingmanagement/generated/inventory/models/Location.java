@@ -31,11 +31,11 @@ public class Location implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * This type is used to define the physical address of an inventory location.
+     * The &lt;strong&gt;address&lt;/strong&gt; container is always returned in &lt;strong&gt;getInventoryLocation&lt;/strong&gt;/&lt;strong&gt;getInventoryLocations&lt;/strong&gt; calls. Except in the case of a store or fulfillment center location, a full address is not a requirement when setting up an inventory location.
      */
     private Address address;
     /**
-     * This type is used to express the Global Positioning System (GPS) latitude and longitude coordinates of an inventory location.
+     * This container displays the Global Positioning System (GPS) latitude and longitude coordinates for the inventory location.&lt;br&gt;&lt;br&gt;This container is only returned if the geo-coordinates are set for an inventory location.
      */
     private GeoCoordinates geoCoordinates;
     /**
@@ -67,7 +67,7 @@ public class Location implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the address property value. This type is used to define the physical address of an inventory location.
+     * Gets the address property value. The &lt;strong&gt;address&lt;/strong&gt; container is always returned in &lt;strong&gt;getInventoryLocation&lt;/strong&gt;/&lt;strong&gt;getInventoryLocations&lt;/strong&gt; calls. Except in the case of a store or fulfillment center location, a full address is not a requirement when setting up an inventory location.
      * @return a {@link Address}
      */
     @jakarta.annotation.Nullable
@@ -87,7 +87,7 @@ public class Location implements AdditionalDataHolder, Parsable {
         return deserializerMap;
     }
     /**
-     * Gets the geoCoordinates property value. This type is used to express the Global Positioning System (GPS) latitude and longitude coordinates of an inventory location.
+     * Gets the geoCoordinates property value. This container displays the Global Positioning System (GPS) latitude and longitude coordinates for the inventory location.&lt;br&gt;&lt;br&gt;This container is only returned if the geo-coordinates are set for an inventory location.
      * @return a {@link GeoCoordinates}
      */
     @jakarta.annotation.Nullable
@@ -121,14 +121,14 @@ public class Location implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the address property value. This type is used to define the physical address of an inventory location.
+     * Sets the address property value. The &lt;strong&gt;address&lt;/strong&gt; container is always returned in &lt;strong&gt;getInventoryLocation&lt;/strong&gt;/&lt;strong&gt;getInventoryLocations&lt;/strong&gt; calls. Except in the case of a store or fulfillment center location, a full address is not a requirement when setting up an inventory location.
      * @param value Value to set for the address property.
      */
     public void setAddress(@jakarta.annotation.Nullable final Address value) {
         this.address = value;
     }
     /**
-     * Sets the geoCoordinates property value. This type is used to express the Global Positioning System (GPS) latitude and longitude coordinates of an inventory location.
+     * Sets the geoCoordinates property value. This container displays the Global Positioning System (GPS) latitude and longitude coordinates for the inventory location.&lt;br&gt;&lt;br&gt;This container is only returned if the geo-coordinates are set for an inventory location.
      * @param value Value to set for the geoCoordinates property.
      */
     public void setGeoCoordinates(@jakarta.annotation.Nullable final GeoCoordinates value) {

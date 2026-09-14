@@ -10,7 +10,7 @@ plugins {
 }
 
 group = "com.ebay"
-version = "1.0.0"
+version = "2.0.0"
 
 java {
     toolchain { languageVersion.set(JavaLanguageVersion.of(17)) }
@@ -86,7 +86,7 @@ publishing {
             from(components["java"])
             groupId = "com.ebay"
             artifactId = "listing-management-java-sdk"
-            version = "1.0.0"
+            version = "2.0.0"
         }
     }
 }

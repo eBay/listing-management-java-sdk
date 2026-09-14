@@ -35,11 +35,11 @@ public class CreateInventoryTaskRequest implements AdditionalDataHolder, Parsabl
      */
     private String feedType;
     /**
-     * This container is used to set the filter criteria for the ActiveInventoryReport. A seller can create an ActiveInventoryReport for a single listing format.
+     * This container allows a seller to create an ActiveInventoryReport for a single listing format.
      */
     private InventoryFilterCriteria filterCriteria;
     /**
-     * The version number of the inventory task to use for the &lt;b&gt;feedType&lt;/b&gt;.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; This field &lt;b&gt;must&lt;/b&gt; have a value of &lt;code&gt;1.0&lt;/code&gt;.&lt;/span&gt;
+     * The version number of the inventory task to use for the &lt;strong&gt;feedType&lt;/strong&gt;.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; This field &lt;strong&gt;must&lt;/strong&gt; have a value of &lt;code&gt;1.0&lt;/code&gt;.&lt;/span&gt;
      */
     private String schemaVersion;
     /**
@@ -87,7 +87,7 @@ public class CreateInventoryTaskRequest implements AdditionalDataHolder, Parsabl
         return deserializerMap;
     }
     /**
-     * Gets the filterCriteria property value. This container is used to set the filter criteria for the ActiveInventoryReport. A seller can create an ActiveInventoryReport for a single listing format.
+     * Gets the filterCriteria property value. This container allows a seller to create an ActiveInventoryReport for a single listing format.
      * @return a {@link InventoryFilterCriteria}
      */
     @jakarta.annotation.Nullable
@@ -95,7 +95,7 @@ public class CreateInventoryTaskRequest implements AdditionalDataHolder, Parsabl
         return this.filterCriteria;
     }
     /**
-     * Gets the schemaVersion property value. The version number of the inventory task to use for the &lt;b&gt;feedType&lt;/b&gt;.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; This field &lt;b&gt;must&lt;/b&gt; have a value of &lt;code&gt;1.0&lt;/code&gt;.&lt;/span&gt;
+     * Gets the schemaVersion property value. The version number of the inventory task to use for the &lt;strong&gt;feedType&lt;/strong&gt;.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; This field &lt;strong&gt;must&lt;/strong&gt; have a value of &lt;code&gt;1.0&lt;/code&gt;.&lt;/span&gt;
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -128,14 +128,14 @@ public class CreateInventoryTaskRequest implements AdditionalDataHolder, Parsabl
         this.feedType = value;
     }
     /**
-     * Sets the filterCriteria property value. This container is used to set the filter criteria for the ActiveInventoryReport. A seller can create an ActiveInventoryReport for a single listing format.
+     * Sets the filterCriteria property value. This container allows a seller to create an ActiveInventoryReport for a single listing format.
      * @param value Value to set for the filterCriteria property.
      */
     public void setFilterCriteria(@jakarta.annotation.Nullable final InventoryFilterCriteria value) {
         this.filterCriteria = value;
     }
     /**
-     * Sets the schemaVersion property value. The version number of the inventory task to use for the &lt;b&gt;feedType&lt;/b&gt;.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; This field &lt;b&gt;must&lt;/b&gt; have a value of &lt;code&gt;1.0&lt;/code&gt;.&lt;/span&gt;
+     * Sets the schemaVersion property value. The version number of the inventory task to use for the &lt;strong&gt;feedType&lt;/strong&gt;.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; This field &lt;strong&gt;must&lt;/strong&gt; have a value of &lt;code&gt;1.0&lt;/code&gt;.&lt;/span&gt;
      * @param value Value to set for the schemaVersion property.
      */
     public void setSchemaVersion(@jakarta.annotation.Nullable final String value) {

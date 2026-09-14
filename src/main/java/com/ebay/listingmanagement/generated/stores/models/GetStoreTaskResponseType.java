@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 /**
- * The base response type of the &lt;b&gt;getStoreTask&lt;/b&gt; method.
+ * The base response of a getStoreTask call.
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class GetStoreTaskResponseType implements AdditionalDataHolder, Parsable {
@@ -31,7 +31,7 @@ public class GetStoreTaskResponseType implements AdditionalDataHolder, Parsable 
      */
     private Map<String, Object> additionalData;
     /**
-     * This type is used to provide details about the status of the Store Task.
+     * An object describe the task information.
      */
     private StoreTaskType task;
     /**
@@ -69,7 +69,7 @@ public class GetStoreTaskResponseType implements AdditionalDataHolder, Parsable 
         return deserializerMap;
     }
     /**
-     * Gets the task property value. This type is used to provide details about the status of the Store Task.
+     * Gets the task property value. An object describe the task information.
      * @return a {@link StoreTaskType}
      */
     @jakarta.annotation.Nullable
@@ -93,7 +93,7 @@ public class GetStoreTaskResponseType implements AdditionalDataHolder, Parsable 
         this.additionalData = value;
     }
     /**
-     * Sets the task property value. This type is used to provide details about the status of the Store Task.
+     * Sets the task property value. An object describe the task information.
      * @param value Value to set for the task property.
      */
     public void setTask(@jakarta.annotation.Nullable final StoreTaskType value) {

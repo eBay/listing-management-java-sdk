@@ -21,9 +21,6 @@ import com.microsoft.kiota.serialization.SerializationWriter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-/**
- * This type is used to indicate the parameter field/value that caused an issue with the call request.
- */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class ErrorParameter implements AdditionalDataHolder, Parsable {
     /**
@@ -31,11 +28,11 @@ public class ErrorParameter implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * This type contains the name and value of an input parameter that contributed to a specific error or warning condition.
+     * The object of the error.
      */
     private String name;
     /**
-     * This is the actual value that was passed in for the element specified in the &lt;strong&gt;name&lt;/strong&gt; field.
+     * The value of the object.
      */
     private String value;
     /**
@@ -74,7 +71,7 @@ public class ErrorParameter implements AdditionalDataHolder, Parsable {
         return deserializerMap;
     }
     /**
-     * Gets the name property value. This type contains the name and value of an input parameter that contributed to a specific error or warning condition.
+     * Gets the name property value. The object of the error.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -82,7 +79,7 @@ public class ErrorParameter implements AdditionalDataHolder, Parsable {
         return this.name;
     }
     /**
-     * Gets the value property value. This is the actual value that was passed in for the element specified in the &lt;strong&gt;name&lt;/strong&gt; field.
+     * Gets the value property value. The value of the object.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -107,14 +104,14 @@ public class ErrorParameter implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the name property value. This type contains the name and value of an input parameter that contributed to a specific error or warning condition.
+     * Sets the name property value. The object of the error.
      * @param value Value to set for the name property.
      */
     public void setName(@jakarta.annotation.Nullable final String value) {
         this.name = value;
     }
     /**
-     * Sets the value property value. This is the actual value that was passed in for the element specified in the &lt;strong&gt;name&lt;/strong&gt; field.
+     * Sets the value property value. The value of the object.
      * @param value Value to set for the value property.
      */
     public void setValue(@jakarta.annotation.Nullable final String value) {

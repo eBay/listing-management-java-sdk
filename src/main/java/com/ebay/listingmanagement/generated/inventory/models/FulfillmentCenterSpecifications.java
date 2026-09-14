@@ -31,7 +31,7 @@ public class FulfillmentCenterSpecifications implements AdditionalDataHolder, Pa
      */
     private Map<String, Object> additionalData;
     /**
-     * This type is used by the &lt;b&gt;createInventoryLocation&lt;/b&gt; call to specify cut-off time(s) for an inventory location, as well as any overrides for these times.
+     * &lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; This container only applies to listings with same-day handling.&lt;/span&gt;&lt;br&gt;This container specifies cut-off time(s) for order handling (and optionally cut-off overrides) at a fulfillment center location.&lt;br&gt;&lt;br&gt;For example, if the cut-off time for order handling is &lt;code&gt;14:00&lt;/code&gt;, any orders made after this time will be handled on the next available business day.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; Shipping cut-off times must be specified if one of the &lt;b&gt;locationTypes&lt;/b&gt; of the inventory location is &lt;code&gt;FULFILLMENT_CENTER&lt;/code&gt;.&lt;/span&gt;
      */
     private SameDayShippingCutOffTimes sameDayShippingCutOffTimes;
     /**
@@ -69,7 +69,7 @@ public class FulfillmentCenterSpecifications implements AdditionalDataHolder, Pa
         return deserializerMap;
     }
     /**
-     * Gets the sameDayShippingCutOffTimes property value. This type is used by the &lt;b&gt;createInventoryLocation&lt;/b&gt; call to specify cut-off time(s) for an inventory location, as well as any overrides for these times.
+     * Gets the sameDayShippingCutOffTimes property value. &lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; This container only applies to listings with same-day handling.&lt;/span&gt;&lt;br&gt;This container specifies cut-off time(s) for order handling (and optionally cut-off overrides) at a fulfillment center location.&lt;br&gt;&lt;br&gt;For example, if the cut-off time for order handling is &lt;code&gt;14:00&lt;/code&gt;, any orders made after this time will be handled on the next available business day.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; Shipping cut-off times must be specified if one of the &lt;b&gt;locationTypes&lt;/b&gt; of the inventory location is &lt;code&gt;FULFILLMENT_CENTER&lt;/code&gt;.&lt;/span&gt;
      * @return a {@link SameDayShippingCutOffTimes}
      */
     @jakarta.annotation.Nullable
@@ -93,7 +93,7 @@ public class FulfillmentCenterSpecifications implements AdditionalDataHolder, Pa
         this.additionalData = value;
     }
     /**
-     * Sets the sameDayShippingCutOffTimes property value. This type is used by the &lt;b&gt;createInventoryLocation&lt;/b&gt; call to specify cut-off time(s) for an inventory location, as well as any overrides for these times.
+     * Sets the sameDayShippingCutOffTimes property value. &lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; This container only applies to listings with same-day handling.&lt;/span&gt;&lt;br&gt;This container specifies cut-off time(s) for order handling (and optionally cut-off overrides) at a fulfillment center location.&lt;br&gt;&lt;br&gt;For example, if the cut-off time for order handling is &lt;code&gt;14:00&lt;/code&gt;, any orders made after this time will be handled on the next available business day.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; Shipping cut-off times must be specified if one of the &lt;b&gt;locationTypes&lt;/b&gt; of the inventory location is &lt;code&gt;FULFILLMENT_CENTER&lt;/code&gt;.&lt;/span&gt;
      * @param value Value to set for the sameDayShippingCutOffTimes property.
      */
     public void setSameDayShippingCutOffTimes(@jakarta.annotation.Nullable final SameDayShippingCutOffTimes value) {

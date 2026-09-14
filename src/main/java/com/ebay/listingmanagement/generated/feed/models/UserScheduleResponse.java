@@ -31,7 +31,7 @@ public class UserScheduleResponse implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * The creation date of the schedule in hours based on the 24-hour Coordinated Universal Time (UTC) clock.
+     * The creation date of the schedule in hours based on the 24&amp;#8209;hour Coordinated Universal Time (UTC) clock.
      */
     private String creationDate;
     /**
@@ -47,11 +47,11 @@ public class UserScheduleResponse implements AdditionalDataHolder, Parsable {
      */
     private Integer preferredTriggerDayOfMonth;
     /**
-     * The preferred day of the week to trigger the schedule. This field can be used with &lt;strong&gt;preferredTriggerHour&lt;/strong&gt; for weekly schedules. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:DayOfWeekEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * The preferred day of the week to trigger the schedule. This field can be used with &lt;strong&gt;preferredTriggerHour&lt;/strong&gt; for weekly schedules.
      */
-    private String preferredTriggerDayOfWeek;
+    private DayOfWeekEnum preferredTriggerDayOfWeek;
     /**
-     * The preferred two-digit hour of the day to trigger the schedule. &lt;br /&gt;&lt;br /&gt;&lt;b&gt;Format:&lt;/b&gt; UTC &lt;code&gt;hhZ&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;For example, the following represents 11:00 am UTC:&lt;br /&gt;&lt;br /&gt;&lt;code&gt;11Z&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;
+     * The preferred two-digit hour of the day to trigger the schedule. &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Format:&lt;/strong&gt; UTC &lt;code&gt;hhZ&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;For example, the following represents 11:00 am UTC: &lt;code&gt;11Z&lt;/code&gt;
      */
     private String preferredTriggerHour;
     /**
@@ -75,17 +75,17 @@ public class UserScheduleResponse implements AdditionalDataHolder, Parsable {
      */
     private String scheduleTemplateId;
     /**
-     * The schema version of the feedType for the schedule.
+     * The schema version of the &lt;strong&gt;feedType&lt;/strong&gt; for the schedule.
      */
     private String schemaVersion;
     /**
-     * The enumeration value that indicates the state of the schedule. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:StatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * The enumeration value that indicates the state of the schedule.
      */
-    private String status;
+    private StatusEnum status;
     /**
-     * The reason the schedule is inactive. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:StatusReasonEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * The reason the schedule is inactive.
      */
-    private String statusReason;
+    private StatusReasonEnum statusReason;
     /**
      * Instantiates a new {@link UserScheduleResponse} and sets the default values.
      */
@@ -111,7 +111,7 @@ public class UserScheduleResponse implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the creationDate property value. The creation date of the schedule in hours based on the 24-hour Coordinated Universal Time (UTC) clock.
+     * Gets the creationDate property value. The creation date of the schedule in hours based on the 24&amp;#8209;hour Coordinated Universal Time (UTC) clock.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -137,7 +137,7 @@ public class UserScheduleResponse implements AdditionalDataHolder, Parsable {
         deserializerMap.put("feedType", (n) -> { this.setFeedType(n.getStringValue()); });
         deserializerMap.put("lastModifiedDate", (n) -> { this.setLastModifiedDate(n.getStringValue()); });
         deserializerMap.put("preferredTriggerDayOfMonth", (n) -> { this.setPreferredTriggerDayOfMonth(n.getIntegerValue()); });
-        deserializerMap.put("preferredTriggerDayOfWeek", (n) -> { this.setPreferredTriggerDayOfWeek(n.getStringValue()); });
+        deserializerMap.put("preferredTriggerDayOfWeek", (n) -> { this.setPreferredTriggerDayOfWeek(n.getEnumValue(DayOfWeekEnum::forValue)); });
         deserializerMap.put("preferredTriggerHour", (n) -> { this.setPreferredTriggerHour(n.getStringValue()); });
         deserializerMap.put("scheduleEndDate", (n) -> { this.setScheduleEndDate(n.getStringValue()); });
         deserializerMap.put("scheduleId", (n) -> { this.setScheduleId(n.getStringValue()); });
@@ -145,8 +145,8 @@ public class UserScheduleResponse implements AdditionalDataHolder, Parsable {
         deserializerMap.put("scheduleStartDate", (n) -> { this.setScheduleStartDate(n.getStringValue()); });
         deserializerMap.put("scheduleTemplateId", (n) -> { this.setScheduleTemplateId(n.getStringValue()); });
         deserializerMap.put("schemaVersion", (n) -> { this.setSchemaVersion(n.getStringValue()); });
-        deserializerMap.put("status", (n) -> { this.setStatus(n.getStringValue()); });
-        deserializerMap.put("statusReason", (n) -> { this.setStatusReason(n.getStringValue()); });
+        deserializerMap.put("status", (n) -> { this.setStatus(n.getEnumValue(StatusEnum::forValue)); });
+        deserializerMap.put("statusReason", (n) -> { this.setStatusReason(n.getEnumValue(StatusReasonEnum::forValue)); });
         return deserializerMap;
     }
     /**
@@ -166,15 +166,15 @@ public class UserScheduleResponse implements AdditionalDataHolder, Parsable {
         return this.preferredTriggerDayOfMonth;
     }
     /**
-     * Gets the preferredTriggerDayOfWeek property value. The preferred day of the week to trigger the schedule. This field can be used with &lt;strong&gt;preferredTriggerHour&lt;/strong&gt; for weekly schedules. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:DayOfWeekEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the preferredTriggerDayOfWeek property value. The preferred day of the week to trigger the schedule. This field can be used with &lt;strong&gt;preferredTriggerHour&lt;/strong&gt; for weekly schedules.
+     * @return a {@link DayOfWeekEnum}
      */
     @jakarta.annotation.Nullable
-    public String getPreferredTriggerDayOfWeek() {
+    public DayOfWeekEnum getPreferredTriggerDayOfWeek() {
         return this.preferredTriggerDayOfWeek;
     }
     /**
-     * Gets the preferredTriggerHour property value. The preferred two-digit hour of the day to trigger the schedule. &lt;br /&gt;&lt;br /&gt;&lt;b&gt;Format:&lt;/b&gt; UTC &lt;code&gt;hhZ&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;For example, the following represents 11:00 am UTC:&lt;br /&gt;&lt;br /&gt;&lt;code&gt;11Z&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;
+     * Gets the preferredTriggerHour property value. The preferred two-digit hour of the day to trigger the schedule. &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Format:&lt;/strong&gt; UTC &lt;code&gt;hhZ&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;For example, the following represents 11:00 am UTC: &lt;code&gt;11Z&lt;/code&gt;
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -222,7 +222,7 @@ public class UserScheduleResponse implements AdditionalDataHolder, Parsable {
         return this.scheduleTemplateId;
     }
     /**
-     * Gets the schemaVersion property value. The schema version of the feedType for the schedule.
+     * Gets the schemaVersion property value. The schema version of the &lt;strong&gt;feedType&lt;/strong&gt; for the schedule.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -230,19 +230,19 @@ public class UserScheduleResponse implements AdditionalDataHolder, Parsable {
         return this.schemaVersion;
     }
     /**
-     * Gets the status property value. The enumeration value that indicates the state of the schedule. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:StatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the status property value. The enumeration value that indicates the state of the schedule.
+     * @return a {@link StatusEnum}
      */
     @jakarta.annotation.Nullable
-    public String getStatus() {
+    public StatusEnum getStatus() {
         return this.status;
     }
     /**
-     * Gets the statusReason property value. The reason the schedule is inactive. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:StatusReasonEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the statusReason property value. The reason the schedule is inactive.
+     * @return a {@link StatusReasonEnum}
      */
     @jakarta.annotation.Nullable
-    public String getStatusReason() {
+    public StatusReasonEnum getStatusReason() {
         return this.statusReason;
     }
     /**
@@ -255,7 +255,7 @@ public class UserScheduleResponse implements AdditionalDataHolder, Parsable {
         writer.writeStringValue("feedType", this.getFeedType());
         writer.writeStringValue("lastModifiedDate", this.getLastModifiedDate());
         writer.writeIntegerValue("preferredTriggerDayOfMonth", this.getPreferredTriggerDayOfMonth());
-        writer.writeStringValue("preferredTriggerDayOfWeek", this.getPreferredTriggerDayOfWeek());
+        writer.writeEnumValue("preferredTriggerDayOfWeek", this.getPreferredTriggerDayOfWeek());
         writer.writeStringValue("preferredTriggerHour", this.getPreferredTriggerHour());
         writer.writeStringValue("scheduleEndDate", this.getScheduleEndDate());
         writer.writeStringValue("scheduleId", this.getScheduleId());
@@ -263,8 +263,8 @@ public class UserScheduleResponse implements AdditionalDataHolder, Parsable {
         writer.writeStringValue("scheduleStartDate", this.getScheduleStartDate());
         writer.writeStringValue("scheduleTemplateId", this.getScheduleTemplateId());
         writer.writeStringValue("schemaVersion", this.getSchemaVersion());
-        writer.writeStringValue("status", this.getStatus());
-        writer.writeStringValue("statusReason", this.getStatusReason());
+        writer.writeEnumValue("status", this.getStatus());
+        writer.writeEnumValue("statusReason", this.getStatusReason());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -275,7 +275,7 @@ public class UserScheduleResponse implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the creationDate property value. The creation date of the schedule in hours based on the 24-hour Coordinated Universal Time (UTC) clock.
+     * Sets the creationDate property value. The creation date of the schedule in hours based on the 24&amp;#8209;hour Coordinated Universal Time (UTC) clock.
      * @param value Value to set for the creationDate property.
      */
     public void setCreationDate(@jakarta.annotation.Nullable final String value) {
@@ -303,14 +303,14 @@ public class UserScheduleResponse implements AdditionalDataHolder, Parsable {
         this.preferredTriggerDayOfMonth = value;
     }
     /**
-     * Sets the preferredTriggerDayOfWeek property value. The preferred day of the week to trigger the schedule. This field can be used with &lt;strong&gt;preferredTriggerHour&lt;/strong&gt; for weekly schedules. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:DayOfWeekEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the preferredTriggerDayOfWeek property value. The preferred day of the week to trigger the schedule. This field can be used with &lt;strong&gt;preferredTriggerHour&lt;/strong&gt; for weekly schedules.
      * @param value Value to set for the preferredTriggerDayOfWeek property.
      */
-    public void setPreferredTriggerDayOfWeek(@jakarta.annotation.Nullable final String value) {
+    public void setPreferredTriggerDayOfWeek(@jakarta.annotation.Nullable final DayOfWeekEnum value) {
         this.preferredTriggerDayOfWeek = value;
     }
     /**
-     * Sets the preferredTriggerHour property value. The preferred two-digit hour of the day to trigger the schedule. &lt;br /&gt;&lt;br /&gt;&lt;b&gt;Format:&lt;/b&gt; UTC &lt;code&gt;hhZ&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;For example, the following represents 11:00 am UTC:&lt;br /&gt;&lt;br /&gt;&lt;code&gt;11Z&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;
+     * Sets the preferredTriggerHour property value. The preferred two-digit hour of the day to trigger the schedule. &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Format:&lt;/strong&gt; UTC &lt;code&gt;hhZ&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;For example, the following represents 11:00 am UTC: &lt;code&gt;11Z&lt;/code&gt;
      * @param value Value to set for the preferredTriggerHour property.
      */
     public void setPreferredTriggerHour(@jakarta.annotation.Nullable final String value) {
@@ -352,24 +352,24 @@ public class UserScheduleResponse implements AdditionalDataHolder, Parsable {
         this.scheduleTemplateId = value;
     }
     /**
-     * Sets the schemaVersion property value. The schema version of the feedType for the schedule.
+     * Sets the schemaVersion property value. The schema version of the &lt;strong&gt;feedType&lt;/strong&gt; for the schedule.
      * @param value Value to set for the schemaVersion property.
      */
     public void setSchemaVersion(@jakarta.annotation.Nullable final String value) {
         this.schemaVersion = value;
     }
     /**
-     * Sets the status property value. The enumeration value that indicates the state of the schedule. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:StatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the status property value. The enumeration value that indicates the state of the schedule.
      * @param value Value to set for the status property.
      */
-    public void setStatus(@jakarta.annotation.Nullable final String value) {
+    public void setStatus(@jakarta.annotation.Nullable final StatusEnum value) {
         this.status = value;
     }
     /**
-     * Sets the statusReason property value. The reason the schedule is inactive. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:StatusReasonEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the statusReason property value. The reason the schedule is inactive.
      * @param value Value to set for the statusReason property.
      */
-    public void setStatusReason(@jakarta.annotation.Nullable final String value) {
+    public void setStatusReason(@jakarta.annotation.Nullable final StatusReasonEnum value) {
         this.statusReason = value;
     }
 }

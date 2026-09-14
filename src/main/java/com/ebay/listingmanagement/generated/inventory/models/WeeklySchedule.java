@@ -37,7 +37,7 @@ public class WeeklySchedule implements AdditionalDataHolder, Parsable {
     /**
      * This comma-separated array defines the days of week for which the specified &lt;b&gt;cutOffTime&lt;/b&gt; is used.
      */
-    private java.util.List<String> dayOfWeekEnum;
+    private java.util.List<DayOfWeekEnum> dayOfWeekEnum;
     /**
      * Instantiates a new {@link WeeklySchedule} and sets the default values.
      */
@@ -72,10 +72,10 @@ public class WeeklySchedule implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the dayOfWeekEnum property value. This comma-separated array defines the days of week for which the specified &lt;b&gt;cutOffTime&lt;/b&gt; is used.
-     * @return a {@link java.util.List<String>}
+     * @return a {@link java.util.List<DayOfWeekEnum>}
      */
     @jakarta.annotation.Nullable
-    public java.util.List<String> getDayOfWeekEnum() {
+    public java.util.List<DayOfWeekEnum> getDayOfWeekEnum() {
         return this.dayOfWeekEnum;
     }
     /**
@@ -86,7 +86,7 @@ public class WeeklySchedule implements AdditionalDataHolder, Parsable {
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(2);
         deserializerMap.put("cutOffTime", (n) -> { this.setCutOffTime(n.getStringValue()); });
-        deserializerMap.put("dayOfWeekEnum", (n) -> { this.setDayOfWeekEnum(n.getCollectionOfPrimitiveValues(String.class)); });
+        deserializerMap.put("dayOfWeekEnum", (n) -> { this.setDayOfWeekEnum(n.getCollectionOfEnumValues(DayOfWeekEnum::forValue)); });
         return deserializerMap;
     }
     /**
@@ -96,7 +96,7 @@ public class WeeklySchedule implements AdditionalDataHolder, Parsable {
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         writer.writeStringValue("cutOffTime", this.getCutOffTime());
-        writer.writeCollectionOfPrimitiveValues("dayOfWeekEnum", this.getDayOfWeekEnum());
+        writer.writeCollectionOfEnumValues("dayOfWeekEnum", this.getDayOfWeekEnum());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -117,7 +117,7 @@ public class WeeklySchedule implements AdditionalDataHolder, Parsable {
      * Sets the dayOfWeekEnum property value. This comma-separated array defines the days of week for which the specified &lt;b&gt;cutOffTime&lt;/b&gt; is used.
      * @param value Value to set for the dayOfWeekEnum property.
      */
-    public void setDayOfWeekEnum(@jakarta.annotation.Nullable final java.util.List<String> value) {
+    public void setDayOfWeekEnum(@jakarta.annotation.Nullable final java.util.List<DayOfWeekEnum> value) {
         this.dayOfWeekEnum = value;
     }
 }

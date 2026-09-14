@@ -102,7 +102,7 @@ public class FeedApiClient extends BaseRequestBuilder {
         ApiClientBuilder.registerDefaultDeserializer(() -> new FormParseNodeFactory());
         ApiClientBuilder.registerDefaultDeserializer(() -> new TextParseNodeFactory());
         if (requestAdapter.getBaseUrl() == null || requestAdapter.getBaseUrl().isEmpty()) {
-            requestAdapter.setBaseUrl("https://api.ebay.com{basePath}");
+            requestAdapter.setBaseUrl("https://api.ebay.com/sell/feed/v1");
         }
         pathParameters.put("baseurl", requestAdapter.getBaseUrl());
     }

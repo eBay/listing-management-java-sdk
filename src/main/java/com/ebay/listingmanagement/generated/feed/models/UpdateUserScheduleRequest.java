@@ -31,19 +31,19 @@ public class UpdateUserScheduleRequest implements AdditionalDataHolder, Parsable
      */
     private Map<String, Object> additionalData;
     /**
-     * The preferred day of the month to trigger the schedule. This field can be used with &lt;strong&gt;preferredTriggerHour&lt;/strong&gt; for monthly schedules. The last day of the month is used for numbers larger than the actual number of days in the month. &lt;br /&gt;&lt;br /&gt;This field is available as specified by the template (&lt;strong&gt;scheduleTemplateId&lt;/strong&gt;). The template can specify this field as optional or required, and optionally provides a default value. &lt;br /&gt;&lt;br /&gt;&lt;b&gt;Minimum: &lt;/b&gt;1&lt;b&gt;&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Maximum: &lt;/b&gt;31
+     * The preferred day of the month to trigger the schedule. This field can be used with &lt;strong&gt;preferredTriggerHour&lt;/strong&gt; for monthly schedules. The last day of the month is used for numbers larger than the actual number of days in the month. &lt;br /&gt;&lt;br /&gt;This field is available as specified by the template (&lt;strong&gt;scheduleTemplateId&lt;/strong&gt;). The template can specify this field as optional or required and optionally provides a default value. &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Minimum: &lt;/strong&gt;1&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Maximum: &lt;/strong&gt;31
      */
     private Integer preferredTriggerDayOfMonth;
     /**
-     * The preferred day of the week to trigger the schedule. This field can be used with &lt;strong&gt;preferredTriggerHour&lt;/strong&gt; for weekly schedules. &lt;br /&gt;&lt;br /&gt;This field is available as specified by the template (&lt;strong&gt;scheduleTemplateId&lt;/strong&gt;). The template can specify this field as optional or required, and optionally provides a default value. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:DayOfWeekEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * The preferred day of the week to trigger the schedule. This field can be used with &lt;strong&gt;preferredTriggerHour&lt;/strong&gt; for weekly schedules. &lt;br /&gt;&lt;br /&gt;This field is available as specified by the template (&lt;strong&gt;scheduleTemplateId&lt;/strong&gt;). The template can specify this field as optional or required and optionally provides a default value.
      */
-    private String preferredTriggerDayOfWeek;
+    private DayOfWeekEnum preferredTriggerDayOfWeek;
     /**
-     * The preferred two-digit hour of the day to trigger the schedule. &lt;br /&gt;&lt;br /&gt;This field is available as specified by the template (&lt;strong&gt;scheduleTemplateId&lt;/strong&gt;). The template can specify this field as optional or required, and optionally provides a default value. &lt;br /&gt;&lt;br /&gt;&lt;b&gt;Format:&lt;/b&gt; UTC &lt;code&gt;hhZ&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;For example, the following represents 11:00 am UTC:&lt;code&gt; 11Z&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Minimum: &lt;/b&gt;&lt;code&gt;00Z&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Maximum:&lt;/b&gt; &lt;code&gt;23Z&lt;/code&gt;
+     * The preferred two-digit hour of the day to trigger the schedule.&lt;br /&gt;&lt;br /&gt;This field is available as specified by the template (&lt;strong&gt;scheduleTemplateId&lt;/strong&gt;). The template can specify this field as optional or required and optionally provides a default value. &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Format:&lt;/strong&gt; UTC &lt;code&gt;hhZ&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;For example, the following represents 11:00 am UTC: &lt;code&gt;11Z&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Minimum: &lt;/strong&gt;&lt;code&gt;00Z&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Maximum:&lt;/strong&gt; &lt;code&gt;23Z&lt;/code&gt;
      */
     private String preferredTriggerHour;
     /**
-     * The timestamp on which the schedule (report generation) ends. After this date, the schedule status becomes &lt;code&gt;INACTIVE&lt;/code&gt;. &lt;br /&gt;&lt;br /&gt;Use this field, if available, to end the schedule in the future. This value must be later than &lt;strong&gt;scheduleStartDate&lt;/strong&gt; (if supplied). This field is available as specified by the template (&lt;strong&gt;scheduleTemplateId&lt;/strong&gt;). The template can specify this field as optional or required, and optionally provides a default value.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Format:&lt;/b&gt; UTC &lt;code&gt;yyyy-MM-dd&lt;strong&gt;T&lt;/strong&gt;HH&lt;strong&gt;Z&lt;/strong&gt;&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;For example, the following represents UTC October 10, 2021 at 10:00 AM:&lt;br /&gt;&lt;code&gt; 2021-10-10T10Z&lt;/code&gt;
+     * The timestamp on which the schedule (report generation) ends. After this date, the schedule status becomes &lt;code&gt;INACTIVE&lt;/code&gt;. &lt;br /&gt;&lt;br /&gt;Use this field, if available, to end the schedule in the future. This value must be later than &lt;strong&gt;scheduleStartDate&lt;/strong&gt; (if supplied). This field is available as specified by the template (&lt;strong&gt;scheduleTemplateId&lt;/strong&gt;). The template can specify this field as optional or required and optionally provides a default value.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Format:&lt;/strong&gt; UTC &lt;code&gt;yyyy-MM-dd&lt;strong&gt;T&lt;/strong&gt;HH&lt;strong&gt;Z&lt;/strong&gt;&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;For example, the following represents UTC October 10, 2021 at 10:00 AM:&lt;br /&gt;&lt;code&gt; 2021-10-10T10Z&lt;/code&gt;
      */
     private String scheduleEndDate;
     /**
@@ -51,7 +51,7 @@ public class UpdateUserScheduleRequest implements AdditionalDataHolder, Parsable
      */
     private String scheduleName;
     /**
-     * The timestamp to start generating the report. After this timestamp, the schedule status becomes active until either the &lt;strong&gt;scheduleEndDate&lt;/strong&gt; occurs or the &lt;strong&gt;scheduleTemplateId&lt;/strong&gt; becomes inactive. &lt;br /&gt;&lt;br /&gt;Use this field, if available, to start the schedule in the future but before the &lt;strong&gt;scheduleEndDate&lt;/strong&gt; (if supplied). This field is available as specified by the template &lt;strong&gt;(scheduleTemplateId)&lt;/strong&gt;.  The template can specify this field as optional or required, and optionally provides a default value.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Format:&lt;/b&gt; UTC &lt;code&gt;yyyy-MM-dd&lt;strong&gt;T&lt;/strong&gt;HH&lt;strong&gt;Z&lt;/strong&gt;&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;For example, the following represents a schedule start date of UTC October 01, 2020 at 12:00 PM:&lt;br /&gt;&lt;code&gt; 2020-01-01T12Z&lt;/code&gt;
+     * The timestamp to start generating the report. After this timestamp, the schedule status becomes active until either the &lt;strong&gt;scheduleEndDate&lt;/strong&gt; occurs or the &lt;strong&gt;scheduleTemplateId&lt;/strong&gt; becomes inactive. &lt;br /&gt;&lt;br /&gt;Use this field, if available, to start the schedule in the future but before the &lt;strong&gt;scheduleEndDate&lt;/strong&gt; (if supplied). This field is available as specified by the template &lt;strong&gt;(scheduleTemplateId)&lt;/strong&gt;.  The template can specify this field as optional or required and optionally provides a default value.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Format:&lt;/strong&gt; UTC &lt;code&gt;yyyy-MM-dd&lt;strong&gt;T&lt;/strong&gt;HH&lt;strong&gt;Z&lt;/strong&gt;&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;For example, the following represents a schedule start date of UTC October 01, 2020 at 12:00 PM:&lt;br /&gt;&lt;code&gt; 2020-01-01T12Z&lt;/code&gt;
      */
     private String scheduleStartDate;
     /**
@@ -90,7 +90,7 @@ public class UpdateUserScheduleRequest implements AdditionalDataHolder, Parsable
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(7);
         deserializerMap.put("preferredTriggerDayOfMonth", (n) -> { this.setPreferredTriggerDayOfMonth(n.getIntegerValue()); });
-        deserializerMap.put("preferredTriggerDayOfWeek", (n) -> { this.setPreferredTriggerDayOfWeek(n.getStringValue()); });
+        deserializerMap.put("preferredTriggerDayOfWeek", (n) -> { this.setPreferredTriggerDayOfWeek(n.getEnumValue(DayOfWeekEnum::forValue)); });
         deserializerMap.put("preferredTriggerHour", (n) -> { this.setPreferredTriggerHour(n.getStringValue()); });
         deserializerMap.put("scheduleEndDate", (n) -> { this.setScheduleEndDate(n.getStringValue()); });
         deserializerMap.put("scheduleName", (n) -> { this.setScheduleName(n.getStringValue()); });
@@ -99,7 +99,7 @@ public class UpdateUserScheduleRequest implements AdditionalDataHolder, Parsable
         return deserializerMap;
     }
     /**
-     * Gets the preferredTriggerDayOfMonth property value. The preferred day of the month to trigger the schedule. This field can be used with &lt;strong&gt;preferredTriggerHour&lt;/strong&gt; for monthly schedules. The last day of the month is used for numbers larger than the actual number of days in the month. &lt;br /&gt;&lt;br /&gt;This field is available as specified by the template (&lt;strong&gt;scheduleTemplateId&lt;/strong&gt;). The template can specify this field as optional or required, and optionally provides a default value. &lt;br /&gt;&lt;br /&gt;&lt;b&gt;Minimum: &lt;/b&gt;1&lt;b&gt;&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Maximum: &lt;/b&gt;31
+     * Gets the preferredTriggerDayOfMonth property value. The preferred day of the month to trigger the schedule. This field can be used with &lt;strong&gt;preferredTriggerHour&lt;/strong&gt; for monthly schedules. The last day of the month is used for numbers larger than the actual number of days in the month. &lt;br /&gt;&lt;br /&gt;This field is available as specified by the template (&lt;strong&gt;scheduleTemplateId&lt;/strong&gt;). The template can specify this field as optional or required and optionally provides a default value. &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Minimum: &lt;/strong&gt;1&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Maximum: &lt;/strong&gt;31
      * @return a {@link Integer}
      */
     @jakarta.annotation.Nullable
@@ -107,15 +107,15 @@ public class UpdateUserScheduleRequest implements AdditionalDataHolder, Parsable
         return this.preferredTriggerDayOfMonth;
     }
     /**
-     * Gets the preferredTriggerDayOfWeek property value. The preferred day of the week to trigger the schedule. This field can be used with &lt;strong&gt;preferredTriggerHour&lt;/strong&gt; for weekly schedules. &lt;br /&gt;&lt;br /&gt;This field is available as specified by the template (&lt;strong&gt;scheduleTemplateId&lt;/strong&gt;). The template can specify this field as optional or required, and optionally provides a default value. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:DayOfWeekEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the preferredTriggerDayOfWeek property value. The preferred day of the week to trigger the schedule. This field can be used with &lt;strong&gt;preferredTriggerHour&lt;/strong&gt; for weekly schedules. &lt;br /&gt;&lt;br /&gt;This field is available as specified by the template (&lt;strong&gt;scheduleTemplateId&lt;/strong&gt;). The template can specify this field as optional or required and optionally provides a default value.
+     * @return a {@link DayOfWeekEnum}
      */
     @jakarta.annotation.Nullable
-    public String getPreferredTriggerDayOfWeek() {
+    public DayOfWeekEnum getPreferredTriggerDayOfWeek() {
         return this.preferredTriggerDayOfWeek;
     }
     /**
-     * Gets the preferredTriggerHour property value. The preferred two-digit hour of the day to trigger the schedule. &lt;br /&gt;&lt;br /&gt;This field is available as specified by the template (&lt;strong&gt;scheduleTemplateId&lt;/strong&gt;). The template can specify this field as optional or required, and optionally provides a default value. &lt;br /&gt;&lt;br /&gt;&lt;b&gt;Format:&lt;/b&gt; UTC &lt;code&gt;hhZ&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;For example, the following represents 11:00 am UTC:&lt;code&gt; 11Z&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Minimum: &lt;/b&gt;&lt;code&gt;00Z&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Maximum:&lt;/b&gt; &lt;code&gt;23Z&lt;/code&gt;
+     * Gets the preferredTriggerHour property value. The preferred two-digit hour of the day to trigger the schedule.&lt;br /&gt;&lt;br /&gt;This field is available as specified by the template (&lt;strong&gt;scheduleTemplateId&lt;/strong&gt;). The template can specify this field as optional or required and optionally provides a default value. &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Format:&lt;/strong&gt; UTC &lt;code&gt;hhZ&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;For example, the following represents 11:00 am UTC: &lt;code&gt;11Z&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Minimum: &lt;/strong&gt;&lt;code&gt;00Z&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Maximum:&lt;/strong&gt; &lt;code&gt;23Z&lt;/code&gt;
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -123,7 +123,7 @@ public class UpdateUserScheduleRequest implements AdditionalDataHolder, Parsable
         return this.preferredTriggerHour;
     }
     /**
-     * Gets the scheduleEndDate property value. The timestamp on which the schedule (report generation) ends. After this date, the schedule status becomes &lt;code&gt;INACTIVE&lt;/code&gt;. &lt;br /&gt;&lt;br /&gt;Use this field, if available, to end the schedule in the future. This value must be later than &lt;strong&gt;scheduleStartDate&lt;/strong&gt; (if supplied). This field is available as specified by the template (&lt;strong&gt;scheduleTemplateId&lt;/strong&gt;). The template can specify this field as optional or required, and optionally provides a default value.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Format:&lt;/b&gt; UTC &lt;code&gt;yyyy-MM-dd&lt;strong&gt;T&lt;/strong&gt;HH&lt;strong&gt;Z&lt;/strong&gt;&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;For example, the following represents UTC October 10, 2021 at 10:00 AM:&lt;br /&gt;&lt;code&gt; 2021-10-10T10Z&lt;/code&gt;
+     * Gets the scheduleEndDate property value. The timestamp on which the schedule (report generation) ends. After this date, the schedule status becomes &lt;code&gt;INACTIVE&lt;/code&gt;. &lt;br /&gt;&lt;br /&gt;Use this field, if available, to end the schedule in the future. This value must be later than &lt;strong&gt;scheduleStartDate&lt;/strong&gt; (if supplied). This field is available as specified by the template (&lt;strong&gt;scheduleTemplateId&lt;/strong&gt;). The template can specify this field as optional or required and optionally provides a default value.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Format:&lt;/strong&gt; UTC &lt;code&gt;yyyy-MM-dd&lt;strong&gt;T&lt;/strong&gt;HH&lt;strong&gt;Z&lt;/strong&gt;&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;For example, the following represents UTC October 10, 2021 at 10:00 AM:&lt;br /&gt;&lt;code&gt; 2021-10-10T10Z&lt;/code&gt;
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -139,7 +139,7 @@ public class UpdateUserScheduleRequest implements AdditionalDataHolder, Parsable
         return this.scheduleName;
     }
     /**
-     * Gets the scheduleStartDate property value. The timestamp to start generating the report. After this timestamp, the schedule status becomes active until either the &lt;strong&gt;scheduleEndDate&lt;/strong&gt; occurs or the &lt;strong&gt;scheduleTemplateId&lt;/strong&gt; becomes inactive. &lt;br /&gt;&lt;br /&gt;Use this field, if available, to start the schedule in the future but before the &lt;strong&gt;scheduleEndDate&lt;/strong&gt; (if supplied). This field is available as specified by the template &lt;strong&gt;(scheduleTemplateId)&lt;/strong&gt;.  The template can specify this field as optional or required, and optionally provides a default value.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Format:&lt;/b&gt; UTC &lt;code&gt;yyyy-MM-dd&lt;strong&gt;T&lt;/strong&gt;HH&lt;strong&gt;Z&lt;/strong&gt;&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;For example, the following represents a schedule start date of UTC October 01, 2020 at 12:00 PM:&lt;br /&gt;&lt;code&gt; 2020-01-01T12Z&lt;/code&gt;
+     * Gets the scheduleStartDate property value. The timestamp to start generating the report. After this timestamp, the schedule status becomes active until either the &lt;strong&gt;scheduleEndDate&lt;/strong&gt; occurs or the &lt;strong&gt;scheduleTemplateId&lt;/strong&gt; becomes inactive. &lt;br /&gt;&lt;br /&gt;Use this field, if available, to start the schedule in the future but before the &lt;strong&gt;scheduleEndDate&lt;/strong&gt; (if supplied). This field is available as specified by the template &lt;strong&gt;(scheduleTemplateId)&lt;/strong&gt;.  The template can specify this field as optional or required and optionally provides a default value.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Format:&lt;/strong&gt; UTC &lt;code&gt;yyyy-MM-dd&lt;strong&gt;T&lt;/strong&gt;HH&lt;strong&gt;Z&lt;/strong&gt;&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;For example, the following represents a schedule start date of UTC October 01, 2020 at 12:00 PM:&lt;br /&gt;&lt;code&gt; 2020-01-01T12Z&lt;/code&gt;
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -161,7 +161,7 @@ public class UpdateUserScheduleRequest implements AdditionalDataHolder, Parsable
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         writer.writeIntegerValue("preferredTriggerDayOfMonth", this.getPreferredTriggerDayOfMonth());
-        writer.writeStringValue("preferredTriggerDayOfWeek", this.getPreferredTriggerDayOfWeek());
+        writer.writeEnumValue("preferredTriggerDayOfWeek", this.getPreferredTriggerDayOfWeek());
         writer.writeStringValue("preferredTriggerHour", this.getPreferredTriggerHour());
         writer.writeStringValue("scheduleEndDate", this.getScheduleEndDate());
         writer.writeStringValue("scheduleName", this.getScheduleName());
@@ -177,28 +177,28 @@ public class UpdateUserScheduleRequest implements AdditionalDataHolder, Parsable
         this.additionalData = value;
     }
     /**
-     * Sets the preferredTriggerDayOfMonth property value. The preferred day of the month to trigger the schedule. This field can be used with &lt;strong&gt;preferredTriggerHour&lt;/strong&gt; for monthly schedules. The last day of the month is used for numbers larger than the actual number of days in the month. &lt;br /&gt;&lt;br /&gt;This field is available as specified by the template (&lt;strong&gt;scheduleTemplateId&lt;/strong&gt;). The template can specify this field as optional or required, and optionally provides a default value. &lt;br /&gt;&lt;br /&gt;&lt;b&gt;Minimum: &lt;/b&gt;1&lt;b&gt;&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Maximum: &lt;/b&gt;31
+     * Sets the preferredTriggerDayOfMonth property value. The preferred day of the month to trigger the schedule. This field can be used with &lt;strong&gt;preferredTriggerHour&lt;/strong&gt; for monthly schedules. The last day of the month is used for numbers larger than the actual number of days in the month. &lt;br /&gt;&lt;br /&gt;This field is available as specified by the template (&lt;strong&gt;scheduleTemplateId&lt;/strong&gt;). The template can specify this field as optional or required and optionally provides a default value. &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Minimum: &lt;/strong&gt;1&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Maximum: &lt;/strong&gt;31
      * @param value Value to set for the preferredTriggerDayOfMonth property.
      */
     public void setPreferredTriggerDayOfMonth(@jakarta.annotation.Nullable final Integer value) {
         this.preferredTriggerDayOfMonth = value;
     }
     /**
-     * Sets the preferredTriggerDayOfWeek property value. The preferred day of the week to trigger the schedule. This field can be used with &lt;strong&gt;preferredTriggerHour&lt;/strong&gt; for weekly schedules. &lt;br /&gt;&lt;br /&gt;This field is available as specified by the template (&lt;strong&gt;scheduleTemplateId&lt;/strong&gt;). The template can specify this field as optional or required, and optionally provides a default value. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:DayOfWeekEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the preferredTriggerDayOfWeek property value. The preferred day of the week to trigger the schedule. This field can be used with &lt;strong&gt;preferredTriggerHour&lt;/strong&gt; for weekly schedules. &lt;br /&gt;&lt;br /&gt;This field is available as specified by the template (&lt;strong&gt;scheduleTemplateId&lt;/strong&gt;). The template can specify this field as optional or required and optionally provides a default value.
      * @param value Value to set for the preferredTriggerDayOfWeek property.
      */
-    public void setPreferredTriggerDayOfWeek(@jakarta.annotation.Nullable final String value) {
+    public void setPreferredTriggerDayOfWeek(@jakarta.annotation.Nullable final DayOfWeekEnum value) {
         this.preferredTriggerDayOfWeek = value;
     }
     /**
-     * Sets the preferredTriggerHour property value. The preferred two-digit hour of the day to trigger the schedule. &lt;br /&gt;&lt;br /&gt;This field is available as specified by the template (&lt;strong&gt;scheduleTemplateId&lt;/strong&gt;). The template can specify this field as optional or required, and optionally provides a default value. &lt;br /&gt;&lt;br /&gt;&lt;b&gt;Format:&lt;/b&gt; UTC &lt;code&gt;hhZ&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;For example, the following represents 11:00 am UTC:&lt;code&gt; 11Z&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Minimum: &lt;/b&gt;&lt;code&gt;00Z&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Maximum:&lt;/b&gt; &lt;code&gt;23Z&lt;/code&gt;
+     * Sets the preferredTriggerHour property value. The preferred two-digit hour of the day to trigger the schedule.&lt;br /&gt;&lt;br /&gt;This field is available as specified by the template (&lt;strong&gt;scheduleTemplateId&lt;/strong&gt;). The template can specify this field as optional or required and optionally provides a default value. &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Format:&lt;/strong&gt; UTC &lt;code&gt;hhZ&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;For example, the following represents 11:00 am UTC: &lt;code&gt;11Z&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Minimum: &lt;/strong&gt;&lt;code&gt;00Z&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Maximum:&lt;/strong&gt; &lt;code&gt;23Z&lt;/code&gt;
      * @param value Value to set for the preferredTriggerHour property.
      */
     public void setPreferredTriggerHour(@jakarta.annotation.Nullable final String value) {
         this.preferredTriggerHour = value;
     }
     /**
-     * Sets the scheduleEndDate property value. The timestamp on which the schedule (report generation) ends. After this date, the schedule status becomes &lt;code&gt;INACTIVE&lt;/code&gt;. &lt;br /&gt;&lt;br /&gt;Use this field, if available, to end the schedule in the future. This value must be later than &lt;strong&gt;scheduleStartDate&lt;/strong&gt; (if supplied). This field is available as specified by the template (&lt;strong&gt;scheduleTemplateId&lt;/strong&gt;). The template can specify this field as optional or required, and optionally provides a default value.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Format:&lt;/b&gt; UTC &lt;code&gt;yyyy-MM-dd&lt;strong&gt;T&lt;/strong&gt;HH&lt;strong&gt;Z&lt;/strong&gt;&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;For example, the following represents UTC October 10, 2021 at 10:00 AM:&lt;br /&gt;&lt;code&gt; 2021-10-10T10Z&lt;/code&gt;
+     * Sets the scheduleEndDate property value. The timestamp on which the schedule (report generation) ends. After this date, the schedule status becomes &lt;code&gt;INACTIVE&lt;/code&gt;. &lt;br /&gt;&lt;br /&gt;Use this field, if available, to end the schedule in the future. This value must be later than &lt;strong&gt;scheduleStartDate&lt;/strong&gt; (if supplied). This field is available as specified by the template (&lt;strong&gt;scheduleTemplateId&lt;/strong&gt;). The template can specify this field as optional or required and optionally provides a default value.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Format:&lt;/strong&gt; UTC &lt;code&gt;yyyy-MM-dd&lt;strong&gt;T&lt;/strong&gt;HH&lt;strong&gt;Z&lt;/strong&gt;&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;For example, the following represents UTC October 10, 2021 at 10:00 AM:&lt;br /&gt;&lt;code&gt; 2021-10-10T10Z&lt;/code&gt;
      * @param value Value to set for the scheduleEndDate property.
      */
     public void setScheduleEndDate(@jakarta.annotation.Nullable final String value) {
@@ -212,7 +212,7 @@ public class UpdateUserScheduleRequest implements AdditionalDataHolder, Parsable
         this.scheduleName = value;
     }
     /**
-     * Sets the scheduleStartDate property value. The timestamp to start generating the report. After this timestamp, the schedule status becomes active until either the &lt;strong&gt;scheduleEndDate&lt;/strong&gt; occurs or the &lt;strong&gt;scheduleTemplateId&lt;/strong&gt; becomes inactive. &lt;br /&gt;&lt;br /&gt;Use this field, if available, to start the schedule in the future but before the &lt;strong&gt;scheduleEndDate&lt;/strong&gt; (if supplied). This field is available as specified by the template &lt;strong&gt;(scheduleTemplateId)&lt;/strong&gt;.  The template can specify this field as optional or required, and optionally provides a default value.&lt;br /&gt;&lt;br /&gt;&lt;b&gt;Format:&lt;/b&gt; UTC &lt;code&gt;yyyy-MM-dd&lt;strong&gt;T&lt;/strong&gt;HH&lt;strong&gt;Z&lt;/strong&gt;&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;For example, the following represents a schedule start date of UTC October 01, 2020 at 12:00 PM:&lt;br /&gt;&lt;code&gt; 2020-01-01T12Z&lt;/code&gt;
+     * Sets the scheduleStartDate property value. The timestamp to start generating the report. After this timestamp, the schedule status becomes active until either the &lt;strong&gt;scheduleEndDate&lt;/strong&gt; occurs or the &lt;strong&gt;scheduleTemplateId&lt;/strong&gt; becomes inactive. &lt;br /&gt;&lt;br /&gt;Use this field, if available, to start the schedule in the future but before the &lt;strong&gt;scheduleEndDate&lt;/strong&gt; (if supplied). This field is available as specified by the template &lt;strong&gt;(scheduleTemplateId)&lt;/strong&gt;.  The template can specify this field as optional or required and optionally provides a default value.&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Format:&lt;/strong&gt; UTC &lt;code&gt;yyyy-MM-dd&lt;strong&gt;T&lt;/strong&gt;HH&lt;strong&gt;Z&lt;/strong&gt;&lt;/code&gt;&lt;br /&gt;&lt;br /&gt;For example, the following represents a schedule start date of UTC October 01, 2020 at 12:00 PM:&lt;br /&gt;&lt;code&gt; 2020-01-01T12Z&lt;/code&gt;
      * @param value Value to set for the scheduleStartDate property.
      */
     public void setScheduleStartDate(@jakarta.annotation.Nullable final String value) {

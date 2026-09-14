@@ -14,6 +14,7 @@
 
 package com.ebay.listingmanagement.generated.inventory.offer.withdraw_by_inventory_item_group;
 
+import com.ebay.listingmanagement.generated.inventory.models.Error;
 import com.ebay.listingmanagement.generated.inventory.models.WithdrawByInventoryItemGroupRequest;
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.BaseRequestConfiguration;
@@ -49,25 +50,32 @@ public class WithdrawByInventoryItemGroupRequestBuilder extends BaseRequestBuild
         super(requestAdapter, "{+baseurl}/offer/withdraw_by_inventory_item_group", rawUrl);
     }
     /**
-     * This call is used to end a multiple-variation eBay listing that is associated with the specified inventory item group. This call only ends multiple-variation eBay listing associated with the inventory item group but does not delete the inventory item group object. Similarly, this call also does not delete any of the offers associated with the inventory item group, but instead all of these offers go into the unpublished state. If the seller wanted to relist the multiple-variation eBay listing, they could use the &lt;strong&gt;publishOfferByInventoryItemGroup&lt;/strong&gt; method.
-     * @param body This type is used by the base request of the &lt;strong&gt;WithdrawByInventoryItemGroup&lt;/strong&gt; method, which is used to end a multiple-variation listing.
+     * This call is used to end a multiple-variation eBay listing that is associated with the specified inventory item group. This call only ends multiple-variation eBay listing associated with the inventory item group but does not delete the inventory item group object. Similarly, this call also does not delete any of the offers associated with the inventory item group, but instead all of these offers go into the unpublished state. If the seller wanted to relist the multiple-variation eBay listing, they could use the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-publishofferbyinventoryitemgroup&quot; target=&quot;_blank&quot;&gt;publishOfferByInventoryItemGroup&lt;/a&gt; method.
+     * @param body The base request of the &lt;strong&gt;withdrawOfferByInventoryItemGroup&lt;/strong&gt; call.
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 500 status code
      */
     public void post(@jakarta.annotation.Nonnull final WithdrawByInventoryItemGroupRequest body) {
         post(body, null);
     }
     /**
-     * This call is used to end a multiple-variation eBay listing that is associated with the specified inventory item group. This call only ends multiple-variation eBay listing associated with the inventory item group but does not delete the inventory item group object. Similarly, this call also does not delete any of the offers associated with the inventory item group, but instead all of these offers go into the unpublished state. If the seller wanted to relist the multiple-variation eBay listing, they could use the &lt;strong&gt;publishOfferByInventoryItemGroup&lt;/strong&gt; method.
-     * @param body This type is used by the base request of the &lt;strong&gt;WithdrawByInventoryItemGroup&lt;/strong&gt; method, which is used to end a multiple-variation listing.
+     * This call is used to end a multiple-variation eBay listing that is associated with the specified inventory item group. This call only ends multiple-variation eBay listing associated with the inventory item group but does not delete the inventory item group object. Similarly, this call also does not delete any of the offers associated with the inventory item group, but instead all of these offers go into the unpublished state. If the seller wanted to relist the multiple-variation eBay listing, they could use the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-publishofferbyinventoryitemgroup&quot; target=&quot;_blank&quot;&gt;publishOfferByInventoryItemGroup&lt;/a&gt; method.
+     * @param body The base request of the &lt;strong&gt;withdrawOfferByInventoryItemGroup&lt;/strong&gt; call.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 500 status code
      */
     public void post(@jakarta.annotation.Nonnull final WithdrawByInventoryItemGroupRequest body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = toPostRequestInformation(body, requestConfiguration);
-        this.requestAdapter.sendPrimitive(requestInfo, null, Void.class);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("400", Error::createFromDiscriminatorValue);
+        errorMapping.put("500", Error::createFromDiscriminatorValue);
+        this.requestAdapter.sendPrimitive(requestInfo, errorMapping, Void.class);
     }
     /**
-     * This call is used to end a multiple-variation eBay listing that is associated with the specified inventory item group. This call only ends multiple-variation eBay listing associated with the inventory item group but does not delete the inventory item group object. Similarly, this call also does not delete any of the offers associated with the inventory item group, but instead all of these offers go into the unpublished state. If the seller wanted to relist the multiple-variation eBay listing, they could use the &lt;strong&gt;publishOfferByInventoryItemGroup&lt;/strong&gt; method.
-     * @param body This type is used by the base request of the &lt;strong&gt;WithdrawByInventoryItemGroup&lt;/strong&gt; method, which is used to end a multiple-variation listing.
+     * This call is used to end a multiple-variation eBay listing that is associated with the specified inventory item group. This call only ends multiple-variation eBay listing associated with the inventory item group but does not delete the inventory item group object. Similarly, this call also does not delete any of the offers associated with the inventory item group, but instead all of these offers go into the unpublished state. If the seller wanted to relist the multiple-variation eBay listing, they could use the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-publishofferbyinventoryitemgroup&quot; target=&quot;_blank&quot;&gt;publishOfferByInventoryItemGroup&lt;/a&gt; method.
+     * @param body The base request of the &lt;strong&gt;withdrawOfferByInventoryItemGroup&lt;/strong&gt; call.
      * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
@@ -75,8 +83,8 @@ public class WithdrawByInventoryItemGroupRequestBuilder extends BaseRequestBuild
         return toPostRequestInformation(body, null);
     }
     /**
-     * This call is used to end a multiple-variation eBay listing that is associated with the specified inventory item group. This call only ends multiple-variation eBay listing associated with the inventory item group but does not delete the inventory item group object. Similarly, this call also does not delete any of the offers associated with the inventory item group, but instead all of these offers go into the unpublished state. If the seller wanted to relist the multiple-variation eBay listing, they could use the &lt;strong&gt;publishOfferByInventoryItemGroup&lt;/strong&gt; method.
-     * @param body This type is used by the base request of the &lt;strong&gt;WithdrawByInventoryItemGroup&lt;/strong&gt; method, which is used to end a multiple-variation listing.
+     * This call is used to end a multiple-variation eBay listing that is associated with the specified inventory item group. This call only ends multiple-variation eBay listing associated with the inventory item group but does not delete the inventory item group object. Similarly, this call also does not delete any of the offers associated with the inventory item group, but instead all of these offers go into the unpublished state. If the seller wanted to relist the multiple-variation eBay listing, they could use the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-publishofferbyinventoryitemgroup&quot; target=&quot;_blank&quot;&gt;publishOfferByInventoryItemGroup&lt;/a&gt; method.
+     * @param body The base request of the &lt;strong&gt;withdrawOfferByInventoryItemGroup&lt;/strong&gt; call.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link RequestInformation}
      */
@@ -85,6 +93,7 @@ public class WithdrawByInventoryItemGroupRequestBuilder extends BaseRequestBuild
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = new RequestInformation(HttpMethod.POST, urlTemplate, pathParameters);
         requestInfo.configure(requestConfiguration, PostRequestConfiguration::new);
+        requestInfo.headers.tryAdd("Accept", "application/json");
         requestInfo.setContentFromParsable(requestAdapter, "application/json", body);
         return requestInfo;
     }

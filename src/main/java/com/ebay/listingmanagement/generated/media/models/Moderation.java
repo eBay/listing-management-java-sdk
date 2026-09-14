@@ -33,7 +33,7 @@ public class Moderation implements AdditionalDataHolder, Parsable {
     /**
      * The reason(s) why the specified video was blocked by moderators.
      */
-    private java.util.List<String> rejectReasons;
+    private java.util.List<RejectReasonEnum> rejectReasons;
     /**
      * Instantiates a new {@link Moderation} and sets the default values.
      */
@@ -65,15 +65,15 @@ public class Moderation implements AdditionalDataHolder, Parsable {
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(1);
-        deserializerMap.put("rejectReasons", (n) -> { this.setRejectReasons(n.getCollectionOfPrimitiveValues(String.class)); });
+        deserializerMap.put("rejectReasons", (n) -> { this.setRejectReasons(n.getCollectionOfEnumValues(RejectReasonEnum::forValue)); });
         return deserializerMap;
     }
     /**
      * Gets the rejectReasons property value. The reason(s) why the specified video was blocked by moderators.
-     * @return a {@link java.util.List<String>}
+     * @return a {@link java.util.List<RejectReasonEnum>}
      */
     @jakarta.annotation.Nullable
-    public java.util.List<String> getRejectReasons() {
+    public java.util.List<RejectReasonEnum> getRejectReasons() {
         return this.rejectReasons;
     }
     /**
@@ -82,7 +82,7 @@ public class Moderation implements AdditionalDataHolder, Parsable {
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeCollectionOfPrimitiveValues("rejectReasons", this.getRejectReasons());
+        writer.writeCollectionOfEnumValues("rejectReasons", this.getRejectReasons());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -96,7 +96,7 @@ public class Moderation implements AdditionalDataHolder, Parsable {
      * Sets the rejectReasons property value. The reason(s) why the specified video was blocked by moderators.
      * @param value Value to set for the rejectReasons property.
      */
-    public void setRejectReasons(@jakarta.annotation.Nullable final java.util.List<String> value) {
+    public void setRejectReasons(@jakarta.annotation.Nullable final java.util.List<RejectReasonEnum> value) {
         this.rejectReasons = value;
     }
 }

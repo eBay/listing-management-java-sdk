@@ -33,7 +33,7 @@ public class OfferResponseWithListingId implements AdditionalDataHolder, Parsabl
     /**
      * This container will be returned if there were one or more errors associated with publishing the offer.
      */
-    private java.util.List<Error> errors;
+    private java.util.List<ErrorDetailV3> errors;
     /**
      * The unique identifier of the newly-created eBay listing. This field is only returned if the seller successfully published the offer and created the new eBay listing.
      */
@@ -49,7 +49,7 @@ public class OfferResponseWithListingId implements AdditionalDataHolder, Parsabl
     /**
      * This container will be returned if there were one or more warnings associated with publishing the offer.
      */
-    private java.util.List<Error> warnings;
+    private java.util.List<ErrorDetailV3> warnings;
     /**
      * Instantiates a new {@link OfferResponseWithListingId} and sets the default values.
      */
@@ -76,10 +76,10 @@ public class OfferResponseWithListingId implements AdditionalDataHolder, Parsabl
     }
     /**
      * Gets the errors property value. This container will be returned if there were one or more errors associated with publishing the offer.
-     * @return a {@link java.util.List<Error>}
+     * @return a {@link java.util.List<ErrorDetailV3>}
      */
     @jakarta.annotation.Nullable
-    public java.util.List<Error> getErrors() {
+    public java.util.List<ErrorDetailV3> getErrors() {
         return this.errors;
     }
     /**
@@ -89,11 +89,11 @@ public class OfferResponseWithListingId implements AdditionalDataHolder, Parsabl
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(5);
-        deserializerMap.put("errors", (n) -> { this.setErrors(n.getCollectionOfObjectValues(Error::createFromDiscriminatorValue)); });
+        deserializerMap.put("errors", (n) -> { this.setErrors(n.getCollectionOfObjectValues(ErrorDetailV3::createFromDiscriminatorValue)); });
         deserializerMap.put("listingId", (n) -> { this.setListingId(n.getStringValue()); });
         deserializerMap.put("offerId", (n) -> { this.setOfferId(n.getStringValue()); });
         deserializerMap.put("statusCode", (n) -> { this.setStatusCode(n.getIntegerValue()); });
-        deserializerMap.put("warnings", (n) -> { this.setWarnings(n.getCollectionOfObjectValues(Error::createFromDiscriminatorValue)); });
+        deserializerMap.put("warnings", (n) -> { this.setWarnings(n.getCollectionOfObjectValues(ErrorDetailV3::createFromDiscriminatorValue)); });
         return deserializerMap;
     }
     /**
@@ -122,10 +122,10 @@ public class OfferResponseWithListingId implements AdditionalDataHolder, Parsabl
     }
     /**
      * Gets the warnings property value. This container will be returned if there were one or more warnings associated with publishing the offer.
-     * @return a {@link java.util.List<Error>}
+     * @return a {@link java.util.List<ErrorDetailV3>}
      */
     @jakarta.annotation.Nullable
-    public java.util.List<Error> getWarnings() {
+    public java.util.List<ErrorDetailV3> getWarnings() {
         return this.warnings;
     }
     /**
@@ -152,7 +152,7 @@ public class OfferResponseWithListingId implements AdditionalDataHolder, Parsabl
      * Sets the errors property value. This container will be returned if there were one or more errors associated with publishing the offer.
      * @param value Value to set for the errors property.
      */
-    public void setErrors(@jakarta.annotation.Nullable final java.util.List<Error> value) {
+    public void setErrors(@jakarta.annotation.Nullable final java.util.List<ErrorDetailV3> value) {
         this.errors = value;
     }
     /**
@@ -180,7 +180,7 @@ public class OfferResponseWithListingId implements AdditionalDataHolder, Parsabl
      * Sets the warnings property value. This container will be returned if there were one or more warnings associated with publishing the offer.
      * @param value Value to set for the warnings property.
      */
-    public void setWarnings(@jakarta.annotation.Nullable final java.util.List<Error> value) {
+    public void setWarnings(@jakarta.annotation.Nullable final java.util.List<ErrorDetailV3> value) {
         this.warnings = value;
     }
 }

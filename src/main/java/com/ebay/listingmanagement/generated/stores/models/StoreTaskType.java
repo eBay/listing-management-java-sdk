@@ -31,21 +31,21 @@ public class StoreTaskType implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * The unique identifier of an eBay Store task.
+     * The unique identifier of an eBay Store async task.
      */
     private String id;
     /**
-     * This field provides a textual description on the status of the task, and could help user troubleshoot any issues if there is an issue with eBay creating the task.
+     * The value indicates the status description of the async task, especially in case of failures (reason of failure).It follows the Asynchronous Request Pattern in eBay REST Documentation. More detail please see : https://pages.github.corp.ebay.com/vat/ebay-rest-standards/docs/UniformInterface/ResourceManipulation/AsyncRequestPattern
      */
     private String message;
     /**
-     * The enumeration value here indicates the processing status of the task. See the &lt;b&gt;StoreTaskStatusEnum&lt;/b&gt; type for more information on supported status values. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/stores/types/api:StoreTaskStatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * The enumeration value indicates the status of processing for the eBay Store Async Task.It follows the Asynchronous Request Pattern in eBay REST Documentation. More detail please see : 
      */
-    private String status;
+    private StoreTaskStatusEnum status;
     /**
-     * The enumeration value indicates the task type. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/stores/types/api:StoreTaskTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * The enumeration value indicates the task type.
      */
-    private String type;
+    private StoreTaskTypeEnum type;
     /**
      * Instantiates a new {@link StoreTaskType} and sets the default values.
      */
@@ -79,12 +79,12 @@ public class StoreTaskType implements AdditionalDataHolder, Parsable {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(4);
         deserializerMap.put("id", (n) -> { this.setId(n.getStringValue()); });
         deserializerMap.put("message", (n) -> { this.setMessage(n.getStringValue()); });
-        deserializerMap.put("status", (n) -> { this.setStatus(n.getStringValue()); });
-        deserializerMap.put("type", (n) -> { this.setType(n.getStringValue()); });
+        deserializerMap.put("status", (n) -> { this.setStatus(n.getEnumValue(StoreTaskStatusEnum::forValue)); });
+        deserializerMap.put("type", (n) -> { this.setType(n.getEnumValue(StoreTaskTypeEnum::forValue)); });
         return deserializerMap;
     }
     /**
-     * Gets the id property value. The unique identifier of an eBay Store task.
+     * Gets the id property value. The unique identifier of an eBay Store async task.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -92,7 +92,7 @@ public class StoreTaskType implements AdditionalDataHolder, Parsable {
         return this.id;
     }
     /**
-     * Gets the message property value. This field provides a textual description on the status of the task, and could help user troubleshoot any issues if there is an issue with eBay creating the task.
+     * Gets the message property value. The value indicates the status description of the async task, especially in case of failures (reason of failure).It follows the Asynchronous Request Pattern in eBay REST Documentation. More detail please see : https://pages.github.corp.ebay.com/vat/ebay-rest-standards/docs/UniformInterface/ResourceManipulation/AsyncRequestPattern
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -100,19 +100,19 @@ public class StoreTaskType implements AdditionalDataHolder, Parsable {
         return this.message;
     }
     /**
-     * Gets the status property value. The enumeration value here indicates the processing status of the task. See the &lt;b&gt;StoreTaskStatusEnum&lt;/b&gt; type for more information on supported status values. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/stores/types/api:StoreTaskStatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the status property value. The enumeration value indicates the status of processing for the eBay Store Async Task.It follows the Asynchronous Request Pattern in eBay REST Documentation. More detail please see : 
+     * @return a {@link StoreTaskStatusEnum}
      */
     @jakarta.annotation.Nullable
-    public String getStatus() {
+    public StoreTaskStatusEnum getStatus() {
         return this.status;
     }
     /**
-     * Gets the type property value. The enumeration value indicates the task type. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/stores/types/api:StoreTaskTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the type property value. The enumeration value indicates the task type.
+     * @return a {@link StoreTaskTypeEnum}
      */
     @jakarta.annotation.Nullable
-    public String getType() {
+    public StoreTaskTypeEnum getType() {
         return this.type;
     }
     /**
@@ -123,8 +123,8 @@ public class StoreTaskType implements AdditionalDataHolder, Parsable {
         Objects.requireNonNull(writer);
         writer.writeStringValue("id", this.getId());
         writer.writeStringValue("message", this.getMessage());
-        writer.writeStringValue("status", this.getStatus());
-        writer.writeStringValue("type", this.getType());
+        writer.writeEnumValue("status", this.getStatus());
+        writer.writeEnumValue("type", this.getType());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -135,31 +135,31 @@ public class StoreTaskType implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the id property value. The unique identifier of an eBay Store task.
+     * Sets the id property value. The unique identifier of an eBay Store async task.
      * @param value Value to set for the id property.
      */
     public void setId(@jakarta.annotation.Nullable final String value) {
         this.id = value;
     }
     /**
-     * Sets the message property value. This field provides a textual description on the status of the task, and could help user troubleshoot any issues if there is an issue with eBay creating the task.
+     * Sets the message property value. The value indicates the status description of the async task, especially in case of failures (reason of failure).It follows the Asynchronous Request Pattern in eBay REST Documentation. More detail please see : https://pages.github.corp.ebay.com/vat/ebay-rest-standards/docs/UniformInterface/ResourceManipulation/AsyncRequestPattern
      * @param value Value to set for the message property.
      */
     public void setMessage(@jakarta.annotation.Nullable final String value) {
         this.message = value;
     }
     /**
-     * Sets the status property value. The enumeration value here indicates the processing status of the task. See the &lt;b&gt;StoreTaskStatusEnum&lt;/b&gt; type for more information on supported status values. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/stores/types/api:StoreTaskStatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the status property value. The enumeration value indicates the status of processing for the eBay Store Async Task.It follows the Asynchronous Request Pattern in eBay REST Documentation. More detail please see : 
      * @param value Value to set for the status property.
      */
-    public void setStatus(@jakarta.annotation.Nullable final String value) {
+    public void setStatus(@jakarta.annotation.Nullable final StoreTaskStatusEnum value) {
         this.status = value;
     }
     /**
-     * Sets the type property value. The enumeration value indicates the task type. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/stores/types/api:StoreTaskTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the type property value. The enumeration value indicates the task type.
      * @param value Value to set for the type property.
      */
-    public void setType(@jakarta.annotation.Nullable final String value) {
+    public void setType(@jakarta.annotation.Nullable final StoreTaskTypeEnum value) {
         this.type = value;
     }
 }

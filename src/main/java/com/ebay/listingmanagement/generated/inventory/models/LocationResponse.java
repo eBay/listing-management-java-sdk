@@ -43,7 +43,7 @@ public class LocationResponse implements AdditionalDataHolder, Parsable {
      */
     private java.util.List<InventoryLocationResponse> locations;
     /**
-     * The URI for the following page of results. This value is returned only if there is an additional page of results to display from the result set. &lt;br&gt;&lt;br&gt;&lt;b&gt;Max length&lt;/b&gt;: 2048
+     * The URI for the following page of results. This value is returned only if there is an additional page of results to display from the result set. &lt;br&gt;&lt;br&gt;&lt;b&gt;Maximum length&lt;/b&gt;: 2048
      */
     private String next;
     /**
@@ -51,7 +51,7 @@ public class LocationResponse implements AdditionalDataHolder, Parsable {
      */
     private Integer offset;
     /**
-     * The URI for the preceding page of results. This value is returned only if there is a previous page of results to display from the result set. &lt;br&gt;&lt;br&gt;&lt;b&gt;Max length&lt;/b&gt;: 2048
+     * The URI for the preceding page of results. This value is returned only if there is a previous page of results to display from the result set. &lt;br&gt;&lt;br&gt;&lt;b&gt;Maximum length&lt;/b&gt;: 2048
      */
     private String prev;
     /**
@@ -123,7 +123,7 @@ public class LocationResponse implements AdditionalDataHolder, Parsable {
         return this.locations;
     }
     /**
-     * Gets the next property value. The URI for the following page of results. This value is returned only if there is an additional page of results to display from the result set. &lt;br&gt;&lt;br&gt;&lt;b&gt;Max length&lt;/b&gt;: 2048
+     * Gets the next property value. The URI for the following page of results. This value is returned only if there is an additional page of results to display from the result set. &lt;br&gt;&lt;br&gt;&lt;b&gt;Maximum length&lt;/b&gt;: 2048
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -139,7 +139,7 @@ public class LocationResponse implements AdditionalDataHolder, Parsable {
         return this.offset;
     }
     /**
-     * Gets the prev property value. The URI for the preceding page of results. This value is returned only if there is a previous page of results to display from the result set. &lt;br&gt;&lt;br&gt;&lt;b&gt;Max length&lt;/b&gt;: 2048
+     * Gets the prev property value. The URI for the preceding page of results. This value is returned only if there is a previous page of results to display from the result set. &lt;br&gt;&lt;br&gt;&lt;b&gt;Maximum length&lt;/b&gt;: 2048
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -198,7 +198,7 @@ public class LocationResponse implements AdditionalDataHolder, Parsable {
         this.locations = value;
     }
     /**
-     * Sets the next property value. The URI for the following page of results. This value is returned only if there is an additional page of results to display from the result set. &lt;br&gt;&lt;br&gt;&lt;b&gt;Max length&lt;/b&gt;: 2048
+     * Sets the next property value. The URI for the following page of results. This value is returned only if there is an additional page of results to display from the result set. &lt;br&gt;&lt;br&gt;&lt;b&gt;Maximum length&lt;/b&gt;: 2048
      * @param value Value to set for the next property.
      */
     public void setNext(@jakarta.annotation.Nullable final String value) {
@@ -212,7 +212,7 @@ public class LocationResponse implements AdditionalDataHolder, Parsable {
         this.offset = value;
     }
     /**
-     * Sets the prev property value. The URI for the preceding page of results. This value is returned only if there is a previous page of results to display from the result set. &lt;br&gt;&lt;br&gt;&lt;b&gt;Max length&lt;/b&gt;: 2048
+     * Sets the prev property value. The URI for the preceding page of results. This value is returned only if there is a previous page of results to display from the result set. &lt;br&gt;&lt;br&gt;&lt;b&gt;Maximum length&lt;/b&gt;: 2048
      * @param value Value to set for the prev property.
      */
     public void setPrev(@jakarta.annotation.Nullable final String value) {

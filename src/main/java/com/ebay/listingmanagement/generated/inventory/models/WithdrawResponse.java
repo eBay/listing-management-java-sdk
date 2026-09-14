@@ -37,7 +37,7 @@ public class WithdrawResponse implements AdditionalDataHolder, Parsable {
     /**
      * This container will be returned if there were one or more warnings associated with the attempt to withdraw the offer.
      */
-    private java.util.List<Error> warnings;
+    private java.util.List<ErrorDetailV3> warnings;
     /**
      * Instantiates a new {@link WithdrawResponse} and sets the default values.
      */
@@ -70,7 +70,7 @@ public class WithdrawResponse implements AdditionalDataHolder, Parsable {
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(2);
         deserializerMap.put("listingId", (n) -> { this.setListingId(n.getStringValue()); });
-        deserializerMap.put("warnings", (n) -> { this.setWarnings(n.getCollectionOfObjectValues(Error::createFromDiscriminatorValue)); });
+        deserializerMap.put("warnings", (n) -> { this.setWarnings(n.getCollectionOfObjectValues(ErrorDetailV3::createFromDiscriminatorValue)); });
         return deserializerMap;
     }
     /**
@@ -83,10 +83,10 @@ public class WithdrawResponse implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the warnings property value. This container will be returned if there were one or more warnings associated with the attempt to withdraw the offer.
-     * @return a {@link java.util.List<Error>}
+     * @return a {@link java.util.List<ErrorDetailV3>}
      */
     @jakarta.annotation.Nullable
-    public java.util.List<Error> getWarnings() {
+    public java.util.List<ErrorDetailV3> getWarnings() {
         return this.warnings;
     }
     /**
@@ -117,7 +117,7 @@ public class WithdrawResponse implements AdditionalDataHolder, Parsable {
      * Sets the warnings property value. This container will be returned if there were one or more warnings associated with the attempt to withdraw the offer.
      * @param value Value to set for the warnings property.
      */
-    public void setWarnings(@jakarta.annotation.Nullable final java.util.List<Error> value) {
+    public void setWarnings(@jakarta.annotation.Nullable final java.util.List<ErrorDetailV3> value) {
         this.warnings = value;
     }
 }

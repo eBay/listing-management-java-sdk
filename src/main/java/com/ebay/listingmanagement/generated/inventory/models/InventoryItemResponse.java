@@ -33,11 +33,11 @@ public class InventoryItemResponse implements AdditionalDataHolder, Parsable {
     /**
      * This container will be returned if there were one or more errors associated with the creation or update to the inventory item record.
      */
-    private java.util.List<Error> errors;
+    private java.util.List<ErrorDetailV3> errors;
     /**
-     * This field returns the natural language that was provided in the field values of the request payload (i.e., en_AU, en_GB or de_DE). For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/slr:LocaleEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This field returns the natural language that was provided in the field values of the request payload (i.e., en_AU, en_GB or de_DE).
      */
-    private String locale;
+    private LocaleEnum locale;
     /**
      * The seller-defined Stock-Keeping Unit (SKU) of the inventory item. The seller should have a unique SKU value for every product that they sell.
      */
@@ -49,7 +49,7 @@ public class InventoryItemResponse implements AdditionalDataHolder, Parsable {
     /**
      * This container will be returned if there were one or more warnings associated with the creation or update to the inventory item record.
      */
-    private java.util.List<Error> warnings;
+    private java.util.List<ErrorDetailV3> warnings;
     /**
      * Instantiates a new {@link InventoryItemResponse} and sets the default values.
      */
@@ -76,10 +76,10 @@ public class InventoryItemResponse implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the errors property value. This container will be returned if there were one or more errors associated with the creation or update to the inventory item record.
-     * @return a {@link java.util.List<Error>}
+     * @return a {@link java.util.List<ErrorDetailV3>}
      */
     @jakarta.annotation.Nullable
-    public java.util.List<Error> getErrors() {
+    public java.util.List<ErrorDetailV3> getErrors() {
         return this.errors;
     }
     /**
@@ -89,19 +89,19 @@ public class InventoryItemResponse implements AdditionalDataHolder, Parsable {
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(5);
-        deserializerMap.put("errors", (n) -> { this.setErrors(n.getCollectionOfObjectValues(Error::createFromDiscriminatorValue)); });
-        deserializerMap.put("locale", (n) -> { this.setLocale(n.getStringValue()); });
+        deserializerMap.put("errors", (n) -> { this.setErrors(n.getCollectionOfObjectValues(ErrorDetailV3::createFromDiscriminatorValue)); });
+        deserializerMap.put("locale", (n) -> { this.setLocale(n.getEnumValue(LocaleEnum::forValue)); });
         deserializerMap.put("sku", (n) -> { this.setSku(n.getStringValue()); });
         deserializerMap.put("statusCode", (n) -> { this.setStatusCode(n.getIntegerValue()); });
-        deserializerMap.put("warnings", (n) -> { this.setWarnings(n.getCollectionOfObjectValues(Error::createFromDiscriminatorValue)); });
+        deserializerMap.put("warnings", (n) -> { this.setWarnings(n.getCollectionOfObjectValues(ErrorDetailV3::createFromDiscriminatorValue)); });
         return deserializerMap;
     }
     /**
-     * Gets the locale property value. This field returns the natural language that was provided in the field values of the request payload (i.e., en_AU, en_GB or de_DE). For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/slr:LocaleEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the locale property value. This field returns the natural language that was provided in the field values of the request payload (i.e., en_AU, en_GB or de_DE).
+     * @return a {@link LocaleEnum}
      */
     @jakarta.annotation.Nullable
-    public String getLocale() {
+    public LocaleEnum getLocale() {
         return this.locale;
     }
     /**
@@ -122,10 +122,10 @@ public class InventoryItemResponse implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the warnings property value. This container will be returned if there were one or more warnings associated with the creation or update to the inventory item record.
-     * @return a {@link java.util.List<Error>}
+     * @return a {@link java.util.List<ErrorDetailV3>}
      */
     @jakarta.annotation.Nullable
-    public java.util.List<Error> getWarnings() {
+    public java.util.List<ErrorDetailV3> getWarnings() {
         return this.warnings;
     }
     /**
@@ -135,7 +135,7 @@ public class InventoryItemResponse implements AdditionalDataHolder, Parsable {
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         writer.writeCollectionOfObjectValues("errors", this.getErrors());
-        writer.writeStringValue("locale", this.getLocale());
+        writer.writeEnumValue("locale", this.getLocale());
         writer.writeStringValue("sku", this.getSku());
         writer.writeIntegerValue("statusCode", this.getStatusCode());
         writer.writeCollectionOfObjectValues("warnings", this.getWarnings());
@@ -152,14 +152,14 @@ public class InventoryItemResponse implements AdditionalDataHolder, Parsable {
      * Sets the errors property value. This container will be returned if there were one or more errors associated with the creation or update to the inventory item record.
      * @param value Value to set for the errors property.
      */
-    public void setErrors(@jakarta.annotation.Nullable final java.util.List<Error> value) {
+    public void setErrors(@jakarta.annotation.Nullable final java.util.List<ErrorDetailV3> value) {
         this.errors = value;
     }
     /**
-     * Sets the locale property value. This field returns the natural language that was provided in the field values of the request payload (i.e., en_AU, en_GB or de_DE). For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/slr:LocaleEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the locale property value. This field returns the natural language that was provided in the field values of the request payload (i.e., en_AU, en_GB or de_DE).
      * @param value Value to set for the locale property.
      */
-    public void setLocale(@jakarta.annotation.Nullable final String value) {
+    public void setLocale(@jakarta.annotation.Nullable final LocaleEnum value) {
         this.locale = value;
     }
     /**
@@ -180,7 +180,7 @@ public class InventoryItemResponse implements AdditionalDataHolder, Parsable {
      * Sets the warnings property value. This container will be returned if there were one or more warnings associated with the creation or update to the inventory item record.
      * @param value Value to set for the warnings property.
      */
-    public void setWarnings(@jakarta.annotation.Nullable final java.util.List<Error> value) {
+    public void setWarnings(@jakarta.annotation.Nullable final java.util.List<ErrorDetailV3> value) {
         this.warnings = value;
     }
 }

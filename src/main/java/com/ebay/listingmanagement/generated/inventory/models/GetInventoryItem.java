@@ -31,7 +31,7 @@ public class GetInventoryItem implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * An array of SKU values are passed in under the &lt;strong&gt;sku&lt;/strong&gt; container to retrieve up to 25 inventory item records.&lt;br&gt;&lt;br&gt;Use the &lt;a href=&quot;/api-docs/sell/inventory/resources/inventory_item/methods/getInventoryItems&quot; target=&quot;_blank &quot;&gt;getInventoryItems&lt;/a&gt; method to retrieve SKU values.
+     * An array of SKU values are passed in under the &lt;strong&gt;sku&lt;/strong&gt; container to retrieve up to 25 inventory item records.&lt;br&gt;&lt;br&gt;Use the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-inventory_item-getinventoryitems&quot; target=&quot;_blank &quot;&gt;getInventoryItems&lt;/a&gt; method to retrieve SKU values.
      */
     private String sku;
     /**
@@ -69,7 +69,7 @@ public class GetInventoryItem implements AdditionalDataHolder, Parsable {
         return deserializerMap;
     }
     /**
-     * Gets the sku property value. An array of SKU values are passed in under the &lt;strong&gt;sku&lt;/strong&gt; container to retrieve up to 25 inventory item records.&lt;br&gt;&lt;br&gt;Use the &lt;a href=&quot;/api-docs/sell/inventory/resources/inventory_item/methods/getInventoryItems&quot; target=&quot;_blank &quot;&gt;getInventoryItems&lt;/a&gt; method to retrieve SKU values.
+     * Gets the sku property value. An array of SKU values are passed in under the &lt;strong&gt;sku&lt;/strong&gt; container to retrieve up to 25 inventory item records.&lt;br&gt;&lt;br&gt;Use the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-inventory_item-getinventoryitems&quot; target=&quot;_blank &quot;&gt;getInventoryItems&lt;/a&gt; method to retrieve SKU values.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -93,7 +93,7 @@ public class GetInventoryItem implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the sku property value. An array of SKU values are passed in under the &lt;strong&gt;sku&lt;/strong&gt; container to retrieve up to 25 inventory item records.&lt;br&gt;&lt;br&gt;Use the &lt;a href=&quot;/api-docs/sell/inventory/resources/inventory_item/methods/getInventoryItems&quot; target=&quot;_blank &quot;&gt;getInventoryItems&lt;/a&gt; method to retrieve SKU values.
+     * Sets the sku property value. An array of SKU values are passed in under the &lt;strong&gt;sku&lt;/strong&gt; container to retrieve up to 25 inventory item records.&lt;br&gt;&lt;br&gt;Use the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-inventory_item-getinventoryitems&quot; target=&quot;_blank &quot;&gt;getInventoryItems&lt;/a&gt; method to retrieve SKU values.
      * @param value Value to set for the sku property.
      */
     public void setSku(@jakarta.annotation.Nullable final String value) {

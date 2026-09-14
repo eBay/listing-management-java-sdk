@@ -93,15 +93,16 @@ public final class MediaClient {
         }));
     }
 
-    public CompletableFuture<InputStream> uploadVideoAsync(
-            String videoId, InputStream body, String contentLength, String contentRange, String accessToken, RequestOptions requestOptions) {
+    public CompletableFuture<Void> uploadVideoAsync(
+            String videoId, String contentLength, String contentRange, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.video().byVideo_id(Params.requireValid("videoId", videoId)).upload().post(body, config -> {
+            kiota.video().byVideo_id(Params.requireValid("videoId", videoId)).upload().post(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
                 if (contentLength != null) config.headers.add("Content-Length", contentLength);
                 if (contentRange != null) config.headers.add("Content-Range", contentRange);
             });
+            return null;
         }));
     }
 
@@ -142,6 +143,39 @@ public final class MediaClient {
             return kiota.document().byDocument_id(Params.requireValid("documentId", documentId)).upload().post(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
+        }));
+    }
+
+    public CompletableFuture<Void> downloadPostOrderDocumentAsync(
+            String documentId, String accessToken, RequestOptions requestOptions) {
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
+            Map<String, String> headers = mergedHeaders(requestOptions);
+            kiota.postOrder().document().byDocument_id(Params.requireValid("documentId", documentId)).get(config -> {
+                headers.forEach((k, v) -> config.headers.add(k, v));
+            });
+            return null;
+        }));
+    }
+
+    public CompletableFuture<Void> removePostOrderDocumentAsync(
+            String documentId, String accessToken, RequestOptions requestOptions) {
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
+            Map<String, String> headers = mergedHeaders(requestOptions);
+            kiota.postOrder().document().byDocument_id(Params.requireValid("documentId", documentId)).delete(config -> {
+                headers.forEach((k, v) -> config.headers.add(k, v));
+            });
+            return null;
+        }));
+    }
+
+    public CompletableFuture<Void> uploadPostOrderDocumentAsync(
+            byte[] body, String accessToken, RequestOptions requestOptions) {
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
+            Map<String, String> headers = mergedHeaders(requestOptions);
+            kiota.postOrder().document().post(config -> {
+                headers.forEach((k, v) -> config.headers.add(k, v));
+            });
+            return null;
         }));
     }
 }

@@ -31,9 +31,9 @@ public class InventoryFilterCriteria implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * The listing format for the ActiveInventoryReport being created. Supported types are:&lt;br&gt;&lt;ul&gt;&lt;li&gt;&lt;code&gt;AUCTION&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;FIXED_PRICE&lt;/code&gt;&lt;/li&gt;&lt;/ul&gt; For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:ListingFormatEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * The listing format for the ActiveInventoryReport being created. Supported types are:&lt;br&gt;&lt;ul&gt;&lt;li&gt;&lt;code&gt;AUCTION&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;FIXED_PRICE&lt;/code&gt;&lt;/li&gt;&lt;/ul&gt;
      */
-    private String listingFormat;
+    private ListingFormatEnum listingFormat;
     /**
      * Instantiates a new {@link InventoryFilterCriteria} and sets the default values.
      */
@@ -65,15 +65,15 @@ public class InventoryFilterCriteria implements AdditionalDataHolder, Parsable {
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(1);
-        deserializerMap.put("listingFormat", (n) -> { this.setListingFormat(n.getStringValue()); });
+        deserializerMap.put("listingFormat", (n) -> { this.setListingFormat(n.getEnumValue(ListingFormatEnum::forValue)); });
         return deserializerMap;
     }
     /**
-     * Gets the listingFormat property value. The listing format for the ActiveInventoryReport being created. Supported types are:&lt;br&gt;&lt;ul&gt;&lt;li&gt;&lt;code&gt;AUCTION&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;FIXED_PRICE&lt;/code&gt;&lt;/li&gt;&lt;/ul&gt; For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:ListingFormatEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the listingFormat property value. The listing format for the ActiveInventoryReport being created. Supported types are:&lt;br&gt;&lt;ul&gt;&lt;li&gt;&lt;code&gt;AUCTION&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;FIXED_PRICE&lt;/code&gt;&lt;/li&gt;&lt;/ul&gt;
+     * @return a {@link ListingFormatEnum}
      */
     @jakarta.annotation.Nullable
-    public String getListingFormat() {
+    public ListingFormatEnum getListingFormat() {
         return this.listingFormat;
     }
     /**
@@ -82,7 +82,7 @@ public class InventoryFilterCriteria implements AdditionalDataHolder, Parsable {
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeStringValue("listingFormat", this.getListingFormat());
+        writer.writeEnumValue("listingFormat", this.getListingFormat());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -93,10 +93,10 @@ public class InventoryFilterCriteria implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the listingFormat property value. The listing format for the ActiveInventoryReport being created. Supported types are:&lt;br&gt;&lt;ul&gt;&lt;li&gt;&lt;code&gt;AUCTION&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;FIXED_PRICE&lt;/code&gt;&lt;/li&gt;&lt;/ul&gt; For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:ListingFormatEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the listingFormat property value. The listing format for the ActiveInventoryReport being created. Supported types are:&lt;br&gt;&lt;ul&gt;&lt;li&gt;&lt;code&gt;AUCTION&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;FIXED_PRICE&lt;/code&gt;&lt;/li&gt;&lt;/ul&gt;
      * @param value Value to set for the listingFormat property.
      */
-    public void setListingFormat(@jakarta.annotation.Nullable final String value) {
+    public void setListingFormat(@jakarta.annotation.Nullable final ListingFormatEnum value) {
         this.listingFormat = value;
     }
 }

@@ -31,33 +31,33 @@ public class PricingSummary implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * This type is used to express a dollar value and the applicable currency.
+     * This field indicates the lowest price at which the seller is willing to sell an item through an auction listing. Note that setting a Reserve Price will incur a listing fee of $5 or 7.5% of the Reserve Price, whichever is greater. The minimum fee is $5.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Important:&lt;/b&gt; This fee is charged regardless of whether or not the item is sold.&lt;/span&gt;
      */
     private Amount auctionReservePrice;
     /**
-     * This type is used to express a dollar value and the applicable currency.
+     * This field indicates the minimum bidding price for the auction. The bidding starts at this price.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; If the &lt;b&gt;auctionReservePrice&lt;/b&gt; is also specified, the value of &lt;b&gt;auctionStartPrice&lt;/b&gt; must be lower than the value of &lt;b&gt;auctionReservePrice&lt;/b&gt;.&lt;/span&gt;
      */
     private Amount auctionStartPrice;
     /**
-     * This type is used to express a dollar value and the applicable currency.
+     * This container is needed if the Minimum Advertised Price (MAP) feature will be used in the offer. Minimum Advertised Price (MAP) is an agreement between suppliers (or manufacturers (OEM)) and the retailers (sellers) stipulating the lowest price an item is allowed to be advertised at. Sellers can only offer prices below this price through the use of other discounts. The MAP feature is only available to eligible US sellers. This field will be ignored if the seller and or the listing is not eligible for the MAP feature.&lt;br&gt;&lt;br&gt;This container will be returned by &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-getoffer&quot;&gt;getOffer&lt;/a&gt; and &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-getoffers&quot;&gt;getOffers&lt;/a&gt; if set for the offer.
      */
     private Amount minimumAdvertisedPrice;
     /**
-     * This field is needed if the Strikethrough Pricing (STP) feature will be used in the offer. This field indicates that the product was sold for the price in the &lt;strong&gt;originalRetailPrice&lt;/strong&gt; field on an eBay site, or sold for that price by a third-party retailer. When using the &lt;strong&gt;createOffer&lt;/strong&gt; or &lt;strong&gt;updateOffer&lt;/strong&gt; calls, the seller will pass in a value of &lt;code&gt;ON_EBAY&lt;/code&gt; to indicate that the product was sold for the &lt;strong&gt;originalRetailPrice&lt;/strong&gt; on an eBay site, or the seller will pass in a value of &lt;code&gt;OFF_EBAY&lt;/code&gt; to indicate that the product was sold for the &lt;strong&gt;originalRetailPrice&lt;/strong&gt; through a third-party retailer. This field and the &lt;strong&gt;originalRetailPrice&lt;/strong&gt; field are only applicable if the seller and listing are eligible to use the Strikethrough Pricing feature, a feature which is limited to the US (core site and Motors), UK, Germany, Canada (English and French versions), France, Italy, and Spain sites.&lt;br&gt;&lt;br&gt;This field will be returned by &lt;a href=&quot;/api-docs/sell/inventory/resources/offer/methods/getOffer&quot;&gt;getOffer&lt;/a&gt; and &lt;a href=&quot;/api-docs/sell/inventory/resources/offer/methods/getOffers&quot;&gt;getOffers&lt;/a&gt; if set for the offer. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/slr:SoldOnEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This field is needed if the Strikethrough Pricing (STP) feature will be used in the offer. This field indicates that the product was sold for the price in the &lt;strong&gt;originalRetailPrice&lt;/strong&gt; field on an eBay site, or sold for that price by a third-party retailer. When using the &lt;strong&gt;createOffer&lt;/strong&gt; or &lt;strong&gt;updateOffer&lt;/strong&gt; calls, the seller will pass in a value of &lt;code&gt;ON_EBAY&lt;/code&gt; to indicate that the product was sold for the &lt;strong&gt;originalRetailPrice&lt;/strong&gt; on an eBay site, or the seller will pass in a value of &lt;code&gt;OFF_EBAY&lt;/code&gt; to indicate that the product was sold for the &lt;strong&gt;originalRetailPrice&lt;/strong&gt; through a third-party retailer. This field and the &lt;strong&gt;originalRetailPrice&lt;/strong&gt; field are only applicable if the seller and listing are eligible to use the Strikethrough Pricing feature, a feature which is limited to the US (core site and Motors), UK, Germany, Canada (English and French versions), France, Italy, and Spain sites.&lt;br&gt;&lt;br&gt;This field will be returned by &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-getoffer&quot;&gt;getOffer&lt;/a&gt; and &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-getoffers&quot;&gt;getOffers&lt;/a&gt; if set for the offer.
      */
-    private String originallySoldForRetailPriceOn;
+    private SoldOnEnum originallySoldForRetailPriceOn;
     /**
-     * This type is used to express a dollar value and the applicable currency.
+     * This container is needed if the Strikethrough Pricing (STP) feature will be used in the offer. The dollar value passed into this field indicates the original retail price set by the manufacturer (OEM). eBay does not maintain or validate the value supplied here by the seller. The dollar value in this field should always be more than the dollar value in the &lt;strong&gt;price&lt;/strong&gt; container. This field and the &lt;strong&gt;originallySoldForRetailPriceOn&lt;/strong&gt; field are only applicable if the seller and listing are eligible to use the Strikethrough Pricing feature, a feature which is limited to the US (core site and Motors), UK, Germany, Canada (English and French versions), France, Italy, and Spain sites. Compare the &lt;strong&gt;originalRetailPrice&lt;/strong&gt; and the dollar value in the &lt;strong&gt;price&lt;/strong&gt; field to determine the amount of savings to the buyer. This Original Retail Price will have a strikethrough line through for a marketing affect.&lt;br&gt;&lt;br&gt;This container will be returned by &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-getoffer&quot;&gt;getOffer&lt;/a&gt; and &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-getoffers&quot;&gt;getOffers&lt;/a&gt; if set for the offer.
      */
     private Amount originalRetailPrice;
     /**
-     * This type is used to express a dollar value and the applicable currency.
+     * This is the listing price of the product. A listing price must be specified before publishing an offer, but it is possible to create an offer without a price.&lt;br&gt;&lt;br&gt;For published offers, this container will always be returned, but for unpublished offers, this container will only be returned if set for the offer. &lt;br&gt;&lt;br&gt;&lt;div class=&quot;msgbox_important&quot;&gt;&lt;p class=&quot;msgbox_importantInDiv&quot; data-mc-autonum=&quot;&amp;lt;b&amp;gt;&amp;lt;span style=&amp;quot;color: #dd1e31;&amp;quot; class=&amp;quot;mcFormatColor&amp;quot;&amp;gt;Important! &amp;lt;/span&amp;gt;&amp;lt;/b&amp;gt;&quot;&gt;&lt;span class=&quot;autonumber&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important!&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;/span&gt;Publish offer note: This container and its two child fields (&lt;b&gt;currency&lt;/b&gt; and &lt;b&gt;value&lt;/b&gt;) are required before an offer can be published to create an active listing.&lt;/p&gt;&lt;/span&gt;&lt;/div&gt;
      */
     private Amount price;
     /**
-     * This field is needed if the Minimum Advertised Price (MAP) feature will be used in the offer. This field is only applicable if an eligible US seller is using the Minimum Advertised Price (MAP) feature and a &lt;strong&gt;minimumAdvertisedPrice&lt;/strong&gt; has been specified. The value set in this field will determine whether the MAP price is shown to a prospective buyer prior to checkout through a pop-up window accessed from the View Item page, or if the MAP price is not shown until the checkout flow after the buyer has already committed to buying the item. To show the MAP price prior to checkout, the seller will set this value to &lt;code&gt;PRE_CHECKOUT&lt;/code&gt;. To show the MAP price after the buyer already commits to buy the item, the seller will set this value to &lt;code&gt;DURING_CHECKOUT&lt;/code&gt;. This field will be ignored if the seller and/or the listing is not eligible for the MAP feature.&lt;br&gt;&lt;br&gt;This field will be returned by &lt;a href=&quot;/api-docs/sell/inventory/resources/offer/methods/getOffer&quot;&gt;getOffer&lt;/a&gt; and &lt;a href=&quot;/api-docs/sell/inventory/resources/offer/methods/getOffers&quot;&gt;getOffers&lt;/a&gt; if set for the offer. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/slr:MinimumAdvertisedPriceHandlingEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This field is needed if the Minimum Advertised Price (MAP) feature will be used in the offer. This field is only applicable if an eligible US seller is using the Minimum Advertised Price (MAP) feature and a &lt;strong&gt;minimumAdvertisedPrice&lt;/strong&gt; has been specified. The value set in this field will determine whether the MAP price is shown to a prospective buyer prior to checkout through a pop-up window accessed from the View Item page, or if the MAP price is not shown until the checkout flow after the buyer has already committed to buying the item. To show the MAP price prior to checkout, the seller will set this value to &lt;code&gt;PRE_CHECKOUT&lt;/code&gt;. To show the MAP price after the buyer already commits to buy the item, the seller will set this value to &lt;code&gt;DURING_CHECKOUT&lt;/code&gt;. This field will be ignored if the seller and/or the listing is not eligible for the MAP feature.&lt;br&gt;&lt;br&gt;This field will be returned by &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-getoffer&quot;&gt;getOffer&lt;/a&gt; and &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-getoffers&quot;&gt;getOffers&lt;/a&gt; if set for the offer.
      */
-    private String pricingVisibility;
+    private MinimumAdvertisedPriceHandlingEnum pricingVisibility;
     /**
      * Instantiates a new {@link PricingSummary} and sets the default values.
      */
@@ -83,7 +83,7 @@ public class PricingSummary implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the auctionReservePrice property value. This type is used to express a dollar value and the applicable currency.
+     * Gets the auctionReservePrice property value. This field indicates the lowest price at which the seller is willing to sell an item through an auction listing. Note that setting a Reserve Price will incur a listing fee of $5 or 7.5% of the Reserve Price, whichever is greater. The minimum fee is $5.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Important:&lt;/b&gt; This fee is charged regardless of whether or not the item is sold.&lt;/span&gt;
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -91,7 +91,7 @@ public class PricingSummary implements AdditionalDataHolder, Parsable {
         return this.auctionReservePrice;
     }
     /**
-     * Gets the auctionStartPrice property value. This type is used to express a dollar value and the applicable currency.
+     * Gets the auctionStartPrice property value. This field indicates the minimum bidding price for the auction. The bidding starts at this price.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; If the &lt;b&gt;auctionReservePrice&lt;/b&gt; is also specified, the value of &lt;b&gt;auctionStartPrice&lt;/b&gt; must be lower than the value of &lt;b&gt;auctionReservePrice&lt;/b&gt;.&lt;/span&gt;
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -108,14 +108,14 @@ public class PricingSummary implements AdditionalDataHolder, Parsable {
         deserializerMap.put("auctionReservePrice", (n) -> { this.setAuctionReservePrice(n.getObjectValue(Amount::createFromDiscriminatorValue)); });
         deserializerMap.put("auctionStartPrice", (n) -> { this.setAuctionStartPrice(n.getObjectValue(Amount::createFromDiscriminatorValue)); });
         deserializerMap.put("minimumAdvertisedPrice", (n) -> { this.setMinimumAdvertisedPrice(n.getObjectValue(Amount::createFromDiscriminatorValue)); });
-        deserializerMap.put("originallySoldForRetailPriceOn", (n) -> { this.setOriginallySoldForRetailPriceOn(n.getStringValue()); });
+        deserializerMap.put("originallySoldForRetailPriceOn", (n) -> { this.setOriginallySoldForRetailPriceOn(n.getEnumValue(SoldOnEnum::forValue)); });
         deserializerMap.put("originalRetailPrice", (n) -> { this.setOriginalRetailPrice(n.getObjectValue(Amount::createFromDiscriminatorValue)); });
         deserializerMap.put("price", (n) -> { this.setPrice(n.getObjectValue(Amount::createFromDiscriminatorValue)); });
-        deserializerMap.put("pricingVisibility", (n) -> { this.setPricingVisibility(n.getStringValue()); });
+        deserializerMap.put("pricingVisibility", (n) -> { this.setPricingVisibility(n.getEnumValue(MinimumAdvertisedPriceHandlingEnum::forValue)); });
         return deserializerMap;
     }
     /**
-     * Gets the minimumAdvertisedPrice property value. This type is used to express a dollar value and the applicable currency.
+     * Gets the minimumAdvertisedPrice property value. This container is needed if the Minimum Advertised Price (MAP) feature will be used in the offer. Minimum Advertised Price (MAP) is an agreement between suppliers (or manufacturers (OEM)) and the retailers (sellers) stipulating the lowest price an item is allowed to be advertised at. Sellers can only offer prices below this price through the use of other discounts. The MAP feature is only available to eligible US sellers. This field will be ignored if the seller and or the listing is not eligible for the MAP feature.&lt;br&gt;&lt;br&gt;This container will be returned by &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-getoffer&quot;&gt;getOffer&lt;/a&gt; and &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-getoffers&quot;&gt;getOffers&lt;/a&gt; if set for the offer.
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -123,15 +123,15 @@ public class PricingSummary implements AdditionalDataHolder, Parsable {
         return this.minimumAdvertisedPrice;
     }
     /**
-     * Gets the originallySoldForRetailPriceOn property value. This field is needed if the Strikethrough Pricing (STP) feature will be used in the offer. This field indicates that the product was sold for the price in the &lt;strong&gt;originalRetailPrice&lt;/strong&gt; field on an eBay site, or sold for that price by a third-party retailer. When using the &lt;strong&gt;createOffer&lt;/strong&gt; or &lt;strong&gt;updateOffer&lt;/strong&gt; calls, the seller will pass in a value of &lt;code&gt;ON_EBAY&lt;/code&gt; to indicate that the product was sold for the &lt;strong&gt;originalRetailPrice&lt;/strong&gt; on an eBay site, or the seller will pass in a value of &lt;code&gt;OFF_EBAY&lt;/code&gt; to indicate that the product was sold for the &lt;strong&gt;originalRetailPrice&lt;/strong&gt; through a third-party retailer. This field and the &lt;strong&gt;originalRetailPrice&lt;/strong&gt; field are only applicable if the seller and listing are eligible to use the Strikethrough Pricing feature, a feature which is limited to the US (core site and Motors), UK, Germany, Canada (English and French versions), France, Italy, and Spain sites.&lt;br&gt;&lt;br&gt;This field will be returned by &lt;a href=&quot;/api-docs/sell/inventory/resources/offer/methods/getOffer&quot;&gt;getOffer&lt;/a&gt; and &lt;a href=&quot;/api-docs/sell/inventory/resources/offer/methods/getOffers&quot;&gt;getOffers&lt;/a&gt; if set for the offer. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/slr:SoldOnEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the originallySoldForRetailPriceOn property value. This field is needed if the Strikethrough Pricing (STP) feature will be used in the offer. This field indicates that the product was sold for the price in the &lt;strong&gt;originalRetailPrice&lt;/strong&gt; field on an eBay site, or sold for that price by a third-party retailer. When using the &lt;strong&gt;createOffer&lt;/strong&gt; or &lt;strong&gt;updateOffer&lt;/strong&gt; calls, the seller will pass in a value of &lt;code&gt;ON_EBAY&lt;/code&gt; to indicate that the product was sold for the &lt;strong&gt;originalRetailPrice&lt;/strong&gt; on an eBay site, or the seller will pass in a value of &lt;code&gt;OFF_EBAY&lt;/code&gt; to indicate that the product was sold for the &lt;strong&gt;originalRetailPrice&lt;/strong&gt; through a third-party retailer. This field and the &lt;strong&gt;originalRetailPrice&lt;/strong&gt; field are only applicable if the seller and listing are eligible to use the Strikethrough Pricing feature, a feature which is limited to the US (core site and Motors), UK, Germany, Canada (English and French versions), France, Italy, and Spain sites.&lt;br&gt;&lt;br&gt;This field will be returned by &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-getoffer&quot;&gt;getOffer&lt;/a&gt; and &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-getoffers&quot;&gt;getOffers&lt;/a&gt; if set for the offer.
+     * @return a {@link SoldOnEnum}
      */
     @jakarta.annotation.Nullable
-    public String getOriginallySoldForRetailPriceOn() {
+    public SoldOnEnum getOriginallySoldForRetailPriceOn() {
         return this.originallySoldForRetailPriceOn;
     }
     /**
-     * Gets the originalRetailPrice property value. This type is used to express a dollar value and the applicable currency.
+     * Gets the originalRetailPrice property value. This container is needed if the Strikethrough Pricing (STP) feature will be used in the offer. The dollar value passed into this field indicates the original retail price set by the manufacturer (OEM). eBay does not maintain or validate the value supplied here by the seller. The dollar value in this field should always be more than the dollar value in the &lt;strong&gt;price&lt;/strong&gt; container. This field and the &lt;strong&gt;originallySoldForRetailPriceOn&lt;/strong&gt; field are only applicable if the seller and listing are eligible to use the Strikethrough Pricing feature, a feature which is limited to the US (core site and Motors), UK, Germany, Canada (English and French versions), France, Italy, and Spain sites. Compare the &lt;strong&gt;originalRetailPrice&lt;/strong&gt; and the dollar value in the &lt;strong&gt;price&lt;/strong&gt; field to determine the amount of savings to the buyer. This Original Retail Price will have a strikethrough line through for a marketing affect.&lt;br&gt;&lt;br&gt;This container will be returned by &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-getoffer&quot;&gt;getOffer&lt;/a&gt; and &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-getoffers&quot;&gt;getOffers&lt;/a&gt; if set for the offer.
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -139,7 +139,7 @@ public class PricingSummary implements AdditionalDataHolder, Parsable {
         return this.originalRetailPrice;
     }
     /**
-     * Gets the price property value. This type is used to express a dollar value and the applicable currency.
+     * Gets the price property value. This is the listing price of the product. A listing price must be specified before publishing an offer, but it is possible to create an offer without a price.&lt;br&gt;&lt;br&gt;For published offers, this container will always be returned, but for unpublished offers, this container will only be returned if set for the offer. &lt;br&gt;&lt;br&gt;&lt;div class=&quot;msgbox_important&quot;&gt;&lt;p class=&quot;msgbox_importantInDiv&quot; data-mc-autonum=&quot;&amp;lt;b&amp;gt;&amp;lt;span style=&amp;quot;color: #dd1e31;&amp;quot; class=&amp;quot;mcFormatColor&amp;quot;&amp;gt;Important! &amp;lt;/span&amp;gt;&amp;lt;/b&amp;gt;&quot;&gt;&lt;span class=&quot;autonumber&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important!&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;/span&gt;Publish offer note: This container and its two child fields (&lt;b&gt;currency&lt;/b&gt; and &lt;b&gt;value&lt;/b&gt;) are required before an offer can be published to create an active listing.&lt;/p&gt;&lt;/span&gt;&lt;/div&gt;
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -147,11 +147,11 @@ public class PricingSummary implements AdditionalDataHolder, Parsable {
         return this.price;
     }
     /**
-     * Gets the pricingVisibility property value. This field is needed if the Minimum Advertised Price (MAP) feature will be used in the offer. This field is only applicable if an eligible US seller is using the Minimum Advertised Price (MAP) feature and a &lt;strong&gt;minimumAdvertisedPrice&lt;/strong&gt; has been specified. The value set in this field will determine whether the MAP price is shown to a prospective buyer prior to checkout through a pop-up window accessed from the View Item page, or if the MAP price is not shown until the checkout flow after the buyer has already committed to buying the item. To show the MAP price prior to checkout, the seller will set this value to &lt;code&gt;PRE_CHECKOUT&lt;/code&gt;. To show the MAP price after the buyer already commits to buy the item, the seller will set this value to &lt;code&gt;DURING_CHECKOUT&lt;/code&gt;. This field will be ignored if the seller and/or the listing is not eligible for the MAP feature.&lt;br&gt;&lt;br&gt;This field will be returned by &lt;a href=&quot;/api-docs/sell/inventory/resources/offer/methods/getOffer&quot;&gt;getOffer&lt;/a&gt; and &lt;a href=&quot;/api-docs/sell/inventory/resources/offer/methods/getOffers&quot;&gt;getOffers&lt;/a&gt; if set for the offer. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/slr:MinimumAdvertisedPriceHandlingEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the pricingVisibility property value. This field is needed if the Minimum Advertised Price (MAP) feature will be used in the offer. This field is only applicable if an eligible US seller is using the Minimum Advertised Price (MAP) feature and a &lt;strong&gt;minimumAdvertisedPrice&lt;/strong&gt; has been specified. The value set in this field will determine whether the MAP price is shown to a prospective buyer prior to checkout through a pop-up window accessed from the View Item page, or if the MAP price is not shown until the checkout flow after the buyer has already committed to buying the item. To show the MAP price prior to checkout, the seller will set this value to &lt;code&gt;PRE_CHECKOUT&lt;/code&gt;. To show the MAP price after the buyer already commits to buy the item, the seller will set this value to &lt;code&gt;DURING_CHECKOUT&lt;/code&gt;. This field will be ignored if the seller and/or the listing is not eligible for the MAP feature.&lt;br&gt;&lt;br&gt;This field will be returned by &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-getoffer&quot;&gt;getOffer&lt;/a&gt; and &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-getoffers&quot;&gt;getOffers&lt;/a&gt; if set for the offer.
+     * @return a {@link MinimumAdvertisedPriceHandlingEnum}
      */
     @jakarta.annotation.Nullable
-    public String getPricingVisibility() {
+    public MinimumAdvertisedPriceHandlingEnum getPricingVisibility() {
         return this.pricingVisibility;
     }
     /**
@@ -163,10 +163,10 @@ public class PricingSummary implements AdditionalDataHolder, Parsable {
         writer.writeObjectValue("auctionReservePrice", this.getAuctionReservePrice());
         writer.writeObjectValue("auctionStartPrice", this.getAuctionStartPrice());
         writer.writeObjectValue("minimumAdvertisedPrice", this.getMinimumAdvertisedPrice());
-        writer.writeStringValue("originallySoldForRetailPriceOn", this.getOriginallySoldForRetailPriceOn());
+        writer.writeEnumValue("originallySoldForRetailPriceOn", this.getOriginallySoldForRetailPriceOn());
         writer.writeObjectValue("originalRetailPrice", this.getOriginalRetailPrice());
         writer.writeObjectValue("price", this.getPrice());
-        writer.writeStringValue("pricingVisibility", this.getPricingVisibility());
+        writer.writeEnumValue("pricingVisibility", this.getPricingVisibility());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -177,52 +177,52 @@ public class PricingSummary implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the auctionReservePrice property value. This type is used to express a dollar value and the applicable currency.
+     * Sets the auctionReservePrice property value. This field indicates the lowest price at which the seller is willing to sell an item through an auction listing. Note that setting a Reserve Price will incur a listing fee of $5 or 7.5% of the Reserve Price, whichever is greater. The minimum fee is $5.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Important:&lt;/b&gt; This fee is charged regardless of whether or not the item is sold.&lt;/span&gt;
      * @param value Value to set for the auctionReservePrice property.
      */
     public void setAuctionReservePrice(@jakarta.annotation.Nullable final Amount value) {
         this.auctionReservePrice = value;
     }
     /**
-     * Sets the auctionStartPrice property value. This type is used to express a dollar value and the applicable currency.
+     * Sets the auctionStartPrice property value. This field indicates the minimum bidding price for the auction. The bidding starts at this price.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; If the &lt;b&gt;auctionReservePrice&lt;/b&gt; is also specified, the value of &lt;b&gt;auctionStartPrice&lt;/b&gt; must be lower than the value of &lt;b&gt;auctionReservePrice&lt;/b&gt;.&lt;/span&gt;
      * @param value Value to set for the auctionStartPrice property.
      */
     public void setAuctionStartPrice(@jakarta.annotation.Nullable final Amount value) {
         this.auctionStartPrice = value;
     }
     /**
-     * Sets the minimumAdvertisedPrice property value. This type is used to express a dollar value and the applicable currency.
+     * Sets the minimumAdvertisedPrice property value. This container is needed if the Minimum Advertised Price (MAP) feature will be used in the offer. Minimum Advertised Price (MAP) is an agreement between suppliers (or manufacturers (OEM)) and the retailers (sellers) stipulating the lowest price an item is allowed to be advertised at. Sellers can only offer prices below this price through the use of other discounts. The MAP feature is only available to eligible US sellers. This field will be ignored if the seller and or the listing is not eligible for the MAP feature.&lt;br&gt;&lt;br&gt;This container will be returned by &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-getoffer&quot;&gt;getOffer&lt;/a&gt; and &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-getoffers&quot;&gt;getOffers&lt;/a&gt; if set for the offer.
      * @param value Value to set for the minimumAdvertisedPrice property.
      */
     public void setMinimumAdvertisedPrice(@jakarta.annotation.Nullable final Amount value) {
         this.minimumAdvertisedPrice = value;
     }
     /**
-     * Sets the originallySoldForRetailPriceOn property value. This field is needed if the Strikethrough Pricing (STP) feature will be used in the offer. This field indicates that the product was sold for the price in the &lt;strong&gt;originalRetailPrice&lt;/strong&gt; field on an eBay site, or sold for that price by a third-party retailer. When using the &lt;strong&gt;createOffer&lt;/strong&gt; or &lt;strong&gt;updateOffer&lt;/strong&gt; calls, the seller will pass in a value of &lt;code&gt;ON_EBAY&lt;/code&gt; to indicate that the product was sold for the &lt;strong&gt;originalRetailPrice&lt;/strong&gt; on an eBay site, or the seller will pass in a value of &lt;code&gt;OFF_EBAY&lt;/code&gt; to indicate that the product was sold for the &lt;strong&gt;originalRetailPrice&lt;/strong&gt; through a third-party retailer. This field and the &lt;strong&gt;originalRetailPrice&lt;/strong&gt; field are only applicable if the seller and listing are eligible to use the Strikethrough Pricing feature, a feature which is limited to the US (core site and Motors), UK, Germany, Canada (English and French versions), France, Italy, and Spain sites.&lt;br&gt;&lt;br&gt;This field will be returned by &lt;a href=&quot;/api-docs/sell/inventory/resources/offer/methods/getOffer&quot;&gt;getOffer&lt;/a&gt; and &lt;a href=&quot;/api-docs/sell/inventory/resources/offer/methods/getOffers&quot;&gt;getOffers&lt;/a&gt; if set for the offer. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/slr:SoldOnEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the originallySoldForRetailPriceOn property value. This field is needed if the Strikethrough Pricing (STP) feature will be used in the offer. This field indicates that the product was sold for the price in the &lt;strong&gt;originalRetailPrice&lt;/strong&gt; field on an eBay site, or sold for that price by a third-party retailer. When using the &lt;strong&gt;createOffer&lt;/strong&gt; or &lt;strong&gt;updateOffer&lt;/strong&gt; calls, the seller will pass in a value of &lt;code&gt;ON_EBAY&lt;/code&gt; to indicate that the product was sold for the &lt;strong&gt;originalRetailPrice&lt;/strong&gt; on an eBay site, or the seller will pass in a value of &lt;code&gt;OFF_EBAY&lt;/code&gt; to indicate that the product was sold for the &lt;strong&gt;originalRetailPrice&lt;/strong&gt; through a third-party retailer. This field and the &lt;strong&gt;originalRetailPrice&lt;/strong&gt; field are only applicable if the seller and listing are eligible to use the Strikethrough Pricing feature, a feature which is limited to the US (core site and Motors), UK, Germany, Canada (English and French versions), France, Italy, and Spain sites.&lt;br&gt;&lt;br&gt;This field will be returned by &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-getoffer&quot;&gt;getOffer&lt;/a&gt; and &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-getoffers&quot;&gt;getOffers&lt;/a&gt; if set for the offer.
      * @param value Value to set for the originallySoldForRetailPriceOn property.
      */
-    public void setOriginallySoldForRetailPriceOn(@jakarta.annotation.Nullable final String value) {
+    public void setOriginallySoldForRetailPriceOn(@jakarta.annotation.Nullable final SoldOnEnum value) {
         this.originallySoldForRetailPriceOn = value;
     }
     /**
-     * Sets the originalRetailPrice property value. This type is used to express a dollar value and the applicable currency.
+     * Sets the originalRetailPrice property value. This container is needed if the Strikethrough Pricing (STP) feature will be used in the offer. The dollar value passed into this field indicates the original retail price set by the manufacturer (OEM). eBay does not maintain or validate the value supplied here by the seller. The dollar value in this field should always be more than the dollar value in the &lt;strong&gt;price&lt;/strong&gt; container. This field and the &lt;strong&gt;originallySoldForRetailPriceOn&lt;/strong&gt; field are only applicable if the seller and listing are eligible to use the Strikethrough Pricing feature, a feature which is limited to the US (core site and Motors), UK, Germany, Canada (English and French versions), France, Italy, and Spain sites. Compare the &lt;strong&gt;originalRetailPrice&lt;/strong&gt; and the dollar value in the &lt;strong&gt;price&lt;/strong&gt; field to determine the amount of savings to the buyer. This Original Retail Price will have a strikethrough line through for a marketing affect.&lt;br&gt;&lt;br&gt;This container will be returned by &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-getoffer&quot;&gt;getOffer&lt;/a&gt; and &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-getoffers&quot;&gt;getOffers&lt;/a&gt; if set for the offer.
      * @param value Value to set for the originalRetailPrice property.
      */
     public void setOriginalRetailPrice(@jakarta.annotation.Nullable final Amount value) {
         this.originalRetailPrice = value;
     }
     /**
-     * Sets the price property value. This type is used to express a dollar value and the applicable currency.
+     * Sets the price property value. This is the listing price of the product. A listing price must be specified before publishing an offer, but it is possible to create an offer without a price.&lt;br&gt;&lt;br&gt;For published offers, this container will always be returned, but for unpublished offers, this container will only be returned if set for the offer. &lt;br&gt;&lt;br&gt;&lt;div class=&quot;msgbox_important&quot;&gt;&lt;p class=&quot;msgbox_importantInDiv&quot; data-mc-autonum=&quot;&amp;lt;b&amp;gt;&amp;lt;span style=&amp;quot;color: #dd1e31;&amp;quot; class=&amp;quot;mcFormatColor&amp;quot;&amp;gt;Important! &amp;lt;/span&amp;gt;&amp;lt;/b&amp;gt;&quot;&gt;&lt;span class=&quot;autonumber&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important!&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;/span&gt;Publish offer note: This container and its two child fields (&lt;b&gt;currency&lt;/b&gt; and &lt;b&gt;value&lt;/b&gt;) are required before an offer can be published to create an active listing.&lt;/p&gt;&lt;/span&gt;&lt;/div&gt;
      * @param value Value to set for the price property.
      */
     public void setPrice(@jakarta.annotation.Nullable final Amount value) {
         this.price = value;
     }
     /**
-     * Sets the pricingVisibility property value. This field is needed if the Minimum Advertised Price (MAP) feature will be used in the offer. This field is only applicable if an eligible US seller is using the Minimum Advertised Price (MAP) feature and a &lt;strong&gt;minimumAdvertisedPrice&lt;/strong&gt; has been specified. The value set in this field will determine whether the MAP price is shown to a prospective buyer prior to checkout through a pop-up window accessed from the View Item page, or if the MAP price is not shown until the checkout flow after the buyer has already committed to buying the item. To show the MAP price prior to checkout, the seller will set this value to &lt;code&gt;PRE_CHECKOUT&lt;/code&gt;. To show the MAP price after the buyer already commits to buy the item, the seller will set this value to &lt;code&gt;DURING_CHECKOUT&lt;/code&gt;. This field will be ignored if the seller and/or the listing is not eligible for the MAP feature.&lt;br&gt;&lt;br&gt;This field will be returned by &lt;a href=&quot;/api-docs/sell/inventory/resources/offer/methods/getOffer&quot;&gt;getOffer&lt;/a&gt; and &lt;a href=&quot;/api-docs/sell/inventory/resources/offer/methods/getOffers&quot;&gt;getOffers&lt;/a&gt; if set for the offer. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/slr:MinimumAdvertisedPriceHandlingEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the pricingVisibility property value. This field is needed if the Minimum Advertised Price (MAP) feature will be used in the offer. This field is only applicable if an eligible US seller is using the Minimum Advertised Price (MAP) feature and a &lt;strong&gt;minimumAdvertisedPrice&lt;/strong&gt; has been specified. The value set in this field will determine whether the MAP price is shown to a prospective buyer prior to checkout through a pop-up window accessed from the View Item page, or if the MAP price is not shown until the checkout flow after the buyer has already committed to buying the item. To show the MAP price prior to checkout, the seller will set this value to &lt;code&gt;PRE_CHECKOUT&lt;/code&gt;. To show the MAP price after the buyer already commits to buy the item, the seller will set this value to &lt;code&gt;DURING_CHECKOUT&lt;/code&gt;. This field will be ignored if the seller and/or the listing is not eligible for the MAP feature.&lt;br&gt;&lt;br&gt;This field will be returned by &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-getoffer&quot;&gt;getOffer&lt;/a&gt; and &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-getoffers&quot;&gt;getOffers&lt;/a&gt; if set for the offer.
      * @param value Value to set for the pricingVisibility property.
      */
-    public void setPricingVisibility(@jakarta.annotation.Nullable final String value) {
+    public void setPricingVisibility(@jakarta.annotation.Nullable final MinimumAdvertisedPriceHandlingEnum value) {
         this.pricingVisibility = value;
     }
 }

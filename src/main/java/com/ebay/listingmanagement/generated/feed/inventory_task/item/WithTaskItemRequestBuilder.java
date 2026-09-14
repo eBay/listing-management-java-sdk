@@ -14,6 +14,7 @@
 
 package com.ebay.listingmanagement.generated.feed.inventory_task.item;
 
+import com.ebay.listingmanagement.generated.feed.models.Error;
 import com.ebay.listingmanagement.generated.feed.models.InventoryTask;
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.BaseRequestConfiguration;
@@ -51,6 +52,10 @@ public class WithTaskItemRequestBuilder extends BaseRequestBuilder {
     /**
      * This method retrieves the task details and status of the specified inventory-related task. The input is &lt;strong&gt;task_id&lt;/strong&gt;.
      * @return a {@link InventoryTask}
+     * @throws Error When receiving a 401 status code
+     * @throws Error When receiving a 403 status code
+     * @throws Error When receiving a 404 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public InventoryTask get() {
@@ -60,11 +65,20 @@ public class WithTaskItemRequestBuilder extends BaseRequestBuilder {
      * This method retrieves the task details and status of the specified inventory-related task. The input is &lt;strong&gt;task_id&lt;/strong&gt;.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link InventoryTask}
+     * @throws Error When receiving a 401 status code
+     * @throws Error When receiving a 403 status code
+     * @throws Error When receiving a 404 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public InventoryTask get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
-        return this.requestAdapter.send(requestInfo, null, InventoryTask::createFromDiscriminatorValue);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("401", Error::createFromDiscriminatorValue);
+        errorMapping.put("403", Error::createFromDiscriminatorValue);
+        errorMapping.put("404", Error::createFromDiscriminatorValue);
+        errorMapping.put("500", Error::createFromDiscriminatorValue);
+        return this.requestAdapter.send(requestInfo, errorMapping, InventoryTask::createFromDiscriminatorValue);
     }
     /**
      * This method retrieves the task details and status of the specified inventory-related task. The input is &lt;strong&gt;task_id&lt;/strong&gt;.

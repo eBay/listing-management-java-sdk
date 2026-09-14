@@ -14,6 +14,7 @@
 
 package com.ebay.listingmanagement.generated.media.image.item;
 
+import com.ebay.listingmanagement.generated.media.models.Error;
 import com.ebay.listingmanagement.generated.media.models.ImageResponse;
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.BaseRequestConfiguration;
@@ -49,25 +50,38 @@ public class WithImageItemRequestBuilder extends BaseRequestBuilder {
         super(requestAdapter, "{+baseurl}/image/{image_id}", rawUrl);
     }
     /**
-     * This method retrieves an EPS image URL and its expiration details for the unique identifier specified in the path parameter &lt;b&gt;image_id&lt;/b&gt;. Use the retrieved EPS image URL to add the image to a listing through the &lt;b&gt;Inventory API&lt;/b&gt; or the &lt;b&gt;Trading API&lt;/b&gt;. See &lt;a href=&quot;/api-docs/sell/static/inventory/managing-image-media.html&quot;  target=&quot;_blank&quot;&gt;Managing images&lt;/a&gt; for additional details.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; If a user inputs a valid &lt;b&gt;image_id&lt;/b&gt; as a path parameter but the EPS image associated with that ID has expired, the call will fail and a &lt;b&gt;404 Not Found&lt;/b&gt; status code will be returned.&lt;/span&gt;
+     * This method retrieves an EPS image URL and its expiration details for the unique identifier specified in the path parameter &lt;strong&gt;image_id&lt;/strong&gt;. Use the retrieved EPS image URL to add the image to a listing through the &lt;strong&gt;Inventory API&lt;/strong&gt; or the &lt;strong&gt;Trading API&lt;/strong&gt;. See &lt;a href=&quot;/api-docs/sell/static/inventory/managing-image-media.html&quot;  target=&quot;_blank&quot;&gt;Managing images&lt;/a&gt; for additional details.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; If a user inputs a valid &lt;strong&gt;image_id&lt;/strong&gt; as a path parameter but the EPS image associated with that ID has expired, the call will fail and a &lt;strong&gt;404 Not Found&lt;/strong&gt; status code will be returned.&lt;/span&gt;
      * @return a {@link ImageResponse}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 403 status code
+     * @throws Error When receiving a 404 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public ImageResponse get() {
         return get(null);
     }
     /**
-     * This method retrieves an EPS image URL and its expiration details for the unique identifier specified in the path parameter &lt;b&gt;image_id&lt;/b&gt;. Use the retrieved EPS image URL to add the image to a listing through the &lt;b&gt;Inventory API&lt;/b&gt; or the &lt;b&gt;Trading API&lt;/b&gt;. See &lt;a href=&quot;/api-docs/sell/static/inventory/managing-image-media.html&quot;  target=&quot;_blank&quot;&gt;Managing images&lt;/a&gt; for additional details.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; If a user inputs a valid &lt;b&gt;image_id&lt;/b&gt; as a path parameter but the EPS image associated with that ID has expired, the call will fail and a &lt;b&gt;404 Not Found&lt;/b&gt; status code will be returned.&lt;/span&gt;
+     * This method retrieves an EPS image URL and its expiration details for the unique identifier specified in the path parameter &lt;strong&gt;image_id&lt;/strong&gt;. Use the retrieved EPS image URL to add the image to a listing through the &lt;strong&gt;Inventory API&lt;/strong&gt; or the &lt;strong&gt;Trading API&lt;/strong&gt;. See &lt;a href=&quot;/api-docs/sell/static/inventory/managing-image-media.html&quot;  target=&quot;_blank&quot;&gt;Managing images&lt;/a&gt; for additional details.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; If a user inputs a valid &lt;strong&gt;image_id&lt;/strong&gt; as a path parameter but the EPS image associated with that ID has expired, the call will fail and a &lt;strong&gt;404 Not Found&lt;/strong&gt; status code will be returned.&lt;/span&gt;
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link ImageResponse}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 403 status code
+     * @throws Error When receiving a 404 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public ImageResponse get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
-        return this.requestAdapter.send(requestInfo, null, ImageResponse::createFromDiscriminatorValue);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("400", Error::createFromDiscriminatorValue);
+        errorMapping.put("403", Error::createFromDiscriminatorValue);
+        errorMapping.put("404", Error::createFromDiscriminatorValue);
+        errorMapping.put("500", Error::createFromDiscriminatorValue);
+        return this.requestAdapter.send(requestInfo, errorMapping, ImageResponse::createFromDiscriminatorValue);
     }
     /**
-     * This method retrieves an EPS image URL and its expiration details for the unique identifier specified in the path parameter &lt;b&gt;image_id&lt;/b&gt;. Use the retrieved EPS image URL to add the image to a listing through the &lt;b&gt;Inventory API&lt;/b&gt; or the &lt;b&gt;Trading API&lt;/b&gt;. See &lt;a href=&quot;/api-docs/sell/static/inventory/managing-image-media.html&quot;  target=&quot;_blank&quot;&gt;Managing images&lt;/a&gt; for additional details.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; If a user inputs a valid &lt;b&gt;image_id&lt;/b&gt; as a path parameter but the EPS image associated with that ID has expired, the call will fail and a &lt;b&gt;404 Not Found&lt;/b&gt; status code will be returned.&lt;/span&gt;
+     * This method retrieves an EPS image URL and its expiration details for the unique identifier specified in the path parameter &lt;strong&gt;image_id&lt;/strong&gt;. Use the retrieved EPS image URL to add the image to a listing through the &lt;strong&gt;Inventory API&lt;/strong&gt; or the &lt;strong&gt;Trading API&lt;/strong&gt;. See &lt;a href=&quot;/api-docs/sell/static/inventory/managing-image-media.html&quot;  target=&quot;_blank&quot;&gt;Managing images&lt;/a&gt; for additional details.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; If a user inputs a valid &lt;strong&gt;image_id&lt;/strong&gt; as a path parameter but the EPS image associated with that ID has expired, the call will fail and a &lt;strong&gt;404 Not Found&lt;/strong&gt; status code will be returned.&lt;/span&gt;
      * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
@@ -75,7 +89,7 @@ public class WithImageItemRequestBuilder extends BaseRequestBuilder {
         return toGetRequestInformation(null);
     }
     /**
-     * This method retrieves an EPS image URL and its expiration details for the unique identifier specified in the path parameter &lt;b&gt;image_id&lt;/b&gt;. Use the retrieved EPS image URL to add the image to a listing through the &lt;b&gt;Inventory API&lt;/b&gt; or the &lt;b&gt;Trading API&lt;/b&gt;. See &lt;a href=&quot;/api-docs/sell/static/inventory/managing-image-media.html&quot;  target=&quot;_blank&quot;&gt;Managing images&lt;/a&gt; for additional details.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; If a user inputs a valid &lt;b&gt;image_id&lt;/b&gt; as a path parameter but the EPS image associated with that ID has expired, the call will fail and a &lt;b&gt;404 Not Found&lt;/b&gt; status code will be returned.&lt;/span&gt;
+     * This method retrieves an EPS image URL and its expiration details for the unique identifier specified in the path parameter &lt;strong&gt;image_id&lt;/strong&gt;. Use the retrieved EPS image URL to add the image to a listing through the &lt;strong&gt;Inventory API&lt;/strong&gt; or the &lt;strong&gt;Trading API&lt;/strong&gt;. See &lt;a href=&quot;/api-docs/sell/static/inventory/managing-image-media.html&quot;  target=&quot;_blank&quot;&gt;Managing images&lt;/a&gt; for additional details.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; If a user inputs a valid &lt;strong&gt;image_id&lt;/strong&gt; as a path parameter but the EPS image associated with that ID has expired, the call will fail and a &lt;strong&gt;404 Not Found&lt;/strong&gt; status code will be returned.&lt;/span&gt;
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link RequestInformation}
      */

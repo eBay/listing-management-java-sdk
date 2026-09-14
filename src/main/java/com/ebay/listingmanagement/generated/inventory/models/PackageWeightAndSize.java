@@ -31,19 +31,19 @@ public class PackageWeightAndSize implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * This type is used to specify the dimensions (and the unit used to measure those dimensions) of a shipping package. The &lt;strong&gt;dimensions&lt;/strong&gt; container is conditionally required if the seller will be offering calculated shipping rates to determine shipping cost. See the &lt;a href=&quot;https://pages.ebay.com/help/pay/calculated-shipping.html &quot; target=&quot;_blank&quot;&gt;Calculated shipping&lt;/a&gt; help page for more information on calculated shipping.
+     * This container is used to indicate the length, width, and height of the shipping package that will be used to ship the inventory item. The dimensions of a shipping package are needed when calculated shipping is used.&lt;br&gt;&lt;br&gt;This container will be returned if package dimensions are set for the inventory item.
      */
     private Dimension dimensions;
     /**
-     * This enumeration value indicates the type of shipping package used to ship the inventory item. The supported values for this field can be found in the &lt;a href=&quot;/api-docs/sell/inventory/types/slr:PackageTypeEnum&quot; target=&quot;_blank&quot;&gt;PackageTypeEnum&lt;/a&gt; type.&lt;br&gt;&lt;br&gt;This field will be returned if the package type is set for the inventory item.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt; &lt;strong&gt;Note:&lt;/strong&gt; You can use the &lt;a href=&quot;/Devzone/XML/docs/Reference/eBay/GeteBayDetails.html#Response.ShippingPackageDetails&quot; target=&quot;_blank&quot;&gt;GeteBayDetails&lt;/a&gt; Trading API call to retrieve a list of supported package types for a specific marketplace.&lt;/span&gt; For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/slr:PackageTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This enumeration value indicates the type of shipping package used to ship the inventory item. The supported values for this field can be found in the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-inventory_item-bulkcreateorreplaceinventoryitem.packagetypeenum&quot; target=&quot;_blank&quot;&gt;PackageTypeEnum&lt;/a&gt; type.&lt;br&gt;&lt;br&gt;This field will be returned if the package type is set for the inventory item.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt; &lt;strong&gt;Note:&lt;/strong&gt; You can use the &lt;a href=&quot;/Devzone/XML/docs/Reference/eBay/GeteBayDetails.html#Response.ShippingPackageDetails&quot; target=&quot;_blank&quot;&gt;GeteBayDetails&lt;/a&gt; Trading API call to retrieve a list of supported package types for a specific marketplace.&lt;/span&gt;
      */
-    private String packageType;
+    private PackageTypeEnum packageType;
     /**
      * A value of &lt;code&gt;true&lt;/code&gt; indicates that the package is irregular and cannot go through the stamping machine at the shipping service office. This field applies to calculated shipping only. Irregular packages require special or fragile handling.
      */
     private Boolean shippingIrregular;
     /**
-     * This type is used to specify the weight (and the unit used to measure that weight) of a shipping package. The &lt;strong&gt;weight&lt;/strong&gt; container is conditionally required if the seller will be offering calculated shipping rates to determine shipping cost, or is using flat-rate costs, but charging a weight surcharge. See the &lt;a href=&quot;https://pages.ebay.com/help/pay/calculated-shipping.html &quot; target=&quot;_blank&quot;&gt;Calculated shipping&lt;/a&gt; help page for more information on calculated shipping.
+     * This container is used to specify the weight of the shipping package that will be used to ship the inventory item. The weight of a shipping package are needed when calculated shipping is used, or if flat-rate shipping rates are used, but with a weight surcharge.&lt;br&gt;&lt;br&gt;This field will be returned if package weight is set for the inventory item.
      */
     private Weight weight;
     /**
@@ -71,7 +71,7 @@ public class PackageWeightAndSize implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the dimensions property value. This type is used to specify the dimensions (and the unit used to measure those dimensions) of a shipping package. The &lt;strong&gt;dimensions&lt;/strong&gt; container is conditionally required if the seller will be offering calculated shipping rates to determine shipping cost. See the &lt;a href=&quot;https://pages.ebay.com/help/pay/calculated-shipping.html &quot; target=&quot;_blank&quot;&gt;Calculated shipping&lt;/a&gt; help page for more information on calculated shipping.
+     * Gets the dimensions property value. This container is used to indicate the length, width, and height of the shipping package that will be used to ship the inventory item. The dimensions of a shipping package are needed when calculated shipping is used.&lt;br&gt;&lt;br&gt;This container will be returned if package dimensions are set for the inventory item.
      * @return a {@link Dimension}
      */
     @jakarta.annotation.Nullable
@@ -86,17 +86,17 @@ public class PackageWeightAndSize implements AdditionalDataHolder, Parsable {
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(4);
         deserializerMap.put("dimensions", (n) -> { this.setDimensions(n.getObjectValue(Dimension::createFromDiscriminatorValue)); });
-        deserializerMap.put("packageType", (n) -> { this.setPackageType(n.getStringValue()); });
+        deserializerMap.put("packageType", (n) -> { this.setPackageType(n.getEnumValue(PackageTypeEnum::forValue)); });
         deserializerMap.put("shippingIrregular", (n) -> { this.setShippingIrregular(n.getBooleanValue()); });
         deserializerMap.put("weight", (n) -> { this.setWeight(n.getObjectValue(Weight::createFromDiscriminatorValue)); });
         return deserializerMap;
     }
     /**
-     * Gets the packageType property value. This enumeration value indicates the type of shipping package used to ship the inventory item. The supported values for this field can be found in the &lt;a href=&quot;/api-docs/sell/inventory/types/slr:PackageTypeEnum&quot; target=&quot;_blank&quot;&gt;PackageTypeEnum&lt;/a&gt; type.&lt;br&gt;&lt;br&gt;This field will be returned if the package type is set for the inventory item.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt; &lt;strong&gt;Note:&lt;/strong&gt; You can use the &lt;a href=&quot;/Devzone/XML/docs/Reference/eBay/GeteBayDetails.html#Response.ShippingPackageDetails&quot; target=&quot;_blank&quot;&gt;GeteBayDetails&lt;/a&gt; Trading API call to retrieve a list of supported package types for a specific marketplace.&lt;/span&gt; For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/slr:PackageTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the packageType property value. This enumeration value indicates the type of shipping package used to ship the inventory item. The supported values for this field can be found in the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-inventory_item-bulkcreateorreplaceinventoryitem.packagetypeenum&quot; target=&quot;_blank&quot;&gt;PackageTypeEnum&lt;/a&gt; type.&lt;br&gt;&lt;br&gt;This field will be returned if the package type is set for the inventory item.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt; &lt;strong&gt;Note:&lt;/strong&gt; You can use the &lt;a href=&quot;/Devzone/XML/docs/Reference/eBay/GeteBayDetails.html#Response.ShippingPackageDetails&quot; target=&quot;_blank&quot;&gt;GeteBayDetails&lt;/a&gt; Trading API call to retrieve a list of supported package types for a specific marketplace.&lt;/span&gt;
+     * @return a {@link PackageTypeEnum}
      */
     @jakarta.annotation.Nullable
-    public String getPackageType() {
+    public PackageTypeEnum getPackageType() {
         return this.packageType;
     }
     /**
@@ -108,7 +108,7 @@ public class PackageWeightAndSize implements AdditionalDataHolder, Parsable {
         return this.shippingIrregular;
     }
     /**
-     * Gets the weight property value. This type is used to specify the weight (and the unit used to measure that weight) of a shipping package. The &lt;strong&gt;weight&lt;/strong&gt; container is conditionally required if the seller will be offering calculated shipping rates to determine shipping cost, or is using flat-rate costs, but charging a weight surcharge. See the &lt;a href=&quot;https://pages.ebay.com/help/pay/calculated-shipping.html &quot; target=&quot;_blank&quot;&gt;Calculated shipping&lt;/a&gt; help page for more information on calculated shipping.
+     * Gets the weight property value. This container is used to specify the weight of the shipping package that will be used to ship the inventory item. The weight of a shipping package are needed when calculated shipping is used, or if flat-rate shipping rates are used, but with a weight surcharge.&lt;br&gt;&lt;br&gt;This field will be returned if package weight is set for the inventory item.
      * @return a {@link Weight}
      */
     @jakarta.annotation.Nullable
@@ -122,7 +122,7 @@ public class PackageWeightAndSize implements AdditionalDataHolder, Parsable {
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         writer.writeObjectValue("dimensions", this.getDimensions());
-        writer.writeStringValue("packageType", this.getPackageType());
+        writer.writeEnumValue("packageType", this.getPackageType());
         writer.writeBooleanValue("shippingIrregular", this.getShippingIrregular());
         writer.writeObjectValue("weight", this.getWeight());
         writer.writeAdditionalData(this.getAdditionalData());
@@ -135,17 +135,17 @@ public class PackageWeightAndSize implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the dimensions property value. This type is used to specify the dimensions (and the unit used to measure those dimensions) of a shipping package. The &lt;strong&gt;dimensions&lt;/strong&gt; container is conditionally required if the seller will be offering calculated shipping rates to determine shipping cost. See the &lt;a href=&quot;https://pages.ebay.com/help/pay/calculated-shipping.html &quot; target=&quot;_blank&quot;&gt;Calculated shipping&lt;/a&gt; help page for more information on calculated shipping.
+     * Sets the dimensions property value. This container is used to indicate the length, width, and height of the shipping package that will be used to ship the inventory item. The dimensions of a shipping package are needed when calculated shipping is used.&lt;br&gt;&lt;br&gt;This container will be returned if package dimensions are set for the inventory item.
      * @param value Value to set for the dimensions property.
      */
     public void setDimensions(@jakarta.annotation.Nullable final Dimension value) {
         this.dimensions = value;
     }
     /**
-     * Sets the packageType property value. This enumeration value indicates the type of shipping package used to ship the inventory item. The supported values for this field can be found in the &lt;a href=&quot;/api-docs/sell/inventory/types/slr:PackageTypeEnum&quot; target=&quot;_blank&quot;&gt;PackageTypeEnum&lt;/a&gt; type.&lt;br&gt;&lt;br&gt;This field will be returned if the package type is set for the inventory item.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt; &lt;strong&gt;Note:&lt;/strong&gt; You can use the &lt;a href=&quot;/Devzone/XML/docs/Reference/eBay/GeteBayDetails.html#Response.ShippingPackageDetails&quot; target=&quot;_blank&quot;&gt;GeteBayDetails&lt;/a&gt; Trading API call to retrieve a list of supported package types for a specific marketplace.&lt;/span&gt; For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/slr:PackageTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the packageType property value. This enumeration value indicates the type of shipping package used to ship the inventory item. The supported values for this field can be found in the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-inventory_item-bulkcreateorreplaceinventoryitem.packagetypeenum&quot; target=&quot;_blank&quot;&gt;PackageTypeEnum&lt;/a&gt; type.&lt;br&gt;&lt;br&gt;This field will be returned if the package type is set for the inventory item.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt; &lt;strong&gt;Note:&lt;/strong&gt; You can use the &lt;a href=&quot;/Devzone/XML/docs/Reference/eBay/GeteBayDetails.html#Response.ShippingPackageDetails&quot; target=&quot;_blank&quot;&gt;GeteBayDetails&lt;/a&gt; Trading API call to retrieve a list of supported package types for a specific marketplace.&lt;/span&gt;
      * @param value Value to set for the packageType property.
      */
-    public void setPackageType(@jakarta.annotation.Nullable final String value) {
+    public void setPackageType(@jakarta.annotation.Nullable final PackageTypeEnum value) {
         this.packageType = value;
     }
     /**
@@ -156,7 +156,7 @@ public class PackageWeightAndSize implements AdditionalDataHolder, Parsable {
         this.shippingIrregular = value;
     }
     /**
-     * Sets the weight property value. This type is used to specify the weight (and the unit used to measure that weight) of a shipping package. The &lt;strong&gt;weight&lt;/strong&gt; container is conditionally required if the seller will be offering calculated shipping rates to determine shipping cost, or is using flat-rate costs, but charging a weight surcharge. See the &lt;a href=&quot;https://pages.ebay.com/help/pay/calculated-shipping.html &quot; target=&quot;_blank&quot;&gt;Calculated shipping&lt;/a&gt; help page for more information on calculated shipping.
+     * Sets the weight property value. This container is used to specify the weight of the shipping package that will be used to ship the inventory item. The weight of a shipping package are needed when calculated shipping is used, or if flat-rate shipping rates are used, but with a weight surcharge.&lt;br&gt;&lt;br&gt;This field will be returned if package weight is set for the inventory item.
      * @param value Value to set for the weight property.
      */
     public void setWeight(@jakarta.annotation.Nullable final Weight value) {

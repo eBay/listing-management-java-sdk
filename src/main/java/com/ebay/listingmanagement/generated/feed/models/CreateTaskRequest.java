@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 /**
- * The type that defines the fields for the &lt;b&gt; createTask&lt;/b&gt; method.
+ * The type that defines the fields for the &lt;strong&gt;createTask&lt;/strong&gt; method.
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class CreateTaskRequest implements AdditionalDataHolder, Parsable {

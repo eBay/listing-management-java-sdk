@@ -35,13 +35,13 @@ public class SupportedConfiguration implements AdditionalDataHolder, Parsable {
      */
     private String defaultValue;
     /**
-     * Properties supported by the template. Properties can include the following: &lt;ul&gt;&lt;li&gt;&lt;b&gt;scheduleStartDate:&lt;/b&gt; The timestamp that the report generation (subscription) begins. After this timestamp, the schedule status becomes active until either the scheduleEndDate occurs or the scheduleTemplate becomes inactive. Format: UTC &lt;code&gt;yyyy-MM-dd&lt;strong&gt;T&lt;/strong&gt;HH&lt;strong&gt;Z&lt;/strong&gt;&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;scheduleEndDate:&lt;/b&gt; The timestamp that the report generation (subscription) ends. After this date, the schedule status becomes INACTIVE. Format: UTC &lt;code&gt;yyyy-MM-dd&lt;strong&gt;T&lt;/strong&gt;HH&lt;strong&gt;Z&lt;/strong&gt;&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;schemaVersion:&lt;/b&gt; The schema version of the schedule templates feedType. This field is required if the feedType has a schema version.&lt;/li&gt;&lt;li&gt;&lt;b&gt;preferredTriggerDayOfMonth:&lt;/b&gt; The preferred day of the month to trigger the schedule. &lt;/li&gt;&lt;li&gt;&lt;b&gt;preferredTriggerDayOfWeek:&lt;/b&gt; The preferred day of the week to trigger the schedule. &lt;/li&gt;&lt;li&gt;&lt;b&gt;preferredTriggerHour:&lt;/b&gt; The preferred two-digit hour of the day to trigger the schedule. Format: UTC &lt;code&gt;hhZ&lt;/code&gt;&lt;/li&gt;&lt;ul&gt;
+     * Properties supported by the template. Properties can include the following: &lt;ul&gt;&lt;li&gt;&lt;strong&gt;scheduleStartDate:&lt;/strong&gt; The timestamp that the report generation (subscription) begins. After this timestamp, the schedule status becomes active until either the scheduleEndDate occurs or the scheduleTemplate becomes inactive.&lt;br /&gt;&lt;strong&gt;Format&lt;/strong&gt;: UTC &lt;code&gt;yyyy-MM-dd&lt;strong&gt;T&lt;/strong&gt;HH&lt;strong&gt;Z&lt;/strong&gt;&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;scheduleEndDate:&lt;/strong&gt; The timestamp that the report generation (subscription) ends. After this date, the schedule status becomes INACTIVE.&lt;br /&gt;&lt;strong&gt;Format&lt;/strong&gt;: UTC &lt;code&gt;yyyy-MM-dd&lt;strong&gt;T&lt;/strong&gt;HH&lt;strong&gt;Z&lt;/strong&gt;&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;schemaVersion:&lt;/strong&gt; The schema version of the schedule templates feedType. This field is required if the feedType has a schema version.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;preferredTriggerDayOfMonth:&lt;/strong&gt; The preferred day of the month to trigger the schedule. &lt;/li&gt;&lt;li&gt;&lt;strong&gt;preferredTriggerDayOfWeek:&lt;/strong&gt; The preferred day of the week to trigger the schedule. &lt;/li&gt;&lt;li&gt;&lt;strong&gt;preferredTriggerHour:&lt;/strong&gt; The preferred two-digit hour of the day to trigger the schedule.&lt;br /&gt;&lt;strong&gt;Format&lt;/strong&gt;: UTC &lt;code&gt;hhZ&lt;/code&gt;&lt;/li&gt;&lt;/ul&gt;
      */
     private String property;
     /**
-     * Whether the specified property is REQUIRED or OPTIONAL. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:ConfigurationsUsageEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Whether the specified property is REQUIRED or OPTIONAL.
      */
-    private String usage;
+    private ConfigurationsUsageEnum usage;
     /**
      * Instantiates a new {@link SupportedConfiguration} and sets the default values.
      */
@@ -83,11 +83,11 @@ public class SupportedConfiguration implements AdditionalDataHolder, Parsable {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(3);
         deserializerMap.put("defaultValue", (n) -> { this.setDefaultValue(n.getStringValue()); });
         deserializerMap.put("property", (n) -> { this.setProperty(n.getStringValue()); });
-        deserializerMap.put("usage", (n) -> { this.setUsage(n.getStringValue()); });
+        deserializerMap.put("usage", (n) -> { this.setUsage(n.getEnumValue(ConfigurationsUsageEnum::forValue)); });
         return deserializerMap;
     }
     /**
-     * Gets the property property value. Properties supported by the template. Properties can include the following: &lt;ul&gt;&lt;li&gt;&lt;b&gt;scheduleStartDate:&lt;/b&gt; The timestamp that the report generation (subscription) begins. After this timestamp, the schedule status becomes active until either the scheduleEndDate occurs or the scheduleTemplate becomes inactive. Format: UTC &lt;code&gt;yyyy-MM-dd&lt;strong&gt;T&lt;/strong&gt;HH&lt;strong&gt;Z&lt;/strong&gt;&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;scheduleEndDate:&lt;/b&gt; The timestamp that the report generation (subscription) ends. After this date, the schedule status becomes INACTIVE. Format: UTC &lt;code&gt;yyyy-MM-dd&lt;strong&gt;T&lt;/strong&gt;HH&lt;strong&gt;Z&lt;/strong&gt;&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;schemaVersion:&lt;/b&gt; The schema version of the schedule templates feedType. This field is required if the feedType has a schema version.&lt;/li&gt;&lt;li&gt;&lt;b&gt;preferredTriggerDayOfMonth:&lt;/b&gt; The preferred day of the month to trigger the schedule. &lt;/li&gt;&lt;li&gt;&lt;b&gt;preferredTriggerDayOfWeek:&lt;/b&gt; The preferred day of the week to trigger the schedule. &lt;/li&gt;&lt;li&gt;&lt;b&gt;preferredTriggerHour:&lt;/b&gt; The preferred two-digit hour of the day to trigger the schedule. Format: UTC &lt;code&gt;hhZ&lt;/code&gt;&lt;/li&gt;&lt;ul&gt;
+     * Gets the property property value. Properties supported by the template. Properties can include the following: &lt;ul&gt;&lt;li&gt;&lt;strong&gt;scheduleStartDate:&lt;/strong&gt; The timestamp that the report generation (subscription) begins. After this timestamp, the schedule status becomes active until either the scheduleEndDate occurs or the scheduleTemplate becomes inactive.&lt;br /&gt;&lt;strong&gt;Format&lt;/strong&gt;: UTC &lt;code&gt;yyyy-MM-dd&lt;strong&gt;T&lt;/strong&gt;HH&lt;strong&gt;Z&lt;/strong&gt;&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;scheduleEndDate:&lt;/strong&gt; The timestamp that the report generation (subscription) ends. After this date, the schedule status becomes INACTIVE.&lt;br /&gt;&lt;strong&gt;Format&lt;/strong&gt;: UTC &lt;code&gt;yyyy-MM-dd&lt;strong&gt;T&lt;/strong&gt;HH&lt;strong&gt;Z&lt;/strong&gt;&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;schemaVersion:&lt;/strong&gt; The schema version of the schedule templates feedType. This field is required if the feedType has a schema version.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;preferredTriggerDayOfMonth:&lt;/strong&gt; The preferred day of the month to trigger the schedule. &lt;/li&gt;&lt;li&gt;&lt;strong&gt;preferredTriggerDayOfWeek:&lt;/strong&gt; The preferred day of the week to trigger the schedule. &lt;/li&gt;&lt;li&gt;&lt;strong&gt;preferredTriggerHour:&lt;/strong&gt; The preferred two-digit hour of the day to trigger the schedule.&lt;br /&gt;&lt;strong&gt;Format&lt;/strong&gt;: UTC &lt;code&gt;hhZ&lt;/code&gt;&lt;/li&gt;&lt;/ul&gt;
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -95,11 +95,11 @@ public class SupportedConfiguration implements AdditionalDataHolder, Parsable {
         return this.property;
     }
     /**
-     * Gets the usage property value. Whether the specified property is REQUIRED or OPTIONAL. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:ConfigurationsUsageEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the usage property value. Whether the specified property is REQUIRED or OPTIONAL.
+     * @return a {@link ConfigurationsUsageEnum}
      */
     @jakarta.annotation.Nullable
-    public String getUsage() {
+    public ConfigurationsUsageEnum getUsage() {
         return this.usage;
     }
     /**
@@ -110,7 +110,7 @@ public class SupportedConfiguration implements AdditionalDataHolder, Parsable {
         Objects.requireNonNull(writer);
         writer.writeStringValue("defaultValue", this.getDefaultValue());
         writer.writeStringValue("property", this.getProperty());
-        writer.writeStringValue("usage", this.getUsage());
+        writer.writeEnumValue("usage", this.getUsage());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -128,17 +128,17 @@ public class SupportedConfiguration implements AdditionalDataHolder, Parsable {
         this.defaultValue = value;
     }
     /**
-     * Sets the property property value. Properties supported by the template. Properties can include the following: &lt;ul&gt;&lt;li&gt;&lt;b&gt;scheduleStartDate:&lt;/b&gt; The timestamp that the report generation (subscription) begins. After this timestamp, the schedule status becomes active until either the scheduleEndDate occurs or the scheduleTemplate becomes inactive. Format: UTC &lt;code&gt;yyyy-MM-dd&lt;strong&gt;T&lt;/strong&gt;HH&lt;strong&gt;Z&lt;/strong&gt;&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;scheduleEndDate:&lt;/b&gt; The timestamp that the report generation (subscription) ends. After this date, the schedule status becomes INACTIVE. Format: UTC &lt;code&gt;yyyy-MM-dd&lt;strong&gt;T&lt;/strong&gt;HH&lt;strong&gt;Z&lt;/strong&gt;&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;schemaVersion:&lt;/b&gt; The schema version of the schedule templates feedType. This field is required if the feedType has a schema version.&lt;/li&gt;&lt;li&gt;&lt;b&gt;preferredTriggerDayOfMonth:&lt;/b&gt; The preferred day of the month to trigger the schedule. &lt;/li&gt;&lt;li&gt;&lt;b&gt;preferredTriggerDayOfWeek:&lt;/b&gt; The preferred day of the week to trigger the schedule. &lt;/li&gt;&lt;li&gt;&lt;b&gt;preferredTriggerHour:&lt;/b&gt; The preferred two-digit hour of the day to trigger the schedule. Format: UTC &lt;code&gt;hhZ&lt;/code&gt;&lt;/li&gt;&lt;ul&gt;
+     * Sets the property property value. Properties supported by the template. Properties can include the following: &lt;ul&gt;&lt;li&gt;&lt;strong&gt;scheduleStartDate:&lt;/strong&gt; The timestamp that the report generation (subscription) begins. After this timestamp, the schedule status becomes active until either the scheduleEndDate occurs or the scheduleTemplate becomes inactive.&lt;br /&gt;&lt;strong&gt;Format&lt;/strong&gt;: UTC &lt;code&gt;yyyy-MM-dd&lt;strong&gt;T&lt;/strong&gt;HH&lt;strong&gt;Z&lt;/strong&gt;&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;scheduleEndDate:&lt;/strong&gt; The timestamp that the report generation (subscription) ends. After this date, the schedule status becomes INACTIVE.&lt;br /&gt;&lt;strong&gt;Format&lt;/strong&gt;: UTC &lt;code&gt;yyyy-MM-dd&lt;strong&gt;T&lt;/strong&gt;HH&lt;strong&gt;Z&lt;/strong&gt;&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;schemaVersion:&lt;/strong&gt; The schema version of the schedule templates feedType. This field is required if the feedType has a schema version.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;preferredTriggerDayOfMonth:&lt;/strong&gt; The preferred day of the month to trigger the schedule. &lt;/li&gt;&lt;li&gt;&lt;strong&gt;preferredTriggerDayOfWeek:&lt;/strong&gt; The preferred day of the week to trigger the schedule. &lt;/li&gt;&lt;li&gt;&lt;strong&gt;preferredTriggerHour:&lt;/strong&gt; The preferred two-digit hour of the day to trigger the schedule.&lt;br /&gt;&lt;strong&gt;Format&lt;/strong&gt;: UTC &lt;code&gt;hhZ&lt;/code&gt;&lt;/li&gt;&lt;/ul&gt;
      * @param value Value to set for the property property.
      */
     public void setProperty(@jakarta.annotation.Nullable final String value) {
         this.property = value;
     }
     /**
-     * Sets the usage property value. Whether the specified property is REQUIRED or OPTIONAL. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:ConfigurationsUsageEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the usage property value. Whether the specified property is REQUIRED or OPTIONAL.
      * @param value Value to set for the usage property.
      */
-    public void setUsage(@jakarta.annotation.Nullable final String value) {
+    public void setUsage(@jakarta.annotation.Nullable final ConfigurationsUsageEnum value) {
         this.usage = value;
     }
 }

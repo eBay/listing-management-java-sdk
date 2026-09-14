@@ -14,6 +14,7 @@
 
 package com.ebay.listingmanagement.generated.feed.customer_service_metric_task.item;
 
+import com.ebay.listingmanagement.generated.feed.models.ErrorResponse;
 import com.ebay.listingmanagement.generated.feed.models.ServiceMetricsTask;
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.BaseRequestConfiguration;
@@ -51,6 +52,10 @@ public class WithTaskItemRequestBuilder extends BaseRequestBuilder {
     /**
      * &lt;p&gt;Use this method to retrieve customer service metric task details for the specified task. The input is &lt;strong&gt;task_id&lt;/strong&gt;.&lt;/p&gt;
      * @return a {@link ServiceMetricsTask}
+     * @throws ErrorResponse When receiving a 401 status code
+     * @throws ErrorResponse When receiving a 403 status code
+     * @throws ErrorResponse When receiving a 404 status code
+     * @throws ErrorResponse When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public ServiceMetricsTask get() {
@@ -60,11 +65,20 @@ public class WithTaskItemRequestBuilder extends BaseRequestBuilder {
      * &lt;p&gt;Use this method to retrieve customer service metric task details for the specified task. The input is &lt;strong&gt;task_id&lt;/strong&gt;.&lt;/p&gt;
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link ServiceMetricsTask}
+     * @throws ErrorResponse When receiving a 401 status code
+     * @throws ErrorResponse When receiving a 403 status code
+     * @throws ErrorResponse When receiving a 404 status code
+     * @throws ErrorResponse When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public ServiceMetricsTask get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
-        return this.requestAdapter.send(requestInfo, null, ServiceMetricsTask::createFromDiscriminatorValue);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("401", ErrorResponse::createFromDiscriminatorValue);
+        errorMapping.put("403", ErrorResponse::createFromDiscriminatorValue);
+        errorMapping.put("404", ErrorResponse::createFromDiscriminatorValue);
+        errorMapping.put("500", ErrorResponse::createFromDiscriminatorValue);
+        return this.requestAdapter.send(requestInfo, errorMapping, ServiceMetricsTask::createFromDiscriminatorValue);
     }
     /**
      * &lt;p&gt;Use this method to retrieve customer service metric task details for the specified task. The input is &lt;strong&gt;task_id&lt;/strong&gt;.&lt;/p&gt;

@@ -31,11 +31,11 @@ public class MoveStoreCategoryRequestType implements AdditionalDataHolder, Parsa
      */
     private Map<String, Object> additionalData;
     /**
-     * The unique identifier of an eBay Store&apos;s custom category. eBay auto-generates this identifier when a seller establishes a custom store category. This category ID should not be confused with an eBay category ID. This is the category that is moved.
+     * Unique identifier of an eBay Store&apos;s custom category. eBay auto-generates this identifier when a sellerestablishes a custom store category. This category ID should not be confused with an eBay category ID.
      */
     private String categoryId;
     /**
-     * The new parent category of the category to be moved is specified in this field. If the category is being moved to level 1 category, set this value to &lt;b&gt;-999&lt;/b&gt;.
+     * When moving store category, specifies the destination category destinationParentCategoryId under which the moved category categoryId will be located. To move to the top level, set the value to -999.
      */
     private String destinationParentCategoryId;
     /**
@@ -67,7 +67,7 @@ public class MoveStoreCategoryRequestType implements AdditionalDataHolder, Parsa
         return this.additionalData;
     }
     /**
-     * Gets the categoryId property value. The unique identifier of an eBay Store&apos;s custom category. eBay auto-generates this identifier when a seller establishes a custom store category. This category ID should not be confused with an eBay category ID. This is the category that is moved.
+     * Gets the categoryId property value. Unique identifier of an eBay Store&apos;s custom category. eBay auto-generates this identifier when a sellerestablishes a custom store category. This category ID should not be confused with an eBay category ID.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -75,7 +75,7 @@ public class MoveStoreCategoryRequestType implements AdditionalDataHolder, Parsa
         return this.categoryId;
     }
     /**
-     * Gets the destinationParentCategoryId property value. The new parent category of the category to be moved is specified in this field. If the category is being moved to level 1 category, set this value to &lt;b&gt;-999&lt;/b&gt;.
+     * Gets the destinationParentCategoryId property value. When moving store category, specifies the destination category destinationParentCategoryId under which the moved category categoryId will be located. To move to the top level, set the value to -999.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -121,14 +121,14 @@ public class MoveStoreCategoryRequestType implements AdditionalDataHolder, Parsa
         this.additionalData = value;
     }
     /**
-     * Sets the categoryId property value. The unique identifier of an eBay Store&apos;s custom category. eBay auto-generates this identifier when a seller establishes a custom store category. This category ID should not be confused with an eBay category ID. This is the category that is moved.
+     * Sets the categoryId property value. Unique identifier of an eBay Store&apos;s custom category. eBay auto-generates this identifier when a sellerestablishes a custom store category. This category ID should not be confused with an eBay category ID.
      * @param value Value to set for the categoryId property.
      */
     public void setCategoryId(@jakarta.annotation.Nullable final String value) {
         this.categoryId = value;
     }
     /**
-     * Sets the destinationParentCategoryId property value. The new parent category of the category to be moved is specified in this field. If the category is being moved to level 1 category, set this value to &lt;b&gt;-999&lt;/b&gt;.
+     * Sets the destinationParentCategoryId property value. When moving store category, specifies the destination category destinationParentCategoryId under which the moved category categoryId will be located. To move to the top level, set the value to -999.
      * @param value Value to set for the destinationParentCategoryId property.
      */
     public void setDestinationParentCategoryId(@jakarta.annotation.Nullable final String value) {

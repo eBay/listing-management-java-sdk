@@ -14,6 +14,7 @@
 
 package com.ebay.listingmanagement.generated.stores.store;
 
+import com.ebay.listingmanagement.generated.stores.models.Error;
 import com.ebay.listingmanagement.generated.stores.models.GetStoreResponseType;
 import com.ebay.listingmanagement.generated.stores.store.categories.CategoriesRequestBuilder;
 import com.ebay.listingmanagement.generated.stores.store.tasks.TasksRequestBuilder;
@@ -69,6 +70,8 @@ public class StoreRequestBuilder extends BaseRequestBuilder {
     /**
      * This method is used to retrieve information for an eBay user&apos;s store such as store name, store URL, and description.
      * @return a {@link GetStoreResponseType}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public GetStoreResponseType get() {
@@ -78,11 +81,16 @@ public class StoreRequestBuilder extends BaseRequestBuilder {
      * This method is used to retrieve information for an eBay user&apos;s store such as store name, store URL, and description.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link GetStoreResponseType}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public GetStoreResponseType get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
-        return this.requestAdapter.send(requestInfo, null, GetStoreResponseType::createFromDiscriminatorValue);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("400", Error::createFromDiscriminatorValue);
+        errorMapping.put("500", Error::createFromDiscriminatorValue);
+        return this.requestAdapter.send(requestInfo, errorMapping, GetStoreResponseType::createFromDiscriminatorValue);
     }
     /**
      * This method is used to retrieve information for an eBay user&apos;s store such as store name, store URL, and description.
