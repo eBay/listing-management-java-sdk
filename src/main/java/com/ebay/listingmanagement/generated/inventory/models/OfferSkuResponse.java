@@ -33,15 +33,15 @@ public class OfferSkuResponse implements AdditionalDataHolder, Parsable {
     /**
      * This container will be returned at the offer level, and will contain one or more errors if any occurred with the attempted creation of the corresponding offer.
      */
-    private java.util.List<Error> errors;
+    private java.util.List<ErrorDetailV3> errors;
     /**
-     * This enumeration value indicates the listing format of the offer. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/slr:FormatTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This enumeration value indicates the listing format of the offer.
      */
-    private String format;
+    private FormatTypeEnum format;
     /**
-     * This enumeration value is the unique identifier of the eBay marketplace for which the offer will be made available. This enumeration value should be the same for all offers since the &lt;strong&gt;bulkCreateOffer&lt;/strong&gt; method can only be used to create offers for one eBay marketplace at a time. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/slr:MarketplaceEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This enumeration value is the unique identifier of the eBay marketplace for which the offer will be made available. This enumeration value should be the same for all offers since the &lt;strong&gt;bulkCreateOffer&lt;/strong&gt; method can only be used to create offers for one eBay marketplace at a time.
      */
-    private String marketplaceId;
+    private MarketplaceEnum marketplaceId;
     /**
      * The unique identifier of the newly-created offer. This identifier should be automatically created by eBay if the creation of the offer was successful. It is not returned if the creation of the offer was not successful. In which case, the user may want to scan the corresponding &lt;strong&gt;errors&lt;/strong&gt; and/or &lt;strong&gt;warnings&lt;/strong&gt; container to see what the issue may be.
      */
@@ -57,7 +57,7 @@ public class OfferSkuResponse implements AdditionalDataHolder, Parsable {
     /**
      * This container will be returned at the offer level, and will contain one or more warnings if any occurred with the attempted creation of the corresponding offer. Note that it is possible that an offer can be created successfully even if one or more warnings are triggered.
      */
-    private java.util.List<Error> warnings;
+    private java.util.List<ErrorDetailV3> warnings;
     /**
      * Instantiates a new {@link OfferSkuResponse} and sets the default values.
      */
@@ -84,10 +84,10 @@ public class OfferSkuResponse implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the errors property value. This container will be returned at the offer level, and will contain one or more errors if any occurred with the attempted creation of the corresponding offer.
-     * @return a {@link java.util.List<Error>}
+     * @return a {@link java.util.List<ErrorDetailV3>}
      */
     @jakarta.annotation.Nullable
-    public java.util.List<Error> getErrors() {
+    public java.util.List<ErrorDetailV3> getErrors() {
         return this.errors;
     }
     /**
@@ -97,29 +97,29 @@ public class OfferSkuResponse implements AdditionalDataHolder, Parsable {
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(7);
-        deserializerMap.put("errors", (n) -> { this.setErrors(n.getCollectionOfObjectValues(Error::createFromDiscriminatorValue)); });
-        deserializerMap.put("format", (n) -> { this.setFormat(n.getStringValue()); });
-        deserializerMap.put("marketplaceId", (n) -> { this.setMarketplaceId(n.getStringValue()); });
+        deserializerMap.put("errors", (n) -> { this.setErrors(n.getCollectionOfObjectValues(ErrorDetailV3::createFromDiscriminatorValue)); });
+        deserializerMap.put("format", (n) -> { this.setFormat(n.getEnumValue(FormatTypeEnum::forValue)); });
+        deserializerMap.put("marketplaceId", (n) -> { this.setMarketplaceId(n.getEnumValue(MarketplaceEnum::forValue)); });
         deserializerMap.put("offerId", (n) -> { this.setOfferId(n.getStringValue()); });
         deserializerMap.put("sku", (n) -> { this.setSku(n.getStringValue()); });
         deserializerMap.put("statusCode", (n) -> { this.setStatusCode(n.getIntegerValue()); });
-        deserializerMap.put("warnings", (n) -> { this.setWarnings(n.getCollectionOfObjectValues(Error::createFromDiscriminatorValue)); });
+        deserializerMap.put("warnings", (n) -> { this.setWarnings(n.getCollectionOfObjectValues(ErrorDetailV3::createFromDiscriminatorValue)); });
         return deserializerMap;
     }
     /**
-     * Gets the format property value. This enumeration value indicates the listing format of the offer. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/slr:FormatTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the format property value. This enumeration value indicates the listing format of the offer.
+     * @return a {@link FormatTypeEnum}
      */
     @jakarta.annotation.Nullable
-    public String getFormat() {
+    public FormatTypeEnum getFormat() {
         return this.format;
     }
     /**
-     * Gets the marketplaceId property value. This enumeration value is the unique identifier of the eBay marketplace for which the offer will be made available. This enumeration value should be the same for all offers since the &lt;strong&gt;bulkCreateOffer&lt;/strong&gt; method can only be used to create offers for one eBay marketplace at a time. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/slr:MarketplaceEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the marketplaceId property value. This enumeration value is the unique identifier of the eBay marketplace for which the offer will be made available. This enumeration value should be the same for all offers since the &lt;strong&gt;bulkCreateOffer&lt;/strong&gt; method can only be used to create offers for one eBay marketplace at a time.
+     * @return a {@link MarketplaceEnum}
      */
     @jakarta.annotation.Nullable
-    public String getMarketplaceId() {
+    public MarketplaceEnum getMarketplaceId() {
         return this.marketplaceId;
     }
     /**
@@ -148,10 +148,10 @@ public class OfferSkuResponse implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the warnings property value. This container will be returned at the offer level, and will contain one or more warnings if any occurred with the attempted creation of the corresponding offer. Note that it is possible that an offer can be created successfully even if one or more warnings are triggered.
-     * @return a {@link java.util.List<Error>}
+     * @return a {@link java.util.List<ErrorDetailV3>}
      */
     @jakarta.annotation.Nullable
-    public java.util.List<Error> getWarnings() {
+    public java.util.List<ErrorDetailV3> getWarnings() {
         return this.warnings;
     }
     /**
@@ -161,8 +161,8 @@ public class OfferSkuResponse implements AdditionalDataHolder, Parsable {
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         writer.writeCollectionOfObjectValues("errors", this.getErrors());
-        writer.writeStringValue("format", this.getFormat());
-        writer.writeStringValue("marketplaceId", this.getMarketplaceId());
+        writer.writeEnumValue("format", this.getFormat());
+        writer.writeEnumValue("marketplaceId", this.getMarketplaceId());
         writer.writeStringValue("offerId", this.getOfferId());
         writer.writeStringValue("sku", this.getSku());
         writer.writeIntegerValue("statusCode", this.getStatusCode());
@@ -180,21 +180,21 @@ public class OfferSkuResponse implements AdditionalDataHolder, Parsable {
      * Sets the errors property value. This container will be returned at the offer level, and will contain one or more errors if any occurred with the attempted creation of the corresponding offer.
      * @param value Value to set for the errors property.
      */
-    public void setErrors(@jakarta.annotation.Nullable final java.util.List<Error> value) {
+    public void setErrors(@jakarta.annotation.Nullable final java.util.List<ErrorDetailV3> value) {
         this.errors = value;
     }
     /**
-     * Sets the format property value. This enumeration value indicates the listing format of the offer. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/slr:FormatTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the format property value. This enumeration value indicates the listing format of the offer.
      * @param value Value to set for the format property.
      */
-    public void setFormat(@jakarta.annotation.Nullable final String value) {
+    public void setFormat(@jakarta.annotation.Nullable final FormatTypeEnum value) {
         this.format = value;
     }
     /**
-     * Sets the marketplaceId property value. This enumeration value is the unique identifier of the eBay marketplace for which the offer will be made available. This enumeration value should be the same for all offers since the &lt;strong&gt;bulkCreateOffer&lt;/strong&gt; method can only be used to create offers for one eBay marketplace at a time. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/slr:MarketplaceEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the marketplaceId property value. This enumeration value is the unique identifier of the eBay marketplace for which the offer will be made available. This enumeration value should be the same for all offers since the &lt;strong&gt;bulkCreateOffer&lt;/strong&gt; method can only be used to create offers for one eBay marketplace at a time.
      * @param value Value to set for the marketplaceId property.
      */
-    public void setMarketplaceId(@jakarta.annotation.Nullable final String value) {
+    public void setMarketplaceId(@jakarta.annotation.Nullable final MarketplaceEnum value) {
         this.marketplaceId = value;
     }
     /**
@@ -222,7 +222,7 @@ public class OfferSkuResponse implements AdditionalDataHolder, Parsable {
      * Sets the warnings property value. This container will be returned at the offer level, and will contain one or more warnings if any occurred with the attempted creation of the corresponding offer. Note that it is possible that an offer can be created successfully even if one or more warnings are triggered.
      * @param value Value to set for the warnings property.
      */
-    public void setWarnings(@jakarta.annotation.Nullable final java.util.List<Error> value) {
+    public void setWarnings(@jakarta.annotation.Nullable final java.util.List<ErrorDetailV3> value) {
         this.warnings = value;
     }
 }

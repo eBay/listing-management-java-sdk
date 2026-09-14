@@ -43,7 +43,7 @@ public final class FeedClient {
     }
 
     public CompletableFuture<OrderTaskCollection> getOrderTasksAsync(
-            String dateRange, String feedType, String limit, String lookBackDays, String offset, String scheduleId, String accessToken, RequestOptions requestOptions) {
+            String dateRange, String feedType, Integer limit, Integer lookBackDays, Integer offset, String scheduleId, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.orderTask().get(config -> {
@@ -80,7 +80,7 @@ public final class FeedClient {
     }
 
     public CompletableFuture<InventoryTaskCollection> getInventoryTasksAsync(
-            String feedType, String scheduleId, String lookBackDays, String dateRange, String limit, String offset, String accessToken, RequestOptions requestOptions) {
+            String feedType, String scheduleId, Integer lookBackDays, String dateRange, Integer limit, Integer offset, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.inventoryTask().get(config -> {
@@ -117,7 +117,7 @@ public final class FeedClient {
     }
 
     public CompletableFuture<UserScheduleCollection> getSchedulesAsync(
-            String feedType, String limit, String offset, String accessToken, RequestOptions requestOptions) {
+            String feedType, Integer limit, Integer offset, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.schedule().get(config -> {
@@ -194,7 +194,7 @@ public final class FeedClient {
     }
 
     public CompletableFuture<ScheduleTemplateCollection> getScheduleTemplatesAsync(
-            String feedType, String limit, String offset, String accessToken, RequestOptions requestOptions) {
+            String feedType, Integer limit, Integer offset, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.scheduleTemplate().get(config -> {
@@ -207,7 +207,7 @@ public final class FeedClient {
     }
 
     public CompletableFuture<TaskCollection> getTasksAsync(
-            String dateRange, String feedType, String limit, String lookBackDays, String offset, String scheduleId, String accessToken, RequestOptions requestOptions) {
+            String dateRange, String feedType, Integer limit, Integer lookBackDays, Integer offset, String scheduleId, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.task().get(config -> {
@@ -271,7 +271,9 @@ public final class FeedClient {
             String taskId, byte[] body, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
-            kiota.task().byTask_id(Params.requireValid("taskId", taskId)).uploadFile().post(config -> {
+            com.microsoft.kiota.MultipartBody multipartBody = new com.microsoft.kiota.MultipartBody();
+            multipartBody.addOrReplacePart("file", "application/octet-stream", body);
+            kiota.task().byTask_id(Params.requireValid("taskId", taskId)).uploadFile().post(multipartBody, config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
             return null;
@@ -279,7 +281,7 @@ public final class FeedClient {
     }
 
     public CompletableFuture<CustomerServiceMetricTaskCollection> getCustomerServiceMetricTasksAsync(
-            String dateRange, String feedType, String limit, String lookBackDays, String offset, String accessToken, RequestOptions requestOptions) {
+            String dateRange, String feedType, Integer limit, Integer lookBackDays, Integer offset, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
             return kiota.customerServiceMetricTask().get(config -> {

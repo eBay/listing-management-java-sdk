@@ -31,7 +31,7 @@ public class ShipToLocationAvailabilityWithAll implements AdditionalDataHolder, 
      */
     private Map<String, Object> additionalData;
     /**
-     * This type is used to indicate the quantities of the inventory items that are reserved for the different listing formats of the SKU offers.
+     * This container is used to specify the quantity of the inventory item that is available for purchase, allocated by the offer types.
      */
     private FormatAllocation allocationByFormat;
     /**
@@ -67,7 +67,7 @@ public class ShipToLocationAvailabilityWithAll implements AdditionalDataHolder, 
         return this.additionalData;
     }
     /**
-     * Gets the allocationByFormat property value. This type is used to indicate the quantities of the inventory items that are reserved for the different listing formats of the SKU offers.
+     * Gets the allocationByFormat property value. This container is used to specify the quantity of the inventory item that is available for purchase, allocated by the offer types.
      * @return a {@link FormatAllocation}
      */
     @jakarta.annotation.Nullable
@@ -121,7 +121,7 @@ public class ShipToLocationAvailabilityWithAll implements AdditionalDataHolder, 
         this.additionalData = value;
     }
     /**
-     * Sets the allocationByFormat property value. This type is used to indicate the quantities of the inventory items that are reserved for the different listing formats of the SKU offers.
+     * Sets the allocationByFormat property value. This container is used to specify the quantity of the inventory item that is available for purchase, allocated by the offer types.
      * @param value Value to set for the allocationByFormat property.
      */
     public void setAllocationByFormat(@jakarta.annotation.Nullable final FormatAllocation value) {

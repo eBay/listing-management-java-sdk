@@ -14,6 +14,7 @@
 
 package com.ebay.listingmanagement.generated.stores.store.tasks;
 
+import com.ebay.listingmanagement.generated.stores.models.Error;
 import com.ebay.listingmanagement.generated.stores.models.GetStoreTasksResponseType;
 import com.ebay.listingmanagement.generated.stores.store.tasks.item.WithTaskItemRequestBuilder;
 import com.microsoft.kiota.BaseRequestBuilder;
@@ -35,7 +36,7 @@ import java.util.Objects;
 public class TasksRequestBuilder extends BaseRequestBuilder {
     /**
      * Gets an item from the com.ebay.listingmanagement.generated.stores.store.tasks.item collection
-     * @param task_id The unique identifier of an eBay Store async task. A taskId value is returned in the response of other successful calls. (e.g.addStoreCategory, moveStoreCategory, deleteStoreCategory).
+     * @param task_id The unique identifier of an eBay Store async task. A taskId value is returned in the response of a successful other calls. (e.g.addStoreCategory, moveStoreCategory, deleteStoreCategory).
      * @return a {@link WithTaskItemRequestBuilder}
      */
     @jakarta.annotation.Nonnull
@@ -64,6 +65,8 @@ public class TasksRequestBuilder extends BaseRequestBuilder {
     /**
      * This method retrieves the status of all async store tasks for a store. Every task is set as FAILED or COMPLETED once it&apos;s execution time reaches 24 hours.
      * @return a {@link GetStoreTasksResponseType}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public GetStoreTasksResponseType get() {
@@ -73,11 +76,16 @@ public class TasksRequestBuilder extends BaseRequestBuilder {
      * This method retrieves the status of all async store tasks for a store. Every task is set as FAILED or COMPLETED once it&apos;s execution time reaches 24 hours.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link GetStoreTasksResponseType}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public GetStoreTasksResponseType get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
-        return this.requestAdapter.send(requestInfo, null, GetStoreTasksResponseType::createFromDiscriminatorValue);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("400", Error::createFromDiscriminatorValue);
+        errorMapping.put("500", Error::createFromDiscriminatorValue);
+        return this.requestAdapter.send(requestInfo, errorMapping, GetStoreTasksResponseType::createFromDiscriminatorValue);
     }
     /**
      * This method retrieves the status of all async store tasks for a store. Every task is set as FAILED or COMPLETED once it&apos;s execution time reaches 24 hours.

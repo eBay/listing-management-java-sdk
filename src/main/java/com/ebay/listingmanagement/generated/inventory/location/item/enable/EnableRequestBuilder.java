@@ -14,6 +14,7 @@
 
 package com.ebay.listingmanagement.generated.inventory.location.item.enable;
 
+import com.ebay.listingmanagement.generated.inventory.models.Error;
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.BaseRequestConfiguration;
 import com.microsoft.kiota.HttpMethod;
@@ -48,25 +49,35 @@ public class EnableRequestBuilder extends BaseRequestBuilder {
         super(requestAdapter, "{+baseurl}/location/{merchantLocationKey}/enable", rawUrl);
     }
     /**
-     * &lt;p&gt;This call enables a disabled inventory location that is specified in the &lt;code&gt;merchantLocationKey&lt;/code&gt; path parameter. Once a disabled location is enabled, sellers can start loading/modifying inventory to that location. &lt;/p&gt;&lt;p&gt;A successful call will return an HTTP status value of &lt;i&gt;200 OK&lt;/i&gt;.&lt;/p&gt;
+     * This call enables a disabled inventory location that is specified in the &lt;strong&gt;merchantLocationKey&lt;/strong&gt; path parameter. Once a disabled location is enabled, sellers can start loading/modifying inventory to that location.&lt;br&gt;&lt;br&gt;A successful call will return an HTTP status value of &lt;code&gt;200 OK&lt;/code&gt;.
      * @return a {@link EnablePostResponse}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 404 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public EnablePostResponse post() {
         return post(null);
     }
     /**
-     * &lt;p&gt;This call enables a disabled inventory location that is specified in the &lt;code&gt;merchantLocationKey&lt;/code&gt; path parameter. Once a disabled location is enabled, sellers can start loading/modifying inventory to that location. &lt;/p&gt;&lt;p&gt;A successful call will return an HTTP status value of &lt;i&gt;200 OK&lt;/i&gt;.&lt;/p&gt;
+     * This call enables a disabled inventory location that is specified in the &lt;strong&gt;merchantLocationKey&lt;/strong&gt; path parameter. Once a disabled location is enabled, sellers can start loading/modifying inventory to that location.&lt;br&gt;&lt;br&gt;A successful call will return an HTTP status value of &lt;code&gt;200 OK&lt;/code&gt;.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link EnablePostResponse}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 404 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public EnablePostResponse post(@jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toPostRequestInformation(requestConfiguration);
-        return this.requestAdapter.send(requestInfo, null, EnablePostResponse::createFromDiscriminatorValue);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("400", Error::createFromDiscriminatorValue);
+        errorMapping.put("404", Error::createFromDiscriminatorValue);
+        errorMapping.put("500", Error::createFromDiscriminatorValue);
+        return this.requestAdapter.send(requestInfo, errorMapping, EnablePostResponse::createFromDiscriminatorValue);
     }
     /**
-     * &lt;p&gt;This call enables a disabled inventory location that is specified in the &lt;code&gt;merchantLocationKey&lt;/code&gt; path parameter. Once a disabled location is enabled, sellers can start loading/modifying inventory to that location. &lt;/p&gt;&lt;p&gt;A successful call will return an HTTP status value of &lt;i&gt;200 OK&lt;/i&gt;.&lt;/p&gt;
+     * This call enables a disabled inventory location that is specified in the &lt;strong&gt;merchantLocationKey&lt;/strong&gt; path parameter. Once a disabled location is enabled, sellers can start loading/modifying inventory to that location.&lt;br&gt;&lt;br&gt;A successful call will return an HTTP status value of &lt;code&gt;200 OK&lt;/code&gt;.
      * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
@@ -74,7 +85,7 @@ public class EnableRequestBuilder extends BaseRequestBuilder {
         return toPostRequestInformation(null);
     }
     /**
-     * &lt;p&gt;This call enables a disabled inventory location that is specified in the &lt;code&gt;merchantLocationKey&lt;/code&gt; path parameter. Once a disabled location is enabled, sellers can start loading/modifying inventory to that location. &lt;/p&gt;&lt;p&gt;A successful call will return an HTTP status value of &lt;i&gt;200 OK&lt;/i&gt;.&lt;/p&gt;
+     * This call enables a disabled inventory location that is specified in the &lt;strong&gt;merchantLocationKey&lt;/strong&gt; path parameter. Once a disabled location is enabled, sellers can start loading/modifying inventory to that location.&lt;br&gt;&lt;br&gt;A successful call will return an HTTP status value of &lt;code&gt;200 OK&lt;/code&gt;.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link RequestInformation}
      */

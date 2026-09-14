@@ -31,7 +31,7 @@ public class ExtendedProducerResponsibility implements AdditionalDataHolder, Par
      */
     private Map<String, Object> additionalData;
     /**
-     * This type is used to express a dollar value and the applicable currency.
+     * This is the fee paid for new items to the eco-organization (for example, &quot;eco-organisme&quot; in France). It is a contribution to the financing of the elimination of the item responsibly.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; &lt;code&gt;0&lt;/code&gt; should not be used as a default value.&lt;/span&gt;&lt;/br&gt;&lt;b&gt;Minimum:&lt;/b&gt; 0.0
      */
     private Amount ecoParticipationFee;
     /**
@@ -75,7 +75,7 @@ public class ExtendedProducerResponsibility implements AdditionalDataHolder, Par
         return this.additionalData;
     }
     /**
-     * Gets the ecoParticipationFee property value. This type is used to express a dollar value and the applicable currency.
+     * Gets the ecoParticipationFee property value. This is the fee paid for new items to the eco-organization (for example, &quot;eco-organisme&quot; in France). It is a contribution to the financing of the elimination of the item responsibly.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; &lt;code&gt;0&lt;/code&gt; should not be used as a default value.&lt;/span&gt;&lt;/br&gt;&lt;b&gt;Minimum:&lt;/b&gt; 0.0
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -149,7 +149,7 @@ public class ExtendedProducerResponsibility implements AdditionalDataHolder, Par
         this.additionalData = value;
     }
     /**
-     * Sets the ecoParticipationFee property value. This type is used to express a dollar value and the applicable currency.
+     * Sets the ecoParticipationFee property value. This is the fee paid for new items to the eco-organization (for example, &quot;eco-organisme&quot; in France). It is a contribution to the financing of the elimination of the item responsibly.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; &lt;code&gt;0&lt;/code&gt; should not be used as a default value.&lt;/span&gt;&lt;/br&gt;&lt;b&gt;Minimum:&lt;/b&gt; 0.0
      * @param value Value to set for the ecoParticipationFee property.
      */
     public void setEcoParticipationFee(@jakarta.annotation.Nullable final Amount value) {

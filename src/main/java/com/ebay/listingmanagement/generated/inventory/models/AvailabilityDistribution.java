@@ -31,11 +31,11 @@ public class AvailabilityDistribution implements AdditionalDataHolder, Parsable 
      */
     private Map<String, Object> additionalData;
     /**
-     * This type is used to indicate the fulfillment time for an In-Store Pickup order, or for an order than will be shipped to the buyer.
+     * This container is used to indicate the expected fulfillment time if the inventory item is shipped from the warehouse location identified in the corresponding &lt;strong&gt;merchantLocationKey&lt;/strong&gt; field. The fulfillment time is the estimated number of business days after purchase that the buyer can expect the item to be delivered.&lt;br&gt;&lt;br&gt;This field is optional, and is used by eBay to provide the estimated delivery date to buyers. This field is returned by &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-inventory_item-getinventoryitem&quot;&gt;getInventoryItem&lt;/a&gt; and &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-inventory_item-getinventoryitems&quot;&gt;getInventoryItems&lt;/a&gt; if set for the inventory item.
      */
     private TimeDuration fulfillmentTime;
     /**
-     * The unique identifier of an inventory location where quantity is available for the inventory item. This field is conditionally required to identify the inventory location that has quantity of the inventory item.&lt;br&gt;&lt;br&gt;Use the &lt;a href=&quot;/api-docs/sell/inventory/resources/location/methods/getInventoryLocations&quot; target=&quot;_blank&quot;&gt;getInventoryLocations&lt;/a&gt; method to retrieve merchant location keys.
+     * The unique identifier of an inventory location where quantity is available for the inventory item. This field is conditionally required to identify the inventory location that has quantity of the inventory item.&lt;br&gt;&lt;br&gt;Use the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-location-getinventorylocations&quot; target=&quot;_blank&quot;&gt;getInventoryLocations&lt;/a&gt; method to retrieve merchant location keys.
      */
     private String merchantLocationKey;
     /**
@@ -79,7 +79,7 @@ public class AvailabilityDistribution implements AdditionalDataHolder, Parsable 
         return deserializerMap;
     }
     /**
-     * Gets the fulfillmentTime property value. This type is used to indicate the fulfillment time for an In-Store Pickup order, or for an order than will be shipped to the buyer.
+     * Gets the fulfillmentTime property value. This container is used to indicate the expected fulfillment time if the inventory item is shipped from the warehouse location identified in the corresponding &lt;strong&gt;merchantLocationKey&lt;/strong&gt; field. The fulfillment time is the estimated number of business days after purchase that the buyer can expect the item to be delivered.&lt;br&gt;&lt;br&gt;This field is optional, and is used by eBay to provide the estimated delivery date to buyers. This field is returned by &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-inventory_item-getinventoryitem&quot;&gt;getInventoryItem&lt;/a&gt; and &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-inventory_item-getinventoryitems&quot;&gt;getInventoryItems&lt;/a&gt; if set for the inventory item.
      * @return a {@link TimeDuration}
      */
     @jakarta.annotation.Nullable
@@ -87,7 +87,7 @@ public class AvailabilityDistribution implements AdditionalDataHolder, Parsable 
         return this.fulfillmentTime;
     }
     /**
-     * Gets the merchantLocationKey property value. The unique identifier of an inventory location where quantity is available for the inventory item. This field is conditionally required to identify the inventory location that has quantity of the inventory item.&lt;br&gt;&lt;br&gt;Use the &lt;a href=&quot;/api-docs/sell/inventory/resources/location/methods/getInventoryLocations&quot; target=&quot;_blank&quot;&gt;getInventoryLocations&lt;/a&gt; method to retrieve merchant location keys.
+     * Gets the merchantLocationKey property value. The unique identifier of an inventory location where quantity is available for the inventory item. This field is conditionally required to identify the inventory location that has quantity of the inventory item.&lt;br&gt;&lt;br&gt;Use the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-location-getinventorylocations&quot; target=&quot;_blank&quot;&gt;getInventoryLocations&lt;/a&gt; method to retrieve merchant location keys.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -121,14 +121,14 @@ public class AvailabilityDistribution implements AdditionalDataHolder, Parsable 
         this.additionalData = value;
     }
     /**
-     * Sets the fulfillmentTime property value. This type is used to indicate the fulfillment time for an In-Store Pickup order, or for an order than will be shipped to the buyer.
+     * Sets the fulfillmentTime property value. This container is used to indicate the expected fulfillment time if the inventory item is shipped from the warehouse location identified in the corresponding &lt;strong&gt;merchantLocationKey&lt;/strong&gt; field. The fulfillment time is the estimated number of business days after purchase that the buyer can expect the item to be delivered.&lt;br&gt;&lt;br&gt;This field is optional, and is used by eBay to provide the estimated delivery date to buyers. This field is returned by &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-inventory_item-getinventoryitem&quot;&gt;getInventoryItem&lt;/a&gt; and &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-inventory_item-getinventoryitems&quot;&gt;getInventoryItems&lt;/a&gt; if set for the inventory item.
      * @param value Value to set for the fulfillmentTime property.
      */
     public void setFulfillmentTime(@jakarta.annotation.Nullable final TimeDuration value) {
         this.fulfillmentTime = value;
     }
     /**
-     * Sets the merchantLocationKey property value. The unique identifier of an inventory location where quantity is available for the inventory item. This field is conditionally required to identify the inventory location that has quantity of the inventory item.&lt;br&gt;&lt;br&gt;Use the &lt;a href=&quot;/api-docs/sell/inventory/resources/location/methods/getInventoryLocations&quot; target=&quot;_blank&quot;&gt;getInventoryLocations&lt;/a&gt; method to retrieve merchant location keys.
+     * Sets the merchantLocationKey property value. The unique identifier of an inventory location where quantity is available for the inventory item. This field is conditionally required to identify the inventory location that has quantity of the inventory item.&lt;br&gt;&lt;br&gt;Use the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-location-getinventorylocations&quot; target=&quot;_blank&quot;&gt;getInventoryLocations&lt;/a&gt; method to retrieve merchant location keys.
      * @param value Value to set for the merchantLocationKey property.
      */
     public void setMerchantLocationKey(@jakarta.annotation.Nullable final String value) {

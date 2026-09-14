@@ -35,21 +35,21 @@ public class DocumentResponse implements AdditionalDataHolder, Parsable {
      */
     private String documentId;
     /**
-     * This type provides information about the &lt;b&gt;documentId&lt;/b&gt;.
+     * This container provides the name, size, and type of the specified file.
      */
     private DocumentMetadata documentMetadata;
     /**
-     * The status of the document resource.&lt;br&gt;&lt;br&gt;Once a document has been uploaded using the &lt;b&gt;uploadDocument&lt;/b&gt; method, the &lt;b&gt;documentStatus&lt;/b&gt; will be &lt;code&gt;SUBMITTED&lt;/code&gt;. The document will then either be accepted or rejected. Only documents with the status of &lt;code&gt;ACCEPTED&lt;/code&gt; are available to be added to a listing. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/commerce/media/types/api:DocumentStatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * The status of the document resource.&lt;br&gt;&lt;br&gt;Once a document has been uploaded using the &lt;strong&gt;uploadDocument&lt;/strong&gt; method, the &lt;strong&gt;documentStatus&lt;/strong&gt; will be &lt;code&gt;SUBMITTED&lt;/code&gt;. The document will then either be accepted or rejected. Only documents with the status of &lt;code&gt;ACCEPTED&lt;/code&gt; are available to be added to a listing.
      */
-    private String documentStatus;
+    private DocumentStatusEnum documentStatus;
     /**
-     * The type of the document uploaded. For example, &lt;code&gt;USER_GUIDE_OR_MANUAL&lt;/code&gt;. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/commerce/media/types/api:DocumentTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * The type of the document uploaded. For example, &lt;code&gt;USER_GUIDE_OR_MANUAL&lt;/code&gt;.
      */
-    private String documentType;
+    private DocumentTypeEnum documentType;
     /**
      * This array shows the language(s) used in the document.
      */
-    private java.util.List<String> languages;
+    private java.util.List<LanguageEnum> languages;
     /**
      * Instantiates a new {@link DocumentResponse} and sets the default values.
      */
@@ -83,7 +83,7 @@ public class DocumentResponse implements AdditionalDataHolder, Parsable {
         return this.documentId;
     }
     /**
-     * Gets the documentMetadata property value. This type provides information about the &lt;b&gt;documentId&lt;/b&gt;.
+     * Gets the documentMetadata property value. This container provides the name, size, and type of the specified file.
      * @return a {@link DocumentMetadata}
      */
     @jakarta.annotation.Nullable
@@ -91,19 +91,19 @@ public class DocumentResponse implements AdditionalDataHolder, Parsable {
         return this.documentMetadata;
     }
     /**
-     * Gets the documentStatus property value. The status of the document resource.&lt;br&gt;&lt;br&gt;Once a document has been uploaded using the &lt;b&gt;uploadDocument&lt;/b&gt; method, the &lt;b&gt;documentStatus&lt;/b&gt; will be &lt;code&gt;SUBMITTED&lt;/code&gt;. The document will then either be accepted or rejected. Only documents with the status of &lt;code&gt;ACCEPTED&lt;/code&gt; are available to be added to a listing. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/commerce/media/types/api:DocumentStatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the documentStatus property value. The status of the document resource.&lt;br&gt;&lt;br&gt;Once a document has been uploaded using the &lt;strong&gt;uploadDocument&lt;/strong&gt; method, the &lt;strong&gt;documentStatus&lt;/strong&gt; will be &lt;code&gt;SUBMITTED&lt;/code&gt;. The document will then either be accepted or rejected. Only documents with the status of &lt;code&gt;ACCEPTED&lt;/code&gt; are available to be added to a listing.
+     * @return a {@link DocumentStatusEnum}
      */
     @jakarta.annotation.Nullable
-    public String getDocumentStatus() {
+    public DocumentStatusEnum getDocumentStatus() {
         return this.documentStatus;
     }
     /**
-     * Gets the documentType property value. The type of the document uploaded. For example, &lt;code&gt;USER_GUIDE_OR_MANUAL&lt;/code&gt;. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/commerce/media/types/api:DocumentTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the documentType property value. The type of the document uploaded. For example, &lt;code&gt;USER_GUIDE_OR_MANUAL&lt;/code&gt;.
+     * @return a {@link DocumentTypeEnum}
      */
     @jakarta.annotation.Nullable
-    public String getDocumentType() {
+    public DocumentTypeEnum getDocumentType() {
         return this.documentType;
     }
     /**
@@ -115,17 +115,17 @@ public class DocumentResponse implements AdditionalDataHolder, Parsable {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(5);
         deserializerMap.put("documentId", (n) -> { this.setDocumentId(n.getStringValue()); });
         deserializerMap.put("documentMetadata", (n) -> { this.setDocumentMetadata(n.getObjectValue(DocumentMetadata::createFromDiscriminatorValue)); });
-        deserializerMap.put("documentStatus", (n) -> { this.setDocumentStatus(n.getStringValue()); });
-        deserializerMap.put("documentType", (n) -> { this.setDocumentType(n.getStringValue()); });
-        deserializerMap.put("languages", (n) -> { this.setLanguages(n.getCollectionOfPrimitiveValues(String.class)); });
+        deserializerMap.put("documentStatus", (n) -> { this.setDocumentStatus(n.getEnumValue(DocumentStatusEnum::forValue)); });
+        deserializerMap.put("documentType", (n) -> { this.setDocumentType(n.getEnumValue(DocumentTypeEnum::forValue)); });
+        deserializerMap.put("languages", (n) -> { this.setLanguages(n.getCollectionOfEnumValues(LanguageEnum::forValue)); });
         return deserializerMap;
     }
     /**
      * Gets the languages property value. This array shows the language(s) used in the document.
-     * @return a {@link java.util.List<String>}
+     * @return a {@link java.util.List<LanguageEnum>}
      */
     @jakarta.annotation.Nullable
-    public java.util.List<String> getLanguages() {
+    public java.util.List<LanguageEnum> getLanguages() {
         return this.languages;
     }
     /**
@@ -136,9 +136,9 @@ public class DocumentResponse implements AdditionalDataHolder, Parsable {
         Objects.requireNonNull(writer);
         writer.writeStringValue("documentId", this.getDocumentId());
         writer.writeObjectValue("documentMetadata", this.getDocumentMetadata());
-        writer.writeStringValue("documentStatus", this.getDocumentStatus());
-        writer.writeStringValue("documentType", this.getDocumentType());
-        writer.writeCollectionOfPrimitiveValues("languages", this.getLanguages());
+        writer.writeEnumValue("documentStatus", this.getDocumentStatus());
+        writer.writeEnumValue("documentType", this.getDocumentType());
+        writer.writeCollectionOfEnumValues("languages", this.getLanguages());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -156,31 +156,31 @@ public class DocumentResponse implements AdditionalDataHolder, Parsable {
         this.documentId = value;
     }
     /**
-     * Sets the documentMetadata property value. This type provides information about the &lt;b&gt;documentId&lt;/b&gt;.
+     * Sets the documentMetadata property value. This container provides the name, size, and type of the specified file.
      * @param value Value to set for the documentMetadata property.
      */
     public void setDocumentMetadata(@jakarta.annotation.Nullable final DocumentMetadata value) {
         this.documentMetadata = value;
     }
     /**
-     * Sets the documentStatus property value. The status of the document resource.&lt;br&gt;&lt;br&gt;Once a document has been uploaded using the &lt;b&gt;uploadDocument&lt;/b&gt; method, the &lt;b&gt;documentStatus&lt;/b&gt; will be &lt;code&gt;SUBMITTED&lt;/code&gt;. The document will then either be accepted or rejected. Only documents with the status of &lt;code&gt;ACCEPTED&lt;/code&gt; are available to be added to a listing. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/commerce/media/types/api:DocumentStatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the documentStatus property value. The status of the document resource.&lt;br&gt;&lt;br&gt;Once a document has been uploaded using the &lt;strong&gt;uploadDocument&lt;/strong&gt; method, the &lt;strong&gt;documentStatus&lt;/strong&gt; will be &lt;code&gt;SUBMITTED&lt;/code&gt;. The document will then either be accepted or rejected. Only documents with the status of &lt;code&gt;ACCEPTED&lt;/code&gt; are available to be added to a listing.
      * @param value Value to set for the documentStatus property.
      */
-    public void setDocumentStatus(@jakarta.annotation.Nullable final String value) {
+    public void setDocumentStatus(@jakarta.annotation.Nullable final DocumentStatusEnum value) {
         this.documentStatus = value;
     }
     /**
-     * Sets the documentType property value. The type of the document uploaded. For example, &lt;code&gt;USER_GUIDE_OR_MANUAL&lt;/code&gt;. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/commerce/media/types/api:DocumentTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the documentType property value. The type of the document uploaded. For example, &lt;code&gt;USER_GUIDE_OR_MANUAL&lt;/code&gt;.
      * @param value Value to set for the documentType property.
      */
-    public void setDocumentType(@jakarta.annotation.Nullable final String value) {
+    public void setDocumentType(@jakarta.annotation.Nullable final DocumentTypeEnum value) {
         this.documentType = value;
     }
     /**
      * Sets the languages property value. This array shows the language(s) used in the document.
      * @param value Value to set for the languages property.
      */
-    public void setLanguages(@jakarta.annotation.Nullable final java.util.List<String> value) {
+    public void setLanguages(@jakarta.annotation.Nullable final java.util.List<LanguageEnum> value) {
         this.languages = value;
     }
 }

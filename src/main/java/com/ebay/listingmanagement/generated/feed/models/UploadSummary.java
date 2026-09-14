@@ -31,7 +31,7 @@ public class UploadSummary implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * The number of records, such as the number of listings created or the number of pictures uploaded to a listing, that failed to process during the upload feed. Check the response file and correct any issues mentioned. If the feed fails before processing, no response file is provided. In this case check the REST output response.
+     * The number of records, such as the number of listings created or the number of pictures uploaded to a listing, that failed to process during the upload feed. Check the response file and correct any issues mentioned. If the feed fails before processing, no response file is provided. In this case, check the REST output response.
      */
     private Integer failureCount;
     /**
@@ -63,7 +63,7 @@ public class UploadSummary implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the failureCount property value. The number of records, such as the number of listings created or the number of pictures uploaded to a listing, that failed to process during the upload feed. Check the response file and correct any issues mentioned. If the feed fails before processing, no response file is provided. In this case check the REST output response.
+     * Gets the failureCount property value. The number of records, such as the number of listings created or the number of pictures uploaded to a listing, that failed to process during the upload feed. Check the response file and correct any issues mentioned. If the feed fails before processing, no response file is provided. In this case, check the REST output response.
      * @return a {@link Integer}
      */
     @jakarta.annotation.Nullable
@@ -107,7 +107,7 @@ public class UploadSummary implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the failureCount property value. The number of records, such as the number of listings created or the number of pictures uploaded to a listing, that failed to process during the upload feed. Check the response file and correct any issues mentioned. If the feed fails before processing, no response file is provided. In this case check the REST output response.
+     * Sets the failureCount property value. The number of records, such as the number of listings created or the number of pictures uploaded to a listing, that failed to process during the upload feed. Check the response file and correct any issues mentioned. If the feed fails before processing, no response file is provided. In this case, check the REST output response.
      * @param value Value to set for the failureCount property.
      */
     public void setFailureCount(@jakarta.annotation.Nullable final Integer value) {

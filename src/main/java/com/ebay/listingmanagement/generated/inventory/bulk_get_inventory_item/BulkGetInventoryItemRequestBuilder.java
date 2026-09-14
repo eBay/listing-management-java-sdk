@@ -16,6 +16,7 @@ package com.ebay.listingmanagement.generated.inventory.bulk_get_inventory_item;
 
 import com.ebay.listingmanagement.generated.inventory.models.BulkGetInventoryItem;
 import com.ebay.listingmanagement.generated.inventory.models.BulkGetInventoryItemResponse;
+import com.ebay.listingmanagement.generated.inventory.models.Error;
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.BaseRequestConfiguration;
 import com.microsoft.kiota.HttpMethod;
@@ -50,29 +51,36 @@ public class BulkGetInventoryItemRequestBuilder extends BaseRequestBuilder {
         super(requestAdapter, "{+baseurl}/bulk_get_inventory_item", rawUrl);
     }
     /**
-     * This call retrieves up to 25 inventory item records. The SKU value of each inventory item record to retrieve is specified in the request payload.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; In addition to the &lt;code&gt;authorization&lt;/code&gt; header, which is required for all Inventory API calls, this call also requires the &lt;code&gt;Content-Type&lt;/code&gt; header. See the &lt;a href=&quot;/api-docs/sell/inventory/resources/inventory_item/methods/bulkGetInventoryItem#h3-request-headers&quot;&gt;HTTP request headers&lt;/a&gt; for more information.&lt;/span&gt;&lt;br&gt;For those who prefer to retrieve only one inventory item record by SKU value, the &lt;strong&gt;getInventoryItem&lt;/strong&gt; method can be used. To retrieve all inventory item records defined on the seller&apos;s account, the &lt;strong&gt;getInventoryItems&lt;/strong&gt; method can be used (with pagination control if desired).
-     * @param body This type is used by the base request of the &lt;strong&gt;bulkGetInventoryItem&lt;/strong&gt; method.
+     * This call retrieves up to 25 inventory item records. The SKU value of each inventory item record to retrieve is specified in the request payload.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; In addition to the &lt;code&gt;authorization&lt;/code&gt; header, which is required for all Inventory API calls, this call also requires the &lt;code&gt;Content-Type&lt;/code&gt; header.&lt;/span&gt;&lt;br&gt;For those who prefer to retrieve only one inventory item record by SKU value, the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-inventory_item-getinventoryitem&quot; target=&quot;_blank&quot;&gt;getInventoryItem&lt;/a&gt; method can be used. To retrieve all inventory item records defined on the seller&apos;s account, the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-inventory_item-getinventoryitems&quot; target=&quot;_blank&quot;&gt;getInventoryItems&lt;/a&gt; method can be used (with pagination control if desired).
+     * @param body Details of the inventories with sku and locale
      * @return a {@link BulkGetInventoryItemResponse}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public BulkGetInventoryItemResponse post(@jakarta.annotation.Nonnull final BulkGetInventoryItem body) {
         return post(body, null);
     }
     /**
-     * This call retrieves up to 25 inventory item records. The SKU value of each inventory item record to retrieve is specified in the request payload.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; In addition to the &lt;code&gt;authorization&lt;/code&gt; header, which is required for all Inventory API calls, this call also requires the &lt;code&gt;Content-Type&lt;/code&gt; header. See the &lt;a href=&quot;/api-docs/sell/inventory/resources/inventory_item/methods/bulkGetInventoryItem#h3-request-headers&quot;&gt;HTTP request headers&lt;/a&gt; for more information.&lt;/span&gt;&lt;br&gt;For those who prefer to retrieve only one inventory item record by SKU value, the &lt;strong&gt;getInventoryItem&lt;/strong&gt; method can be used. To retrieve all inventory item records defined on the seller&apos;s account, the &lt;strong&gt;getInventoryItems&lt;/strong&gt; method can be used (with pagination control if desired).
-     * @param body This type is used by the base request of the &lt;strong&gt;bulkGetInventoryItem&lt;/strong&gt; method.
+     * This call retrieves up to 25 inventory item records. The SKU value of each inventory item record to retrieve is specified in the request payload.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; In addition to the &lt;code&gt;authorization&lt;/code&gt; header, which is required for all Inventory API calls, this call also requires the &lt;code&gt;Content-Type&lt;/code&gt; header.&lt;/span&gt;&lt;br&gt;For those who prefer to retrieve only one inventory item record by SKU value, the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-inventory_item-getinventoryitem&quot; target=&quot;_blank&quot;&gt;getInventoryItem&lt;/a&gt; method can be used. To retrieve all inventory item records defined on the seller&apos;s account, the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-inventory_item-getinventoryitems&quot; target=&quot;_blank&quot;&gt;getInventoryItems&lt;/a&gt; method can be used (with pagination control if desired).
+     * @param body Details of the inventories with sku and locale
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link BulkGetInventoryItemResponse}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public BulkGetInventoryItemResponse post(@jakarta.annotation.Nonnull final BulkGetInventoryItem body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = toPostRequestInformation(body, requestConfiguration);
-        return this.requestAdapter.send(requestInfo, null, BulkGetInventoryItemResponse::createFromDiscriminatorValue);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("400", Error::createFromDiscriminatorValue);
+        errorMapping.put("500", Error::createFromDiscriminatorValue);
+        return this.requestAdapter.send(requestInfo, errorMapping, BulkGetInventoryItemResponse::createFromDiscriminatorValue);
     }
     /**
-     * This call retrieves up to 25 inventory item records. The SKU value of each inventory item record to retrieve is specified in the request payload.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; In addition to the &lt;code&gt;authorization&lt;/code&gt; header, which is required for all Inventory API calls, this call also requires the &lt;code&gt;Content-Type&lt;/code&gt; header. See the &lt;a href=&quot;/api-docs/sell/inventory/resources/inventory_item/methods/bulkGetInventoryItem#h3-request-headers&quot;&gt;HTTP request headers&lt;/a&gt; for more information.&lt;/span&gt;&lt;br&gt;For those who prefer to retrieve only one inventory item record by SKU value, the &lt;strong&gt;getInventoryItem&lt;/strong&gt; method can be used. To retrieve all inventory item records defined on the seller&apos;s account, the &lt;strong&gt;getInventoryItems&lt;/strong&gt; method can be used (with pagination control if desired).
-     * @param body This type is used by the base request of the &lt;strong&gt;bulkGetInventoryItem&lt;/strong&gt; method.
+     * This call retrieves up to 25 inventory item records. The SKU value of each inventory item record to retrieve is specified in the request payload.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; In addition to the &lt;code&gt;authorization&lt;/code&gt; header, which is required for all Inventory API calls, this call also requires the &lt;code&gt;Content-Type&lt;/code&gt; header.&lt;/span&gt;&lt;br&gt;For those who prefer to retrieve only one inventory item record by SKU value, the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-inventory_item-getinventoryitem&quot; target=&quot;_blank&quot;&gt;getInventoryItem&lt;/a&gt; method can be used. To retrieve all inventory item records defined on the seller&apos;s account, the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-inventory_item-getinventoryitems&quot; target=&quot;_blank&quot;&gt;getInventoryItems&lt;/a&gt; method can be used (with pagination control if desired).
+     * @param body Details of the inventories with sku and locale
      * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
@@ -80,8 +88,8 @@ public class BulkGetInventoryItemRequestBuilder extends BaseRequestBuilder {
         return toPostRequestInformation(body, null);
     }
     /**
-     * This call retrieves up to 25 inventory item records. The SKU value of each inventory item record to retrieve is specified in the request payload.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; In addition to the &lt;code&gt;authorization&lt;/code&gt; header, which is required for all Inventory API calls, this call also requires the &lt;code&gt;Content-Type&lt;/code&gt; header. See the &lt;a href=&quot;/api-docs/sell/inventory/resources/inventory_item/methods/bulkGetInventoryItem#h3-request-headers&quot;&gt;HTTP request headers&lt;/a&gt; for more information.&lt;/span&gt;&lt;br&gt;For those who prefer to retrieve only one inventory item record by SKU value, the &lt;strong&gt;getInventoryItem&lt;/strong&gt; method can be used. To retrieve all inventory item records defined on the seller&apos;s account, the &lt;strong&gt;getInventoryItems&lt;/strong&gt; method can be used (with pagination control if desired).
-     * @param body This type is used by the base request of the &lt;strong&gt;bulkGetInventoryItem&lt;/strong&gt; method.
+     * This call retrieves up to 25 inventory item records. The SKU value of each inventory item record to retrieve is specified in the request payload.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; In addition to the &lt;code&gt;authorization&lt;/code&gt; header, which is required for all Inventory API calls, this call also requires the &lt;code&gt;Content-Type&lt;/code&gt; header.&lt;/span&gt;&lt;br&gt;For those who prefer to retrieve only one inventory item record by SKU value, the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-inventory_item-getinventoryitem&quot; target=&quot;_blank&quot;&gt;getInventoryItem&lt;/a&gt; method can be used. To retrieve all inventory item records defined on the seller&apos;s account, the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-inventory_item-getinventoryitems&quot; target=&quot;_blank&quot;&gt;getInventoryItems&lt;/a&gt; method can be used (with pagination control if desired).
+     * @param body Details of the inventories with sku and locale
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link RequestInformation}
      */

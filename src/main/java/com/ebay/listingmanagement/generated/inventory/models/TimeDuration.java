@@ -31,9 +31,9 @@ public class TimeDuration implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * This enumeration value indicates the time unit used to specify the fulfillment time, such as &lt;code&gt;BUSINESS_DAY&lt;/code&gt;. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/slr:TimeDurationUnitEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This enumeration value indicates the time unit used to specify the fulfillment time, such as &lt;code&gt;BUSINESS_DAY&lt;/code&gt;.
      */
-    private String unit;
+    private TimeDurationUnitEnum unit;
     /**
      * The integer value in this field, along with the time unit in the &lt;strong&gt;unit&lt;/strong&gt; field, will indicate the fulfillment time.&lt;br&gt;&lt;br&gt;For standard orders that will be shipped, this value will indicate the expected fulfillment time if the inventory item is shipped from the inventory location. If the value of this field is &lt;code&gt;4&lt;/code&gt;, and the value of the &lt;strong&gt;unit&lt;/strong&gt; field is &lt;code&gt;BUSINESS_DAY&lt;/code&gt;, then the estimated delivery date after purchase is 4 business days.
      */
@@ -69,16 +69,16 @@ public class TimeDuration implements AdditionalDataHolder, Parsable {
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(2);
-        deserializerMap.put("unit", (n) -> { this.setUnit(n.getStringValue()); });
+        deserializerMap.put("unit", (n) -> { this.setUnit(n.getEnumValue(TimeDurationUnitEnum::forValue)); });
         deserializerMap.put("value", (n) -> { this.setValue(n.getIntegerValue()); });
         return deserializerMap;
     }
     /**
-     * Gets the unit property value. This enumeration value indicates the time unit used to specify the fulfillment time, such as &lt;code&gt;BUSINESS_DAY&lt;/code&gt;. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/slr:TimeDurationUnitEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the unit property value. This enumeration value indicates the time unit used to specify the fulfillment time, such as &lt;code&gt;BUSINESS_DAY&lt;/code&gt;.
+     * @return a {@link TimeDurationUnitEnum}
      */
     @jakarta.annotation.Nullable
-    public String getUnit() {
+    public TimeDurationUnitEnum getUnit() {
         return this.unit;
     }
     /**
@@ -95,7 +95,7 @@ public class TimeDuration implements AdditionalDataHolder, Parsable {
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeStringValue("unit", this.getUnit());
+        writer.writeEnumValue("unit", this.getUnit());
         writer.writeIntegerValue("value", this.getValue());
         writer.writeAdditionalData(this.getAdditionalData());
     }
@@ -107,10 +107,10 @@ public class TimeDuration implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the unit property value. This enumeration value indicates the time unit used to specify the fulfillment time, such as &lt;code&gt;BUSINESS_DAY&lt;/code&gt;. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/slr:TimeDurationUnitEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the unit property value. This enumeration value indicates the time unit used to specify the fulfillment time, such as &lt;code&gt;BUSINESS_DAY&lt;/code&gt;.
      * @param value Value to set for the unit property.
      */
-    public void setUnit(@jakarta.annotation.Nullable final String value) {
+    public void setUnit(@jakarta.annotation.Nullable final TimeDurationUnitEnum value) {
         this.unit = value;
     }
     /**

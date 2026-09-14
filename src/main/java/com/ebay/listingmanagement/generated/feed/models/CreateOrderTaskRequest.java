@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 /**
- * The type that defines the fields for the &lt;b&gt; createOrderTask&lt;/b&gt; request.
+ * The type that defines the fields for the &lt;strong&gt;createOrderTask&lt;/strong&gt; request.
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class CreateOrderTaskRequest implements AdditionalDataHolder, Parsable {
@@ -35,11 +35,11 @@ public class CreateOrderTaskRequest implements AdditionalDataHolder, Parsable {
      */
     private String feedType;
     /**
-     * The type that defines the fields for the order filters.
+     * The container for the filter fields. This container is used to set the filter criteria for the order report. A seller can set date range filters and/or can retrieve orders in a specific state.
      */
     private OrderFilterCriteria filterCriteria;
     /**
-     * The schema version of the LMS OrderReport. For the &lt;code&gt;LMS_ORDER_REPORT&lt;/code&gt; feed type, see the &lt;a href=&quot;/devzone/merchant-data/CallRef/OrderReport.html#OrderReport&quot;&gt;OrderReport&lt;/a&gt; reference page to see the present schema version. The &lt;b&gt; schemaVersion&lt;/b&gt; value is the version number shown at the top of the &lt;b&gt; OrderReport&lt;/b&gt; page. &lt;br /&gt;&lt;br /&gt;&lt;b&gt;Restriction: &lt;/b&gt; This value must be 1113 or higher. The OrderReport schema version is updated about every two weeks. All version numbers are odd numbers (even numbers are skipped). For example, the next release version after &apos;1113&apos; is &apos;1115&apos;.
+     * The schema version of the LMS OrderReport. For the &lt;code&gt;LMS_ORDER_REPORT&lt;/code&gt; feed type, see the &lt;a href=&quot;/devzone/merchant-data/CallRef/OrderReport.html#OrderReport&quot; target=&quot;_blank&quot;&gt;OrderReport&lt;/a&gt; reference page to see the present schema version. The &lt;strong&gt;schemaVersion&lt;/strong&gt; value is the version number shown at the top of the &lt;strong&gt;OrderReport&lt;/strong&gt; page. &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Restriction: &lt;/strong&gt; This value must be 1113 or higher. The OrderReport schema version is updated about every two weeks. All version numbers are odd numbers (even numbers are skipped). For example, the next release version after &apos;1113&apos; is &apos;1115&apos;.
      */
     private String schemaVersion;
     /**
@@ -87,7 +87,7 @@ public class CreateOrderTaskRequest implements AdditionalDataHolder, Parsable {
         return deserializerMap;
     }
     /**
-     * Gets the filterCriteria property value. The type that defines the fields for the order filters.
+     * Gets the filterCriteria property value. The container for the filter fields. This container is used to set the filter criteria for the order report. A seller can set date range filters and/or can retrieve orders in a specific state.
      * @return a {@link OrderFilterCriteria}
      */
     @jakarta.annotation.Nullable
@@ -95,7 +95,7 @@ public class CreateOrderTaskRequest implements AdditionalDataHolder, Parsable {
         return this.filterCriteria;
     }
     /**
-     * Gets the schemaVersion property value. The schema version of the LMS OrderReport. For the &lt;code&gt;LMS_ORDER_REPORT&lt;/code&gt; feed type, see the &lt;a href=&quot;/devzone/merchant-data/CallRef/OrderReport.html#OrderReport&quot;&gt;OrderReport&lt;/a&gt; reference page to see the present schema version. The &lt;b&gt; schemaVersion&lt;/b&gt; value is the version number shown at the top of the &lt;b&gt; OrderReport&lt;/b&gt; page. &lt;br /&gt;&lt;br /&gt;&lt;b&gt;Restriction: &lt;/b&gt; This value must be 1113 or higher. The OrderReport schema version is updated about every two weeks. All version numbers are odd numbers (even numbers are skipped). For example, the next release version after &apos;1113&apos; is &apos;1115&apos;.
+     * Gets the schemaVersion property value. The schema version of the LMS OrderReport. For the &lt;code&gt;LMS_ORDER_REPORT&lt;/code&gt; feed type, see the &lt;a href=&quot;/devzone/merchant-data/CallRef/OrderReport.html#OrderReport&quot; target=&quot;_blank&quot;&gt;OrderReport&lt;/a&gt; reference page to see the present schema version. The &lt;strong&gt;schemaVersion&lt;/strong&gt; value is the version number shown at the top of the &lt;strong&gt;OrderReport&lt;/strong&gt; page. &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Restriction: &lt;/strong&gt; This value must be 1113 or higher. The OrderReport schema version is updated about every two weeks. All version numbers are odd numbers (even numbers are skipped). For example, the next release version after &apos;1113&apos; is &apos;1115&apos;.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -128,14 +128,14 @@ public class CreateOrderTaskRequest implements AdditionalDataHolder, Parsable {
         this.feedType = value;
     }
     /**
-     * Sets the filterCriteria property value. The type that defines the fields for the order filters.
+     * Sets the filterCriteria property value. The container for the filter fields. This container is used to set the filter criteria for the order report. A seller can set date range filters and/or can retrieve orders in a specific state.
      * @param value Value to set for the filterCriteria property.
      */
     public void setFilterCriteria(@jakarta.annotation.Nullable final OrderFilterCriteria value) {
         this.filterCriteria = value;
     }
     /**
-     * Sets the schemaVersion property value. The schema version of the LMS OrderReport. For the &lt;code&gt;LMS_ORDER_REPORT&lt;/code&gt; feed type, see the &lt;a href=&quot;/devzone/merchant-data/CallRef/OrderReport.html#OrderReport&quot;&gt;OrderReport&lt;/a&gt; reference page to see the present schema version. The &lt;b&gt; schemaVersion&lt;/b&gt; value is the version number shown at the top of the &lt;b&gt; OrderReport&lt;/b&gt; page. &lt;br /&gt;&lt;br /&gt;&lt;b&gt;Restriction: &lt;/b&gt; This value must be 1113 or higher. The OrderReport schema version is updated about every two weeks. All version numbers are odd numbers (even numbers are skipped). For example, the next release version after &apos;1113&apos; is &apos;1115&apos;.
+     * Sets the schemaVersion property value. The schema version of the LMS OrderReport. For the &lt;code&gt;LMS_ORDER_REPORT&lt;/code&gt; feed type, see the &lt;a href=&quot;/devzone/merchant-data/CallRef/OrderReport.html#OrderReport&quot; target=&quot;_blank&quot;&gt;OrderReport&lt;/a&gt; reference page to see the present schema version. The &lt;strong&gt;schemaVersion&lt;/strong&gt; value is the version number shown at the top of the &lt;strong&gt;OrderReport&lt;/strong&gt; page. &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Restriction: &lt;/strong&gt; This value must be 1113 or higher. The OrderReport schema version is updated about every two weeks. All version numbers are odd numbers (even numbers are skipped). For example, the next release version after &apos;1113&apos; is &apos;1115&apos;.
      * @param value Value to set for the schemaVersion property.
      */
     public void setSchemaVersion(@jakarta.annotation.Nullable final String value) {

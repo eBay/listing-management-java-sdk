@@ -33,9 +33,9 @@ public class GetInventoryItemResponse implements AdditionalDataHolder, Parsable 
     /**
      * This container will be returned if there were one or more errors associated with retrieving the inventory item record.
      */
-    private java.util.List<Error> errors;
+    private java.util.List<ErrorDetailV3> errors;
     /**
-     * This type is used to provide details about each retrieved inventory item record.
+     * This container consists of detailed information on the inventory item specified in the &lt;strong&gt;sku&lt;/strong&gt; field.
      */
     private InventoryItemWithSkuLocaleGroupKeys inventoryItem;
     /**
@@ -49,7 +49,7 @@ public class GetInventoryItemResponse implements AdditionalDataHolder, Parsable 
     /**
      * This container will be returned if there were one or more warnings associated with retrieving the inventory item record.
      */
-    private java.util.List<Error> warnings;
+    private java.util.List<ErrorDetailV3> warnings;
     /**
      * Instantiates a new {@link GetInventoryItemResponse} and sets the default values.
      */
@@ -76,10 +76,10 @@ public class GetInventoryItemResponse implements AdditionalDataHolder, Parsable 
     }
     /**
      * Gets the errors property value. This container will be returned if there were one or more errors associated with retrieving the inventory item record.
-     * @return a {@link java.util.List<Error>}
+     * @return a {@link java.util.List<ErrorDetailV3>}
      */
     @jakarta.annotation.Nullable
-    public java.util.List<Error> getErrors() {
+    public java.util.List<ErrorDetailV3> getErrors() {
         return this.errors;
     }
     /**
@@ -89,15 +89,15 @@ public class GetInventoryItemResponse implements AdditionalDataHolder, Parsable 
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(5);
-        deserializerMap.put("errors", (n) -> { this.setErrors(n.getCollectionOfObjectValues(Error::createFromDiscriminatorValue)); });
+        deserializerMap.put("errors", (n) -> { this.setErrors(n.getCollectionOfObjectValues(ErrorDetailV3::createFromDiscriminatorValue)); });
         deserializerMap.put("inventoryItem", (n) -> { this.setInventoryItem(n.getObjectValue(InventoryItemWithSkuLocaleGroupKeys::createFromDiscriminatorValue)); });
         deserializerMap.put("sku", (n) -> { this.setSku(n.getStringValue()); });
         deserializerMap.put("statusCode", (n) -> { this.setStatusCode(n.getIntegerValue()); });
-        deserializerMap.put("warnings", (n) -> { this.setWarnings(n.getCollectionOfObjectValues(Error::createFromDiscriminatorValue)); });
+        deserializerMap.put("warnings", (n) -> { this.setWarnings(n.getCollectionOfObjectValues(ErrorDetailV3::createFromDiscriminatorValue)); });
         return deserializerMap;
     }
     /**
-     * Gets the inventoryItem property value. This type is used to provide details about each retrieved inventory item record.
+     * Gets the inventoryItem property value. This container consists of detailed information on the inventory item specified in the &lt;strong&gt;sku&lt;/strong&gt; field.
      * @return a {@link InventoryItemWithSkuLocaleGroupKeys}
      */
     @jakarta.annotation.Nullable
@@ -122,10 +122,10 @@ public class GetInventoryItemResponse implements AdditionalDataHolder, Parsable 
     }
     /**
      * Gets the warnings property value. This container will be returned if there were one or more warnings associated with retrieving the inventory item record.
-     * @return a {@link java.util.List<Error>}
+     * @return a {@link java.util.List<ErrorDetailV3>}
      */
     @jakarta.annotation.Nullable
-    public java.util.List<Error> getWarnings() {
+    public java.util.List<ErrorDetailV3> getWarnings() {
         return this.warnings;
     }
     /**
@@ -152,11 +152,11 @@ public class GetInventoryItemResponse implements AdditionalDataHolder, Parsable 
      * Sets the errors property value. This container will be returned if there were one or more errors associated with retrieving the inventory item record.
      * @param value Value to set for the errors property.
      */
-    public void setErrors(@jakarta.annotation.Nullable final java.util.List<Error> value) {
+    public void setErrors(@jakarta.annotation.Nullable final java.util.List<ErrorDetailV3> value) {
         this.errors = value;
     }
     /**
-     * Sets the inventoryItem property value. This type is used to provide details about each retrieved inventory item record.
+     * Sets the inventoryItem property value. This container consists of detailed information on the inventory item specified in the &lt;strong&gt;sku&lt;/strong&gt; field.
      * @param value Value to set for the inventoryItem property.
      */
     public void setInventoryItem(@jakarta.annotation.Nullable final InventoryItemWithSkuLocaleGroupKeys value) {
@@ -180,7 +180,7 @@ public class GetInventoryItemResponse implements AdditionalDataHolder, Parsable 
      * Sets the warnings property value. This container will be returned if there were one or more warnings associated with retrieving the inventory item record.
      * @param value Value to set for the warnings property.
      */
-    public void setWarnings(@jakarta.annotation.Nullable final java.util.List<Error> value) {
+    public void setWarnings(@jakarta.annotation.Nullable final java.util.List<ErrorDetailV3> value) {
         this.warnings = value;
     }
 }

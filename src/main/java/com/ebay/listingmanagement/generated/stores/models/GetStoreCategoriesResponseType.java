@@ -31,7 +31,7 @@ public class GetStoreCategoriesResponseType implements AdditionalDataHolder, Par
      */
     private Map<String, Object> additionalData;
     /**
-     * An array of top-level categories defined for the eBay store. A childrenCategories array is used for second and third-level categories, if defined for the store.
+     * An array of top-level categories defined for the eBay store. A &lt;strong&gt;childrenCategories&lt;/strong&gt; array is used for second and third-level categories, if defined for the store.
      */
     private java.util.List<StoreCategoryType> storeCategories;
     /**
@@ -69,7 +69,7 @@ public class GetStoreCategoriesResponseType implements AdditionalDataHolder, Par
         return deserializerMap;
     }
     /**
-     * Gets the storeCategories property value. An array of top-level categories defined for the eBay store. A childrenCategories array is used for second and third-level categories, if defined for the store.
+     * Gets the storeCategories property value. An array of top-level categories defined for the eBay store. A &lt;strong&gt;childrenCategories&lt;/strong&gt; array is used for second and third-level categories, if defined for the store.
      * @return a {@link java.util.List<StoreCategoryType>}
      */
     @jakarta.annotation.Nullable
@@ -93,7 +93,7 @@ public class GetStoreCategoriesResponseType implements AdditionalDataHolder, Par
         this.additionalData = value;
     }
     /**
-     * Sets the storeCategories property value. An array of top-level categories defined for the eBay store. A childrenCategories array is used for second and third-level categories, if defined for the store.
+     * Sets the storeCategories property value. An array of top-level categories defined for the eBay store. A &lt;strong&gt;childrenCategories&lt;/strong&gt; array is used for second and third-level categories, if defined for the store.
      * @param value Value to set for the storeCategories property.
      */
     public void setStoreCategories(@jakarta.annotation.Nullable final java.util.List<StoreCategoryType> value) {

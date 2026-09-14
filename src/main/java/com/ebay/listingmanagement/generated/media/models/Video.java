@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 /**
- * A response field that retrieves all the metadata for the video, including its &lt;b&gt;title&lt;/b&gt;, &lt;b&gt;classification&lt;/b&gt;, &lt;b&gt;size&lt;/b&gt;, &lt;b&gt;description&lt;/b&gt;, &lt;b&gt;status&lt;/b&gt;, &lt;b&gt;status message&lt;/b&gt; (if any), and &lt;b&gt;expiration date&lt;/b&gt;.
+ * A response field that retrieves all the metadata for the video, including its &lt;strong&gt;title&lt;/strong&gt;, &lt;strong&gt;classification&lt;/strong&gt;, &lt;strong&gt;size&lt;/strong&gt;, &lt;strong&gt;description&lt;/strong&gt;, &lt;strong&gt;status&lt;/strong&gt;, &lt;strong&gt;status message&lt;/strong&gt; (if any), and &lt;strong&gt;expiration date&lt;/strong&gt;.
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class Video implements AdditionalDataHolder, Parsable {
@@ -31,11 +31,11 @@ public class Video implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * The intended use for this video content. Currently, videos can only be added and associated with eBay listings, so the only supported value is &lt;code&gt;ITEM&lt;/code&gt;.
+     * The intended use for this video content. Currently, videos can only be added and associated with eBay listings, so the only supported value is &lt;code&gt;ITEM&lt;/code&gt;. This array is always returned.
      */
-    private java.util.List<String> classification;
+    private java.util.List<Classification> classification;
     /**
-     * The description of the video. The video description is an optional field that can be set using the &lt;a href=&quot; /api-docs/commerce/media/resources/video/methods/createVideo&quot; target=&quot;_blank&quot;&gt;createVideo&lt;/a&gt; method.
+     * The description of the video. The video description is an optional field that can be set using the &lt;a href=&quot; /develop/api/sell/media_api#sell-media_api-video-createvideo&quot;&gt;createVideo&lt;/a&gt; method.
      */
     private String description;
     /**
@@ -43,31 +43,31 @@ public class Video implements AdditionalDataHolder, Parsable {
      */
     private String expirationDate;
     /**
-     * A container that provides video moderation information when calling the &lt;strong&gt;getVideo&lt;/strong&gt; method.&lt;br /&gt;&lt;br /&gt;This container is returned if the specified video has been blocked by moderators.&lt;br /&gt;&lt;br /&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;span style=&quot;color:#478415&quot;&gt;&lt;strong&gt;Tip:&lt;/strong&gt;&lt;/span&gt; See &lt;a href=&quot;https://www.ebay.com/help/selling/listings/creating-managing-listings/add-video-to-listing?id=5272#section2&quot; target=&quot;_blank&quot;&gt;Video moderation and restrictions&lt;/a&gt; in the eBay Seller Center for details about video moderation.&lt;/span&gt;
+     * The video moderation information that is returned if a video is blocked by moderators.&lt;br /&gt;&lt;br /&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;span style=&quot;color:#478415&quot;&gt;&lt;strong&gt;Tip:&lt;/strong&gt;&lt;/span&gt; See &lt;a href=&quot;https://www.ebay.com/help/selling/listings/creating-managing-listings/add-video-to-listing?id=5272#section2&quot; target=&quot;_blank&quot;&gt;Video moderation and restrictions&lt;/a&gt; in the eBay Seller Center for details about video moderation.&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;If the video status is &lt;code&gt;BLOCKED&lt;/code&gt;, ensure that the video complies with eBay&apos;s video formatting and content guidelines. Afterwards, begin the video creation and upload procedure anew using the &lt;strong&gt;createVideo&lt;/strong&gt; and &lt;strong&gt;uploadVideo&lt;/strong&gt; methods.
      */
     private Moderation moderation;
     /**
-     * The playlist created for the uploaded video, which provides the streaming video URLs to play the video. The supported streaming video protocols are DASH (Dynamic Adaptive Streaming over HTTP) and HLS (HTTPLive Streaming). The playlist will only be generated if a video is successfully uploaded with a status of &lt;code&gt;LIVE&lt;/code&gt;.
+     * The playlist created for the uploaded video, which provides the streaming video URLs to play the video. The supported streaming video protocols are DASH (Dynamic Adaptive Streaming over HTTP) and HLS (HTTP Live Streaming). The playlist will only be generated if a video is successfully uploaded with a status of &lt;code&gt;LIVE&lt;/code&gt;.
      */
     private java.util.List<Play> playLists;
     /**
-     * The size, in bytes, of the video content.
+     * The size, in bytes, of the video content. This field is always returned.
      */
     private Integer size;
     /**
-     * The status of the current video resource. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/commerce/media/types/api:VideoStatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * The status of the current video resource.
      */
-    private String status;
+    private VideoStatusEnum status;
     /**
-     * The &lt;b&gt;statusMessage&lt;/b&gt; field contains additional information on the status. For example, information on why processing might have failed or if the video was blocked.
+     * The &lt;strong&gt;statusMessage&lt;/strong&gt; field contains additional information on the status. For example, information on why processing might have failed or if the video was blocked.
      */
     private String statusMessage;
     /**
-     * A type that provides the location of the image.
+     * The URL of the thumbnail image of the video. The thumbnail image&apos;s URL must be an eBayPictureURL (EPS URL).
      */
     private Image thumbnail;
     /**
-     * The title of the video.
+     * The title of the video. This field is always returned.
      */
     private String title;
     /**
@@ -99,15 +99,15 @@ public class Video implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the classification property value. The intended use for this video content. Currently, videos can only be added and associated with eBay listings, so the only supported value is &lt;code&gt;ITEM&lt;/code&gt;.
-     * @return a {@link java.util.List<String>}
+     * Gets the classification property value. The intended use for this video content. Currently, videos can only be added and associated with eBay listings, so the only supported value is &lt;code&gt;ITEM&lt;/code&gt;. This array is always returned.
+     * @return a {@link java.util.List<Classification>}
      */
     @jakarta.annotation.Nullable
-    public java.util.List<String> getClassification() {
+    public java.util.List<Classification> getClassification() {
         return this.classification;
     }
     /**
-     * Gets the description property value. The description of the video. The video description is an optional field that can be set using the &lt;a href=&quot; /api-docs/commerce/media/resources/video/methods/createVideo&quot; target=&quot;_blank&quot;&gt;createVideo&lt;/a&gt; method.
+     * Gets the description property value. The description of the video. The video description is an optional field that can be set using the &lt;a href=&quot; /develop/api/sell/media_api#sell-media_api-video-createvideo&quot;&gt;createVideo&lt;/a&gt; method.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -129,13 +129,13 @@ public class Video implements AdditionalDataHolder, Parsable {
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(11);
-        deserializerMap.put("classification", (n) -> { this.setClassification(n.getCollectionOfPrimitiveValues(String.class)); });
+        deserializerMap.put("classification", (n) -> { this.setClassification(n.getCollectionOfEnumValues(Classification::forValue)); });
         deserializerMap.put("description", (n) -> { this.setDescription(n.getStringValue()); });
         deserializerMap.put("expirationDate", (n) -> { this.setExpirationDate(n.getStringValue()); });
         deserializerMap.put("moderation", (n) -> { this.setModeration(n.getObjectValue(Moderation::createFromDiscriminatorValue)); });
         deserializerMap.put("playLists", (n) -> { this.setPlayLists(n.getCollectionOfObjectValues(Play::createFromDiscriminatorValue)); });
         deserializerMap.put("size", (n) -> { this.setSize(n.getIntegerValue()); });
-        deserializerMap.put("status", (n) -> { this.setStatus(n.getStringValue()); });
+        deserializerMap.put("status", (n) -> { this.setStatus(n.getEnumValue(VideoStatusEnum::forValue)); });
         deserializerMap.put("statusMessage", (n) -> { this.setStatusMessage(n.getStringValue()); });
         deserializerMap.put("thumbnail", (n) -> { this.setThumbnail(n.getObjectValue(Image::createFromDiscriminatorValue)); });
         deserializerMap.put("title", (n) -> { this.setTitle(n.getStringValue()); });
@@ -143,7 +143,7 @@ public class Video implements AdditionalDataHolder, Parsable {
         return deserializerMap;
     }
     /**
-     * Gets the moderation property value. A container that provides video moderation information when calling the &lt;strong&gt;getVideo&lt;/strong&gt; method.&lt;br /&gt;&lt;br /&gt;This container is returned if the specified video has been blocked by moderators.&lt;br /&gt;&lt;br /&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;span style=&quot;color:#478415&quot;&gt;&lt;strong&gt;Tip:&lt;/strong&gt;&lt;/span&gt; See &lt;a href=&quot;https://www.ebay.com/help/selling/listings/creating-managing-listings/add-video-to-listing?id=5272#section2&quot; target=&quot;_blank&quot;&gt;Video moderation and restrictions&lt;/a&gt; in the eBay Seller Center for details about video moderation.&lt;/span&gt;
+     * Gets the moderation property value. The video moderation information that is returned if a video is blocked by moderators.&lt;br /&gt;&lt;br /&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;span style=&quot;color:#478415&quot;&gt;&lt;strong&gt;Tip:&lt;/strong&gt;&lt;/span&gt; See &lt;a href=&quot;https://www.ebay.com/help/selling/listings/creating-managing-listings/add-video-to-listing?id=5272#section2&quot; target=&quot;_blank&quot;&gt;Video moderation and restrictions&lt;/a&gt; in the eBay Seller Center for details about video moderation.&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;If the video status is &lt;code&gt;BLOCKED&lt;/code&gt;, ensure that the video complies with eBay&apos;s video formatting and content guidelines. Afterwards, begin the video creation and upload procedure anew using the &lt;strong&gt;createVideo&lt;/strong&gt; and &lt;strong&gt;uploadVideo&lt;/strong&gt; methods.
      * @return a {@link Moderation}
      */
     @jakarta.annotation.Nullable
@@ -151,7 +151,7 @@ public class Video implements AdditionalDataHolder, Parsable {
         return this.moderation;
     }
     /**
-     * Gets the playLists property value. The playlist created for the uploaded video, which provides the streaming video URLs to play the video. The supported streaming video protocols are DASH (Dynamic Adaptive Streaming over HTTP) and HLS (HTTPLive Streaming). The playlist will only be generated if a video is successfully uploaded with a status of &lt;code&gt;LIVE&lt;/code&gt;.
+     * Gets the playLists property value. The playlist created for the uploaded video, which provides the streaming video URLs to play the video. The supported streaming video protocols are DASH (Dynamic Adaptive Streaming over HTTP) and HLS (HTTP Live Streaming). The playlist will only be generated if a video is successfully uploaded with a status of &lt;code&gt;LIVE&lt;/code&gt;.
      * @return a {@link java.util.List<Play>}
      */
     @jakarta.annotation.Nullable
@@ -159,7 +159,7 @@ public class Video implements AdditionalDataHolder, Parsable {
         return this.playLists;
     }
     /**
-     * Gets the size property value. The size, in bytes, of the video content.
+     * Gets the size property value. The size, in bytes, of the video content. This field is always returned.
      * @return a {@link Integer}
      */
     @jakarta.annotation.Nullable
@@ -167,15 +167,15 @@ public class Video implements AdditionalDataHolder, Parsable {
         return this.size;
     }
     /**
-     * Gets the status property value. The status of the current video resource. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/commerce/media/types/api:VideoStatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the status property value. The status of the current video resource.
+     * @return a {@link VideoStatusEnum}
      */
     @jakarta.annotation.Nullable
-    public String getStatus() {
+    public VideoStatusEnum getStatus() {
         return this.status;
     }
     /**
-     * Gets the statusMessage property value. The &lt;b&gt;statusMessage&lt;/b&gt; field contains additional information on the status. For example, information on why processing might have failed or if the video was blocked.
+     * Gets the statusMessage property value. The &lt;strong&gt;statusMessage&lt;/strong&gt; field contains additional information on the status. For example, information on why processing might have failed or if the video was blocked.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -183,7 +183,7 @@ public class Video implements AdditionalDataHolder, Parsable {
         return this.statusMessage;
     }
     /**
-     * Gets the thumbnail property value. A type that provides the location of the image.
+     * Gets the thumbnail property value. The URL of the thumbnail image of the video. The thumbnail image&apos;s URL must be an eBayPictureURL (EPS URL).
      * @return a {@link Image}
      */
     @jakarta.annotation.Nullable
@@ -191,7 +191,7 @@ public class Video implements AdditionalDataHolder, Parsable {
         return this.thumbnail;
     }
     /**
-     * Gets the title property value. The title of the video.
+     * Gets the title property value. The title of the video. This field is always returned.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -212,13 +212,13 @@ public class Video implements AdditionalDataHolder, Parsable {
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeCollectionOfPrimitiveValues("classification", this.getClassification());
+        writer.writeCollectionOfEnumValues("classification", this.getClassification());
         writer.writeStringValue("description", this.getDescription());
         writer.writeStringValue("expirationDate", this.getExpirationDate());
         writer.writeObjectValue("moderation", this.getModeration());
         writer.writeCollectionOfObjectValues("playLists", this.getPlayLists());
         writer.writeIntegerValue("size", this.getSize());
-        writer.writeStringValue("status", this.getStatus());
+        writer.writeEnumValue("status", this.getStatus());
         writer.writeStringValue("statusMessage", this.getStatusMessage());
         writer.writeObjectValue("thumbnail", this.getThumbnail());
         writer.writeStringValue("title", this.getTitle());
@@ -233,14 +233,14 @@ public class Video implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the classification property value. The intended use for this video content. Currently, videos can only be added and associated with eBay listings, so the only supported value is &lt;code&gt;ITEM&lt;/code&gt;.
+     * Sets the classification property value. The intended use for this video content. Currently, videos can only be added and associated with eBay listings, so the only supported value is &lt;code&gt;ITEM&lt;/code&gt;. This array is always returned.
      * @param value Value to set for the classification property.
      */
-    public void setClassification(@jakarta.annotation.Nullable final java.util.List<String> value) {
+    public void setClassification(@jakarta.annotation.Nullable final java.util.List<Classification> value) {
         this.classification = value;
     }
     /**
-     * Sets the description property value. The description of the video. The video description is an optional field that can be set using the &lt;a href=&quot; /api-docs/commerce/media/resources/video/methods/createVideo&quot; target=&quot;_blank&quot;&gt;createVideo&lt;/a&gt; method.
+     * Sets the description property value. The description of the video. The video description is an optional field that can be set using the &lt;a href=&quot; /develop/api/sell/media_api#sell-media_api-video-createvideo&quot;&gt;createVideo&lt;/a&gt; method.
      * @param value Value to set for the description property.
      */
     public void setDescription(@jakarta.annotation.Nullable final String value) {
@@ -254,49 +254,49 @@ public class Video implements AdditionalDataHolder, Parsable {
         this.expirationDate = value;
     }
     /**
-     * Sets the moderation property value. A container that provides video moderation information when calling the &lt;strong&gt;getVideo&lt;/strong&gt; method.&lt;br /&gt;&lt;br /&gt;This container is returned if the specified video has been blocked by moderators.&lt;br /&gt;&lt;br /&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;span style=&quot;color:#478415&quot;&gt;&lt;strong&gt;Tip:&lt;/strong&gt;&lt;/span&gt; See &lt;a href=&quot;https://www.ebay.com/help/selling/listings/creating-managing-listings/add-video-to-listing?id=5272#section2&quot; target=&quot;_blank&quot;&gt;Video moderation and restrictions&lt;/a&gt; in the eBay Seller Center for details about video moderation.&lt;/span&gt;
+     * Sets the moderation property value. The video moderation information that is returned if a video is blocked by moderators.&lt;br /&gt;&lt;br /&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;span style=&quot;color:#478415&quot;&gt;&lt;strong&gt;Tip:&lt;/strong&gt;&lt;/span&gt; See &lt;a href=&quot;https://www.ebay.com/help/selling/listings/creating-managing-listings/add-video-to-listing?id=5272#section2&quot; target=&quot;_blank&quot;&gt;Video moderation and restrictions&lt;/a&gt; in the eBay Seller Center for details about video moderation.&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;If the video status is &lt;code&gt;BLOCKED&lt;/code&gt;, ensure that the video complies with eBay&apos;s video formatting and content guidelines. Afterwards, begin the video creation and upload procedure anew using the &lt;strong&gt;createVideo&lt;/strong&gt; and &lt;strong&gt;uploadVideo&lt;/strong&gt; methods.
      * @param value Value to set for the moderation property.
      */
     public void setModeration(@jakarta.annotation.Nullable final Moderation value) {
         this.moderation = value;
     }
     /**
-     * Sets the playLists property value. The playlist created for the uploaded video, which provides the streaming video URLs to play the video. The supported streaming video protocols are DASH (Dynamic Adaptive Streaming over HTTP) and HLS (HTTPLive Streaming). The playlist will only be generated if a video is successfully uploaded with a status of &lt;code&gt;LIVE&lt;/code&gt;.
+     * Sets the playLists property value. The playlist created for the uploaded video, which provides the streaming video URLs to play the video. The supported streaming video protocols are DASH (Dynamic Adaptive Streaming over HTTP) and HLS (HTTP Live Streaming). The playlist will only be generated if a video is successfully uploaded with a status of &lt;code&gt;LIVE&lt;/code&gt;.
      * @param value Value to set for the playLists property.
      */
     public void setPlayLists(@jakarta.annotation.Nullable final java.util.List<Play> value) {
         this.playLists = value;
     }
     /**
-     * Sets the size property value. The size, in bytes, of the video content.
+     * Sets the size property value. The size, in bytes, of the video content. This field is always returned.
      * @param value Value to set for the size property.
      */
     public void setSize(@jakarta.annotation.Nullable final Integer value) {
         this.size = value;
     }
     /**
-     * Sets the status property value. The status of the current video resource. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/commerce/media/types/api:VideoStatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the status property value. The status of the current video resource.
      * @param value Value to set for the status property.
      */
-    public void setStatus(@jakarta.annotation.Nullable final String value) {
+    public void setStatus(@jakarta.annotation.Nullable final VideoStatusEnum value) {
         this.status = value;
     }
     /**
-     * Sets the statusMessage property value. The &lt;b&gt;statusMessage&lt;/b&gt; field contains additional information on the status. For example, information on why processing might have failed or if the video was blocked.
+     * Sets the statusMessage property value. The &lt;strong&gt;statusMessage&lt;/strong&gt; field contains additional information on the status. For example, information on why processing might have failed or if the video was blocked.
      * @param value Value to set for the statusMessage property.
      */
     public void setStatusMessage(@jakarta.annotation.Nullable final String value) {
         this.statusMessage = value;
     }
     /**
-     * Sets the thumbnail property value. A type that provides the location of the image.
+     * Sets the thumbnail property value. The URL of the thumbnail image of the video. The thumbnail image&apos;s URL must be an eBayPictureURL (EPS URL).
      * @param value Value to set for the thumbnail property.
      */
     public void setThumbnail(@jakarta.annotation.Nullable final Image value) {
         this.thumbnail = value;
     }
     /**
-     * Sets the title property value. The title of the video.
+     * Sets the title property value. The title of the video. This field is always returned.
      * @param value Value to set for the title property.
      */
     public void setTitle(@jakarta.annotation.Nullable final String value) {

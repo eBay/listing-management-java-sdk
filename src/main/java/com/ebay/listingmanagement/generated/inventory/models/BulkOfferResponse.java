@@ -31,7 +31,7 @@ public class BulkOfferResponse implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * The responses property
+     * This object contains the responses that show the status of each offer that the seller attempted to create with the method call.
      */
     private java.util.List<OfferSkuResponse> responses;
     /**
@@ -69,7 +69,7 @@ public class BulkOfferResponse implements AdditionalDataHolder, Parsable {
         return deserializerMap;
     }
     /**
-     * Gets the responses property value. The responses property
+     * Gets the responses property value. This object contains the responses that show the status of each offer that the seller attempted to create with the method call.
      * @return a {@link java.util.List<OfferSkuResponse>}
      */
     @jakarta.annotation.Nullable
@@ -93,7 +93,7 @@ public class BulkOfferResponse implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the responses property value. The responses property
+     * Sets the responses property value. This object contains the responses that show the status of each offer that the seller attempted to create with the method call.
      * @param value Value to set for the responses property.
      */
     public void setResponses(@jakarta.annotation.Nullable final java.util.List<OfferSkuResponse> value) {

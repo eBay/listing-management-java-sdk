@@ -21,6 +21,9 @@ import com.microsoft.kiota.serialization.SerializationWriter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+/**
+ * This type is used to provide details of a single inventory item.
+ */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class InventoryItemWithSkuLocaleGroupid implements AdditionalDataHolder, Parsable {
     /**
@@ -28,19 +31,19 @@ public class InventoryItemWithSkuLocaleGroupid implements AdditionalDataHolder, 
      */
     private Map<String, Object> additionalData;
     /**
-     * This type is used to specify the quantity of the inventory items that are available for purchase if the items will be shipped to the buyer, and the quantity of the inventory items that are available for In-Store Pickup at one or more of the merchant&apos;s physical stores.&lt;br&gt;&lt;br&gt;In-Store Pickup is only available to large merchants selling on the US, UK, Germany, and Australia sites.
+     * This container is used to specify the quantity of the inventory item that are available for purchase if the item will be shipped to the buyer, and the quantity of the inventory item that are available for In-Store Pickup at one or more of the merchant&apos;s physical stores.
      */
     private AvailabilityWithAll availability;
     /**
-     * This enumeration value indicates the condition of the item. Supported item condition values will vary by eBay site and category. &lt;br&gt;&lt;br&gt;Since the condition of an inventory item must be specified before being published in an offer, this field is always returned in the &apos;Get&apos; calls for SKUs that are part of a published offer. If a SKU is not part of a published offer, this field will only be returned if set for the inventory item. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/slr:ConditionEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This enumeration value indicates the condition of the item. Supported item condition values will vary by eBay site and category.&lt;br&gt;&lt;br&gt;Since the condition of an inventory item must be specified before being published in an offer, this field is always returned in the &apos;Get&apos; calls for SKUs that are part of a published offer. If a SKU is not part of a published offer, this field will only be returned if set for the inventory item.
      */
-    private String condition;
+    private ConditionEnum condition;
     /**
-     * This string field is used by the seller to more clearly describe the condition of used items, or items that are not &apos;Brand New&apos;, &apos;New with tags&apos;, or &apos;New in box&apos;. The ConditionDescription field is available for all categories. If the ConditionDescription field is used with an item in a new condition (Condition IDs 1000-1499), eBay will simply ignore this field if included, and eBay will return a warning message to the user. This field should only be used to further clarify the condition of the used item. It should not be used for branding, promotions, shipping, returns, payment or other information unrelated to the condition of the item. Make sure that the condition value, condition description, listing description, and the item&apos;s pictures do not contradict one another.&lt;br&gt;&lt;br&gt;&lt;strong&gt;Max length&lt;/strong&gt;: 1000
+     * This string field is used by the seller to more clearly describe the condition of used items, or items that are not &apos;Brand New&apos;, &apos;New with tags&apos;, or &apos;New in box&apos;. The ConditionDescription field is available for all categories. If the ConditionDescription field is used with an item in a new condition (Condition IDs 1000-1499), eBay will simply ignore this field if included, and eBay will return a warning message to the user. This field should only be used to further clarify the condition of the used item. It should not be used for branding, promotions, shipping, returns, payment or other information unrelated to the condition of the item. Make sure that the condition value, condition description, listing description, and the item&apos;s pictures do not contradict one another.&lt;br&gt;&lt;br&gt;&lt;strong&gt;Maximum length&lt;/strong&gt;: 1000
      */
     private String conditionDescription;
     /**
-     * This container is used by the seller to provide additional information about the condition of an item in a structured format. Descriptors are name-value attributes that can be either closed set or open text.&lt;br&gt;&lt;br&gt;For trading card listings in &lt;b&gt;Non-Sport Trading Card Singles&lt;/b&gt; (183050), &lt;b&gt;CCG Individual Cards&lt;/b&gt; (183454), and &lt;b&gt;Sports Trading Card Singles&lt;/b&gt; (261328) categories, sellers must use either &lt;code&gt;LIKE_NEW&lt;/code&gt; (2750) or &lt;code&gt;USED_VERY_GOOD&lt;/code&gt; (4000) item condition to specify the card as &lt;b&gt;Graded&lt;/b&gt; or &lt;b&gt;Ungraded&lt;/b&gt;, respectively. Use of either of these conditions requires the seller to use this array to provide one or more applicable Condition Descriptor name-value pairs.&lt;br&gt;&lt;br&gt;For more information on the numeric IDs and their text equivalents, use the &lt;a href=&quot;/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies&quot; target=&quot;_blank&quot;&gt;getItemConditionPolicies&lt;/a&gt; method of the Metadata API.
+     * This container is used by the seller to provide additional information about the condition of an item in a structured format. Condition descriptors are name-value attributes that can be either closed set or open text.&lt;br&gt;&lt;br&gt;For trading card coin listings in applicable categories, sellers must use either &lt;code&gt;LIKE_NEW&lt;/code&gt; (2750) or &lt;code&gt;USED_VERY_GOOD&lt;/code&gt; (4000) item condition to specify the item as &lt;b&gt;Graded&lt;/b&gt; or &lt;b&gt;Ungraded&lt;/b&gt;, respectively. Use of either of these conditions requires the seller to use this array to provide one or more applicable Condition Descriptor name-value pairs.&lt;br&gt;&lt;br&gt;retrieve all condition descriptor numeric IDs for a category, use the &lt;a href=&quot;/develop/api/sell/metadata_api#sell-metadata_api-marketplace-getitemconditionpolicies&quot; target=&quot;_blank&quot;&gt;getItemConditionPolicies&lt;/a&gt; method of the Metadata API.
      */
     private java.util.List<ConditionDescriptor> conditionDescriptors;
     /**
@@ -52,15 +55,15 @@ public class InventoryItemWithSkuLocaleGroupid implements AdditionalDataHolder, 
      */
     private java.util.List<String> inventoryItemGroupKeys;
     /**
-     * This field returns the natural language that was provided in the field values of the request payload (i.e., en_AU, en_GB or de_DE). For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/slr:LocaleEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This field returns the natural language that was provided in the field values of the request payload (i.e., en_AU, en_GB or de_DE).
      */
-    private String locale;
+    private LocaleEnum locale;
     /**
-     * This type is used to indicate the package type, weight, and dimensions of the shipping package. Package weight and dimensions are required when calculated shipping rates are used, and weight alone is required when flat-rate shipping is used, but with a weight surcharge. See the &lt;a href=&quot;https://pages.ebay.com/help/pay/calculated-shipping.html &quot; target=&quot;_blank&quot;&gt;Calculated shipping&lt;/a&gt; help page for more information on calculated shipping.
+     * This container is used to specify the dimensions and weight of a shipping package.
      */
     private PackageWeightAndSize packageWeightAndSize;
     /**
-     * This type is used to define the product details, such as a title, a product description, product aspects/item specifics, and links to images for the product. Optionally, in a &lt;strong&gt;createOrReplaceInventoryItem&lt;/strong&gt; call, a seller can pass in an eBay Product Identifier (ePID) or a Global Trade Item Number (GTIN) value, such as an EAN, an ISBN, a UPC, to identify a product to be matched with a product in the eBay Catalog. The information in this type is also returned in the &lt;strong&gt;getInventoryItem&lt;/strong&gt;, &lt;strong&gt;getInventoryItems&lt;/strong&gt;, and &lt;strong&gt;bulkGetInventoryItem&lt;/strong&gt; calls if defined.
+     * This container is used in a &lt;strong&gt;createOrReplaceInventoryItem&lt;/strong&gt; call to pass in a Global Trade Item Number (GTIN) or a Brand and Manufacturer Part Number (MPN) pair to identify a product to be matched with a product in the eBay catalog. If a match is found in the eBay product catalog, the inventory item is automatically populated with available product details such as a title, a subtitle, a product description, item specifics, and links to stock images for the product.
      */
     private Product product;
     /**
@@ -92,7 +95,7 @@ public class InventoryItemWithSkuLocaleGroupid implements AdditionalDataHolder, 
         return this.additionalData;
     }
     /**
-     * Gets the availability property value. This type is used to specify the quantity of the inventory items that are available for purchase if the items will be shipped to the buyer, and the quantity of the inventory items that are available for In-Store Pickup at one or more of the merchant&apos;s physical stores.&lt;br&gt;&lt;br&gt;In-Store Pickup is only available to large merchants selling on the US, UK, Germany, and Australia sites.
+     * Gets the availability property value. This container is used to specify the quantity of the inventory item that are available for purchase if the item will be shipped to the buyer, and the quantity of the inventory item that are available for In-Store Pickup at one or more of the merchant&apos;s physical stores.
      * @return a {@link AvailabilityWithAll}
      */
     @jakarta.annotation.Nullable
@@ -100,15 +103,15 @@ public class InventoryItemWithSkuLocaleGroupid implements AdditionalDataHolder, 
         return this.availability;
     }
     /**
-     * Gets the condition property value. This enumeration value indicates the condition of the item. Supported item condition values will vary by eBay site and category. &lt;br&gt;&lt;br&gt;Since the condition of an inventory item must be specified before being published in an offer, this field is always returned in the &apos;Get&apos; calls for SKUs that are part of a published offer. If a SKU is not part of a published offer, this field will only be returned if set for the inventory item. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/slr:ConditionEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the condition property value. This enumeration value indicates the condition of the item. Supported item condition values will vary by eBay site and category.&lt;br&gt;&lt;br&gt;Since the condition of an inventory item must be specified before being published in an offer, this field is always returned in the &apos;Get&apos; calls for SKUs that are part of a published offer. If a SKU is not part of a published offer, this field will only be returned if set for the inventory item.
+     * @return a {@link ConditionEnum}
      */
     @jakarta.annotation.Nullable
-    public String getCondition() {
+    public ConditionEnum getCondition() {
         return this.condition;
     }
     /**
-     * Gets the conditionDescription property value. This string field is used by the seller to more clearly describe the condition of used items, or items that are not &apos;Brand New&apos;, &apos;New with tags&apos;, or &apos;New in box&apos;. The ConditionDescription field is available for all categories. If the ConditionDescription field is used with an item in a new condition (Condition IDs 1000-1499), eBay will simply ignore this field if included, and eBay will return a warning message to the user. This field should only be used to further clarify the condition of the used item. It should not be used for branding, promotions, shipping, returns, payment or other information unrelated to the condition of the item. Make sure that the condition value, condition description, listing description, and the item&apos;s pictures do not contradict one another.&lt;br&gt;&lt;br&gt;&lt;strong&gt;Max length&lt;/strong&gt;: 1000
+     * Gets the conditionDescription property value. This string field is used by the seller to more clearly describe the condition of used items, or items that are not &apos;Brand New&apos;, &apos;New with tags&apos;, or &apos;New in box&apos;. The ConditionDescription field is available for all categories. If the ConditionDescription field is used with an item in a new condition (Condition IDs 1000-1499), eBay will simply ignore this field if included, and eBay will return a warning message to the user. This field should only be used to further clarify the condition of the used item. It should not be used for branding, promotions, shipping, returns, payment or other information unrelated to the condition of the item. Make sure that the condition value, condition description, listing description, and the item&apos;s pictures do not contradict one another.&lt;br&gt;&lt;br&gt;&lt;strong&gt;Maximum length&lt;/strong&gt;: 1000
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -116,7 +119,7 @@ public class InventoryItemWithSkuLocaleGroupid implements AdditionalDataHolder, 
         return this.conditionDescription;
     }
     /**
-     * Gets the conditionDescriptors property value. This container is used by the seller to provide additional information about the condition of an item in a structured format. Descriptors are name-value attributes that can be either closed set or open text.&lt;br&gt;&lt;br&gt;For trading card listings in &lt;b&gt;Non-Sport Trading Card Singles&lt;/b&gt; (183050), &lt;b&gt;CCG Individual Cards&lt;/b&gt; (183454), and &lt;b&gt;Sports Trading Card Singles&lt;/b&gt; (261328) categories, sellers must use either &lt;code&gt;LIKE_NEW&lt;/code&gt; (2750) or &lt;code&gt;USED_VERY_GOOD&lt;/code&gt; (4000) item condition to specify the card as &lt;b&gt;Graded&lt;/b&gt; or &lt;b&gt;Ungraded&lt;/b&gt;, respectively. Use of either of these conditions requires the seller to use this array to provide one or more applicable Condition Descriptor name-value pairs.&lt;br&gt;&lt;br&gt;For more information on the numeric IDs and their text equivalents, use the &lt;a href=&quot;/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies&quot; target=&quot;_blank&quot;&gt;getItemConditionPolicies&lt;/a&gt; method of the Metadata API.
+     * Gets the conditionDescriptors property value. This container is used by the seller to provide additional information about the condition of an item in a structured format. Condition descriptors are name-value attributes that can be either closed set or open text.&lt;br&gt;&lt;br&gt;For trading card coin listings in applicable categories, sellers must use either &lt;code&gt;LIKE_NEW&lt;/code&gt; (2750) or &lt;code&gt;USED_VERY_GOOD&lt;/code&gt; (4000) item condition to specify the item as &lt;b&gt;Graded&lt;/b&gt; or &lt;b&gt;Ungraded&lt;/b&gt;, respectively. Use of either of these conditions requires the seller to use this array to provide one or more applicable Condition Descriptor name-value pairs.&lt;br&gt;&lt;br&gt;retrieve all condition descriptor numeric IDs for a category, use the &lt;a href=&quot;/develop/api/sell/metadata_api#sell-metadata_api-marketplace-getitemconditionpolicies&quot; target=&quot;_blank&quot;&gt;getItemConditionPolicies&lt;/a&gt; method of the Metadata API.
      * @return a {@link java.util.List<ConditionDescriptor>}
      */
     @jakarta.annotation.Nullable
@@ -131,12 +134,12 @@ public class InventoryItemWithSkuLocaleGroupid implements AdditionalDataHolder, 
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(10);
         deserializerMap.put("availability", (n) -> { this.setAvailability(n.getObjectValue(AvailabilityWithAll::createFromDiscriminatorValue)); });
-        deserializerMap.put("condition", (n) -> { this.setCondition(n.getStringValue()); });
+        deserializerMap.put("condition", (n) -> { this.setCondition(n.getEnumValue(ConditionEnum::forValue)); });
         deserializerMap.put("conditionDescription", (n) -> { this.setConditionDescription(n.getStringValue()); });
         deserializerMap.put("conditionDescriptors", (n) -> { this.setConditionDescriptors(n.getCollectionOfObjectValues(ConditionDescriptor::createFromDiscriminatorValue)); });
         deserializerMap.put("groupIds", (n) -> { this.setGroupIds(n.getCollectionOfPrimitiveValues(String.class)); });
         deserializerMap.put("inventoryItemGroupKeys", (n) -> { this.setInventoryItemGroupKeys(n.getCollectionOfPrimitiveValues(String.class)); });
-        deserializerMap.put("locale", (n) -> { this.setLocale(n.getStringValue()); });
+        deserializerMap.put("locale", (n) -> { this.setLocale(n.getEnumValue(LocaleEnum::forValue)); });
         deserializerMap.put("packageWeightAndSize", (n) -> { this.setPackageWeightAndSize(n.getObjectValue(PackageWeightAndSize::createFromDiscriminatorValue)); });
         deserializerMap.put("product", (n) -> { this.setProduct(n.getObjectValue(Product::createFromDiscriminatorValue)); });
         deserializerMap.put("sku", (n) -> { this.setSku(n.getStringValue()); });
@@ -159,15 +162,15 @@ public class InventoryItemWithSkuLocaleGroupid implements AdditionalDataHolder, 
         return this.inventoryItemGroupKeys;
     }
     /**
-     * Gets the locale property value. This field returns the natural language that was provided in the field values of the request payload (i.e., en_AU, en_GB or de_DE). For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/slr:LocaleEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the locale property value. This field returns the natural language that was provided in the field values of the request payload (i.e., en_AU, en_GB or de_DE).
+     * @return a {@link LocaleEnum}
      */
     @jakarta.annotation.Nullable
-    public String getLocale() {
+    public LocaleEnum getLocale() {
         return this.locale;
     }
     /**
-     * Gets the packageWeightAndSize property value. This type is used to indicate the package type, weight, and dimensions of the shipping package. Package weight and dimensions are required when calculated shipping rates are used, and weight alone is required when flat-rate shipping is used, but with a weight surcharge. See the &lt;a href=&quot;https://pages.ebay.com/help/pay/calculated-shipping.html &quot; target=&quot;_blank&quot;&gt;Calculated shipping&lt;/a&gt; help page for more information on calculated shipping.
+     * Gets the packageWeightAndSize property value. This container is used to specify the dimensions and weight of a shipping package.
      * @return a {@link PackageWeightAndSize}
      */
     @jakarta.annotation.Nullable
@@ -175,7 +178,7 @@ public class InventoryItemWithSkuLocaleGroupid implements AdditionalDataHolder, 
         return this.packageWeightAndSize;
     }
     /**
-     * Gets the product property value. This type is used to define the product details, such as a title, a product description, product aspects/item specifics, and links to images for the product. Optionally, in a &lt;strong&gt;createOrReplaceInventoryItem&lt;/strong&gt; call, a seller can pass in an eBay Product Identifier (ePID) or a Global Trade Item Number (GTIN) value, such as an EAN, an ISBN, a UPC, to identify a product to be matched with a product in the eBay Catalog. The information in this type is also returned in the &lt;strong&gt;getInventoryItem&lt;/strong&gt;, &lt;strong&gt;getInventoryItems&lt;/strong&gt;, and &lt;strong&gt;bulkGetInventoryItem&lt;/strong&gt; calls if defined.
+     * Gets the product property value. This container is used in a &lt;strong&gt;createOrReplaceInventoryItem&lt;/strong&gt; call to pass in a Global Trade Item Number (GTIN) or a Brand and Manufacturer Part Number (MPN) pair to identify a product to be matched with a product in the eBay catalog. If a match is found in the eBay product catalog, the inventory item is automatically populated with available product details such as a title, a subtitle, a product description, item specifics, and links to stock images for the product.
      * @return a {@link Product}
      */
     @jakarta.annotation.Nullable
@@ -197,12 +200,12 @@ public class InventoryItemWithSkuLocaleGroupid implements AdditionalDataHolder, 
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         writer.writeObjectValue("availability", this.getAvailability());
-        writer.writeStringValue("condition", this.getCondition());
+        writer.writeEnumValue("condition", this.getCondition());
         writer.writeStringValue("conditionDescription", this.getConditionDescription());
         writer.writeCollectionOfObjectValues("conditionDescriptors", this.getConditionDescriptors());
         writer.writeCollectionOfPrimitiveValues("groupIds", this.getGroupIds());
         writer.writeCollectionOfPrimitiveValues("inventoryItemGroupKeys", this.getInventoryItemGroupKeys());
-        writer.writeStringValue("locale", this.getLocale());
+        writer.writeEnumValue("locale", this.getLocale());
         writer.writeObjectValue("packageWeightAndSize", this.getPackageWeightAndSize());
         writer.writeObjectValue("product", this.getProduct());
         writer.writeStringValue("sku", this.getSku());
@@ -216,28 +219,28 @@ public class InventoryItemWithSkuLocaleGroupid implements AdditionalDataHolder, 
         this.additionalData = value;
     }
     /**
-     * Sets the availability property value. This type is used to specify the quantity of the inventory items that are available for purchase if the items will be shipped to the buyer, and the quantity of the inventory items that are available for In-Store Pickup at one or more of the merchant&apos;s physical stores.&lt;br&gt;&lt;br&gt;In-Store Pickup is only available to large merchants selling on the US, UK, Germany, and Australia sites.
+     * Sets the availability property value. This container is used to specify the quantity of the inventory item that are available for purchase if the item will be shipped to the buyer, and the quantity of the inventory item that are available for In-Store Pickup at one or more of the merchant&apos;s physical stores.
      * @param value Value to set for the availability property.
      */
     public void setAvailability(@jakarta.annotation.Nullable final AvailabilityWithAll value) {
         this.availability = value;
     }
     /**
-     * Sets the condition property value. This enumeration value indicates the condition of the item. Supported item condition values will vary by eBay site and category. &lt;br&gt;&lt;br&gt;Since the condition of an inventory item must be specified before being published in an offer, this field is always returned in the &apos;Get&apos; calls for SKUs that are part of a published offer. If a SKU is not part of a published offer, this field will only be returned if set for the inventory item. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/slr:ConditionEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the condition property value. This enumeration value indicates the condition of the item. Supported item condition values will vary by eBay site and category.&lt;br&gt;&lt;br&gt;Since the condition of an inventory item must be specified before being published in an offer, this field is always returned in the &apos;Get&apos; calls for SKUs that are part of a published offer. If a SKU is not part of a published offer, this field will only be returned if set for the inventory item.
      * @param value Value to set for the condition property.
      */
-    public void setCondition(@jakarta.annotation.Nullable final String value) {
+    public void setCondition(@jakarta.annotation.Nullable final ConditionEnum value) {
         this.condition = value;
     }
     /**
-     * Sets the conditionDescription property value. This string field is used by the seller to more clearly describe the condition of used items, or items that are not &apos;Brand New&apos;, &apos;New with tags&apos;, or &apos;New in box&apos;. The ConditionDescription field is available for all categories. If the ConditionDescription field is used with an item in a new condition (Condition IDs 1000-1499), eBay will simply ignore this field if included, and eBay will return a warning message to the user. This field should only be used to further clarify the condition of the used item. It should not be used for branding, promotions, shipping, returns, payment or other information unrelated to the condition of the item. Make sure that the condition value, condition description, listing description, and the item&apos;s pictures do not contradict one another.&lt;br&gt;&lt;br&gt;&lt;strong&gt;Max length&lt;/strong&gt;: 1000
+     * Sets the conditionDescription property value. This string field is used by the seller to more clearly describe the condition of used items, or items that are not &apos;Brand New&apos;, &apos;New with tags&apos;, or &apos;New in box&apos;. The ConditionDescription field is available for all categories. If the ConditionDescription field is used with an item in a new condition (Condition IDs 1000-1499), eBay will simply ignore this field if included, and eBay will return a warning message to the user. This field should only be used to further clarify the condition of the used item. It should not be used for branding, promotions, shipping, returns, payment or other information unrelated to the condition of the item. Make sure that the condition value, condition description, listing description, and the item&apos;s pictures do not contradict one another.&lt;br&gt;&lt;br&gt;&lt;strong&gt;Maximum length&lt;/strong&gt;: 1000
      * @param value Value to set for the conditionDescription property.
      */
     public void setConditionDescription(@jakarta.annotation.Nullable final String value) {
         this.conditionDescription = value;
     }
     /**
-     * Sets the conditionDescriptors property value. This container is used by the seller to provide additional information about the condition of an item in a structured format. Descriptors are name-value attributes that can be either closed set or open text.&lt;br&gt;&lt;br&gt;For trading card listings in &lt;b&gt;Non-Sport Trading Card Singles&lt;/b&gt; (183050), &lt;b&gt;CCG Individual Cards&lt;/b&gt; (183454), and &lt;b&gt;Sports Trading Card Singles&lt;/b&gt; (261328) categories, sellers must use either &lt;code&gt;LIKE_NEW&lt;/code&gt; (2750) or &lt;code&gt;USED_VERY_GOOD&lt;/code&gt; (4000) item condition to specify the card as &lt;b&gt;Graded&lt;/b&gt; or &lt;b&gt;Ungraded&lt;/b&gt;, respectively. Use of either of these conditions requires the seller to use this array to provide one or more applicable Condition Descriptor name-value pairs.&lt;br&gt;&lt;br&gt;For more information on the numeric IDs and their text equivalents, use the &lt;a href=&quot;/api-docs/sell/metadata/resources/marketplace/methods/getItemConditionPolicies&quot; target=&quot;_blank&quot;&gt;getItemConditionPolicies&lt;/a&gt; method of the Metadata API.
+     * Sets the conditionDescriptors property value. This container is used by the seller to provide additional information about the condition of an item in a structured format. Condition descriptors are name-value attributes that can be either closed set or open text.&lt;br&gt;&lt;br&gt;For trading card coin listings in applicable categories, sellers must use either &lt;code&gt;LIKE_NEW&lt;/code&gt; (2750) or &lt;code&gt;USED_VERY_GOOD&lt;/code&gt; (4000) item condition to specify the item as &lt;b&gt;Graded&lt;/b&gt; or &lt;b&gt;Ungraded&lt;/b&gt;, respectively. Use of either of these conditions requires the seller to use this array to provide one or more applicable Condition Descriptor name-value pairs.&lt;br&gt;&lt;br&gt;retrieve all condition descriptor numeric IDs for a category, use the &lt;a href=&quot;/develop/api/sell/metadata_api#sell-metadata_api-marketplace-getitemconditionpolicies&quot; target=&quot;_blank&quot;&gt;getItemConditionPolicies&lt;/a&gt; method of the Metadata API.
      * @param value Value to set for the conditionDescriptors property.
      */
     public void setConditionDescriptors(@jakarta.annotation.Nullable final java.util.List<ConditionDescriptor> value) {
@@ -258,21 +261,21 @@ public class InventoryItemWithSkuLocaleGroupid implements AdditionalDataHolder, 
         this.inventoryItemGroupKeys = value;
     }
     /**
-     * Sets the locale property value. This field returns the natural language that was provided in the field values of the request payload (i.e., en_AU, en_GB or de_DE). For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/slr:LocaleEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the locale property value. This field returns the natural language that was provided in the field values of the request payload (i.e., en_AU, en_GB or de_DE).
      * @param value Value to set for the locale property.
      */
-    public void setLocale(@jakarta.annotation.Nullable final String value) {
+    public void setLocale(@jakarta.annotation.Nullable final LocaleEnum value) {
         this.locale = value;
     }
     /**
-     * Sets the packageWeightAndSize property value. This type is used to indicate the package type, weight, and dimensions of the shipping package. Package weight and dimensions are required when calculated shipping rates are used, and weight alone is required when flat-rate shipping is used, but with a weight surcharge. See the &lt;a href=&quot;https://pages.ebay.com/help/pay/calculated-shipping.html &quot; target=&quot;_blank&quot;&gt;Calculated shipping&lt;/a&gt; help page for more information on calculated shipping.
+     * Sets the packageWeightAndSize property value. This container is used to specify the dimensions and weight of a shipping package.
      * @param value Value to set for the packageWeightAndSize property.
      */
     public void setPackageWeightAndSize(@jakarta.annotation.Nullable final PackageWeightAndSize value) {
         this.packageWeightAndSize = value;
     }
     /**
-     * Sets the product property value. This type is used to define the product details, such as a title, a product description, product aspects/item specifics, and links to images for the product. Optionally, in a &lt;strong&gt;createOrReplaceInventoryItem&lt;/strong&gt; call, a seller can pass in an eBay Product Identifier (ePID) or a Global Trade Item Number (GTIN) value, such as an EAN, an ISBN, a UPC, to identify a product to be matched with a product in the eBay Catalog. The information in this type is also returned in the &lt;strong&gt;getInventoryItem&lt;/strong&gt;, &lt;strong&gt;getInventoryItems&lt;/strong&gt;, and &lt;strong&gt;bulkGetInventoryItem&lt;/strong&gt; calls if defined.
+     * Sets the product property value. This container is used in a &lt;strong&gt;createOrReplaceInventoryItem&lt;/strong&gt; call to pass in a Global Trade Item Number (GTIN) or a Brand and Manufacturer Part Number (MPN) pair to identify a product to be matched with a product in the eBay catalog. If a match is found in the eBay product catalog, the inventory item is automatically populated with available product details such as a title, a subtitle, a product description, item specifics, and links to stock images for the product.
      * @param value Value to set for the product property.
      */
     public void setProduct(@jakarta.annotation.Nullable final Product value) {

@@ -1,0 +1,58 @@
+// Copyright 2026 eBay Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+package com.ebay.listingmanagement.generated.media.models;
+
+import com.microsoft.kiota.serialization.ValuedEnum;
+import java.util.Objects;
+
+/**
+ * This enumeration value indicates the language of the document. | - **ENGLISH**: The document is in English. - **SPANISH**: The document is in Spanish. - **ITALIAN**: The document is in Italian. - **GERMAN**: The document is in German. - **POLISH**: The document is in Polish. - **DUTCH**: The document is in Dutch. - **PORTUGESE**: &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; This enumeration value is deprecated. Use the &lt;code&gt;PORTUGUESE&lt;/code&gt; enum value instead when creating a document.&lt;/span&gt;&lt;br&gt;&lt;br&gt;The document is in Portuguese. - **PORTUGUESE**: The document is in Portuguese. - **FRENCH**: The document is in French. - **OTHER**: The document is in a language other than the ones specifically listed above.
+ */
+@jakarta.annotation.Generated("com.microsoft.kiota")
+public enum LanguageEnum implements ValuedEnum {
+    ENGLISH("ENGLISH"),
+    SPANISH("SPANISH"),
+    ITALIAN("ITALIAN"),
+    GERMAN("GERMAN"),
+    POLISH("POLISH"),
+    DUTCH("DUTCH"),
+    PORTUGESE("PORTUGESE"),
+    PORTUGUESE("PORTUGUESE"),
+    FRENCH("FRENCH"),
+    OTHER("OTHER");
+    public final String value;
+    LanguageEnum(final String value) {
+        this.value = value;
+    }
+    @jakarta.annotation.Nonnull
+    public String getValue() { return this.value; }
+    @jakarta.annotation.Nullable
+    public static LanguageEnum forValue(@jakarta.annotation.Nonnull final String searchValue) {
+        Objects.requireNonNull(searchValue);
+        switch(searchValue) {
+            case "ENGLISH": return ENGLISH;
+            case "SPANISH": return SPANISH;
+            case "ITALIAN": return ITALIAN;
+            case "GERMAN": return GERMAN;
+            case "POLISH": return POLISH;
+            case "DUTCH": return DUTCH;
+            case "PORTUGESE": return PORTUGESE;
+            case "PORTUGUESE": return PORTUGUESE;
+            case "FRENCH": return FRENCH;
+            case "OTHER": return OTHER;
+            default: return null;
+        }
+    }
+}

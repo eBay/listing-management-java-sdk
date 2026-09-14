@@ -37,7 +37,7 @@ public class PublishResponse implements AdditionalDataHolder, Parsable {
     /**
      * This container will contain an array of errors and/or warnings if any occur when a &lt;strong&gt;publishOffer&lt;/strong&gt; or &lt;strong&gt;publishOfferByInventoryItemGroup&lt;/strong&gt; call is made.
      */
-    private java.util.List<Error> warnings;
+    private java.util.List<ErrorDetailV3> warnings;
     /**
      * Instantiates a new {@link PublishResponse} and sets the default values.
      */
@@ -70,7 +70,7 @@ public class PublishResponse implements AdditionalDataHolder, Parsable {
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(2);
         deserializerMap.put("listingId", (n) -> { this.setListingId(n.getStringValue()); });
-        deserializerMap.put("warnings", (n) -> { this.setWarnings(n.getCollectionOfObjectValues(Error::createFromDiscriminatorValue)); });
+        deserializerMap.put("warnings", (n) -> { this.setWarnings(n.getCollectionOfObjectValues(ErrorDetailV3::createFromDiscriminatorValue)); });
         return deserializerMap;
     }
     /**
@@ -83,10 +83,10 @@ public class PublishResponse implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the warnings property value. This container will contain an array of errors and/or warnings if any occur when a &lt;strong&gt;publishOffer&lt;/strong&gt; or &lt;strong&gt;publishOfferByInventoryItemGroup&lt;/strong&gt; call is made.
-     * @return a {@link java.util.List<Error>}
+     * @return a {@link java.util.List<ErrorDetailV3>}
      */
     @jakarta.annotation.Nullable
-    public java.util.List<Error> getWarnings() {
+    public java.util.List<ErrorDetailV3> getWarnings() {
         return this.warnings;
     }
     /**
@@ -117,7 +117,7 @@ public class PublishResponse implements AdditionalDataHolder, Parsable {
      * Sets the warnings property value. This container will contain an array of errors and/or warnings if any occur when a &lt;strong&gt;publishOffer&lt;/strong&gt; or &lt;strong&gt;publishOfferByInventoryItemGroup&lt;/strong&gt; call is made.
      * @param value Value to set for the warnings property.
      */
-    public void setWarnings(@jakarta.annotation.Nullable final java.util.List<Error> value) {
+    public void setWarnings(@jakarta.annotation.Nullable final java.util.List<ErrorDetailV3> value) {
         this.warnings = value;
     }
 }

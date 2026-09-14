@@ -35,13 +35,13 @@ public class ListingDetails implements AdditionalDataHolder, Parsable {
      */
     private String listingId;
     /**
-     * Indicates if a listing is on hold due to an eBay policy violation.&lt;br&gt;&lt;p&gt;If a listing is put on hold, users are unable to view the listing details, the listing is hidden from search, and all attempted purchases, offers, and bids for the listing are blocked. eBay, however, gives sellers the opportunity to address violations and get listings fully reinstated. A listing will be ended if a seller does not address a violation, or if the violation can not be rectified.&lt;/p&gt;&lt;br&gt;&lt;p&gt;If a listing is fixable, the seller should be able to view the listing details and this boolean will be returned as true.&lt;/p&gt;&lt;br&gt;&lt;p&gt;Once a listing is fixed, this boolean will no longer be returned.&lt;/p&gt;
+     * Indicates if a listing is on hold due to an eBay policy violation.&lt;br&gt;&lt;br&gt;If a listing is put on hold, users are unable to view the listing details, the listing is hidden from search, and all attempted purchases, offers, and bids for the listing are blocked. eBay, however, gives sellers the opportunity to address violations and get listings fully reinstated. A listing will be ended if a seller does not address a violation, or if the violation can not be rectified.&lt;br&gt;&lt;br&gt;If a listing is fixable, the seller should be able to view the listing details and this boolean will be returned as true.&lt;br&gt;&lt;br&gt;Once a listing is fixed, this boolean will no longer be returned.
      */
     private Boolean listingOnHold;
     /**
-     * The enumeration value returned in this field indicates the status of the listing that is associated with the published offer. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/slr:ListingStatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * The enumeration value returned in this field indicates the status of the listing that is associated with the published offer.
      */
-    private String listingStatus;
+    private ListingStatusEnum listingStatus;
     /**
      * This integer value indicates the quantity of the product that has been sold for the published offer.
      */
@@ -79,7 +79,7 @@ public class ListingDetails implements AdditionalDataHolder, Parsable {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(4);
         deserializerMap.put("listingId", (n) -> { this.setListingId(n.getStringValue()); });
         deserializerMap.put("listingOnHold", (n) -> { this.setListingOnHold(n.getBooleanValue()); });
-        deserializerMap.put("listingStatus", (n) -> { this.setListingStatus(n.getStringValue()); });
+        deserializerMap.put("listingStatus", (n) -> { this.setListingStatus(n.getEnumValue(ListingStatusEnum::forValue)); });
         deserializerMap.put("soldQuantity", (n) -> { this.setSoldQuantity(n.getIntegerValue()); });
         return deserializerMap;
     }
@@ -92,7 +92,7 @@ public class ListingDetails implements AdditionalDataHolder, Parsable {
         return this.listingId;
     }
     /**
-     * Gets the listingOnHold property value. Indicates if a listing is on hold due to an eBay policy violation.&lt;br&gt;&lt;p&gt;If a listing is put on hold, users are unable to view the listing details, the listing is hidden from search, and all attempted purchases, offers, and bids for the listing are blocked. eBay, however, gives sellers the opportunity to address violations and get listings fully reinstated. A listing will be ended if a seller does not address a violation, or if the violation can not be rectified.&lt;/p&gt;&lt;br&gt;&lt;p&gt;If a listing is fixable, the seller should be able to view the listing details and this boolean will be returned as true.&lt;/p&gt;&lt;br&gt;&lt;p&gt;Once a listing is fixed, this boolean will no longer be returned.&lt;/p&gt;
+     * Gets the listingOnHold property value. Indicates if a listing is on hold due to an eBay policy violation.&lt;br&gt;&lt;br&gt;If a listing is put on hold, users are unable to view the listing details, the listing is hidden from search, and all attempted purchases, offers, and bids for the listing are blocked. eBay, however, gives sellers the opportunity to address violations and get listings fully reinstated. A listing will be ended if a seller does not address a violation, or if the violation can not be rectified.&lt;br&gt;&lt;br&gt;If a listing is fixable, the seller should be able to view the listing details and this boolean will be returned as true.&lt;br&gt;&lt;br&gt;Once a listing is fixed, this boolean will no longer be returned.
      * @return a {@link Boolean}
      */
     @jakarta.annotation.Nullable
@@ -100,11 +100,11 @@ public class ListingDetails implements AdditionalDataHolder, Parsable {
         return this.listingOnHold;
     }
     /**
-     * Gets the listingStatus property value. The enumeration value returned in this field indicates the status of the listing that is associated with the published offer. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/slr:ListingStatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the listingStatus property value. The enumeration value returned in this field indicates the status of the listing that is associated with the published offer.
+     * @return a {@link ListingStatusEnum}
      */
     @jakarta.annotation.Nullable
-    public String getListingStatus() {
+    public ListingStatusEnum getListingStatus() {
         return this.listingStatus;
     }
     /**
@@ -123,7 +123,7 @@ public class ListingDetails implements AdditionalDataHolder, Parsable {
         Objects.requireNonNull(writer);
         writer.writeStringValue("listingId", this.getListingId());
         writer.writeBooleanValue("listingOnHold", this.getListingOnHold());
-        writer.writeStringValue("listingStatus", this.getListingStatus());
+        writer.writeEnumValue("listingStatus", this.getListingStatus());
         writer.writeIntegerValue("soldQuantity", this.getSoldQuantity());
         writer.writeAdditionalData(this.getAdditionalData());
     }
@@ -142,17 +142,17 @@ public class ListingDetails implements AdditionalDataHolder, Parsable {
         this.listingId = value;
     }
     /**
-     * Sets the listingOnHold property value. Indicates if a listing is on hold due to an eBay policy violation.&lt;br&gt;&lt;p&gt;If a listing is put on hold, users are unable to view the listing details, the listing is hidden from search, and all attempted purchases, offers, and bids for the listing are blocked. eBay, however, gives sellers the opportunity to address violations and get listings fully reinstated. A listing will be ended if a seller does not address a violation, or if the violation can not be rectified.&lt;/p&gt;&lt;br&gt;&lt;p&gt;If a listing is fixable, the seller should be able to view the listing details and this boolean will be returned as true.&lt;/p&gt;&lt;br&gt;&lt;p&gt;Once a listing is fixed, this boolean will no longer be returned.&lt;/p&gt;
+     * Sets the listingOnHold property value. Indicates if a listing is on hold due to an eBay policy violation.&lt;br&gt;&lt;br&gt;If a listing is put on hold, users are unable to view the listing details, the listing is hidden from search, and all attempted purchases, offers, and bids for the listing are blocked. eBay, however, gives sellers the opportunity to address violations and get listings fully reinstated. A listing will be ended if a seller does not address a violation, or if the violation can not be rectified.&lt;br&gt;&lt;br&gt;If a listing is fixable, the seller should be able to view the listing details and this boolean will be returned as true.&lt;br&gt;&lt;br&gt;Once a listing is fixed, this boolean will no longer be returned.
      * @param value Value to set for the listingOnHold property.
      */
     public void setListingOnHold(@jakarta.annotation.Nullable final Boolean value) {
         this.listingOnHold = value;
     }
     /**
-     * Sets the listingStatus property value. The enumeration value returned in this field indicates the status of the listing that is associated with the published offer. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/slr:ListingStatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the listingStatus property value. The enumeration value returned in this field indicates the status of the listing that is associated with the published offer.
      * @param value Value to set for the listingStatus property.
      */
-    public void setListingStatus(@jakarta.annotation.Nullable final String value) {
+    public void setListingStatus(@jakarta.annotation.Nullable final ListingStatusEnum value) {
         this.listingStatus = value;
     }
     /**

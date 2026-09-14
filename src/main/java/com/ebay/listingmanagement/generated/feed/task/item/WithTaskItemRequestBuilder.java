@@ -14,6 +14,7 @@
 
 package com.ebay.listingmanagement.generated.feed.task.item;
 
+import com.ebay.listingmanagement.generated.feed.models.Error;
 import com.ebay.listingmanagement.generated.feed.models.Task;
 import com.ebay.listingmanagement.generated.feed.task.item.download_input_file.DownloadInputFileRequestBuilder;
 import com.ebay.listingmanagement.generated.feed.task.item.download_result_file.DownloadResultFileRequestBuilder;
@@ -76,25 +77,38 @@ public class WithTaskItemRequestBuilder extends BaseRequestBuilder {
         super(requestAdapter, "{+baseurl}/task/{task_id}", rawUrl);
     }
     /**
-     * This method retrieves the details and status of the specified task. The input is &lt;strong&gt;task_id&lt;/strong&gt;. &lt;br /&gt;&lt;br /&gt;For details of how this method is used, see &lt;a href=&quot;/api-docs/sell/static/orders/generating-and-retrieving-order-reports.html&quot;&gt;Working with Order Feeds&lt;/a&gt; in the Selling Integration Guide. 
+     * This method retrieves the details and status of the specified task. The input is &lt;strong&gt;task_id&lt;/strong&gt;. &lt;br /&gt;&lt;br /&gt;For details of how this method is used, see &lt;a href=&quot;/api-docs/sell/static/orders/generating-and-retrieving-order-reports.html&quot;&gt;Working with Order Feeds&lt;/a&gt; in the Selling Integration Guide.
      * @return a {@link Task}
+     * @throws Error When receiving a 401 status code
+     * @throws Error When receiving a 403 status code
+     * @throws Error When receiving a 404 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public Task get() {
         return get(null);
     }
     /**
-     * This method retrieves the details and status of the specified task. The input is &lt;strong&gt;task_id&lt;/strong&gt;. &lt;br /&gt;&lt;br /&gt;For details of how this method is used, see &lt;a href=&quot;/api-docs/sell/static/orders/generating-and-retrieving-order-reports.html&quot;&gt;Working with Order Feeds&lt;/a&gt; in the Selling Integration Guide. 
+     * This method retrieves the details and status of the specified task. The input is &lt;strong&gt;task_id&lt;/strong&gt;. &lt;br /&gt;&lt;br /&gt;For details of how this method is used, see &lt;a href=&quot;/api-docs/sell/static/orders/generating-and-retrieving-order-reports.html&quot;&gt;Working with Order Feeds&lt;/a&gt; in the Selling Integration Guide.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link Task}
+     * @throws Error When receiving a 401 status code
+     * @throws Error When receiving a 403 status code
+     * @throws Error When receiving a 404 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public Task get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
-        return this.requestAdapter.send(requestInfo, null, Task::createFromDiscriminatorValue);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("401", Error::createFromDiscriminatorValue);
+        errorMapping.put("403", Error::createFromDiscriminatorValue);
+        errorMapping.put("404", Error::createFromDiscriminatorValue);
+        errorMapping.put("500", Error::createFromDiscriminatorValue);
+        return this.requestAdapter.send(requestInfo, errorMapping, Task::createFromDiscriminatorValue);
     }
     /**
-     * This method retrieves the details and status of the specified task. The input is &lt;strong&gt;task_id&lt;/strong&gt;. &lt;br /&gt;&lt;br /&gt;For details of how this method is used, see &lt;a href=&quot;/api-docs/sell/static/orders/generating-and-retrieving-order-reports.html&quot;&gt;Working with Order Feeds&lt;/a&gt; in the Selling Integration Guide. 
+     * This method retrieves the details and status of the specified task. The input is &lt;strong&gt;task_id&lt;/strong&gt;. &lt;br /&gt;&lt;br /&gt;For details of how this method is used, see &lt;a href=&quot;/api-docs/sell/static/orders/generating-and-retrieving-order-reports.html&quot;&gt;Working with Order Feeds&lt;/a&gt; in the Selling Integration Guide.
      * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
@@ -102,7 +116,7 @@ public class WithTaskItemRequestBuilder extends BaseRequestBuilder {
         return toGetRequestInformation(null);
     }
     /**
-     * This method retrieves the details and status of the specified task. The input is &lt;strong&gt;task_id&lt;/strong&gt;. &lt;br /&gt;&lt;br /&gt;For details of how this method is used, see &lt;a href=&quot;/api-docs/sell/static/orders/generating-and-retrieving-order-reports.html&quot;&gt;Working with Order Feeds&lt;/a&gt; in the Selling Integration Guide. 
+     * This method retrieves the details and status of the specified task. The input is &lt;strong&gt;task_id&lt;/strong&gt;. &lt;br /&gt;&lt;br /&gt;For details of how this method is used, see &lt;a href=&quot;/api-docs/sell/static/orders/generating-and-retrieving-order-reports.html&quot;&gt;Working with Order Feeds&lt;/a&gt; in the Selling Integration Guide.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link RequestInformation}
      */

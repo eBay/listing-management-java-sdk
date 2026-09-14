@@ -35,13 +35,13 @@ public class FeeSummary implements AdditionalDataHolder, Parsable {
      */
     private java.util.List<Fee> fees;
     /**
-     * This is the unique identifier of the eBay site for which  listing fees for the offer are applicable. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/slr:MarketplaceEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This is the unique identifier of the eBay site for which  listing fees for the offer are applicable.
      */
-    private String marketplaceId;
+    private MarketplaceEnum marketplaceId;
     /**
      * This container will contain an array of errors and/or warnings when a call is made, and errors and/or warnings occur.
      */
-    private java.util.List<Error> warnings;
+    private java.util.List<ErrorDetailV3> warnings;
     /**
      * Instantiates a new {@link FeeSummary} and sets the default values.
      */
@@ -82,24 +82,24 @@ public class FeeSummary implements AdditionalDataHolder, Parsable {
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(3);
         deserializerMap.put("fees", (n) -> { this.setFees(n.getCollectionOfObjectValues(Fee::createFromDiscriminatorValue)); });
-        deserializerMap.put("marketplaceId", (n) -> { this.setMarketplaceId(n.getStringValue()); });
-        deserializerMap.put("warnings", (n) -> { this.setWarnings(n.getCollectionOfObjectValues(Error::createFromDiscriminatorValue)); });
+        deserializerMap.put("marketplaceId", (n) -> { this.setMarketplaceId(n.getEnumValue(MarketplaceEnum::forValue)); });
+        deserializerMap.put("warnings", (n) -> { this.setWarnings(n.getCollectionOfObjectValues(ErrorDetailV3::createFromDiscriminatorValue)); });
         return deserializerMap;
     }
     /**
-     * Gets the marketplaceId property value. This is the unique identifier of the eBay site for which  listing fees for the offer are applicable. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/slr:MarketplaceEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the marketplaceId property value. This is the unique identifier of the eBay site for which  listing fees for the offer are applicable.
+     * @return a {@link MarketplaceEnum}
      */
     @jakarta.annotation.Nullable
-    public String getMarketplaceId() {
+    public MarketplaceEnum getMarketplaceId() {
         return this.marketplaceId;
     }
     /**
      * Gets the warnings property value. This container will contain an array of errors and/or warnings when a call is made, and errors and/or warnings occur.
-     * @return a {@link java.util.List<Error>}
+     * @return a {@link java.util.List<ErrorDetailV3>}
      */
     @jakarta.annotation.Nullable
-    public java.util.List<Error> getWarnings() {
+    public java.util.List<ErrorDetailV3> getWarnings() {
         return this.warnings;
     }
     /**
@@ -109,7 +109,7 @@ public class FeeSummary implements AdditionalDataHolder, Parsable {
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         writer.writeCollectionOfObjectValues("fees", this.getFees());
-        writer.writeStringValue("marketplaceId", this.getMarketplaceId());
+        writer.writeEnumValue("marketplaceId", this.getMarketplaceId());
         writer.writeCollectionOfObjectValues("warnings", this.getWarnings());
         writer.writeAdditionalData(this.getAdditionalData());
     }
@@ -128,17 +128,17 @@ public class FeeSummary implements AdditionalDataHolder, Parsable {
         this.fees = value;
     }
     /**
-     * Sets the marketplaceId property value. This is the unique identifier of the eBay site for which  listing fees for the offer are applicable. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/slr:MarketplaceEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the marketplaceId property value. This is the unique identifier of the eBay site for which  listing fees for the offer are applicable.
      * @param value Value to set for the marketplaceId property.
      */
-    public void setMarketplaceId(@jakarta.annotation.Nullable final String value) {
+    public void setMarketplaceId(@jakarta.annotation.Nullable final MarketplaceEnum value) {
         this.marketplaceId = value;
     }
     /**
      * Sets the warnings property value. This container will contain an array of errors and/or warnings when a call is made, and errors and/or warnings occur.
      * @param value Value to set for the warnings property.
      */
-    public void setWarnings(@jakarta.annotation.Nullable final java.util.List<Error> value) {
+    public void setWarnings(@jakarta.annotation.Nullable final java.util.List<ErrorDetailV3> value) {
         this.warnings = value;
     }
 }

@@ -35,7 +35,7 @@ public class AvailabilityWithAll implements AdditionalDataHolder, Parsable {
      */
     private java.util.List<PickupAtLocationAvailability> pickupAtLocationAvailability;
     /**
-     * This type is used to specify the total &apos;ship-to-home&apos; quantity of the inventory items that will be available for purchase through one or more published offers.
+     * This container specifies the quantity of the inventory items that are available for a standard purchase, where the item is shipped to the buyer.
      */
     private ShipToLocationAvailabilityWithAll shipToLocationAvailability;
     /**
@@ -82,7 +82,7 @@ public class AvailabilityWithAll implements AdditionalDataHolder, Parsable {
         return this.pickupAtLocationAvailability;
     }
     /**
-     * Gets the shipToLocationAvailability property value. This type is used to specify the total &apos;ship-to-home&apos; quantity of the inventory items that will be available for purchase through one or more published offers.
+     * Gets the shipToLocationAvailability property value. This container specifies the quantity of the inventory items that are available for a standard purchase, where the item is shipped to the buyer.
      * @return a {@link ShipToLocationAvailabilityWithAll}
      */
     @jakarta.annotation.Nullable
@@ -114,7 +114,7 @@ public class AvailabilityWithAll implements AdditionalDataHolder, Parsable {
         this.pickupAtLocationAvailability = value;
     }
     /**
-     * Sets the shipToLocationAvailability property value. This type is used to specify the total &apos;ship-to-home&apos; quantity of the inventory items that will be available for purchase through one or more published offers.
+     * Sets the shipToLocationAvailability property value. This container specifies the quantity of the inventory items that are available for a standard purchase, where the item is shipped to the buyer.
      * @param value Value to set for the shipToLocationAvailability property.
      */
     public void setShipToLocationAvailability(@jakarta.annotation.Nullable final ShipToLocationAvailabilityWithAll value) {

@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 /**
- * The request to create a video, which must contain the video&apos;s &lt;b&gt;title&lt;/b&gt;, &lt;b&gt;size&lt;/b&gt;, and &lt;b&gt;classification&lt;/b&gt;. &lt;b&gt;Description&lt;/b&gt; is an optional field when creating videos.
+ * The request to create a video, which must contain the video&apos;s &lt;strong&gt;title&lt;/strong&gt;, &lt;strong&gt;size&lt;/strong&gt;, and &lt;strong&gt;classification&lt;/strong&gt;. &lt;strong&gt;Description&lt;/strong&gt; is an optional field when creating videos.
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class CreateVideoRequest implements AdditionalDataHolder, Parsable {
@@ -33,13 +33,13 @@ public class CreateVideoRequest implements AdditionalDataHolder, Parsable {
     /**
      * The intended use for this video content. Currently, videos can only be added and associated with eBay listings, so the only supported value is &lt;code&gt;ITEM&lt;/code&gt;.
      */
-    private java.util.List<String> classification;
+    private java.util.List<Classification> classification;
     /**
      * The description of the video.
      */
     private String description;
     /**
-     * The size, in bytes, of the video content. &lt;br&gt;&lt;br&gt;&lt;b&gt;Max:&lt;/b&gt; 157,286,400 bytes
+     * The size, in bytes, of the video content. &lt;br&gt;&lt;br&gt;&lt;strong&gt;Max:&lt;/strong&gt; 157,286,400 bytes
      */
     private Integer size;
     /**
@@ -72,10 +72,10 @@ public class CreateVideoRequest implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the classification property value. The intended use for this video content. Currently, videos can only be added and associated with eBay listings, so the only supported value is &lt;code&gt;ITEM&lt;/code&gt;.
-     * @return a {@link java.util.List<String>}
+     * @return a {@link java.util.List<Classification>}
      */
     @jakarta.annotation.Nullable
-    public java.util.List<String> getClassification() {
+    public java.util.List<Classification> getClassification() {
         return this.classification;
     }
     /**
@@ -93,14 +93,14 @@ public class CreateVideoRequest implements AdditionalDataHolder, Parsable {
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(4);
-        deserializerMap.put("classification", (n) -> { this.setClassification(n.getCollectionOfPrimitiveValues(String.class)); });
+        deserializerMap.put("classification", (n) -> { this.setClassification(n.getCollectionOfEnumValues(Classification::forValue)); });
         deserializerMap.put("description", (n) -> { this.setDescription(n.getStringValue()); });
         deserializerMap.put("size", (n) -> { this.setSize(n.getIntegerValue()); });
         deserializerMap.put("title", (n) -> { this.setTitle(n.getStringValue()); });
         return deserializerMap;
     }
     /**
-     * Gets the size property value. The size, in bytes, of the video content. &lt;br&gt;&lt;br&gt;&lt;b&gt;Max:&lt;/b&gt; 157,286,400 bytes
+     * Gets the size property value. The size, in bytes, of the video content. &lt;br&gt;&lt;br&gt;&lt;strong&gt;Max:&lt;/strong&gt; 157,286,400 bytes
      * @return a {@link Integer}
      */
     @jakarta.annotation.Nullable
@@ -121,7 +121,7 @@ public class CreateVideoRequest implements AdditionalDataHolder, Parsable {
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeCollectionOfPrimitiveValues("classification", this.getClassification());
+        writer.writeCollectionOfEnumValues("classification", this.getClassification());
         writer.writeStringValue("description", this.getDescription());
         writer.writeIntegerValue("size", this.getSize());
         writer.writeStringValue("title", this.getTitle());
@@ -138,7 +138,7 @@ public class CreateVideoRequest implements AdditionalDataHolder, Parsable {
      * Sets the classification property value. The intended use for this video content. Currently, videos can only be added and associated with eBay listings, so the only supported value is &lt;code&gt;ITEM&lt;/code&gt;.
      * @param value Value to set for the classification property.
      */
-    public void setClassification(@jakarta.annotation.Nullable final java.util.List<String> value) {
+    public void setClassification(@jakarta.annotation.Nullable final java.util.List<Classification> value) {
         this.classification = value;
     }
     /**
@@ -149,7 +149,7 @@ public class CreateVideoRequest implements AdditionalDataHolder, Parsable {
         this.description = value;
     }
     /**
-     * Sets the size property value. The size, in bytes, of the video content. &lt;br&gt;&lt;br&gt;&lt;b&gt;Max:&lt;/b&gt; 157,286,400 bytes
+     * Sets the size property value. The size, in bytes, of the video content. &lt;br&gt;&lt;br&gt;&lt;strong&gt;Max:&lt;/strong&gt; 157,286,400 bytes
      * @param value Value to set for the size property.
      */
     public void setSize(@jakarta.annotation.Nullable final Integer value) {

@@ -21,6 +21,9 @@ import com.microsoft.kiota.serialization.SerializationWriter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+/**
+ * This container is used to return information about a specific inventory task.
+ */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class InventoryTask implements AdditionalDataHolder, Parsable {
     /**
@@ -44,7 +47,7 @@ public class InventoryTask implements AdditionalDataHolder, Parsable {
      */
     private String feedType;
     /**
-     * This container is used to set the filter criteria for the ActiveInventoryReport. A seller can create an ActiveInventoryReport for a single listing format.
+     * This container is used to set the filter criteria for the ActiveInventoryReport. A seller can retrieve listings for a specified format.
      */
     private InventoryFilterCriteria filterCriteria;
     /**
@@ -52,9 +55,9 @@ public class InventoryTask implements AdditionalDataHolder, Parsable {
      */
     private String schemaVersion;
     /**
-     * The status of the task. Users must wait until status is complete before moving on to the next step (such as uploading/downloading a file). For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:FeedStatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * The status of the task. Users must wait until status is complete before moving on to the next step (such as uploading/downloading a file).
      */
-    private String status;
+    private FeedStatusEnum status;
     /**
      * The ID of the task. This ID is generated when the task was created by the &lt;strong&gt;createInventoryTask&lt;/strong&gt; method.
      */
@@ -132,13 +135,13 @@ public class InventoryTask implements AdditionalDataHolder, Parsable {
         deserializerMap.put("feedType", (n) -> { this.setFeedType(n.getStringValue()); });
         deserializerMap.put("filterCriteria", (n) -> { this.setFilterCriteria(n.getObjectValue(InventoryFilterCriteria::createFromDiscriminatorValue)); });
         deserializerMap.put("schemaVersion", (n) -> { this.setSchemaVersion(n.getStringValue()); });
-        deserializerMap.put("status", (n) -> { this.setStatus(n.getStringValue()); });
+        deserializerMap.put("status", (n) -> { this.setStatus(n.getEnumValue(FeedStatusEnum::forValue)); });
         deserializerMap.put("taskId", (n) -> { this.setTaskId(n.getStringValue()); });
         deserializerMap.put("uploadSummary", (n) -> { this.setUploadSummary(n.getObjectValue(UploadSummary::createFromDiscriminatorValue)); });
         return deserializerMap;
     }
     /**
-     * Gets the filterCriteria property value. This container is used to set the filter criteria for the ActiveInventoryReport. A seller can create an ActiveInventoryReport for a single listing format.
+     * Gets the filterCriteria property value. This container is used to set the filter criteria for the ActiveInventoryReport. A seller can retrieve listings for a specified format.
      * @return a {@link InventoryFilterCriteria}
      */
     @jakarta.annotation.Nullable
@@ -154,11 +157,11 @@ public class InventoryTask implements AdditionalDataHolder, Parsable {
         return this.schemaVersion;
     }
     /**
-     * Gets the status property value. The status of the task. Users must wait until status is complete before moving on to the next step (such as uploading/downloading a file). For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:FeedStatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the status property value. The status of the task. Users must wait until status is complete before moving on to the next step (such as uploading/downloading a file).
+     * @return a {@link FeedStatusEnum}
      */
     @jakarta.annotation.Nullable
-    public String getStatus() {
+    public FeedStatusEnum getStatus() {
         return this.status;
     }
     /**
@@ -189,7 +192,7 @@ public class InventoryTask implements AdditionalDataHolder, Parsable {
         writer.writeStringValue("feedType", this.getFeedType());
         writer.writeObjectValue("filterCriteria", this.getFilterCriteria());
         writer.writeStringValue("schemaVersion", this.getSchemaVersion());
-        writer.writeStringValue("status", this.getStatus());
+        writer.writeEnumValue("status", this.getStatus());
         writer.writeStringValue("taskId", this.getTaskId());
         writer.writeObjectValue("uploadSummary", this.getUploadSummary());
         writer.writeAdditionalData(this.getAdditionalData());
@@ -230,7 +233,7 @@ public class InventoryTask implements AdditionalDataHolder, Parsable {
         this.feedType = value;
     }
     /**
-     * Sets the filterCriteria property value. This container is used to set the filter criteria for the ActiveInventoryReport. A seller can create an ActiveInventoryReport for a single listing format.
+     * Sets the filterCriteria property value. This container is used to set the filter criteria for the ActiveInventoryReport. A seller can retrieve listings for a specified format.
      * @param value Value to set for the filterCriteria property.
      */
     public void setFilterCriteria(@jakarta.annotation.Nullable final InventoryFilterCriteria value) {
@@ -244,10 +247,10 @@ public class InventoryTask implements AdditionalDataHolder, Parsable {
         this.schemaVersion = value;
     }
     /**
-     * Sets the status property value. The status of the task. Users must wait until status is complete before moving on to the next step (such as uploading/downloading a file). For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:FeedStatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the status property value. The status of the task. Users must wait until status is complete before moving on to the next step (such as uploading/downloading a file).
      * @param value Value to set for the status property.
      */
-    public void setStatus(@jakarta.annotation.Nullable final String value) {
+    public void setStatus(@jakarta.annotation.Nullable final FeedStatusEnum value) {
         this.status = value;
     }
     /**

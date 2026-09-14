@@ -16,6 +16,7 @@ package com.ebay.listingmanagement.generated.inventory.inventory_item.item.produ
 
 import com.ebay.listingmanagement.generated.inventory.models.BaseResponse;
 import com.ebay.listingmanagement.generated.inventory.models.Compatibility;
+import com.ebay.listingmanagement.generated.inventory.models.Error;
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.BaseRequestConfiguration;
 import com.microsoft.kiota.HttpMethod;
@@ -51,6 +52,9 @@ public class ProductCompatibilityRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * This call is used by the seller to delete the list of products that are compatible with the inventory item that is associated with the compatible product list. The inventory item is identified with a SKU value in the URI. Product compatibility is currently only applicable to motor vehicle parts and accessory categories, but more categories may be supported in the future.
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 404 status code
+     * @throws Error When receiving a 500 status code
      */
     public void delete() {
         delete(null);
@@ -58,14 +62,24 @@ public class ProductCompatibilityRequestBuilder extends BaseRequestBuilder {
     /**
      * This call is used by the seller to delete the list of products that are compatible with the inventory item that is associated with the compatible product list. The inventory item is identified with a SKU value in the URI. Product compatibility is currently only applicable to motor vehicle parts and accessory categories, but more categories may be supported in the future.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 404 status code
+     * @throws Error When receiving a 500 status code
      */
     public void delete(@jakarta.annotation.Nullable final java.util.function.Consumer<DeleteRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toDeleteRequestInformation(requestConfiguration);
-        this.requestAdapter.sendPrimitive(requestInfo, null, Void.class);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("400", Error::createFromDiscriminatorValue);
+        errorMapping.put("404", Error::createFromDiscriminatorValue);
+        errorMapping.put("500", Error::createFromDiscriminatorValue);
+        this.requestAdapter.sendPrimitive(requestInfo, errorMapping, Void.class);
     }
     /**
      * This call is used by the seller to retrieve the list of products that are compatible with the inventory item. The SKU value for the inventory item is passed into the call URI, and a successful call with return the compatible vehicle list associated with this inventory item. Product compatibility is currently only applicable to motor vehicle parts and accessory categories, but more categories may be supported in the future.
      * @return a {@link Compatibility}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 404 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public Compatibility get() {
@@ -75,32 +89,46 @@ public class ProductCompatibilityRequestBuilder extends BaseRequestBuilder {
      * This call is used by the seller to retrieve the list of products that are compatible with the inventory item. The SKU value for the inventory item is passed into the call URI, and a successful call with return the compatible vehicle list associated with this inventory item. Product compatibility is currently only applicable to motor vehicle parts and accessory categories, but more categories may be supported in the future.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link Compatibility}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 404 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public Compatibility get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
-        return this.requestAdapter.send(requestInfo, null, Compatibility::createFromDiscriminatorValue);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("400", Error::createFromDiscriminatorValue);
+        errorMapping.put("404", Error::createFromDiscriminatorValue);
+        errorMapping.put("500", Error::createFromDiscriminatorValue);
+        return this.requestAdapter.send(requestInfo, errorMapping, Compatibility::createFromDiscriminatorValue);
     }
     /**
-     * This call is used by the seller to create or replace a list of products that are compatible with the inventory item. The inventory item is identified with a SKU value in the URI. Product compatibility is currently only applicable to motor vehicle parts and accessory categories, but more categories may be supported in the future.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; In addition to the &lt;code&gt;authorization&lt;/code&gt; header, which is required for all Inventory API calls, this call also requires the &lt;code&gt;Content-Type&lt;/code&gt; and &lt;code&gt;Content-Language&lt;/code&gt; headers. See the &lt;a href=&quot;/api-docs/sell/inventory/resources/inventory_item/product_compatibility/methods/createOrReplaceProductCompatibility#h3-request-headers&quot;&gt;HTTP request headers&lt;/a&gt; for more information.&lt;/span&gt;
-     * @param body This type is used by the &lt;strong&gt;createOrReplaceProductCompatibility&lt;/strong&gt; call to associate compatible vehicles to an inventory item. This type is also the base response of the &lt;strong&gt;getProductCompatibility&lt;/strong&gt; call.
+     * This call is used by the seller to create or replace a list of products that are compatible with the inventory item. The inventory item is identified with a SKU value in the URI. Product compatibility is currently only applicable to motor vehicle parts and accessory categories, but more categories may be supported in the future.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; In addition to the &lt;code&gt;authorization&lt;/code&gt; header, which is required for all Inventory API calls, this call also requires the &lt;code&gt;Content-Type&lt;/code&gt; and &lt;code&gt;Content-Language&lt;/code&gt; headers.&lt;/span&gt;
+     * @param body Details of the compatibility
      * @return a {@link BaseResponse}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public BaseResponse put(@jakarta.annotation.Nonnull final Compatibility body) {
         return put(body, null);
     }
     /**
-     * This call is used by the seller to create or replace a list of products that are compatible with the inventory item. The inventory item is identified with a SKU value in the URI. Product compatibility is currently only applicable to motor vehicle parts and accessory categories, but more categories may be supported in the future.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; In addition to the &lt;code&gt;authorization&lt;/code&gt; header, which is required for all Inventory API calls, this call also requires the &lt;code&gt;Content-Type&lt;/code&gt; and &lt;code&gt;Content-Language&lt;/code&gt; headers. See the &lt;a href=&quot;/api-docs/sell/inventory/resources/inventory_item/product_compatibility/methods/createOrReplaceProductCompatibility#h3-request-headers&quot;&gt;HTTP request headers&lt;/a&gt; for more information.&lt;/span&gt;
-     * @param body This type is used by the &lt;strong&gt;createOrReplaceProductCompatibility&lt;/strong&gt; call to associate compatible vehicles to an inventory item. This type is also the base response of the &lt;strong&gt;getProductCompatibility&lt;/strong&gt; call.
+     * This call is used by the seller to create or replace a list of products that are compatible with the inventory item. The inventory item is identified with a SKU value in the URI. Product compatibility is currently only applicable to motor vehicle parts and accessory categories, but more categories may be supported in the future.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; In addition to the &lt;code&gt;authorization&lt;/code&gt; header, which is required for all Inventory API calls, this call also requires the &lt;code&gt;Content-Type&lt;/code&gt; and &lt;code&gt;Content-Language&lt;/code&gt; headers.&lt;/span&gt;
+     * @param body Details of the compatibility
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link BaseResponse}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public BaseResponse put(@jakarta.annotation.Nonnull final Compatibility body, @jakarta.annotation.Nullable final java.util.function.Consumer<PutRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = toPutRequestInformation(body, requestConfiguration);
-        return this.requestAdapter.send(requestInfo, null, BaseResponse::createFromDiscriminatorValue);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("400", Error::createFromDiscriminatorValue);
+        errorMapping.put("500", Error::createFromDiscriminatorValue);
+        return this.requestAdapter.send(requestInfo, errorMapping, BaseResponse::createFromDiscriminatorValue);
     }
     /**
      * This call is used by the seller to delete the list of products that are compatible with the inventory item that is associated with the compatible product list. The inventory item is identified with a SKU value in the URI. Product compatibility is currently only applicable to motor vehicle parts and accessory categories, but more categories may be supported in the future.
@@ -119,6 +147,7 @@ public class ProductCompatibilityRequestBuilder extends BaseRequestBuilder {
     public RequestInformation toDeleteRequestInformation(@jakarta.annotation.Nullable final java.util.function.Consumer<DeleteRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = new RequestInformation(HttpMethod.DELETE, urlTemplate, pathParameters);
         requestInfo.configure(requestConfiguration, DeleteRequestConfiguration::new);
+        requestInfo.headers.tryAdd("Accept", "application/json");
         return requestInfo;
     }
     /**
@@ -142,8 +171,8 @@ public class ProductCompatibilityRequestBuilder extends BaseRequestBuilder {
         return requestInfo;
     }
     /**
-     * This call is used by the seller to create or replace a list of products that are compatible with the inventory item. The inventory item is identified with a SKU value in the URI. Product compatibility is currently only applicable to motor vehicle parts and accessory categories, but more categories may be supported in the future.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; In addition to the &lt;code&gt;authorization&lt;/code&gt; header, which is required for all Inventory API calls, this call also requires the &lt;code&gt;Content-Type&lt;/code&gt; and &lt;code&gt;Content-Language&lt;/code&gt; headers. See the &lt;a href=&quot;/api-docs/sell/inventory/resources/inventory_item/product_compatibility/methods/createOrReplaceProductCompatibility#h3-request-headers&quot;&gt;HTTP request headers&lt;/a&gt; for more information.&lt;/span&gt;
-     * @param body This type is used by the &lt;strong&gt;createOrReplaceProductCompatibility&lt;/strong&gt; call to associate compatible vehicles to an inventory item. This type is also the base response of the &lt;strong&gt;getProductCompatibility&lt;/strong&gt; call.
+     * This call is used by the seller to create or replace a list of products that are compatible with the inventory item. The inventory item is identified with a SKU value in the URI. Product compatibility is currently only applicable to motor vehicle parts and accessory categories, but more categories may be supported in the future.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; In addition to the &lt;code&gt;authorization&lt;/code&gt; header, which is required for all Inventory API calls, this call also requires the &lt;code&gt;Content-Type&lt;/code&gt; and &lt;code&gt;Content-Language&lt;/code&gt; headers.&lt;/span&gt;
+     * @param body Details of the compatibility
      * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
@@ -151,8 +180,8 @@ public class ProductCompatibilityRequestBuilder extends BaseRequestBuilder {
         return toPutRequestInformation(body, null);
     }
     /**
-     * This call is used by the seller to create or replace a list of products that are compatible with the inventory item. The inventory item is identified with a SKU value in the URI. Product compatibility is currently only applicable to motor vehicle parts and accessory categories, but more categories may be supported in the future.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; In addition to the &lt;code&gt;authorization&lt;/code&gt; header, which is required for all Inventory API calls, this call also requires the &lt;code&gt;Content-Type&lt;/code&gt; and &lt;code&gt;Content-Language&lt;/code&gt; headers. See the &lt;a href=&quot;/api-docs/sell/inventory/resources/inventory_item/product_compatibility/methods/createOrReplaceProductCompatibility#h3-request-headers&quot;&gt;HTTP request headers&lt;/a&gt; for more information.&lt;/span&gt;
-     * @param body This type is used by the &lt;strong&gt;createOrReplaceProductCompatibility&lt;/strong&gt; call to associate compatible vehicles to an inventory item. This type is also the base response of the &lt;strong&gt;getProductCompatibility&lt;/strong&gt; call.
+     * This call is used by the seller to create or replace a list of products that are compatible with the inventory item. The inventory item is identified with a SKU value in the URI. Product compatibility is currently only applicable to motor vehicle parts and accessory categories, but more categories may be supported in the future.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; In addition to the &lt;code&gt;authorization&lt;/code&gt; header, which is required for all Inventory API calls, this call also requires the &lt;code&gt;Content-Type&lt;/code&gt; and &lt;code&gt;Content-Language&lt;/code&gt; headers.&lt;/span&gt;
+     * @param body Details of the compatibility
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link RequestInformation}
      */

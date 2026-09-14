@@ -26,7 +26,7 @@ import java.util.Objects;
 public class ListingRequestBuilder extends BaseRequestBuilder {
     /**
      * Gets an item from the com.ebay.listingmanagement.generated.inventory.listing.item collection
-     * @param listingId This path parameter specifies the unique identifier of the listing that the SKU belongs to for which all mapped locations will be retrieved.&lt;br&gt;&lt;br&gt;Use the &lt;a href=&quot;/api-docs/sell/inventory/resources/offer/methods/getOffers&quot; target=&quot;_blank &quot;&gt;getOffers&lt;/a&gt; method of the &lt;b&gt;Inventory API&lt;/b&gt; or the &lt;a href=&quot;/devzone/xml/docs/reference/ebay/getmyebayselling.html&quot; target=&quot;_blank &quot;&gt;GetMyEbaySelling&lt;/a&gt; method of the &lt;b&gt;Trading API&lt;/b&gt; to retrieve all listing IDs for all active listings.
+     * @param listingId This path parameter specifies the unique identifier of the listing that the SKU belongs to for which all mapped locations will be retrieved.&lt;br&gt;&lt;br&gt;Use the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-offer-getoffers&quot; target=&quot;_blank &quot;&gt;getOffers&lt;/a&gt; method of the &lt;b&gt;Inventory API&lt;/b&gt; or the &lt;a href=&quot;/devzone/xml/docs/reference/ebay/getmyebayselling.html&quot; target=&quot;_blank &quot;&gt;GetMyEbaySelling&lt;/a&gt; method of the &lt;b&gt;Trading API&lt;/b&gt; to retrieve all listing IDs for all active listings.
      * @return a {@link WithListingItemRequestBuilder}
      */
     @jakarta.annotation.Nonnull

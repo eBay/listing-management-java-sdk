@@ -14,6 +14,7 @@
 
 package com.ebay.listingmanagement.generated.feed.schedule.item;
 
+import com.ebay.listingmanagement.generated.feed.models.Error;
 import com.ebay.listingmanagement.generated.feed.models.UpdateUserScheduleRequest;
 import com.ebay.listingmanagement.generated.feed.models.UserScheduleResponse;
 import com.ebay.listingmanagement.generated.feed.schedule.item.download_result_file.DownloadResultFileRequestBuilder;
@@ -60,6 +61,10 @@ public class WithScheduleItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * This method deletes an existing schedule. Specify the schedule to delete using the &lt;strong&gt;schedule_id&lt;/strong&gt; path parameter.
+     * @throws Error When receiving a 401 status code
+     * @throws Error When receiving a 403 status code
+     * @throws Error When receiving a 404 status code
+     * @throws Error When receiving a 500 status code
      */
     public void delete() {
         delete(null);
@@ -67,14 +72,27 @@ public class WithScheduleItemRequestBuilder extends BaseRequestBuilder {
     /**
      * This method deletes an existing schedule. Specify the schedule to delete using the &lt;strong&gt;schedule_id&lt;/strong&gt; path parameter.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @throws Error When receiving a 401 status code
+     * @throws Error When receiving a 403 status code
+     * @throws Error When receiving a 404 status code
+     * @throws Error When receiving a 500 status code
      */
     public void delete(@jakarta.annotation.Nullable final java.util.function.Consumer<DeleteRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toDeleteRequestInformation(requestConfiguration);
-        this.requestAdapter.sendPrimitive(requestInfo, null, Void.class);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("401", Error::createFromDiscriminatorValue);
+        errorMapping.put("403", Error::createFromDiscriminatorValue);
+        errorMapping.put("404", Error::createFromDiscriminatorValue);
+        errorMapping.put("500", Error::createFromDiscriminatorValue);
+        this.requestAdapter.sendPrimitive(requestInfo, errorMapping, Void.class);
     }
     /**
      * This method retrieves schedule details and status of the specified schedule. Specify the schedule to retrieve using the &lt;strong&gt;schedule_id&lt;/strong&gt;. Use the &lt;strong&gt;getSchedules&lt;/strong&gt; method to find a schedule if you do not know the &lt;strong&gt;schedule_id&lt;/strong&gt;.
      * @return a {@link UserScheduleResponse}
+     * @throws Error When receiving a 401 status code
+     * @throws Error When receiving a 403 status code
+     * @throws Error When receiving a 404 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public UserScheduleResponse get() {
@@ -84,28 +102,56 @@ public class WithScheduleItemRequestBuilder extends BaseRequestBuilder {
      * This method retrieves schedule details and status of the specified schedule. Specify the schedule to retrieve using the &lt;strong&gt;schedule_id&lt;/strong&gt;. Use the &lt;strong&gt;getSchedules&lt;/strong&gt; method to find a schedule if you do not know the &lt;strong&gt;schedule_id&lt;/strong&gt;.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link UserScheduleResponse}
+     * @throws Error When receiving a 401 status code
+     * @throws Error When receiving a 403 status code
+     * @throws Error When receiving a 404 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public UserScheduleResponse get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
-        return this.requestAdapter.send(requestInfo, null, UserScheduleResponse::createFromDiscriminatorValue);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("401", Error::createFromDiscriminatorValue);
+        errorMapping.put("403", Error::createFromDiscriminatorValue);
+        errorMapping.put("404", Error::createFromDiscriminatorValue);
+        errorMapping.put("500", Error::createFromDiscriminatorValue);
+        return this.requestAdapter.send(requestInfo, errorMapping, UserScheduleResponse::createFromDiscriminatorValue);
     }
     /**
      * This method updates an existing schedule. Specify the schedule to update using the &lt;strong&gt;schedule_id&lt;/strong&gt; path parameter. If the schedule template has changed after the schedule was created or updated, the input will be validated using the changed template.&lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Make sure to include all fields required by the schedule template (&lt;strong&gt;scheduleTemplateId&lt;/strong&gt;). Call the &lt;strong&gt;getScheduleTemplate&lt;/strong&gt; method (or the &lt;strong&gt;getScheduleTemplates&lt;/strong&gt; method), to find out which fields are required or optional. If you do not know the &lt;strong&gt;scheduleTemplateId&lt;/strong&gt;, call the &lt;strong&gt;getSchedule&lt;/strong&gt; method to find out.&lt;/span&gt;&lt;/p&gt;
-     * @param body The type that defines the fields for a schedule update to a schedule generated with the Feed API.
+     * @param body In the request payload: &lt;strong&gt;scheduleName&lt;/strong&gt; is optional; &lt;strong&gt;preferredTriggerHour&lt;/strong&gt;, &lt;strong&gt;preferredTriggerDayOfWeek&lt;/strong&gt;, &lt;strong&gt;preferredTriggerDayOfMonth&lt;/strong&gt;, &lt;strong&gt;scheduleStartDate&lt;/strong&gt;, &lt;strong&gt;scheduleEndDate&lt;/strong&gt;, and &lt;strong&gt;schemaVersion&lt;/strong&gt; are conditional.
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 401 status code
+     * @throws Error When receiving a 403 status code
+     * @throws Error When receiving a 404 status code
+     * @throws Error When receiving a 409 status code
+     * @throws Error When receiving a 500 status code
      */
     public void put(@jakarta.annotation.Nonnull final UpdateUserScheduleRequest body) {
         put(body, null);
     }
     /**
      * This method updates an existing schedule. Specify the schedule to update using the &lt;strong&gt;schedule_id&lt;/strong&gt; path parameter. If the schedule template has changed after the schedule was created or updated, the input will be validated using the changed template.&lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Make sure to include all fields required by the schedule template (&lt;strong&gt;scheduleTemplateId&lt;/strong&gt;). Call the &lt;strong&gt;getScheduleTemplate&lt;/strong&gt; method (or the &lt;strong&gt;getScheduleTemplates&lt;/strong&gt; method), to find out which fields are required or optional. If you do not know the &lt;strong&gt;scheduleTemplateId&lt;/strong&gt;, call the &lt;strong&gt;getSchedule&lt;/strong&gt; method to find out.&lt;/span&gt;&lt;/p&gt;
-     * @param body The type that defines the fields for a schedule update to a schedule generated with the Feed API.
+     * @param body In the request payload: &lt;strong&gt;scheduleName&lt;/strong&gt; is optional; &lt;strong&gt;preferredTriggerHour&lt;/strong&gt;, &lt;strong&gt;preferredTriggerDayOfWeek&lt;/strong&gt;, &lt;strong&gt;preferredTriggerDayOfMonth&lt;/strong&gt;, &lt;strong&gt;scheduleStartDate&lt;/strong&gt;, &lt;strong&gt;scheduleEndDate&lt;/strong&gt;, and &lt;strong&gt;schemaVersion&lt;/strong&gt; are conditional.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 401 status code
+     * @throws Error When receiving a 403 status code
+     * @throws Error When receiving a 404 status code
+     * @throws Error When receiving a 409 status code
+     * @throws Error When receiving a 500 status code
      */
     public void put(@jakarta.annotation.Nonnull final UpdateUserScheduleRequest body, @jakarta.annotation.Nullable final java.util.function.Consumer<PutRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = toPutRequestInformation(body, requestConfiguration);
-        this.requestAdapter.sendPrimitive(requestInfo, null, Void.class);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("400", Error::createFromDiscriminatorValue);
+        errorMapping.put("401", Error::createFromDiscriminatorValue);
+        errorMapping.put("403", Error::createFromDiscriminatorValue);
+        errorMapping.put("404", Error::createFromDiscriminatorValue);
+        errorMapping.put("409", Error::createFromDiscriminatorValue);
+        errorMapping.put("500", Error::createFromDiscriminatorValue);
+        this.requestAdapter.sendPrimitive(requestInfo, errorMapping, Void.class);
     }
     /**
      * This method deletes an existing schedule. Specify the schedule to delete using the &lt;strong&gt;schedule_id&lt;/strong&gt; path parameter.
@@ -124,6 +170,7 @@ public class WithScheduleItemRequestBuilder extends BaseRequestBuilder {
     public RequestInformation toDeleteRequestInformation(@jakarta.annotation.Nullable final java.util.function.Consumer<DeleteRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = new RequestInformation(HttpMethod.DELETE, urlTemplate, pathParameters);
         requestInfo.configure(requestConfiguration, DeleteRequestConfiguration::new);
+        requestInfo.headers.tryAdd("Accept", "application/json");
         return requestInfo;
     }
     /**
@@ -148,7 +195,7 @@ public class WithScheduleItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * This method updates an existing schedule. Specify the schedule to update using the &lt;strong&gt;schedule_id&lt;/strong&gt; path parameter. If the schedule template has changed after the schedule was created or updated, the input will be validated using the changed template.&lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Make sure to include all fields required by the schedule template (&lt;strong&gt;scheduleTemplateId&lt;/strong&gt;). Call the &lt;strong&gt;getScheduleTemplate&lt;/strong&gt; method (or the &lt;strong&gt;getScheduleTemplates&lt;/strong&gt; method), to find out which fields are required or optional. If you do not know the &lt;strong&gt;scheduleTemplateId&lt;/strong&gt;, call the &lt;strong&gt;getSchedule&lt;/strong&gt; method to find out.&lt;/span&gt;&lt;/p&gt;
-     * @param body The type that defines the fields for a schedule update to a schedule generated with the Feed API.
+     * @param body In the request payload: &lt;strong&gt;scheduleName&lt;/strong&gt; is optional; &lt;strong&gt;preferredTriggerHour&lt;/strong&gt;, &lt;strong&gt;preferredTriggerDayOfWeek&lt;/strong&gt;, &lt;strong&gt;preferredTriggerDayOfMonth&lt;/strong&gt;, &lt;strong&gt;scheduleStartDate&lt;/strong&gt;, &lt;strong&gt;scheduleEndDate&lt;/strong&gt;, and &lt;strong&gt;schemaVersion&lt;/strong&gt; are conditional.
      * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
@@ -157,7 +204,7 @@ public class WithScheduleItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * This method updates an existing schedule. Specify the schedule to update using the &lt;strong&gt;schedule_id&lt;/strong&gt; path parameter. If the schedule template has changed after the schedule was created or updated, the input will be validated using the changed template.&lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Make sure to include all fields required by the schedule template (&lt;strong&gt;scheduleTemplateId&lt;/strong&gt;). Call the &lt;strong&gt;getScheduleTemplate&lt;/strong&gt; method (or the &lt;strong&gt;getScheduleTemplates&lt;/strong&gt; method), to find out which fields are required or optional. If you do not know the &lt;strong&gt;scheduleTemplateId&lt;/strong&gt;, call the &lt;strong&gt;getSchedule&lt;/strong&gt; method to find out.&lt;/span&gt;&lt;/p&gt;
-     * @param body The type that defines the fields for a schedule update to a schedule generated with the Feed API.
+     * @param body In the request payload: &lt;strong&gt;scheduleName&lt;/strong&gt; is optional; &lt;strong&gt;preferredTriggerHour&lt;/strong&gt;, &lt;strong&gt;preferredTriggerDayOfWeek&lt;/strong&gt;, &lt;strong&gt;preferredTriggerDayOfMonth&lt;/strong&gt;, &lt;strong&gt;scheduleStartDate&lt;/strong&gt;, &lt;strong&gt;scheduleEndDate&lt;/strong&gt;, and &lt;strong&gt;schemaVersion&lt;/strong&gt; are conditional.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link RequestInformation}
      */
@@ -166,6 +213,7 @@ public class WithScheduleItemRequestBuilder extends BaseRequestBuilder {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = new RequestInformation(HttpMethod.PUT, urlTemplate, pathParameters);
         requestInfo.configure(requestConfiguration, PutRequestConfiguration::new);
+        requestInfo.headers.tryAdd("Accept", "application/json");
         requestInfo.setContentFromParsable(requestAdapter, "application/json", body);
         return requestInfo;
     }

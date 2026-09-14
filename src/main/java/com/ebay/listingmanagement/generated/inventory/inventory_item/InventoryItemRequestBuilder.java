@@ -15,6 +15,7 @@
 package com.ebay.listingmanagement.generated.inventory.inventory_item;
 
 import com.ebay.listingmanagement.generated.inventory.inventory_item.item.WithSkuItemRequestBuilder;
+import com.ebay.listingmanagement.generated.inventory.models.Error;
 import com.ebay.listingmanagement.generated.inventory.models.InventoryItems;
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.BaseRequestConfiguration;
@@ -36,7 +37,7 @@ import java.util.Objects;
 public class InventoryItemRequestBuilder extends BaseRequestBuilder {
     /**
      * Gets an item from the com.ebay.listingmanagement.generated.inventory.inventory_item.item collection
-     * @param sku This path parameter specifies the seller-defined SKU value of the product whose inventory item record you wish to retrieve.&lt;br&gt;&lt;br&gt;Use the &lt;a href=&quot;/api-docs/sell/inventory/resources/inventory_item/methods/getInventoryItems&quot; target=&quot;_blank &quot;&gt;getInventoryItems&lt;/a&gt; method to retrieve SKU values.&lt;br&gt;&lt;br&gt;&lt;strong&gt;Max length&lt;/strong&gt;: 50
+     * @param sku This path parameter specifies the seller-defined SKU value of the product whose inventory item record you wish to retrieve.&lt;br&gt;&lt;br&gt;Use the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-inventory_item-getinventoryitems&quot; target=&quot;_blank &quot;&gt;getInventoryItems&lt;/a&gt; method to retrieve SKU values.&lt;br&gt;&lt;br&gt;&lt;strong&gt;Maximum length&lt;/strong&gt;: 50
      * @return a {@link WithSkuItemRequestBuilder}
      */
     @jakarta.annotation.Nonnull
@@ -65,6 +66,9 @@ public class InventoryItemRequestBuilder extends BaseRequestBuilder {
     /**
      * This call retrieves all inventory item records defined for the seller&apos;s account. The &lt;strong&gt;limit&lt;/strong&gt; query parameter allows the seller to control how many records are returned per page, and the &lt;strong&gt;offset&lt;/strong&gt; query parameter is used to retrieve a specific page of records. The seller can make multiple calls to scan through multiple pages of records. There is no request payload for this call.&lt;br&gt;&lt;br&gt;The &lt;code&gt;authorization&lt;/code&gt; header is the only required HTTP header for this call, and it is required for all Inventory API calls. See the &lt;strong&gt;HTTP request headers&lt;/strong&gt; section for more information.&lt;br&gt;&lt;br&gt;For those who prefer to retrieve numerous inventory item records by SKU value with one call (up to 25 at a time), the &lt;strong&gt;bulkGetInventoryItem&lt;/strong&gt; method can be used.
      * @return a {@link InventoryItems}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 404 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public InventoryItems get() {
@@ -74,11 +78,18 @@ public class InventoryItemRequestBuilder extends BaseRequestBuilder {
      * This call retrieves all inventory item records defined for the seller&apos;s account. The &lt;strong&gt;limit&lt;/strong&gt; query parameter allows the seller to control how many records are returned per page, and the &lt;strong&gt;offset&lt;/strong&gt; query parameter is used to retrieve a specific page of records. The seller can make multiple calls to scan through multiple pages of records. There is no request payload for this call.&lt;br&gt;&lt;br&gt;The &lt;code&gt;authorization&lt;/code&gt; header is the only required HTTP header for this call, and it is required for all Inventory API calls. See the &lt;strong&gt;HTTP request headers&lt;/strong&gt; section for more information.&lt;br&gt;&lt;br&gt;For those who prefer to retrieve numerous inventory item records by SKU value with one call (up to 25 at a time), the &lt;strong&gt;bulkGetInventoryItem&lt;/strong&gt; method can be used.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link InventoryItems}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 404 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public InventoryItems get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
-        return this.requestAdapter.send(requestInfo, null, InventoryItems::createFromDiscriminatorValue);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("400", Error::createFromDiscriminatorValue);
+        errorMapping.put("404", Error::createFromDiscriminatorValue);
+        errorMapping.put("500", Error::createFromDiscriminatorValue);
+        return this.requestAdapter.send(requestInfo, errorMapping, InventoryItems::createFromDiscriminatorValue);
     }
     /**
      * This call retrieves all inventory item records defined for the seller&apos;s account. The &lt;strong&gt;limit&lt;/strong&gt; query parameter allows the seller to control how many records are returned per page, and the &lt;strong&gt;offset&lt;/strong&gt; query parameter is used to retrieve a specific page of records. The seller can make multiple calls to scan through multiple pages of records. There is no request payload for this call.&lt;br&gt;&lt;br&gt;The &lt;code&gt;authorization&lt;/code&gt; header is the only required HTTP header for this call, and it is required for all Inventory API calls. See the &lt;strong&gt;HTTP request headers&lt;/strong&gt; section for more information.&lt;br&gt;&lt;br&gt;For those who prefer to retrieve numerous inventory item records by SKU value with one call (up to 25 at a time), the &lt;strong&gt;bulkGetInventoryItem&lt;/strong&gt; method can be used.

@@ -15,6 +15,7 @@
 package com.ebay.listingmanagement.generated.stores.store.categories.item;
 
 import com.ebay.listingmanagement.generated.stores.models.DeleteStoreCategoryRequestType;
+import com.ebay.listingmanagement.generated.stores.models.Error;
 import com.ebay.listingmanagement.generated.stores.models.RenameStoreCategoryRequestType;
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.BaseRequestConfiguration;
@@ -51,41 +52,55 @@ public class WithCategoryItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * This method is used to delete one custom category of a user&apos;s eBay store through an asynchronous request. A successful call returns the &lt;b&gt;getStoreTask&lt;/b&gt; URI in the Location response header. Call &lt;b&gt;getStoreTask&lt;/b&gt; (or &lt;b&gt;getStoreTasks&lt;/b&gt;) method to retrieve the status of the delete category operation.&lt;br&gt;&lt;br&gt;&lt;div class=&quot;msgbox_important&quot;&gt;&lt;p class=&quot;msgbox_importantInDiv&quot; data-mc-autonum=&quot;&amp;lt;b&amp;gt;&amp;lt;span style=&amp;quot;color: #dd1e31;&amp;quot; class=&amp;quot;mcFormatColor&amp;quot;&amp;gt;Important! &amp;lt;/span&amp;gt;&amp;lt;/b&amp;gt;&quot;&gt;&lt;span class=&quot;autonumber&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important!&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;/span&gt; If you initiate a category change, you cannot make additional category changes until the previous change request has completed. Use getStoreTask (or getStoreTasks) method to get latest status of your last request.&lt;/p&gt;&lt;/div&gt;
-     * @param body The base request type of the &lt;b&gt;deleteStoreCategory&lt;/b&gt; method. It is used to provide a new category home for the listings that are currently in the store category to be deleted.
+     * @param body This call is used to delete one category of a user&apos;s eBay store.
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 500 status code
      */
     public void delete(@jakarta.annotation.Nonnull final DeleteStoreCategoryRequestType body) {
         delete(body, null);
     }
     /**
      * This method is used to delete one custom category of a user&apos;s eBay store through an asynchronous request. A successful call returns the &lt;b&gt;getStoreTask&lt;/b&gt; URI in the Location response header. Call &lt;b&gt;getStoreTask&lt;/b&gt; (or &lt;b&gt;getStoreTasks&lt;/b&gt;) method to retrieve the status of the delete category operation.&lt;br&gt;&lt;br&gt;&lt;div class=&quot;msgbox_important&quot;&gt;&lt;p class=&quot;msgbox_importantInDiv&quot; data-mc-autonum=&quot;&amp;lt;b&amp;gt;&amp;lt;span style=&amp;quot;color: #dd1e31;&amp;quot; class=&amp;quot;mcFormatColor&amp;quot;&amp;gt;Important! &amp;lt;/span&amp;gt;&amp;lt;/b&amp;gt;&quot;&gt;&lt;span class=&quot;autonumber&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important!&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;/span&gt; If you initiate a category change, you cannot make additional category changes until the previous change request has completed. Use getStoreTask (or getStoreTasks) method to get latest status of your last request.&lt;/p&gt;&lt;/div&gt;
-     * @param body The base request type of the &lt;b&gt;deleteStoreCategory&lt;/b&gt; method. It is used to provide a new category home for the listings that are currently in the store category to be deleted.
+     * @param body This call is used to delete one category of a user&apos;s eBay store.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 500 status code
      */
     public void delete(@jakarta.annotation.Nonnull final DeleteStoreCategoryRequestType body, @jakarta.annotation.Nullable final java.util.function.Consumer<DeleteRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = toDeleteRequestInformation(body, requestConfiguration);
-        this.requestAdapter.sendPrimitive(requestInfo, null, Void.class);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("400", Error::createFromDiscriminatorValue);
+        errorMapping.put("500", Error::createFromDiscriminatorValue);
+        this.requestAdapter.sendPrimitive(requestInfo, errorMapping, Void.class);
     }
     /**
-     * This method is used to rename the single category of a user&apos;s eBay store through an asynchronous request. A successful call returns the &lt;b&gt;getStoreTask&lt;/b&gt; URI in the Location response header. The user calls &lt;b&gt;getStoreTask&lt;/b&gt; to retrieve the status of the rename category operation.&lt;br&gt;&lt;br&gt;&lt;div class=&quot;msgbox_important&quot;&gt;&lt;p class=&quot;msgbox_importantInDiv&quot; data-mc-autonum=&quot;&amp;lt;b&amp;gt;&amp;lt;span style=&amp;quot;color: #dd1e31;&amp;quot; class=&amp;quot;mcFormatColor&amp;quot;&amp;gt;Important! &amp;lt;/span&amp;gt;&amp;lt;/b&amp;gt;&quot;&gt;&lt;span class=&quot;autonumber&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important!&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;/span&gt; If you initiate a category change, you cannot make additional category changes until the previous change request has completed. Use getStoreTask (or getStoreTasks) method to get latest status of your last request.&lt;/p&gt;&lt;/div&gt;
-     * @param body The base request type of the &lt;b&gt;renameStoreCategory&lt;/b&gt; method. It is used to rename a customized eBay Store category.
+     * This method is used to rename the single category of a user&apos;s eBay store through a synchronous request.
+     * @param body This call is used to rename the single category of a user&apos;s eBay store.
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 500 status code
      */
     public void put(@jakarta.annotation.Nonnull final RenameStoreCategoryRequestType body) {
         put(body, null);
     }
     /**
-     * This method is used to rename the single category of a user&apos;s eBay store through an asynchronous request. A successful call returns the &lt;b&gt;getStoreTask&lt;/b&gt; URI in the Location response header. The user calls &lt;b&gt;getStoreTask&lt;/b&gt; to retrieve the status of the rename category operation.&lt;br&gt;&lt;br&gt;&lt;div class=&quot;msgbox_important&quot;&gt;&lt;p class=&quot;msgbox_importantInDiv&quot; data-mc-autonum=&quot;&amp;lt;b&amp;gt;&amp;lt;span style=&amp;quot;color: #dd1e31;&amp;quot; class=&amp;quot;mcFormatColor&amp;quot;&amp;gt;Important! &amp;lt;/span&amp;gt;&amp;lt;/b&amp;gt;&quot;&gt;&lt;span class=&quot;autonumber&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important!&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;/span&gt; If you initiate a category change, you cannot make additional category changes until the previous change request has completed. Use getStoreTask (or getStoreTasks) method to get latest status of your last request.&lt;/p&gt;&lt;/div&gt;
-     * @param body The base request type of the &lt;b&gt;renameStoreCategory&lt;/b&gt; method. It is used to rename a customized eBay Store category.
+     * This method is used to rename the single category of a user&apos;s eBay store through a synchronous request.
+     * @param body This call is used to rename the single category of a user&apos;s eBay store.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 500 status code
      */
     public void put(@jakarta.annotation.Nonnull final RenameStoreCategoryRequestType body, @jakarta.annotation.Nullable final java.util.function.Consumer<PutRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = toPutRequestInformation(body, requestConfiguration);
-        this.requestAdapter.sendPrimitive(requestInfo, null, Void.class);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("400", Error::createFromDiscriminatorValue);
+        errorMapping.put("500", Error::createFromDiscriminatorValue);
+        this.requestAdapter.sendPrimitive(requestInfo, errorMapping, Void.class);
     }
     /**
      * This method is used to delete one custom category of a user&apos;s eBay store through an asynchronous request. A successful call returns the &lt;b&gt;getStoreTask&lt;/b&gt; URI in the Location response header. Call &lt;b&gt;getStoreTask&lt;/b&gt; (or &lt;b&gt;getStoreTasks&lt;/b&gt;) method to retrieve the status of the delete category operation.&lt;br&gt;&lt;br&gt;&lt;div class=&quot;msgbox_important&quot;&gt;&lt;p class=&quot;msgbox_importantInDiv&quot; data-mc-autonum=&quot;&amp;lt;b&amp;gt;&amp;lt;span style=&amp;quot;color: #dd1e31;&amp;quot; class=&amp;quot;mcFormatColor&amp;quot;&amp;gt;Important! &amp;lt;/span&amp;gt;&amp;lt;/b&amp;gt;&quot;&gt;&lt;span class=&quot;autonumber&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important!&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;/span&gt; If you initiate a category change, you cannot make additional category changes until the previous change request has completed. Use getStoreTask (or getStoreTasks) method to get latest status of your last request.&lt;/p&gt;&lt;/div&gt;
-     * @param body The base request type of the &lt;b&gt;deleteStoreCategory&lt;/b&gt; method. It is used to provide a new category home for the listings that are currently in the store category to be deleted.
+     * @param body This call is used to delete one category of a user&apos;s eBay store.
      * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
@@ -94,7 +109,7 @@ public class WithCategoryItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * This method is used to delete one custom category of a user&apos;s eBay store through an asynchronous request. A successful call returns the &lt;b&gt;getStoreTask&lt;/b&gt; URI in the Location response header. Call &lt;b&gt;getStoreTask&lt;/b&gt; (or &lt;b&gt;getStoreTasks&lt;/b&gt;) method to retrieve the status of the delete category operation.&lt;br&gt;&lt;br&gt;&lt;div class=&quot;msgbox_important&quot;&gt;&lt;p class=&quot;msgbox_importantInDiv&quot; data-mc-autonum=&quot;&amp;lt;b&amp;gt;&amp;lt;span style=&amp;quot;color: #dd1e31;&amp;quot; class=&amp;quot;mcFormatColor&amp;quot;&amp;gt;Important! &amp;lt;/span&amp;gt;&amp;lt;/b&amp;gt;&quot;&gt;&lt;span class=&quot;autonumber&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important!&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;/span&gt; If you initiate a category change, you cannot make additional category changes until the previous change request has completed. Use getStoreTask (or getStoreTasks) method to get latest status of your last request.&lt;/p&gt;&lt;/div&gt;
-     * @param body The base request type of the &lt;b&gt;deleteStoreCategory&lt;/b&gt; method. It is used to provide a new category home for the listings that are currently in the store category to be deleted.
+     * @param body This call is used to delete one category of a user&apos;s eBay store.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link RequestInformation}
      */
@@ -103,12 +118,13 @@ public class WithCategoryItemRequestBuilder extends BaseRequestBuilder {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = new RequestInformation(HttpMethod.DELETE, urlTemplate, pathParameters);
         requestInfo.configure(requestConfiguration, DeleteRequestConfiguration::new);
+        requestInfo.headers.tryAdd("Accept", "application/json");
         requestInfo.setContentFromParsable(requestAdapter, "application/json", body);
         return requestInfo;
     }
     /**
-     * This method is used to rename the single category of a user&apos;s eBay store through an asynchronous request. A successful call returns the &lt;b&gt;getStoreTask&lt;/b&gt; URI in the Location response header. The user calls &lt;b&gt;getStoreTask&lt;/b&gt; to retrieve the status of the rename category operation.&lt;br&gt;&lt;br&gt;&lt;div class=&quot;msgbox_important&quot;&gt;&lt;p class=&quot;msgbox_importantInDiv&quot; data-mc-autonum=&quot;&amp;lt;b&amp;gt;&amp;lt;span style=&amp;quot;color: #dd1e31;&amp;quot; class=&amp;quot;mcFormatColor&amp;quot;&amp;gt;Important! &amp;lt;/span&amp;gt;&amp;lt;/b&amp;gt;&quot;&gt;&lt;span class=&quot;autonumber&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important!&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;/span&gt; If you initiate a category change, you cannot make additional category changes until the previous change request has completed. Use getStoreTask (or getStoreTasks) method to get latest status of your last request.&lt;/p&gt;&lt;/div&gt;
-     * @param body The base request type of the &lt;b&gt;renameStoreCategory&lt;/b&gt; method. It is used to rename a customized eBay Store category.
+     * This method is used to rename the single category of a user&apos;s eBay store through a synchronous request.
+     * @param body This call is used to rename the single category of a user&apos;s eBay store.
      * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
@@ -116,8 +132,8 @@ public class WithCategoryItemRequestBuilder extends BaseRequestBuilder {
         return toPutRequestInformation(body, null);
     }
     /**
-     * This method is used to rename the single category of a user&apos;s eBay store through an asynchronous request. A successful call returns the &lt;b&gt;getStoreTask&lt;/b&gt; URI in the Location response header. The user calls &lt;b&gt;getStoreTask&lt;/b&gt; to retrieve the status of the rename category operation.&lt;br&gt;&lt;br&gt;&lt;div class=&quot;msgbox_important&quot;&gt;&lt;p class=&quot;msgbox_importantInDiv&quot; data-mc-autonum=&quot;&amp;lt;b&amp;gt;&amp;lt;span style=&amp;quot;color: #dd1e31;&amp;quot; class=&amp;quot;mcFormatColor&amp;quot;&amp;gt;Important! &amp;lt;/span&amp;gt;&amp;lt;/b&amp;gt;&quot;&gt;&lt;span class=&quot;autonumber&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important!&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;/span&gt; If you initiate a category change, you cannot make additional category changes until the previous change request has completed. Use getStoreTask (or getStoreTasks) method to get latest status of your last request.&lt;/p&gt;&lt;/div&gt;
-     * @param body The base request type of the &lt;b&gt;renameStoreCategory&lt;/b&gt; method. It is used to rename a customized eBay Store category.
+     * This method is used to rename the single category of a user&apos;s eBay store through a synchronous request.
+     * @param body This call is used to rename the single category of a user&apos;s eBay store.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link RequestInformation}
      */
@@ -126,6 +142,7 @@ public class WithCategoryItemRequestBuilder extends BaseRequestBuilder {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = new RequestInformation(HttpMethod.PUT, urlTemplate, pathParameters);
         requestInfo.configure(requestConfiguration, PutRequestConfiguration::new);
+        requestInfo.headers.tryAdd("Accept", "application/json");
         requestInfo.setContentFromParsable(requestAdapter, "application/json", body);
         return requestInfo;
     }

@@ -31,7 +31,7 @@ public class Fee implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * This type is used to express a dollar value and the applicable currency.
+     * This dollar value in this container is the actual dollar value of the listing fee type specified in the &lt;strong&gt;feeType&lt;/strong&gt; field.
      */
     private Amount amount;
     /**
@@ -39,7 +39,7 @@ public class Fee implements AdditionalDataHolder, Parsable {
      */
     private String feeType;
     /**
-     * This type is used to express a dollar value and the applicable currency.
+     * The dollar value in this container indicates any eBay promotional discount applied toward the listing fee type specified in the &lt;strong&gt;feeType&lt;/strong&gt; field. If there was no discount applied toward the fee, this container is still returned but its value is &lt;code&gt;0.0&lt;/code&gt;.
      */
     private Amount promotionalDiscount;
     /**
@@ -67,7 +67,7 @@ public class Fee implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the amount property value. This type is used to express a dollar value and the applicable currency.
+     * Gets the amount property value. This dollar value in this container is the actual dollar value of the listing fee type specified in the &lt;strong&gt;feeType&lt;/strong&gt; field.
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -95,7 +95,7 @@ public class Fee implements AdditionalDataHolder, Parsable {
         return deserializerMap;
     }
     /**
-     * Gets the promotionalDiscount property value. This type is used to express a dollar value and the applicable currency.
+     * Gets the promotionalDiscount property value. The dollar value in this container indicates any eBay promotional discount applied toward the listing fee type specified in the &lt;strong&gt;feeType&lt;/strong&gt; field. If there was no discount applied toward the fee, this container is still returned but its value is &lt;code&gt;0.0&lt;/code&gt;.
      * @return a {@link Amount}
      */
     @jakarta.annotation.Nullable
@@ -121,7 +121,7 @@ public class Fee implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the amount property value. This type is used to express a dollar value and the applicable currency.
+     * Sets the amount property value. This dollar value in this container is the actual dollar value of the listing fee type specified in the &lt;strong&gt;feeType&lt;/strong&gt; field.
      * @param value Value to set for the amount property.
      */
     public void setAmount(@jakarta.annotation.Nullable final Amount value) {
@@ -135,7 +135,7 @@ public class Fee implements AdditionalDataHolder, Parsable {
         this.feeType = value;
     }
     /**
-     * Sets the promotionalDiscount property value. This type is used to express a dollar value and the applicable currency.
+     * Sets the promotionalDiscount property value. The dollar value in this container indicates any eBay promotional discount applied toward the listing fee type specified in the &lt;strong&gt;feeType&lt;/strong&gt; field. If there was no discount applied toward the fee, this container is still returned but its value is &lt;code&gt;0.0&lt;/code&gt;.
      * @param value Value to set for the promotionalDiscount property.
      */
     public void setPromotionalDiscount(@jakarta.annotation.Nullable final Amount value) {

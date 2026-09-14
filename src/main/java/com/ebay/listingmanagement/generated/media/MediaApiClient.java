@@ -16,6 +16,7 @@ package com.ebay.listingmanagement.generated.media;
 
 import com.ebay.listingmanagement.generated.media.document.DocumentRequestBuilder;
 import com.ebay.listingmanagement.generated.media.image.ImageRequestBuilder;
+import com.ebay.listingmanagement.generated.media.post_order.PostOrderRequestBuilder;
 import com.ebay.listingmanagement.generated.media.video.VideoRequestBuilder;
 import com.microsoft.kiota.ApiClientBuilder;
 import com.microsoft.kiota.BaseRequestBuilder;
@@ -53,6 +54,14 @@ public class MediaApiClient extends BaseRequestBuilder {
         return new ImageRequestBuilder(pathParameters, requestAdapter);
     }
     /**
+     * The post_order property
+     * @return a {@link PostOrderRequestBuilder}
+     */
+    @jakarta.annotation.Nonnull
+    public PostOrderRequestBuilder postOrder() {
+        return new PostOrderRequestBuilder(pathParameters, requestAdapter);
+    }
+    /**
      * The video property
      * @return a {@link VideoRequestBuilder}
      */
@@ -75,7 +84,7 @@ public class MediaApiClient extends BaseRequestBuilder {
         ApiClientBuilder.registerDefaultDeserializer(() -> new FormParseNodeFactory());
         ApiClientBuilder.registerDefaultDeserializer(() -> new TextParseNodeFactory());
         if (requestAdapter.getBaseUrl() == null || requestAdapter.getBaseUrl().isEmpty()) {
-            requestAdapter.setBaseUrl("https://apim.ebay.com{basePath}");
+            requestAdapter.setBaseUrl("https://apim.ebay.com/commerce/media/v1_beta");
         }
         pathParameters.put("baseurl", requestAdapter.getBaseUrl());
     }

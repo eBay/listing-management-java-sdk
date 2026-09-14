@@ -31,9 +31,9 @@ public class OperatingHours implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * A &lt;strong&gt;dayOfWeekEnum&lt;/strong&gt; value is required for each day of the week that the store location has regular operating hours. &lt;br&gt;&lt;br&gt;This field is returned if operating hours are defined for the store location. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/api:DayOfWeekEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * A &lt;strong&gt;dayOfWeekEnum&lt;/strong&gt; value is required for each day of the week that the store location has regular operating hours. &lt;br&gt;&lt;br&gt;This field is returned if operating hours are defined for the store location.
      */
-    private String dayOfWeekEnum;
+    private DayOfWeekEnum dayOfWeekEnum;
     /**
      * This container is used to define the opening and closing times of a store location&apos;s working day (defined in the &lt;strong&gt;dayOfWeekEnum&lt;/strong&gt; field). An &lt;strong&gt;intervals&lt;/strong&gt; container is needed for each day of the week that the store location is open. If a store location closes for lunch (or any other period during the day) and then reopens, multiple &lt;strong&gt;open&lt;/strong&gt; and &lt;strong&gt;close&lt;/strong&gt; pairs are needed &lt;br&gt;&lt;br&gt;This container is returned if operating hours are defined for the store location.
      */
@@ -63,11 +63,11 @@ public class OperatingHours implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the dayOfWeekEnum property value. A &lt;strong&gt;dayOfWeekEnum&lt;/strong&gt; value is required for each day of the week that the store location has regular operating hours. &lt;br&gt;&lt;br&gt;This field is returned if operating hours are defined for the store location. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/api:DayOfWeekEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the dayOfWeekEnum property value. A &lt;strong&gt;dayOfWeekEnum&lt;/strong&gt; value is required for each day of the week that the store location has regular operating hours. &lt;br&gt;&lt;br&gt;This field is returned if operating hours are defined for the store location.
+     * @return a {@link DayOfWeekEnum}
      */
     @jakarta.annotation.Nullable
-    public String getDayOfWeekEnum() {
+    public DayOfWeekEnum getDayOfWeekEnum() {
         return this.dayOfWeekEnum;
     }
     /**
@@ -77,7 +77,7 @@ public class OperatingHours implements AdditionalDataHolder, Parsable {
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(2);
-        deserializerMap.put("dayOfWeekEnum", (n) -> { this.setDayOfWeekEnum(n.getStringValue()); });
+        deserializerMap.put("dayOfWeekEnum", (n) -> { this.setDayOfWeekEnum(n.getEnumValue(DayOfWeekEnum::forValue)); });
         deserializerMap.put("intervals", (n) -> { this.setIntervals(n.getCollectionOfObjectValues(Interval::createFromDiscriminatorValue)); });
         return deserializerMap;
     }
@@ -95,7 +95,7 @@ public class OperatingHours implements AdditionalDataHolder, Parsable {
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeStringValue("dayOfWeekEnum", this.getDayOfWeekEnum());
+        writer.writeEnumValue("dayOfWeekEnum", this.getDayOfWeekEnum());
         writer.writeCollectionOfObjectValues("intervals", this.getIntervals());
         writer.writeAdditionalData(this.getAdditionalData());
     }
@@ -107,10 +107,10 @@ public class OperatingHours implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the dayOfWeekEnum property value. A &lt;strong&gt;dayOfWeekEnum&lt;/strong&gt; value is required for each day of the week that the store location has regular operating hours. &lt;br&gt;&lt;br&gt;This field is returned if operating hours are defined for the store location. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/api:DayOfWeekEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the dayOfWeekEnum property value. A &lt;strong&gt;dayOfWeekEnum&lt;/strong&gt; value is required for each day of the week that the store location has regular operating hours. &lt;br&gt;&lt;br&gt;This field is returned if operating hours are defined for the store location.
      * @param value Value to set for the dayOfWeekEnum property.
      */
-    public void setDayOfWeekEnum(@jakarta.annotation.Nullable final String value) {
+    public void setDayOfWeekEnum(@jakarta.annotation.Nullable final DayOfWeekEnum value) {
         this.dayOfWeekEnum = value;
     }
     /**

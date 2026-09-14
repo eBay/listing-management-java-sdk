@@ -31,13 +31,13 @@ public class CreateDocumentRequest implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * The type of the document being uploaded. For example, a &lt;code&gt;USER_GUIDE_OR_MANUAL&lt;/code&gt; or a &lt;code&gt;SAFETY_DATA_SHEET&lt;/code&gt;. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/commerce/media/types/api:DocumentTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * The type of the document being uploaded. For example, a &lt;code&gt;USER_GUIDE_OR_MANUAL&lt;/code&gt; or a &lt;code&gt;SAFETY_DATA_SHEET&lt;/code&gt;.
      */
-    private String documentType;
+    private DocumentTypeEnum documentType;
     /**
      * This array shows the language(s) used in the document.
      */
-    private java.util.List<String> languages;
+    private java.util.List<LanguageEnum> languages;
     /**
      * Instantiates a new {@link CreateDocumentRequest} and sets the default values.
      */
@@ -63,11 +63,11 @@ public class CreateDocumentRequest implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the documentType property value. The type of the document being uploaded. For example, a &lt;code&gt;USER_GUIDE_OR_MANUAL&lt;/code&gt; or a &lt;code&gt;SAFETY_DATA_SHEET&lt;/code&gt;. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/commerce/media/types/api:DocumentTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the documentType property value. The type of the document being uploaded. For example, a &lt;code&gt;USER_GUIDE_OR_MANUAL&lt;/code&gt; or a &lt;code&gt;SAFETY_DATA_SHEET&lt;/code&gt;.
+     * @return a {@link DocumentTypeEnum}
      */
     @jakarta.annotation.Nullable
-    public String getDocumentType() {
+    public DocumentTypeEnum getDocumentType() {
         return this.documentType;
     }
     /**
@@ -77,16 +77,16 @@ public class CreateDocumentRequest implements AdditionalDataHolder, Parsable {
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(2);
-        deserializerMap.put("documentType", (n) -> { this.setDocumentType(n.getStringValue()); });
-        deserializerMap.put("languages", (n) -> { this.setLanguages(n.getCollectionOfPrimitiveValues(String.class)); });
+        deserializerMap.put("documentType", (n) -> { this.setDocumentType(n.getEnumValue(DocumentTypeEnum::forValue)); });
+        deserializerMap.put("languages", (n) -> { this.setLanguages(n.getCollectionOfEnumValues(LanguageEnum::forValue)); });
         return deserializerMap;
     }
     /**
      * Gets the languages property value. This array shows the language(s) used in the document.
-     * @return a {@link java.util.List<String>}
+     * @return a {@link java.util.List<LanguageEnum>}
      */
     @jakarta.annotation.Nullable
-    public java.util.List<String> getLanguages() {
+    public java.util.List<LanguageEnum> getLanguages() {
         return this.languages;
     }
     /**
@@ -95,8 +95,8 @@ public class CreateDocumentRequest implements AdditionalDataHolder, Parsable {
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeStringValue("documentType", this.getDocumentType());
-        writer.writeCollectionOfPrimitiveValues("languages", this.getLanguages());
+        writer.writeEnumValue("documentType", this.getDocumentType());
+        writer.writeCollectionOfEnumValues("languages", this.getLanguages());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -107,17 +107,17 @@ public class CreateDocumentRequest implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the documentType property value. The type of the document being uploaded. For example, a &lt;code&gt;USER_GUIDE_OR_MANUAL&lt;/code&gt; or a &lt;code&gt;SAFETY_DATA_SHEET&lt;/code&gt;. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/commerce/media/types/api:DocumentTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the documentType property value. The type of the document being uploaded. For example, a &lt;code&gt;USER_GUIDE_OR_MANUAL&lt;/code&gt; or a &lt;code&gt;SAFETY_DATA_SHEET&lt;/code&gt;.
      * @param value Value to set for the documentType property.
      */
-    public void setDocumentType(@jakarta.annotation.Nullable final String value) {
+    public void setDocumentType(@jakarta.annotation.Nullable final DocumentTypeEnum value) {
         this.documentType = value;
     }
     /**
      * Sets the languages property value. This array shows the language(s) used in the document.
      * @param value Value to set for the languages property.
      */
-    public void setLanguages(@jakarta.annotation.Nullable final java.util.List<String> value) {
+    public void setLanguages(@jakarta.annotation.Nullable final java.util.List<LanguageEnum> value) {
         this.languages = value;
     }
 }

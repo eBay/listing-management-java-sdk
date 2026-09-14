@@ -31,7 +31,7 @@ public class Amount implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * A three-digit string value representing the type of currency being used. Both the &lt;strong&gt;value&lt;/strong&gt; and &lt;strong&gt;currency&lt;/strong&gt; fields are required/always returned when expressing prices. &lt;br&gt;&lt;br&gt;See the &lt;a href=&quot;/api-docs/sell/inventory/types/ba:CurrencyCodeEnum&quot; target=&quot;_blank&quot;&gt;CurrencyCodeEnum&lt;/a&gt; type for the full list of currencies and their corresponding three-digit string values.
+     * A three-letter string value representing the type of currency being used. Both the &lt;strong&gt;value&lt;/strong&gt; and &lt;strong&gt;currency&lt;/strong&gt; fields are required/always returned when expressing prices. &lt;br&gt;&lt;br&gt;See &lt;a href=&quot;https://www.iso.org/iso-4217-currency-codes.html&quot; target=&quot;_blank&quot;&gt;ISO 4217&lt;/a&gt; for more information and links to the full list of currencies and their corresponding three-letter string values.
      */
     private String currency;
     /**
@@ -63,7 +63,7 @@ public class Amount implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the currency property value. A three-digit string value representing the type of currency being used. Both the &lt;strong&gt;value&lt;/strong&gt; and &lt;strong&gt;currency&lt;/strong&gt; fields are required/always returned when expressing prices. &lt;br&gt;&lt;br&gt;See the &lt;a href=&quot;/api-docs/sell/inventory/types/ba:CurrencyCodeEnum&quot; target=&quot;_blank&quot;&gt;CurrencyCodeEnum&lt;/a&gt; type for the full list of currencies and their corresponding three-digit string values.
+     * Gets the currency property value. A three-letter string value representing the type of currency being used. Both the &lt;strong&gt;value&lt;/strong&gt; and &lt;strong&gt;currency&lt;/strong&gt; fields are required/always returned when expressing prices. &lt;br&gt;&lt;br&gt;See &lt;a href=&quot;https://www.iso.org/iso-4217-currency-codes.html&quot; target=&quot;_blank&quot;&gt;ISO 4217&lt;/a&gt; for more information and links to the full list of currencies and their corresponding three-letter string values.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -107,7 +107,7 @@ public class Amount implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the currency property value. A three-digit string value representing the type of currency being used. Both the &lt;strong&gt;value&lt;/strong&gt; and &lt;strong&gt;currency&lt;/strong&gt; fields are required/always returned when expressing prices. &lt;br&gt;&lt;br&gt;See the &lt;a href=&quot;/api-docs/sell/inventory/types/ba:CurrencyCodeEnum&quot; target=&quot;_blank&quot;&gt;CurrencyCodeEnum&lt;/a&gt; type for the full list of currencies and their corresponding three-digit string values.
+     * Sets the currency property value. A three-letter string value representing the type of currency being used. Both the &lt;strong&gt;value&lt;/strong&gt; and &lt;strong&gt;currency&lt;/strong&gt; fields are required/always returned when expressing prices. &lt;br&gt;&lt;br&gt;See &lt;a href=&quot;https://www.iso.org/iso-4217-currency-codes.html&quot; target=&quot;_blank&quot;&gt;ISO 4217&lt;/a&gt; for more information and links to the full list of currencies and their corresponding three-letter string values.
      * @param value Value to set for the currency property.
      */
     public void setCurrency(@jakarta.annotation.Nullable final String value) {

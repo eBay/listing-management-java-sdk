@@ -1,8 +1,8 @@
 {
-  "descriptionHash": "AEC23E7C705A74A4DE6D7ECFA0F2EABFA56E0584B0A87AA06BFD4FF8B423863C7D5B483E47DD75D795B204B10EE1AD199E12286BDE5D2565A3BD7D3B4F9F815C",
-  "descriptionLocation": "../../../../../../../../specs/openapi/media.yaml",
+  "descriptionHash": "EED5F671601F4B53370D4C1BFFDAAE0F85C8873D1A0889032E121BA4EB73D482C6E38CEAC5165EC03365D4FD1CDE8BC478FD2D5D6BF79075C5BF3698E40EA9DB",
+  "descriptionLocation": "../../../../../../../../specs/openapi/media.json",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.31.1",
+  "kiotaVersion": "1.35.0",
   "clientClassName": "MediaApiClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "com.ebay.listingmanagement.generated.media",
@@ -30,5 +30,6 @@
   ],
   "includePatterns": [],
   "excludePatterns": [],
-  "disabledValidationRules": []
+  "disabledValidationRules": [],
+  "allowedExternalOrigins": []
 }

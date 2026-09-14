@@ -31,13 +31,13 @@ public class ScheduleTemplateResponse implements AdditionalDataHolder, Parsable 
      */
     private Map<String, Object> additionalData;
     /**
-     * The feed type of the schedule template. &lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; When calling &lt;strong&gt;createSchedule&lt;/strong&gt; and &lt;strong&gt;updateSchedule&lt;/strong&gt; methods you must match the feed type specified by the schedule template (this feedType).&lt;/span&gt;&lt;/p&gt;
+     * The feed type of the schedule template. &lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; When calling &lt;strong&gt;createSchedule&lt;/strong&gt; and &lt;strong&gt;updateSchedule&lt;/strong&gt; methods, you must match the feed type specified by the schedule template (this &lt;strong&gt;feedType&lt;/strong&gt;).&lt;/span&gt;&lt;/p&gt;
      */
     private String feedType;
     /**
-     * This field specifies how often the schedule is generated. If set to &lt;code&gt;HALF_HOUR&lt;/code&gt; or &lt;code&gt;ONE_HOUR&lt;/code&gt;, you cannot set a &lt;strong&gt;preferredTriggerHour&lt;/strong&gt; using &lt;strong&gt;createSchedule&lt;/strong&gt; or &lt;strong&gt;updateSchedule&lt;/strong&gt;. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:FrequencyEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This field specifies how often the schedule is generated. If set to &lt;code&gt;HALF_HOUR&lt;/code&gt; or &lt;code&gt;ONE_HOUR&lt;/code&gt;, you cannot set a &lt;strong&gt;preferredTriggerHour&lt;/strong&gt; using &lt;strong&gt;createSchedule&lt;/strong&gt; or &lt;strong&gt;updateSchedule&lt;/strong&gt;.
      */
-    private String frequency;
+    private FrequencyEnum frequency;
     /**
      * The template name provided by the template.
      */
@@ -47,9 +47,9 @@ public class ScheduleTemplateResponse implements AdditionalDataHolder, Parsable 
      */
     private String scheduleTemplateId;
     /**
-     * The present status of the template. You cannot create or modify a schedule using a template with an &lt;code&gt;INACTIVE&lt;/code&gt; status.  For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:StatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * The present status of the template. You cannot create or modify a schedule using a template with an &lt;code&gt;INACTIVE&lt;/code&gt; status. 
      */
-    private String status;
+    private StatusEnum status;
     /**
      * An array of the configuration supported by this template.
      */
@@ -79,7 +79,7 @@ public class ScheduleTemplateResponse implements AdditionalDataHolder, Parsable 
         return this.additionalData;
     }
     /**
-     * Gets the feedType property value. The feed type of the schedule template. &lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; When calling &lt;strong&gt;createSchedule&lt;/strong&gt; and &lt;strong&gt;updateSchedule&lt;/strong&gt; methods you must match the feed type specified by the schedule template (this feedType).&lt;/span&gt;&lt;/p&gt;
+     * Gets the feedType property value. The feed type of the schedule template. &lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; When calling &lt;strong&gt;createSchedule&lt;/strong&gt; and &lt;strong&gt;updateSchedule&lt;/strong&gt; methods, you must match the feed type specified by the schedule template (this &lt;strong&gt;feedType&lt;/strong&gt;).&lt;/span&gt;&lt;/p&gt;
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -94,19 +94,19 @@ public class ScheduleTemplateResponse implements AdditionalDataHolder, Parsable 
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(6);
         deserializerMap.put("feedType", (n) -> { this.setFeedType(n.getStringValue()); });
-        deserializerMap.put("frequency", (n) -> { this.setFrequency(n.getStringValue()); });
+        deserializerMap.put("frequency", (n) -> { this.setFrequency(n.getEnumValue(FrequencyEnum::forValue)); });
         deserializerMap.put("name", (n) -> { this.setName(n.getStringValue()); });
         deserializerMap.put("scheduleTemplateId", (n) -> { this.setScheduleTemplateId(n.getStringValue()); });
-        deserializerMap.put("status", (n) -> { this.setStatus(n.getStringValue()); });
+        deserializerMap.put("status", (n) -> { this.setStatus(n.getEnumValue(StatusEnum::forValue)); });
         deserializerMap.put("supportedConfigurations", (n) -> { this.setSupportedConfigurations(n.getCollectionOfObjectValues(SupportedConfiguration::createFromDiscriminatorValue)); });
         return deserializerMap;
     }
     /**
-     * Gets the frequency property value. This field specifies how often the schedule is generated. If set to &lt;code&gt;HALF_HOUR&lt;/code&gt; or &lt;code&gt;ONE_HOUR&lt;/code&gt;, you cannot set a &lt;strong&gt;preferredTriggerHour&lt;/strong&gt; using &lt;strong&gt;createSchedule&lt;/strong&gt; or &lt;strong&gt;updateSchedule&lt;/strong&gt;. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:FrequencyEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the frequency property value. This field specifies how often the schedule is generated. If set to &lt;code&gt;HALF_HOUR&lt;/code&gt; or &lt;code&gt;ONE_HOUR&lt;/code&gt;, you cannot set a &lt;strong&gt;preferredTriggerHour&lt;/strong&gt; using &lt;strong&gt;createSchedule&lt;/strong&gt; or &lt;strong&gt;updateSchedule&lt;/strong&gt;.
+     * @return a {@link FrequencyEnum}
      */
     @jakarta.annotation.Nullable
-    public String getFrequency() {
+    public FrequencyEnum getFrequency() {
         return this.frequency;
     }
     /**
@@ -126,11 +126,11 @@ public class ScheduleTemplateResponse implements AdditionalDataHolder, Parsable 
         return this.scheduleTemplateId;
     }
     /**
-     * Gets the status property value. The present status of the template. You cannot create or modify a schedule using a template with an &lt;code&gt;INACTIVE&lt;/code&gt; status.  For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:StatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the status property value. The present status of the template. You cannot create or modify a schedule using a template with an &lt;code&gt;INACTIVE&lt;/code&gt; status. 
+     * @return a {@link StatusEnum}
      */
     @jakarta.annotation.Nullable
-    public String getStatus() {
+    public StatusEnum getStatus() {
         return this.status;
     }
     /**
@@ -148,10 +148,10 @@ public class ScheduleTemplateResponse implements AdditionalDataHolder, Parsable 
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         writer.writeStringValue("feedType", this.getFeedType());
-        writer.writeStringValue("frequency", this.getFrequency());
+        writer.writeEnumValue("frequency", this.getFrequency());
         writer.writeStringValue("name", this.getName());
         writer.writeStringValue("scheduleTemplateId", this.getScheduleTemplateId());
-        writer.writeStringValue("status", this.getStatus());
+        writer.writeEnumValue("status", this.getStatus());
         writer.writeCollectionOfObjectValues("supportedConfigurations", this.getSupportedConfigurations());
         writer.writeAdditionalData(this.getAdditionalData());
     }
@@ -163,17 +163,17 @@ public class ScheduleTemplateResponse implements AdditionalDataHolder, Parsable 
         this.additionalData = value;
     }
     /**
-     * Sets the feedType property value. The feed type of the schedule template. &lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; When calling &lt;strong&gt;createSchedule&lt;/strong&gt; and &lt;strong&gt;updateSchedule&lt;/strong&gt; methods you must match the feed type specified by the schedule template (this feedType).&lt;/span&gt;&lt;/p&gt;
+     * Sets the feedType property value. The feed type of the schedule template. &lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; When calling &lt;strong&gt;createSchedule&lt;/strong&gt; and &lt;strong&gt;updateSchedule&lt;/strong&gt; methods, you must match the feed type specified by the schedule template (this &lt;strong&gt;feedType&lt;/strong&gt;).&lt;/span&gt;&lt;/p&gt;
      * @param value Value to set for the feedType property.
      */
     public void setFeedType(@jakarta.annotation.Nullable final String value) {
         this.feedType = value;
     }
     /**
-     * Sets the frequency property value. This field specifies how often the schedule is generated. If set to &lt;code&gt;HALF_HOUR&lt;/code&gt; or &lt;code&gt;ONE_HOUR&lt;/code&gt;, you cannot set a &lt;strong&gt;preferredTriggerHour&lt;/strong&gt; using &lt;strong&gt;createSchedule&lt;/strong&gt; or &lt;strong&gt;updateSchedule&lt;/strong&gt;. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:FrequencyEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the frequency property value. This field specifies how often the schedule is generated. If set to &lt;code&gt;HALF_HOUR&lt;/code&gt; or &lt;code&gt;ONE_HOUR&lt;/code&gt;, you cannot set a &lt;strong&gt;preferredTriggerHour&lt;/strong&gt; using &lt;strong&gt;createSchedule&lt;/strong&gt; or &lt;strong&gt;updateSchedule&lt;/strong&gt;.
      * @param value Value to set for the frequency property.
      */
-    public void setFrequency(@jakarta.annotation.Nullable final String value) {
+    public void setFrequency(@jakarta.annotation.Nullable final FrequencyEnum value) {
         this.frequency = value;
     }
     /**
@@ -191,10 +191,10 @@ public class ScheduleTemplateResponse implements AdditionalDataHolder, Parsable 
         this.scheduleTemplateId = value;
     }
     /**
-     * Sets the status property value. The present status of the template. You cannot create or modify a schedule using a template with an &lt;code&gt;INACTIVE&lt;/code&gt; status.  For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:StatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the status property value. The present status of the template. You cannot create or modify a schedule using a template with an &lt;code&gt;INACTIVE&lt;/code&gt; status. 
      * @param value Value to set for the status property.
      */
-    public void setStatus(@jakarta.annotation.Nullable final String value) {
+    public void setStatus(@jakarta.annotation.Nullable final StatusEnum value) {
         this.status = value;
     }
     /**

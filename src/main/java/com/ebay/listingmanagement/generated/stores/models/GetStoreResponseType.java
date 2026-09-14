@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 /**
- * The base response type of the &lt;b&gt;getStore&lt;/b&gt; method. It is used to describe a seller&apos;s eBay store, and includes the eBay Store name, the description of the store, the URL to the eBay Store.
+ * The base response type of the getStore call. This response consists of the data describinga seller&apos;s eBay store, and includes the eBay Store name, the description of the store, the URL to the eBay Store.
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class GetStoreResponseType implements AdditionalDataHolder, Parsable {
@@ -39,7 +39,7 @@ public class GetStoreResponseType implements AdditionalDataHolder, Parsable {
      */
     private String lastOpenedTime;
     /**
-     * This type is used to provide url of the seller&apos;s store logo.
+     * This container provides information about a Store logo.
      */
     private StoreLogoType logo;
     /**
@@ -47,11 +47,11 @@ public class GetStoreResponseType implements AdditionalDataHolder, Parsable {
      */
     private String name;
     /**
-     * The complete URL of the user&apos;s store.
+     * The complete URL of the user&apos;s Store. This field is only ever returned, and does not need to be explicitly set.
      */
     private String url;
     /**
-     * The relative URL path of the Store.&lt;br&gt;&lt;br&gt; &lt;b&gt;Max length: &lt;/b&gt;58
+     * The URL path of the Store (58 characters maximum). Only if you are using Chinese characters in theName property do you need to use this field, such as if you are opening a Store on the Taiwan site.The reason for this is that the URL path is normally derived from the Store name, but it cannot be derivedfrom the name of the Store if it contains Chinese characters because URLs cannot contain Chinese characters.
      */
     private String urlPath;
     /**
@@ -110,7 +110,7 @@ public class GetStoreResponseType implements AdditionalDataHolder, Parsable {
         return this.lastOpenedTime;
     }
     /**
-     * Gets the logo property value. This type is used to provide url of the seller&apos;s store logo.
+     * Gets the logo property value. This container provides information about a Store logo.
      * @return a {@link StoreLogoType}
      */
     @jakarta.annotation.Nullable
@@ -126,7 +126,7 @@ public class GetStoreResponseType implements AdditionalDataHolder, Parsable {
         return this.name;
     }
     /**
-     * Gets the url property value. The complete URL of the user&apos;s store.
+     * Gets the url property value. The complete URL of the user&apos;s Store. This field is only ever returned, and does not need to be explicitly set.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -134,7 +134,7 @@ public class GetStoreResponseType implements AdditionalDataHolder, Parsable {
         return this.url;
     }
     /**
-     * Gets the urlPath property value. The relative URL path of the Store.&lt;br&gt;&lt;br&gt; &lt;b&gt;Max length: &lt;/b&gt;58
+     * Gets the urlPath property value. The URL path of the Store (58 characters maximum). Only if you are using Chinese characters in theName property do you need to use this field, such as if you are opening a Store on the Taiwan site.The reason for this is that the URL path is normally derived from the Store name, but it cannot be derivedfrom the name of the Store if it contains Chinese characters because URLs cannot contain Chinese characters.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -177,7 +177,7 @@ public class GetStoreResponseType implements AdditionalDataHolder, Parsable {
         this.lastOpenedTime = value;
     }
     /**
-     * Sets the logo property value. This type is used to provide url of the seller&apos;s store logo.
+     * Sets the logo property value. This container provides information about a Store logo.
      * @param value Value to set for the logo property.
      */
     public void setLogo(@jakarta.annotation.Nullable final StoreLogoType value) {
@@ -191,14 +191,14 @@ public class GetStoreResponseType implements AdditionalDataHolder, Parsable {
         this.name = value;
     }
     /**
-     * Sets the url property value. The complete URL of the user&apos;s store.
+     * Sets the url property value. The complete URL of the user&apos;s Store. This field is only ever returned, and does not need to be explicitly set.
      * @param value Value to set for the url property.
      */
     public void setUrl(@jakarta.annotation.Nullable final String value) {
         this.url = value;
     }
     /**
-     * Sets the urlPath property value. The relative URL path of the Store.&lt;br&gt;&lt;br&gt; &lt;b&gt;Max length: &lt;/b&gt;58
+     * Sets the urlPath property value. The URL path of the Store (58 characters maximum). Only if you are using Chinese characters in theName property do you need to use this field, such as if you are opening a Store on the Taiwan site.The reason for this is that the URL path is normally derived from the Store name, but it cannot be derivedfrom the name of the Store if it contains Chinese characters because URLs cannot contain Chinese characters.
      * @param value Value to set for the urlPath property.
      */
     public void setUrlPath(@jakarta.annotation.Nullable final String value) {

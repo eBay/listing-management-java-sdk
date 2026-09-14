@@ -31,11 +31,11 @@ public class InventoryLocationResponse implements AdditionalDataHolder, Parsable
      */
     private Map<String, Object> additionalData;
     /**
-     * This type is used to provide shipping specification details, such as the weekly cut-off schedule for order handling and cut-off override(s), for a fulfillment center location. 
+     * This container provides information about a fulfillment center&apos;s shipping specifications, such as the weekly cut-off time schedule for order handling and any cut-off time overrides.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; This field is only returned for fulfillment center locations.&lt;/span&gt;
      */
     private FulfillmentCenterSpecifications fulfillmentCenterSpecifications;
     /**
-     * A complex type that is used to provide the physical address of a location, and it geo-coordinates.
+     * This container provides location details of an inventory location. The &lt;strong&gt;address&lt;/strong&gt; container will always be returned, but it will not always have a complete street address. Except in the case of a store or fulfillment center location, a full address is not a requirement when setting up an inventory location. The &lt;strong&gt;geoCoordinates&lt;/strong&gt; container will only be returned if the merchant provided geographical coordinates. The &lt;strong&gt;locationId&lt;/strong&gt; field is always returned, but this value is only used internally by eBay.
      */
     private Location location;
     /**
@@ -49,7 +49,7 @@ public class InventoryLocationResponse implements AdditionalDataHolder, Parsable
     /**
      * This container defines the function of the inventory location. Typically, a location will serve as a store, warehouse, or fulfillment center, but in some cases, an inventory location may be more than one type.
      */
-    private java.util.List<String> locationTypes;
+    private java.util.List<StoreTypeEnum> locationTypes;
     /**
      * This text field shows the  Website address (URL) associated with the inventory location. This field is returned if defined for the location.
      */
@@ -59,9 +59,9 @@ public class InventoryLocationResponse implements AdditionalDataHolder, Parsable
      */
     private String merchantLocationKey;
     /**
-     * This field indicates whether the inventory location is enabled (inventory can be loaded to location) or disabled (inventory can not be loaded to location). The merchant can use the &lt;strong&gt;enableInventoryLocation&lt;/strong&gt; call to enable a location in disabled status, or the &lt;strong&gt;disableInventoryLocation&lt;/strong&gt; call to disable a location in enabled status. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/api:StatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * This field indicates whether the inventory location is enabled (inventory can be loaded to location) or disabled (inventory cannot be loaded to location). The merchant can use the &lt;strong&gt;enableInventoryLocation&lt;/strong&gt; call to enable a location in disabled status, or the &lt;strong&gt;disableInventoryLocation&lt;/strong&gt; call to disable a location in enabled status.
      */
-    private String merchantLocationStatus;
+    private StatusEnum merchantLocationStatus;
     /**
      * The name of the inventory location. This name should be a human-friendly name as it will be displayed in In-Store Pickup and Click and Collect listings. For store inventory locations, this field is not required for the &lt;strong&gt;createInventoryLocation&lt;/strong&gt; call, but a store inventory location must have a defined &lt;strong&gt;name&lt;/strong&gt; value before an In-Store Pickup and Click and Collect enabled offer is published. So, if the seller omits this field in the &lt;strong&gt;createInventoryLocation&lt;/strong&gt; call, it will have to be added later through a &lt;strong&gt;updateInventoryLocation&lt;/strong&gt; call.
      */
@@ -117,10 +117,10 @@ public class InventoryLocationResponse implements AdditionalDataHolder, Parsable
         deserializerMap.put("location", (n) -> { this.setLocation(n.getObjectValue(Location::createFromDiscriminatorValue)); });
         deserializerMap.put("locationAdditionalInformation", (n) -> { this.setLocationAdditionalInformation(n.getStringValue()); });
         deserializerMap.put("locationInstructions", (n) -> { this.setLocationInstructions(n.getStringValue()); });
-        deserializerMap.put("locationTypes", (n) -> { this.setLocationTypes(n.getCollectionOfPrimitiveValues(String.class)); });
+        deserializerMap.put("locationTypes", (n) -> { this.setLocationTypes(n.getCollectionOfEnumValues(StoreTypeEnum::forValue)); });
         deserializerMap.put("locationWebUrl", (n) -> { this.setLocationWebUrl(n.getStringValue()); });
         deserializerMap.put("merchantLocationKey", (n) -> { this.setMerchantLocationKey(n.getStringValue()); });
-        deserializerMap.put("merchantLocationStatus", (n) -> { this.setMerchantLocationStatus(n.getStringValue()); });
+        deserializerMap.put("merchantLocationStatus", (n) -> { this.setMerchantLocationStatus(n.getEnumValue(StatusEnum::forValue)); });
         deserializerMap.put("name", (n) -> { this.setName(n.getStringValue()); });
         deserializerMap.put("operatingHours", (n) -> { this.setOperatingHours(n.getCollectionOfObjectValues(OperatingHours::createFromDiscriminatorValue)); });
         deserializerMap.put("phone", (n) -> { this.setPhone(n.getStringValue()); });
@@ -129,7 +129,7 @@ public class InventoryLocationResponse implements AdditionalDataHolder, Parsable
         return deserializerMap;
     }
     /**
-     * Gets the fulfillmentCenterSpecifications property value. This type is used to provide shipping specification details, such as the weekly cut-off schedule for order handling and cut-off override(s), for a fulfillment center location. 
+     * Gets the fulfillmentCenterSpecifications property value. This container provides information about a fulfillment center&apos;s shipping specifications, such as the weekly cut-off time schedule for order handling and any cut-off time overrides.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; This field is only returned for fulfillment center locations.&lt;/span&gt;
      * @return a {@link FulfillmentCenterSpecifications}
      */
     @jakarta.annotation.Nullable
@@ -137,7 +137,7 @@ public class InventoryLocationResponse implements AdditionalDataHolder, Parsable
         return this.fulfillmentCenterSpecifications;
     }
     /**
-     * Gets the location property value. A complex type that is used to provide the physical address of a location, and it geo-coordinates.
+     * Gets the location property value. This container provides location details of an inventory location. The &lt;strong&gt;address&lt;/strong&gt; container will always be returned, but it will not always have a complete street address. Except in the case of a store or fulfillment center location, a full address is not a requirement when setting up an inventory location. The &lt;strong&gt;geoCoordinates&lt;/strong&gt; container will only be returned if the merchant provided geographical coordinates. The &lt;strong&gt;locationId&lt;/strong&gt; field is always returned, but this value is only used internally by eBay.
      * @return a {@link Location}
      */
     @jakarta.annotation.Nullable
@@ -162,10 +162,10 @@ public class InventoryLocationResponse implements AdditionalDataHolder, Parsable
     }
     /**
      * Gets the locationTypes property value. This container defines the function of the inventory location. Typically, a location will serve as a store, warehouse, or fulfillment center, but in some cases, an inventory location may be more than one type.
-     * @return a {@link java.util.List<String>}
+     * @return a {@link java.util.List<StoreTypeEnum>}
      */
     @jakarta.annotation.Nullable
-    public java.util.List<String> getLocationTypes() {
+    public java.util.List<StoreTypeEnum> getLocationTypes() {
         return this.locationTypes;
     }
     /**
@@ -185,11 +185,11 @@ public class InventoryLocationResponse implements AdditionalDataHolder, Parsable
         return this.merchantLocationKey;
     }
     /**
-     * Gets the merchantLocationStatus property value. This field indicates whether the inventory location is enabled (inventory can be loaded to location) or disabled (inventory can not be loaded to location). The merchant can use the &lt;strong&gt;enableInventoryLocation&lt;/strong&gt; call to enable a location in disabled status, or the &lt;strong&gt;disableInventoryLocation&lt;/strong&gt; call to disable a location in enabled status. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/api:StatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the merchantLocationStatus property value. This field indicates whether the inventory location is enabled (inventory can be loaded to location) or disabled (inventory cannot be loaded to location). The merchant can use the &lt;strong&gt;enableInventoryLocation&lt;/strong&gt; call to enable a location in disabled status, or the &lt;strong&gt;disableInventoryLocation&lt;/strong&gt; call to disable a location in enabled status.
+     * @return a {@link StatusEnum}
      */
     @jakarta.annotation.Nullable
-    public String getMerchantLocationStatus() {
+    public StatusEnum getMerchantLocationStatus() {
         return this.merchantLocationStatus;
     }
     /**
@@ -242,10 +242,10 @@ public class InventoryLocationResponse implements AdditionalDataHolder, Parsable
         writer.writeObjectValue("location", this.getLocation());
         writer.writeStringValue("locationAdditionalInformation", this.getLocationAdditionalInformation());
         writer.writeStringValue("locationInstructions", this.getLocationInstructions());
-        writer.writeCollectionOfPrimitiveValues("locationTypes", this.getLocationTypes());
+        writer.writeCollectionOfEnumValues("locationTypes", this.getLocationTypes());
         writer.writeStringValue("locationWebUrl", this.getLocationWebUrl());
         writer.writeStringValue("merchantLocationKey", this.getMerchantLocationKey());
-        writer.writeStringValue("merchantLocationStatus", this.getMerchantLocationStatus());
+        writer.writeEnumValue("merchantLocationStatus", this.getMerchantLocationStatus());
         writer.writeStringValue("name", this.getName());
         writer.writeCollectionOfObjectValues("operatingHours", this.getOperatingHours());
         writer.writeStringValue("phone", this.getPhone());
@@ -261,14 +261,14 @@ public class InventoryLocationResponse implements AdditionalDataHolder, Parsable
         this.additionalData = value;
     }
     /**
-     * Sets the fulfillmentCenterSpecifications property value. This type is used to provide shipping specification details, such as the weekly cut-off schedule for order handling and cut-off override(s), for a fulfillment center location. 
+     * Sets the fulfillmentCenterSpecifications property value. This container provides information about a fulfillment center&apos;s shipping specifications, such as the weekly cut-off time schedule for order handling and any cut-off time overrides.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; This field is only returned for fulfillment center locations.&lt;/span&gt;
      * @param value Value to set for the fulfillmentCenterSpecifications property.
      */
     public void setFulfillmentCenterSpecifications(@jakarta.annotation.Nullable final FulfillmentCenterSpecifications value) {
         this.fulfillmentCenterSpecifications = value;
     }
     /**
-     * Sets the location property value. A complex type that is used to provide the physical address of a location, and it geo-coordinates.
+     * Sets the location property value. This container provides location details of an inventory location. The &lt;strong&gt;address&lt;/strong&gt; container will always be returned, but it will not always have a complete street address. Except in the case of a store or fulfillment center location, a full address is not a requirement when setting up an inventory location. The &lt;strong&gt;geoCoordinates&lt;/strong&gt; container will only be returned if the merchant provided geographical coordinates. The &lt;strong&gt;locationId&lt;/strong&gt; field is always returned, but this value is only used internally by eBay.
      * @param value Value to set for the location property.
      */
     public void setLocation(@jakarta.annotation.Nullable final Location value) {
@@ -292,7 +292,7 @@ public class InventoryLocationResponse implements AdditionalDataHolder, Parsable
      * Sets the locationTypes property value. This container defines the function of the inventory location. Typically, a location will serve as a store, warehouse, or fulfillment center, but in some cases, an inventory location may be more than one type.
      * @param value Value to set for the locationTypes property.
      */
-    public void setLocationTypes(@jakarta.annotation.Nullable final java.util.List<String> value) {
+    public void setLocationTypes(@jakarta.annotation.Nullable final java.util.List<StoreTypeEnum> value) {
         this.locationTypes = value;
     }
     /**
@@ -310,10 +310,10 @@ public class InventoryLocationResponse implements AdditionalDataHolder, Parsable
         this.merchantLocationKey = value;
     }
     /**
-     * Sets the merchantLocationStatus property value. This field indicates whether the inventory location is enabled (inventory can be loaded to location) or disabled (inventory can not be loaded to location). The merchant can use the &lt;strong&gt;enableInventoryLocation&lt;/strong&gt; call to enable a location in disabled status, or the &lt;strong&gt;disableInventoryLocation&lt;/strong&gt; call to disable a location in enabled status. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/inventory/types/api:StatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the merchantLocationStatus property value. This field indicates whether the inventory location is enabled (inventory can be loaded to location) or disabled (inventory cannot be loaded to location). The merchant can use the &lt;strong&gt;enableInventoryLocation&lt;/strong&gt; call to enable a location in disabled status, or the &lt;strong&gt;disableInventoryLocation&lt;/strong&gt; call to disable a location in enabled status.
      * @param value Value to set for the merchantLocationStatus property.
      */
-    public void setMerchantLocationStatus(@jakarta.annotation.Nullable final String value) {
+    public void setMerchantLocationStatus(@jakarta.annotation.Nullable final StatusEnum value) {
         this.merchantLocationStatus = value;
     }
     /**

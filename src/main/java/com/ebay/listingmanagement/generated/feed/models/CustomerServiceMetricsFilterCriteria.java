@@ -31,21 +31,21 @@ public class CustomerServiceMetricsFilterCriteria implements AdditionalDataHolde
      */
     private Map<String, Object> additionalData;
     /**
-     * An enumeration value that specifies the customer service metric that eBay tracks to measure seller performance.&lt;br&gt;&lt;br&gt;See &lt;a href=&quot;/api-docs/sell/feed/types/api:CustomerServiceMetricTypeEnum&quot;&gt;CustomerServiceMetricTypeEnum&lt;/a&gt; for values. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:CustomerServiceMetricTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * An enumeration value that specifies the customer service metric that eBay tracks to measure seller performance.
      */
-    private String customerServiceMetricType;
+    private CustomerServiceMetricTypeEnum customerServiceMetricType;
     /**
-     * An enumeration value that specifies the eBay marketplace where the evaluation occurs.&lt;br&gt;&lt;br&gt;See &lt;a href=&quot;/api-docs/sell/feed/types/bas:MarketplaceIdEnum&quot;&gt;MarketplaceIdEnum&lt;/a&gt; for values. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/bas:MarketplaceIdEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * An enumeration value that specifies the eBay marketplace where the evaluation occurs.
      */
-    private String evaluationMarketplaceId;
+    private MarketplaceIdEnum evaluationMarketplaceId;
     /**
-     * A list of listing category IDs on which the service metric is measured. A seller can use one or more L1 (top-level) eBay categories to get metrics specific to those L1 categories. The Category IDs for each L1 category are required. Category ID values for L1 categories can be retrieved using the Taxonomy API.&lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note: &lt;/strong&gt;Pass this attribute to narrow down your filter results for the &lt;code&gt;ITEM_NOT_AS_DESCRIBED&lt;/code&gt; customerServiceMetricType.&lt;/span&gt;&lt;/p&gt; &lt;p&gt;Supported categories include:&lt;/p&gt;&lt;p&gt;&lt;code&gt;primary(L1) category Id&lt;/code&gt;&lt;/p&gt;
+     * A list of listing category IDs on which the service metric is measured. A seller can use one or more L1 (top-level) eBay categories to get metrics specific to those L1 categories. The Category IDs for each L1 category are required. Category ID values for L1 categories can be retrieved using the Taxonomy API.&lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note: &lt;/strong&gt;Pass this attribute to narrow down your filter results for the &lt;code&gt;ITEM_NOT_AS_DESCRIBED&lt;/code&gt; &lt;strong&gt;customerServiceMetricType&lt;/strong&gt;.&lt;/span&gt;&lt;/p&gt; &lt;p&gt;Supported categories include:&lt;/p&gt;&lt;p&gt;&lt;code&gt;primary(L1) category Id&lt;/code&gt;&lt;/p&gt;
      */
     private java.util.List<String> listingCategories;
     /**
-     * A list of shipping region enumeration values on which the service metric is measured. This comma delimited array allows the seller to customize the report to focus on domestic or international shipping. &lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note: &lt;/strong&gt;Pass this attribute to narrow down your filter results for the &lt;code&gt;ITEM_NOT_RECEIVED&lt;/code&gt; customerServiceMetricType.&lt;/span&gt;&lt;/p&gt; &lt;p&gt;Supported categories include:&lt;/p&gt;&lt;p&gt;&lt;code&gt;primary(L1) category Id&lt;/code&gt;&lt;/p&gt;See &lt;strong&gt;ShippingRegionTypeEnum&lt;/strong&gt; for values
+     * A list of shipping region enumeration values on which the service metric is measured. This comma delimited array allows the seller to customize the report to focus on domestic or international shipping. &lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note: &lt;/strong&gt;Pass this attribute to narrow down your filter results for the &lt;code&gt;ITEM_NOT_RECEIVED&lt;/code&gt; customerServiceMetricType.&lt;/span&gt;&lt;/p&gt; &lt;p&gt;Supported categories include:&lt;/p&gt;&lt;p&gt;&lt;code&gt;primary(L1) category Id&lt;/code&gt;&lt;/p&gt;
      */
-    private java.util.List<String> shippingRegions;
+    private java.util.List<ShippingRegionTypeEnum> shippingRegions;
     /**
      * Instantiates a new {@link CustomerServiceMetricsFilterCriteria} and sets the default values.
      */
@@ -71,19 +71,19 @@ public class CustomerServiceMetricsFilterCriteria implements AdditionalDataHolde
         return this.additionalData;
     }
     /**
-     * Gets the customerServiceMetricType property value. An enumeration value that specifies the customer service metric that eBay tracks to measure seller performance.&lt;br&gt;&lt;br&gt;See &lt;a href=&quot;/api-docs/sell/feed/types/api:CustomerServiceMetricTypeEnum&quot;&gt;CustomerServiceMetricTypeEnum&lt;/a&gt; for values. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:CustomerServiceMetricTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the customerServiceMetricType property value. An enumeration value that specifies the customer service metric that eBay tracks to measure seller performance.
+     * @return a {@link CustomerServiceMetricTypeEnum}
      */
     @jakarta.annotation.Nullable
-    public String getCustomerServiceMetricType() {
+    public CustomerServiceMetricTypeEnum getCustomerServiceMetricType() {
         return this.customerServiceMetricType;
     }
     /**
-     * Gets the evaluationMarketplaceId property value. An enumeration value that specifies the eBay marketplace where the evaluation occurs.&lt;br&gt;&lt;br&gt;See &lt;a href=&quot;/api-docs/sell/feed/types/bas:MarketplaceIdEnum&quot;&gt;MarketplaceIdEnum&lt;/a&gt; for values. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/bas:MarketplaceIdEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the evaluationMarketplaceId property value. An enumeration value that specifies the eBay marketplace where the evaluation occurs.
+     * @return a {@link MarketplaceIdEnum}
      */
     @jakarta.annotation.Nullable
-    public String getEvaluationMarketplaceId() {
+    public MarketplaceIdEnum getEvaluationMarketplaceId() {
         return this.evaluationMarketplaceId;
     }
     /**
@@ -93,14 +93,14 @@ public class CustomerServiceMetricsFilterCriteria implements AdditionalDataHolde
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(4);
-        deserializerMap.put("customerServiceMetricType", (n) -> { this.setCustomerServiceMetricType(n.getStringValue()); });
-        deserializerMap.put("evaluationMarketplaceId", (n) -> { this.setEvaluationMarketplaceId(n.getStringValue()); });
+        deserializerMap.put("customerServiceMetricType", (n) -> { this.setCustomerServiceMetricType(n.getEnumValue(CustomerServiceMetricTypeEnum::forValue)); });
+        deserializerMap.put("evaluationMarketplaceId", (n) -> { this.setEvaluationMarketplaceId(n.getEnumValue(MarketplaceIdEnum::forValue)); });
         deserializerMap.put("listingCategories", (n) -> { this.setListingCategories(n.getCollectionOfPrimitiveValues(String.class)); });
-        deserializerMap.put("shippingRegions", (n) -> { this.setShippingRegions(n.getCollectionOfPrimitiveValues(String.class)); });
+        deserializerMap.put("shippingRegions", (n) -> { this.setShippingRegions(n.getCollectionOfEnumValues(ShippingRegionTypeEnum::forValue)); });
         return deserializerMap;
     }
     /**
-     * Gets the listingCategories property value. A list of listing category IDs on which the service metric is measured. A seller can use one or more L1 (top-level) eBay categories to get metrics specific to those L1 categories. The Category IDs for each L1 category are required. Category ID values for L1 categories can be retrieved using the Taxonomy API.&lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note: &lt;/strong&gt;Pass this attribute to narrow down your filter results for the &lt;code&gt;ITEM_NOT_AS_DESCRIBED&lt;/code&gt; customerServiceMetricType.&lt;/span&gt;&lt;/p&gt; &lt;p&gt;Supported categories include:&lt;/p&gt;&lt;p&gt;&lt;code&gt;primary(L1) category Id&lt;/code&gt;&lt;/p&gt;
+     * Gets the listingCategories property value. A list of listing category IDs on which the service metric is measured. A seller can use one or more L1 (top-level) eBay categories to get metrics specific to those L1 categories. The Category IDs for each L1 category are required. Category ID values for L1 categories can be retrieved using the Taxonomy API.&lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note: &lt;/strong&gt;Pass this attribute to narrow down your filter results for the &lt;code&gt;ITEM_NOT_AS_DESCRIBED&lt;/code&gt; &lt;strong&gt;customerServiceMetricType&lt;/strong&gt;.&lt;/span&gt;&lt;/p&gt; &lt;p&gt;Supported categories include:&lt;/p&gt;&lt;p&gt;&lt;code&gt;primary(L1) category Id&lt;/code&gt;&lt;/p&gt;
      * @return a {@link java.util.List<String>}
      */
     @jakarta.annotation.Nullable
@@ -108,11 +108,11 @@ public class CustomerServiceMetricsFilterCriteria implements AdditionalDataHolde
         return this.listingCategories;
     }
     /**
-     * Gets the shippingRegions property value. A list of shipping region enumeration values on which the service metric is measured. This comma delimited array allows the seller to customize the report to focus on domestic or international shipping. &lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note: &lt;/strong&gt;Pass this attribute to narrow down your filter results for the &lt;code&gt;ITEM_NOT_RECEIVED&lt;/code&gt; customerServiceMetricType.&lt;/span&gt;&lt;/p&gt; &lt;p&gt;Supported categories include:&lt;/p&gt;&lt;p&gt;&lt;code&gt;primary(L1) category Id&lt;/code&gt;&lt;/p&gt;See &lt;strong&gt;ShippingRegionTypeEnum&lt;/strong&gt; for values
-     * @return a {@link java.util.List<String>}
+     * Gets the shippingRegions property value. A list of shipping region enumeration values on which the service metric is measured. This comma delimited array allows the seller to customize the report to focus on domestic or international shipping. &lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note: &lt;/strong&gt;Pass this attribute to narrow down your filter results for the &lt;code&gt;ITEM_NOT_RECEIVED&lt;/code&gt; customerServiceMetricType.&lt;/span&gt;&lt;/p&gt; &lt;p&gt;Supported categories include:&lt;/p&gt;&lt;p&gt;&lt;code&gt;primary(L1) category Id&lt;/code&gt;&lt;/p&gt;
+     * @return a {@link java.util.List<ShippingRegionTypeEnum>}
      */
     @jakarta.annotation.Nullable
-    public java.util.List<String> getShippingRegions() {
+    public java.util.List<ShippingRegionTypeEnum> getShippingRegions() {
         return this.shippingRegions;
     }
     /**
@@ -121,10 +121,10 @@ public class CustomerServiceMetricsFilterCriteria implements AdditionalDataHolde
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeStringValue("customerServiceMetricType", this.getCustomerServiceMetricType());
-        writer.writeStringValue("evaluationMarketplaceId", this.getEvaluationMarketplaceId());
+        writer.writeEnumValue("customerServiceMetricType", this.getCustomerServiceMetricType());
+        writer.writeEnumValue("evaluationMarketplaceId", this.getEvaluationMarketplaceId());
         writer.writeCollectionOfPrimitiveValues("listingCategories", this.getListingCategories());
-        writer.writeCollectionOfPrimitiveValues("shippingRegions", this.getShippingRegions());
+        writer.writeCollectionOfEnumValues("shippingRegions", this.getShippingRegions());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -135,31 +135,31 @@ public class CustomerServiceMetricsFilterCriteria implements AdditionalDataHolde
         this.additionalData = value;
     }
     /**
-     * Sets the customerServiceMetricType property value. An enumeration value that specifies the customer service metric that eBay tracks to measure seller performance.&lt;br&gt;&lt;br&gt;See &lt;a href=&quot;/api-docs/sell/feed/types/api:CustomerServiceMetricTypeEnum&quot;&gt;CustomerServiceMetricTypeEnum&lt;/a&gt; for values. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:CustomerServiceMetricTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the customerServiceMetricType property value. An enumeration value that specifies the customer service metric that eBay tracks to measure seller performance.
      * @param value Value to set for the customerServiceMetricType property.
      */
-    public void setCustomerServiceMetricType(@jakarta.annotation.Nullable final String value) {
+    public void setCustomerServiceMetricType(@jakarta.annotation.Nullable final CustomerServiceMetricTypeEnum value) {
         this.customerServiceMetricType = value;
     }
     /**
-     * Sets the evaluationMarketplaceId property value. An enumeration value that specifies the eBay marketplace where the evaluation occurs.&lt;br&gt;&lt;br&gt;See &lt;a href=&quot;/api-docs/sell/feed/types/bas:MarketplaceIdEnum&quot;&gt;MarketplaceIdEnum&lt;/a&gt; for values. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/bas:MarketplaceIdEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the evaluationMarketplaceId property value. An enumeration value that specifies the eBay marketplace where the evaluation occurs.
      * @param value Value to set for the evaluationMarketplaceId property.
      */
-    public void setEvaluationMarketplaceId(@jakarta.annotation.Nullable final String value) {
+    public void setEvaluationMarketplaceId(@jakarta.annotation.Nullable final MarketplaceIdEnum value) {
         this.evaluationMarketplaceId = value;
     }
     /**
-     * Sets the listingCategories property value. A list of listing category IDs on which the service metric is measured. A seller can use one or more L1 (top-level) eBay categories to get metrics specific to those L1 categories. The Category IDs for each L1 category are required. Category ID values for L1 categories can be retrieved using the Taxonomy API.&lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note: &lt;/strong&gt;Pass this attribute to narrow down your filter results for the &lt;code&gt;ITEM_NOT_AS_DESCRIBED&lt;/code&gt; customerServiceMetricType.&lt;/span&gt;&lt;/p&gt; &lt;p&gt;Supported categories include:&lt;/p&gt;&lt;p&gt;&lt;code&gt;primary(L1) category Id&lt;/code&gt;&lt;/p&gt;
+     * Sets the listingCategories property value. A list of listing category IDs on which the service metric is measured. A seller can use one or more L1 (top-level) eBay categories to get metrics specific to those L1 categories. The Category IDs for each L1 category are required. Category ID values for L1 categories can be retrieved using the Taxonomy API.&lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note: &lt;/strong&gt;Pass this attribute to narrow down your filter results for the &lt;code&gt;ITEM_NOT_AS_DESCRIBED&lt;/code&gt; &lt;strong&gt;customerServiceMetricType&lt;/strong&gt;.&lt;/span&gt;&lt;/p&gt; &lt;p&gt;Supported categories include:&lt;/p&gt;&lt;p&gt;&lt;code&gt;primary(L1) category Id&lt;/code&gt;&lt;/p&gt;
      * @param value Value to set for the listingCategories property.
      */
     public void setListingCategories(@jakarta.annotation.Nullable final java.util.List<String> value) {
         this.listingCategories = value;
     }
     /**
-     * Sets the shippingRegions property value. A list of shipping region enumeration values on which the service metric is measured. This comma delimited array allows the seller to customize the report to focus on domestic or international shipping. &lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note: &lt;/strong&gt;Pass this attribute to narrow down your filter results for the &lt;code&gt;ITEM_NOT_RECEIVED&lt;/code&gt; customerServiceMetricType.&lt;/span&gt;&lt;/p&gt; &lt;p&gt;Supported categories include:&lt;/p&gt;&lt;p&gt;&lt;code&gt;primary(L1) category Id&lt;/code&gt;&lt;/p&gt;See &lt;strong&gt;ShippingRegionTypeEnum&lt;/strong&gt; for values
+     * Sets the shippingRegions property value. A list of shipping region enumeration values on which the service metric is measured. This comma delimited array allows the seller to customize the report to focus on domestic or international shipping. &lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note: &lt;/strong&gt;Pass this attribute to narrow down your filter results for the &lt;code&gt;ITEM_NOT_RECEIVED&lt;/code&gt; customerServiceMetricType.&lt;/span&gt;&lt;/p&gt; &lt;p&gt;Supported categories include:&lt;/p&gt;&lt;p&gt;&lt;code&gt;primary(L1) category Id&lt;/code&gt;&lt;/p&gt;
      * @param value Value to set for the shippingRegions property.
      */
-    public void setShippingRegions(@jakarta.annotation.Nullable final java.util.List<String> value) {
+    public void setShippingRegions(@jakarta.annotation.Nullable final java.util.List<ShippingRegionTypeEnum> value) {
         this.shippingRegions = value;
     }
 }

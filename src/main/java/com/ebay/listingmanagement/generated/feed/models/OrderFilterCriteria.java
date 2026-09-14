@@ -31,17 +31,17 @@ public class OrderFilterCriteria implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * The type that defines the fields for a date range.
+     * The creation date range of the orders you want returned. Set the date range so it contains less than 10 days (maximum). If you do not specify a &lt;strong&gt;DateRange&lt;/strong&gt;, results from the last 10 days will be returned by default.
      */
     private DateRange creationDateRange;
     /**
-     * The type that defines the fields for a date range.
+     * The modified date range of the orders you want returned. &lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; This container is for future use. At this time, the &lt;strong&gt;createOrderTask&lt;/strong&gt; method only supports order creation date filters and not modified order date filters.&lt;/span&gt;&lt;/p&gt;
      */
     private DateRange modifiedDateRange;
     /**
-     * The order status of the orders returned. If the filter is omitted from createOrderTask call, orders that are in both &lt;code&gt;ACTIVE &lt;/code&gt;and&lt;code&gt; COMPLETED&lt;/code&gt; states are returned. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:OrderStatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * The order status of the orders returned. If the filter is omitted from the &lt;strong&gt;createOrderTask&lt;/strong&gt; call, orders that are in both &lt;code&gt;ACTIVE&lt;/code&gt; and &lt;code&gt;COMPLETED&lt;/code&gt; states are returned.
      */
-    private String orderStatus;
+    private OrderStatusEnum orderStatus;
     /**
      * Instantiates a new {@link OrderFilterCriteria} and sets the default values.
      */
@@ -67,7 +67,7 @@ public class OrderFilterCriteria implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the creationDateRange property value. The type that defines the fields for a date range.
+     * Gets the creationDateRange property value. The creation date range of the orders you want returned. Set the date range so it contains less than 10 days (maximum). If you do not specify a &lt;strong&gt;DateRange&lt;/strong&gt;, results from the last 10 days will be returned by default.
      * @return a {@link DateRange}
      */
     @jakarta.annotation.Nullable
@@ -83,11 +83,11 @@ public class OrderFilterCriteria implements AdditionalDataHolder, Parsable {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(3);
         deserializerMap.put("creationDateRange", (n) -> { this.setCreationDateRange(n.getObjectValue(DateRange::createFromDiscriminatorValue)); });
         deserializerMap.put("modifiedDateRange", (n) -> { this.setModifiedDateRange(n.getObjectValue(DateRange::createFromDiscriminatorValue)); });
-        deserializerMap.put("orderStatus", (n) -> { this.setOrderStatus(n.getStringValue()); });
+        deserializerMap.put("orderStatus", (n) -> { this.setOrderStatus(n.getEnumValue(OrderStatusEnum::forValue)); });
         return deserializerMap;
     }
     /**
-     * Gets the modifiedDateRange property value. The type that defines the fields for a date range.
+     * Gets the modifiedDateRange property value. The modified date range of the orders you want returned. &lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; This container is for future use. At this time, the &lt;strong&gt;createOrderTask&lt;/strong&gt; method only supports order creation date filters and not modified order date filters.&lt;/span&gt;&lt;/p&gt;
      * @return a {@link DateRange}
      */
     @jakarta.annotation.Nullable
@@ -95,11 +95,11 @@ public class OrderFilterCriteria implements AdditionalDataHolder, Parsable {
         return this.modifiedDateRange;
     }
     /**
-     * Gets the orderStatus property value. The order status of the orders returned. If the filter is omitted from createOrderTask call, orders that are in both &lt;code&gt;ACTIVE &lt;/code&gt;and&lt;code&gt; COMPLETED&lt;/code&gt; states are returned. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:OrderStatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
-     * @return a {@link String}
+     * Gets the orderStatus property value. The order status of the orders returned. If the filter is omitted from the &lt;strong&gt;createOrderTask&lt;/strong&gt; call, orders that are in both &lt;code&gt;ACTIVE&lt;/code&gt; and &lt;code&gt;COMPLETED&lt;/code&gt; states are returned.
+     * @return a {@link OrderStatusEnum}
      */
     @jakarta.annotation.Nullable
-    public String getOrderStatus() {
+    public OrderStatusEnum getOrderStatus() {
         return this.orderStatus;
     }
     /**
@@ -110,7 +110,7 @@ public class OrderFilterCriteria implements AdditionalDataHolder, Parsable {
         Objects.requireNonNull(writer);
         writer.writeObjectValue("creationDateRange", this.getCreationDateRange());
         writer.writeObjectValue("modifiedDateRange", this.getModifiedDateRange());
-        writer.writeStringValue("orderStatus", this.getOrderStatus());
+        writer.writeEnumValue("orderStatus", this.getOrderStatus());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -121,24 +121,24 @@ public class OrderFilterCriteria implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the creationDateRange property value. The type that defines the fields for a date range.
+     * Sets the creationDateRange property value. The creation date range of the orders you want returned. Set the date range so it contains less than 10 days (maximum). If you do not specify a &lt;strong&gt;DateRange&lt;/strong&gt;, results from the last 10 days will be returned by default.
      * @param value Value to set for the creationDateRange property.
      */
     public void setCreationDateRange(@jakarta.annotation.Nullable final DateRange value) {
         this.creationDateRange = value;
     }
     /**
-     * Sets the modifiedDateRange property value. The type that defines the fields for a date range.
+     * Sets the modifiedDateRange property value. The modified date range of the orders you want returned. &lt;p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; This container is for future use. At this time, the &lt;strong&gt;createOrderTask&lt;/strong&gt; method only supports order creation date filters and not modified order date filters.&lt;/span&gt;&lt;/p&gt;
      * @param value Value to set for the modifiedDateRange property.
      */
     public void setModifiedDateRange(@jakarta.annotation.Nullable final DateRange value) {
         this.modifiedDateRange = value;
     }
     /**
-     * Sets the orderStatus property value. The order status of the orders returned. If the filter is omitted from createOrderTask call, orders that are in both &lt;code&gt;ACTIVE &lt;/code&gt;and&lt;code&gt; COMPLETED&lt;/code&gt; states are returned. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/feed/types/api:OrderStatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;
+     * Sets the orderStatus property value. The order status of the orders returned. If the filter is omitted from the &lt;strong&gt;createOrderTask&lt;/strong&gt; call, orders that are in both &lt;code&gt;ACTIVE&lt;/code&gt; and &lt;code&gt;COMPLETED&lt;/code&gt; states are returned.
      * @param value Value to set for the orderStatus property.
      */
-    public void setOrderStatus(@jakarta.annotation.Nullable final String value) {
+    public void setOrderStatus(@jakarta.annotation.Nullable final OrderStatusEnum value) {
         this.orderStatus = value;
     }
 }

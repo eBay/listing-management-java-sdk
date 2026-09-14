@@ -63,6 +63,9 @@ public class CustomerServiceMetricTaskCollection implements AdditionalDataHolder
      */
     public CustomerServiceMetricTaskCollection() {
         this.setAdditionalData(new HashMap<>());
+        this.setLimit(10);
+        this.setOffset(0);
+        this.setTotal(0);
     }
     /**
      * Creates a new instance of the appropriate class based on discriminator value

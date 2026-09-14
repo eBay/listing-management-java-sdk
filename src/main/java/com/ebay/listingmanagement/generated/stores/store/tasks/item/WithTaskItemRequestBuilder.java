@@ -14,6 +14,7 @@
 
 package com.ebay.listingmanagement.generated.stores.store.tasks.item;
 
+import com.ebay.listingmanagement.generated.stores.models.Error;
 import com.ebay.listingmanagement.generated.stores.models.GetStoreTaskResponseType;
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.BaseRequestConfiguration;
@@ -51,6 +52,8 @@ public class WithTaskItemRequestBuilder extends BaseRequestBuilder {
     /**
      * This method retrieves the current status of a recent store operation. The unique identifier of the task is passed in as a path parameter.
      * @return a {@link GetStoreTaskResponseType}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public GetStoreTaskResponseType get() {
@@ -60,11 +63,16 @@ public class WithTaskItemRequestBuilder extends BaseRequestBuilder {
      * This method retrieves the current status of a recent store operation. The unique identifier of the task is passed in as a path parameter.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link GetStoreTaskResponseType}
+     * @throws Error When receiving a 400 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public GetStoreTaskResponseType get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
-        return this.requestAdapter.send(requestInfo, null, GetStoreTaskResponseType::createFromDiscriminatorValue);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("400", Error::createFromDiscriminatorValue);
+        errorMapping.put("500", Error::createFromDiscriminatorValue);
+        return this.requestAdapter.send(requestInfo, errorMapping, GetStoreTaskResponseType::createFromDiscriminatorValue);
     }
     /**
      * This method retrieves the current status of a recent store operation. The unique identifier of the task is passed in as a path parameter.

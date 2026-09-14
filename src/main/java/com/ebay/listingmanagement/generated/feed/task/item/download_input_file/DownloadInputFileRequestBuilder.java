@@ -14,6 +14,7 @@
 
 package com.ebay.listingmanagement.generated.feed.task.item.download_input_file;
 
+import com.ebay.listingmanagement.generated.feed.models.Error;
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.BaseRequestConfiguration;
 import com.microsoft.kiota.HttpMethod;
@@ -49,25 +50,38 @@ public class DownloadInputFileRequestBuilder extends BaseRequestBuilder {
         super(requestAdapter, "{+baseurl}/task/{task_id}/download_input_file", rawUrl);
     }
     /**
-     * This method downloads the file previously uploaded using &lt;strong&gt;uploadFile&lt;/strong&gt;. Specify the task_id from the &lt;strong&gt;uploadFile&lt;/strong&gt; call. &lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; With respect to LMS, this method applies to all feed types except &lt;code&gt;LMS_ORDER_REPORT&lt;/code&gt; and &lt;code&gt;LMS_ACTIVE_INVENTORY_REPORT&lt;/code&gt;. See &lt;a href=&quot;/api-docs/sell/static/feed/lms-feeds.html&quot;&gt;LMS API Feeds&lt;/a&gt; in the Selling Integration Guide.&lt;/span&gt;&lt;/p&gt;
+     * This method downloads a file previously uploaded using &lt;strong&gt;uploadFile&lt;/strong&gt;. Specify the &lt;strong&gt;task_id&lt;/strong&gt; from the &lt;strong&gt;uploadFile&lt;/strong&gt; call. &lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; With respect to LMS, this method applies to all feed types except &lt;code&gt;LMS_ORDER_REPORT&lt;/code&gt; and &lt;code&gt;LMS_ACTIVE_INVENTORY_REPORT&lt;/code&gt;. See &lt;a href=&quot;/api-docs/sell/static/feed/lms-feeds.html&quot;&gt;LMS API Feeds&lt;/a&gt; in the Selling Integration Guide.&lt;/span&gt;&lt;/p&gt;
      * @return a {@link InputStream}
+     * @throws Error When receiving a 401 status code
+     * @throws Error When receiving a 403 status code
+     * @throws Error When receiving a 404 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public InputStream get() {
         return get(null);
     }
     /**
-     * This method downloads the file previously uploaded using &lt;strong&gt;uploadFile&lt;/strong&gt;. Specify the task_id from the &lt;strong&gt;uploadFile&lt;/strong&gt; call. &lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; With respect to LMS, this method applies to all feed types except &lt;code&gt;LMS_ORDER_REPORT&lt;/code&gt; and &lt;code&gt;LMS_ACTIVE_INVENTORY_REPORT&lt;/code&gt;. See &lt;a href=&quot;/api-docs/sell/static/feed/lms-feeds.html&quot;&gt;LMS API Feeds&lt;/a&gt; in the Selling Integration Guide.&lt;/span&gt;&lt;/p&gt;
+     * This method downloads a file previously uploaded using &lt;strong&gt;uploadFile&lt;/strong&gt;. Specify the &lt;strong&gt;task_id&lt;/strong&gt; from the &lt;strong&gt;uploadFile&lt;/strong&gt; call. &lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; With respect to LMS, this method applies to all feed types except &lt;code&gt;LMS_ORDER_REPORT&lt;/code&gt; and &lt;code&gt;LMS_ACTIVE_INVENTORY_REPORT&lt;/code&gt;. See &lt;a href=&quot;/api-docs/sell/static/feed/lms-feeds.html&quot;&gt;LMS API Feeds&lt;/a&gt; in the Selling Integration Guide.&lt;/span&gt;&lt;/p&gt;
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link InputStream}
+     * @throws Error When receiving a 401 status code
+     * @throws Error When receiving a 403 status code
+     * @throws Error When receiving a 404 status code
+     * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
     public InputStream get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
-        return this.requestAdapter.sendPrimitive(requestInfo, null, InputStream.class);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("401", Error::createFromDiscriminatorValue);
+        errorMapping.put("403", Error::createFromDiscriminatorValue);
+        errorMapping.put("404", Error::createFromDiscriminatorValue);
+        errorMapping.put("500", Error::createFromDiscriminatorValue);
+        return this.requestAdapter.sendPrimitive(requestInfo, errorMapping, InputStream.class);
     }
     /**
-     * This method downloads the file previously uploaded using &lt;strong&gt;uploadFile&lt;/strong&gt;. Specify the task_id from the &lt;strong&gt;uploadFile&lt;/strong&gt; call. &lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; With respect to LMS, this method applies to all feed types except &lt;code&gt;LMS_ORDER_REPORT&lt;/code&gt; and &lt;code&gt;LMS_ACTIVE_INVENTORY_REPORT&lt;/code&gt;. See &lt;a href=&quot;/api-docs/sell/static/feed/lms-feeds.html&quot;&gt;LMS API Feeds&lt;/a&gt; in the Selling Integration Guide.&lt;/span&gt;&lt;/p&gt;
+     * This method downloads a file previously uploaded using &lt;strong&gt;uploadFile&lt;/strong&gt;. Specify the &lt;strong&gt;task_id&lt;/strong&gt; from the &lt;strong&gt;uploadFile&lt;/strong&gt; call. &lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; With respect to LMS, this method applies to all feed types except &lt;code&gt;LMS_ORDER_REPORT&lt;/code&gt; and &lt;code&gt;LMS_ACTIVE_INVENTORY_REPORT&lt;/code&gt;. See &lt;a href=&quot;/api-docs/sell/static/feed/lms-feeds.html&quot;&gt;LMS API Feeds&lt;/a&gt; in the Selling Integration Guide.&lt;/span&gt;&lt;/p&gt;
      * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
@@ -75,7 +89,7 @@ public class DownloadInputFileRequestBuilder extends BaseRequestBuilder {
         return toGetRequestInformation(null);
     }
     /**
-     * This method downloads the file previously uploaded using &lt;strong&gt;uploadFile&lt;/strong&gt;. Specify the task_id from the &lt;strong&gt;uploadFile&lt;/strong&gt; call. &lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; With respect to LMS, this method applies to all feed types except &lt;code&gt;LMS_ORDER_REPORT&lt;/code&gt; and &lt;code&gt;LMS_ACTIVE_INVENTORY_REPORT&lt;/code&gt;. See &lt;a href=&quot;/api-docs/sell/static/feed/lms-feeds.html&quot;&gt;LMS API Feeds&lt;/a&gt; in the Selling Integration Guide.&lt;/span&gt;&lt;/p&gt;
+     * This method downloads a file previously uploaded using &lt;strong&gt;uploadFile&lt;/strong&gt;. Specify the &lt;strong&gt;task_id&lt;/strong&gt; from the &lt;strong&gt;uploadFile&lt;/strong&gt; call. &lt;p&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; With respect to LMS, this method applies to all feed types except &lt;code&gt;LMS_ORDER_REPORT&lt;/code&gt; and &lt;code&gt;LMS_ACTIVE_INVENTORY_REPORT&lt;/code&gt;. See &lt;a href=&quot;/api-docs/sell/static/feed/lms-feeds.html&quot;&gt;LMS API Feeds&lt;/a&gt; in the Selling Integration Guide.&lt;/span&gt;&lt;/p&gt;
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link RequestInformation}
      */
@@ -83,7 +97,7 @@ public class DownloadInputFileRequestBuilder extends BaseRequestBuilder {
     public RequestInformation toGetRequestInformation(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = new RequestInformation(HttpMethod.GET, urlTemplate, pathParameters);
         requestInfo.configure(requestConfiguration, GetRequestConfiguration::new);
-        requestInfo.headers.tryAdd("Accept", "application/octet-stream");
+        requestInfo.headers.tryAdd("Accept", "application/octet-stream, application/json");
         return requestInfo;
     }
     /**

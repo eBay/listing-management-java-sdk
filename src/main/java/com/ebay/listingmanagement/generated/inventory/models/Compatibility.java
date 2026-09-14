@@ -35,7 +35,7 @@ public class Compatibility implements AdditionalDataHolder, Parsable {
      */
     private java.util.List<CompatibleProduct> compatibleProducts;
     /**
-     * The seller-defined SKU value of the inventory item that will be associated with the compatible vehicles.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; This field is not applicable to the &lt;strong&gt;createOrReplaceProductCompatibility&lt;/strong&gt; method, as the SKU value for the inventory item is passed in as part of the call URI and not in the request payload. It is always returned with the &lt;a href=&quot;/api-docs/sell/inventory/resources/inventory_item/product_compatibility/methods/getProductCompatibility&quot; target=&quot;_blank &quot;&gt;getProductCompatibility&lt;/a&gt; method.&lt;/span&gt;
+     * The seller-defined SKU value of the inventory item that will be associated with the compatible vehicles.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; This field is not applicable to the &lt;strong&gt;createOrReplaceProductCompatibility&lt;/strong&gt; method, as the SKU value for the inventory item is passed in as part of the call URI and not in the request payload. It is always returned with the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-product_compatibility-getproductcompatibility&quot; target=&quot;_blank &quot;&gt;getProductCompatibility&lt;/a&gt; method.&lt;/span&gt;
      */
     private String sku;
     /**
@@ -82,7 +82,7 @@ public class Compatibility implements AdditionalDataHolder, Parsable {
         return deserializerMap;
     }
     /**
-     * Gets the sku property value. The seller-defined SKU value of the inventory item that will be associated with the compatible vehicles.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; This field is not applicable to the &lt;strong&gt;createOrReplaceProductCompatibility&lt;/strong&gt; method, as the SKU value for the inventory item is passed in as part of the call URI and not in the request payload. It is always returned with the &lt;a href=&quot;/api-docs/sell/inventory/resources/inventory_item/product_compatibility/methods/getProductCompatibility&quot; target=&quot;_blank &quot;&gt;getProductCompatibility&lt;/a&gt; method.&lt;/span&gt;
+     * Gets the sku property value. The seller-defined SKU value of the inventory item that will be associated with the compatible vehicles.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; This field is not applicable to the &lt;strong&gt;createOrReplaceProductCompatibility&lt;/strong&gt; method, as the SKU value for the inventory item is passed in as part of the call URI and not in the request payload. It is always returned with the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-product_compatibility-getproductcompatibility&quot; target=&quot;_blank &quot;&gt;getProductCompatibility&lt;/a&gt; method.&lt;/span&gt;
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -114,7 +114,7 @@ public class Compatibility implements AdditionalDataHolder, Parsable {
         this.compatibleProducts = value;
     }
     /**
-     * Sets the sku property value. The seller-defined SKU value of the inventory item that will be associated with the compatible vehicles.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; This field is not applicable to the &lt;strong&gt;createOrReplaceProductCompatibility&lt;/strong&gt; method, as the SKU value for the inventory item is passed in as part of the call URI and not in the request payload. It is always returned with the &lt;a href=&quot;/api-docs/sell/inventory/resources/inventory_item/product_compatibility/methods/getProductCompatibility&quot; target=&quot;_blank &quot;&gt;getProductCompatibility&lt;/a&gt; method.&lt;/span&gt;
+     * Sets the sku property value. The seller-defined SKU value of the inventory item that will be associated with the compatible vehicles.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; This field is not applicable to the &lt;strong&gt;createOrReplaceProductCompatibility&lt;/strong&gt; method, as the SKU value for the inventory item is passed in as part of the call URI and not in the request payload. It is always returned with the &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-product_compatibility-getproductcompatibility&quot; target=&quot;_blank &quot;&gt;getProductCompatibility&lt;/a&gt; method.&lt;/span&gt;
      * @param value Value to set for the sku property.
      */
     public void setSku(@jakarta.annotation.Nullable final String value) {
