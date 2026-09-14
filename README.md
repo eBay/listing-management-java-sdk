@@ -43,7 +43,7 @@ src/main/java/com/ebay/listingmanagement/
 
 ```kotlin
 dependencies {
-    implementation("com.ebay:listing-management-java-sdk:1.0.0")
+    implementation("com.ebay:listing-management-java-sdk:0.2.0")
 }
 ```
 
