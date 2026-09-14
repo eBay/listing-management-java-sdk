@@ -2,7 +2,7 @@
   "descriptionHash": "19DE465A59D208DC66F688F44E8B3723C0E922582A897E3C86DE3C99D88738535E0F05F7D9BAC5E62B339DFBDE286F9B96677188C182B0670AF9F20F228CC1FD",
   "descriptionLocation": "../../../../../../../../specs/openapi/inventory.yaml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.35.0",
+  "kiotaVersion": "1.31.1",
   "clientClassName": "InventoryApiClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "com.ebay.listingmanagement.generated.inventory",
@@ -30,6 +30,5 @@
   ],
   "includePatterns": [],
   "excludePatterns": [],
-  "disabledValidationRules": [],
-  "allowedExternalOrigins": []
+  "disabledValidationRules": []
 }

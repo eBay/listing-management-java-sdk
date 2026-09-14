@@ -37,8 +37,11 @@ public final class ListingManagementConfiguration {
     }
 
     public ListingManagementConfiguration(
-            String feedBaseUrl, String inventoryBaseUrl,
-            String mediaBaseUrl, String storesBaseUrl, String graphQLBaseUrl) {
+            String feedBaseUrl,
+            String inventoryBaseUrl,
+            String mediaBaseUrl,
+            String storesBaseUrl,
+            String graphQLBaseUrl) {
         this.feedBaseUrl = validateHost(feedBaseUrl);
         this.inventoryBaseUrl = validateHost(inventoryBaseUrl);
         this.mediaBaseUrl = validateHost(mediaBaseUrl);

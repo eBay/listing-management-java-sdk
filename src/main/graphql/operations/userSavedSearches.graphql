@@ -1,0 +1,14 @@
+query UserSavedSearches($input: UserSavedSearchesInput) {
+  userSavedSearches(input: $input) {
+    pagination {
+      nextCursor
+      previousCursor
+    }
+    savedSearches {
+      savedAt
+      savedSearchId
+      savedSearchName
+      savedSearchUrl
+    }
+  }
+}
