@@ -14,7 +14,7 @@
 
 package com.ebay.listingmanagement;
 
-import com.apollographql.apollo.ApolloClient;
+import com.ebay.listingmanagement.clients.graphql.ApolloClientFactory;
 import com.ebay.listingmanagement.clients.graphql.BearerTokenInterceptor;
 import com.ebay.listingmanagement.clients.graphql.DynamicGraphQLClient;
 import com.ebay.listingmanagement.clients.graphql.ListingGraphQLClient;
@@ -36,17 +36,6 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Main facade for the Listing Management SDK.
- * Provides unified access to Feed, Inventory, Media, and Stores APIs.
- *
- * <pre>{@code
- * var config = new ListingManagementConfiguration();
- * config.setAccessToken("your-token");
- *
- * try (var sdk = new ListingManagementClient(config)) {
- *     var items = sdk.inventory.getInventoryItemsAsync("10", "0", null, null).join();
- *     System.out.println(items);
- * }
- * }</pre>
  */
 public final class ListingManagementClient implements Closeable {
     private final OkHttpClient sharedHttpClient;
@@ -59,7 +48,6 @@ public final class ListingManagementClient implements Closeable {
     public final ListingGraphQLClient graphQL;
 
     public ListingManagementClient(ListingManagementConfiguration config) {
-        // Shared OkHttpClient for all REST clients
         this.sharedHttpClient = new OkHttpClient.Builder()
             .connectTimeout(10, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)
@@ -68,40 +56,34 @@ public final class ListingManagementClient implements Closeable {
 
         var authProvider = new BaseBearerTokenAuthenticationProvider(new KiotaAuthProvider(config));
 
-        // Feed API client
         var feedAdapter = new OkHttpRequestAdapter(authProvider, null, null, sharedHttpClient);
         feedAdapter.setBaseUrl(config.getFeedBaseUrl());
         this.feed = new FeedClient(new FeedApiClient(feedAdapter), config);
 
-        // Inventory API client
         var inventoryAdapter = new OkHttpRequestAdapter(authProvider, null, null, sharedHttpClient);
         inventoryAdapter.setBaseUrl(config.getInventoryBaseUrl());
         this.inventory = new InventoryClient(new InventoryApiClient(inventoryAdapter), config);
 
-        // Media API client
         var mediaAdapter = new OkHttpRequestAdapter(authProvider, null, null, sharedHttpClient);
         mediaAdapter.setBaseUrl(config.getMediaBaseUrl());
         this.media = new MediaClient(new MediaApiClient(mediaAdapter), config);
 
-        // Stores API client
         var storesAdapter = new OkHttpRequestAdapter(authProvider, null, null, sharedHttpClient);
         storesAdapter.setBaseUrl(config.getStoresBaseUrl());
         this.stores = new StoresClient(new StoresApiClient(storesAdapter), config);
 
-        // Apollo client with token interceptor for GraphQL
         this.apolloHttpClient = new OkHttpClient.Builder()
             .connectTimeout(10, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)
             .writeTimeout(30, TimeUnit.SECONDS)
             .addInterceptor(new BearerTokenInterceptor(config))
             .build();
-        var apolloClient = com.ebay.listingmanagement.clients.graphql.ApolloClientFactory.create(
+        var apolloClient = ApolloClientFactory.create(
             config.getGraphQLBaseUrl(),
             apolloHttpClient
         );
 
-        // GraphQL client (Apollo Kotlin with type safety)
-        this.graphQL = new com.ebay.listingmanagement.clients.graphql.ListingGraphQLClient(
+        this.graphQL = new ListingGraphQLClient(
             apolloClient,
             new DynamicGraphQLClient(sharedHttpClient, config),
             config

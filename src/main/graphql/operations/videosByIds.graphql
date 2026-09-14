@@ -1,0 +1,80 @@
+query VideosByIds($input: VideosByIdsInput) {
+  videosByIds(input: $input) {
+    __typename
+    ... on MaxVideoIdsAllowedExceeded {
+      maxAllowed
+    }
+    ... on VideoList {
+      videoList {
+        __typename
+        ... on ReferenceArgumentsNotFound {
+          argumentNames
+          errorCode
+          errorMessage
+        }
+        ... on VideoByIdSuccess {
+          video {
+            videoId
+            description
+            expiresAt
+            height
+            moderation {
+              rejectReasons
+            }
+            playlists {
+              playUrl
+              protocol
+            }
+            processingFailure {
+              __typename
+              ... on VideoCorruptedError {
+                category
+                message
+              }
+              ... on VideoInternalProcessingError {
+                category
+                message
+              }
+              ... on VideoInvalidInputValidationError {
+                message
+                category
+              }
+              ... on VideoInvalidMediaStreamError {
+                category
+                message
+              }
+              ... on VideoModerationFailedError {
+                message
+                category
+              }
+              ... on VideoPlaylistGenerationError {
+                category
+                message
+              }
+              ... on VideoProcessingTimeoutError {
+                message
+                category
+              }
+              ... on VideoSystemResourceError {
+                category
+                message
+              }
+              ... on VideoThumbnailGenerationError {
+                category
+                message
+              }
+            }
+            size
+            status
+            thumbnail {
+              imageUrl
+            }
+            title
+            videoDuration
+            width
+          }
+        }
+      }
+    }
+  }
+}

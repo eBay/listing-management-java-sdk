@@ -21,15 +21,11 @@ import com.ebay.listingmanagement.exceptions.GraphQLException
 import com.ebay.listingmanagement.generated.graphql.*
 import com.ebay.listingmanagement.generated.graphql.type.*
 import com.apollographql.apollo.ApolloClient
+import com.apollographql.apollo.api.Optional
 import kotlinx.coroutines.future.future
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import java.util.concurrent.CompletableFuture
 
-/**
- * Typed GraphQL client for Listing Management operations using Apollo Kotlin.
- * Provides strongly-typed access to all 9 GraphQL operations.
- */
 class ListingGraphQLClient @JvmOverloads internal constructor(
     private val apolloClient: ApolloClient,
     private val dynamicClient: DynamicGraphQLClient,
@@ -37,56 +33,6 @@ class ListingGraphQLClient @JvmOverloads internal constructor(
     private val scope: CoroutineScope = CoroutineScope(Dispatchers.IO)
 ) {
 
-    // ══════════════════════════════════════════════════════════════════════════
-    // QUERIES
-    // ══════════════════════════════════════════════════════════════════════════
-
-    /**
-     * Get seller listings by filter criteria.
-     */
-    suspend fun sellerListingsAsync(
-        input: SellerListingsInput,
-        accessToken: String? = null
-    ): SellerListingsQuery.SellerListings? {
-        val prev = TokenContext.CURRENT.get()
-        TokenContext.CURRENT.set(accessToken ?: prev)
-        try {
-            val response = apolloClient.query(SellerListingsQuery(input)).execute()
-            if (response.hasErrors()) {
-                throw GraphQLException(response.errors!!.map { it.message })
-            }
-            return response.dataAssertNoErrors.sellerListings
-        } finally {
-            TokenContext.CURRENT.set(prev)
-        }
-    }
-
-    /**
-     * Search seller's active, ended, and scheduled listings.
-     */
-    suspend fun sellerListingSearchAsync(
-        accessToken: String? = null
-    ): SellerListingSearchQuery.SellerListingSearch? {
-        val prev = TokenContext.CURRENT.get()
-        TokenContext.CURRENT.set(accessToken ?: prev)
-        try {
-            val response = apolloClient.query(SellerListingSearchQuery()).execute()
-            if (response.hasErrors()) {
-                throw GraphQLException(response.errors!!.map { it.message })
-            }
-            return response.dataAssertNoErrors.sellerListingSearch
-        } finally {
-            TokenContext.CURRENT.set(prev)
-        }
-    }
-
-    // ══════════════════════════════════════════════════════════════════════════
-    // MUTATIONS
-    // ══════════════════════════════════════════════════════════════════════════
-
-    /**
-     * Bulk update inventory quantities and prices.
-     */
     suspend fun bulkUpdateInventoryAsync(
         input: BulkUpdateInventoryInput,
         accessToken: String? = null
@@ -104,9 +50,6 @@ class ListingGraphQLClient @JvmOverloads internal constructor(
         }
     }
 
-    /**
-     * Create a new listing.
-     */
     suspend fun createListingAsync(
         input: CreateListingInput,
         accessToken: String? = null
@@ -124,9 +67,6 @@ class ListingGraphQLClient @JvmOverloads internal constructor(
         }
     }
 
-    /**
-     * Create a second chance listing.
-     */
     suspend fun createSecondChanceListingAsync(
         input: CreateSecondChanceListingInput,
         accessToken: String? = null
@@ -144,9 +84,6 @@ class ListingGraphQLClient @JvmOverloads internal constructor(
         }
     }
 
-    /**
-     * End a listing.
-     */
     suspend fun endListingAsync(
         input: EndListingInput,
         accessToken: String? = null
@@ -164,9 +101,23 @@ class ListingGraphQLClient @JvmOverloads internal constructor(
         }
     }
 
-    /**
-     * Relist a listing.
-     */
+    suspend fun listingPreviewsCreationTaskByIdAsync(
+        input: ListingPreviewsCreationTaskByIdInput,
+        accessToken: String? = null
+    ): ListingPreviewsCreationTaskByIdQuery.ListingPreviewsCreationTaskById? {
+        val prev = TokenContext.CURRENT.get()
+        TokenContext.CURRENT.set(accessToken ?: prev)
+        try {
+            val response = apolloClient.query(ListingPreviewsCreationTaskByIdQuery(input)).execute()
+            if (response.hasErrors()) {
+                throw GraphQLException(response.errors!!.map { it.message })
+            }
+            return response.dataAssertNoErrors.listingPreviewsCreationTaskById
+        } finally {
+            TokenContext.CURRENT.set(prev)
+        }
+    }
+
     suspend fun relistListingAsync(
         input: RelistListingInput,
         accessToken: String? = null
@@ -184,9 +135,59 @@ class ListingGraphQLClient @JvmOverloads internal constructor(
         }
     }
 
-    /**
-     * Update a listing.
-     */
+    suspend fun sellerListingsAsync(
+        input: SellerListingsInput,
+        accessToken: String? = null
+    ): SellerListingsQuery.SellerListings? {
+        val prev = TokenContext.CURRENT.get()
+        TokenContext.CURRENT.set(accessToken ?: prev)
+        try {
+            val response = apolloClient.query(SellerListingsQuery(input)).execute()
+            if (response.hasErrors()) {
+                throw GraphQLException(response.errors!!.map { it.message })
+            }
+            return response.dataAssertNoErrors.sellerListings
+        } finally {
+            TokenContext.CURRENT.set(prev)
+        }
+    }
+
+    suspend fun sellerListingSearchAsync(
+        activeListings_searchInput: SellerActiveListingSearchInput?,
+        endedListings_searchInput: SellerEndedListingSearchInput?,
+        scheduledListings_searchInput: SellerScheduledListingSearchInput?,
+        accessToken: String? = null
+    ): SellerListingSearchQuery.SellerListingSearch? {
+        val prev = TokenContext.CURRENT.get()
+        TokenContext.CURRENT.set(accessToken ?: prev)
+        try {
+            val response = apolloClient.query(SellerListingSearchQuery(Optional.presentIfNotNull(activeListings_searchInput), Optional.presentIfNotNull(endedListings_searchInput), Optional.presentIfNotNull(scheduledListings_searchInput))).execute()
+            if (response.hasErrors()) {
+                throw GraphQLException(response.errors!!.map { it.message })
+            }
+            return response.dataAssertNoErrors.sellerListingSearch
+        } finally {
+            TokenContext.CURRENT.set(prev)
+        }
+    }
+
+    suspend fun startListingPreviewsCreationAsync(
+        input: StartListingPreviewsCreationInput,
+        accessToken: String? = null
+    ): StartListingPreviewsCreationMutation.StartListingPreviewsCreation? {
+        val prev = TokenContext.CURRENT.get()
+        TokenContext.CURRENT.set(accessToken ?: prev)
+        try {
+            val response = apolloClient.mutation(StartListingPreviewsCreationMutation(input)).execute()
+            if (response.hasErrors()) {
+                throw GraphQLException(response.errors!!.map { it.message })
+            }
+            return response.dataAssertNoErrors.startListingPreviewsCreation
+        } finally {
+            TokenContext.CURRENT.set(prev)
+        }
+    }
+
     suspend fun updateListingAsync(
         input: UpdateListingInput,
         accessToken: String? = null
@@ -204,15 +205,39 @@ class ListingGraphQLClient @JvmOverloads internal constructor(
         }
     }
 
-    // ══════════════════════════════════════════════════════════════════════════
-    // JAVA-FRIENDLY COMPLETABLE FUTURE WRAPPERS
-    // ══════════════════════════════════════════════════════════════════════════
+    suspend fun userSavedSearchesAsync(
+        input: UserSavedSearchesInput?,
+        accessToken: String? = null
+    ): UserSavedSearchesQuery.UserSavedSearches? {
+        val prev = TokenContext.CURRENT.get()
+        TokenContext.CURRENT.set(accessToken ?: prev)
+        try {
+            val response = apolloClient.query(UserSavedSearchesQuery(Optional.presentIfNotNull(input))).execute()
+            if (response.hasErrors()) {
+                throw GraphQLException(response.errors!!.map { it.message })
+            }
+            return response.dataAssertNoErrors.userSavedSearches
+        } finally {
+            TokenContext.CURRENT.set(prev)
+        }
+    }
 
-    fun sellerListingsFuture(input: SellerListingsInput, accessToken: String?) =
-        scope.future { sellerListingsAsync(input, accessToken) }
-
-    fun sellerListingSearchFuture(accessToken: String?) =
-        scope.future { sellerListingSearchAsync(accessToken) }
+    suspend fun videosByIdsAsync(
+        input: VideosByIdsInput?,
+        accessToken: String? = null
+    ): VideosByIdsQuery.VideosByIds? {
+        val prev = TokenContext.CURRENT.get()
+        TokenContext.CURRENT.set(accessToken ?: prev)
+        try {
+            val response = apolloClient.query(VideosByIdsQuery(Optional.presentIfNotNull(input))).execute()
+            if (response.hasErrors()) {
+                throw GraphQLException(response.errors!!.map { it.message })
+            }
+            return response.dataAssertNoErrors.videosByIds
+        } finally {
+            TokenContext.CURRENT.set(prev)
+        }
+    }
 
     fun bulkUpdateInventoryFuture(input: BulkUpdateInventoryInput, accessToken: String?) =
         scope.future { bulkUpdateInventoryAsync(input, accessToken) }
@@ -226,15 +251,29 @@ class ListingGraphQLClient @JvmOverloads internal constructor(
     fun endListingFuture(input: EndListingInput, accessToken: String?) =
         scope.future { endListingAsync(input, accessToken) }
 
+    fun listingPreviewsCreationTaskByIdFuture(input: ListingPreviewsCreationTaskByIdInput, accessToken: String?) =
+        scope.future { listingPreviewsCreationTaskByIdAsync(input, accessToken) }
+
     fun relistListingFuture(input: RelistListingInput, accessToken: String?) =
         scope.future { relistListingAsync(input, accessToken) }
+
+    fun sellerListingsFuture(input: SellerListingsInput, accessToken: String?) =
+        scope.future { sellerListingsAsync(input, accessToken) }
+
+    fun sellerListingSearchFuture(activeListings_searchInput: SellerActiveListingSearchInput?, endedListings_searchInput: SellerEndedListingSearchInput?, scheduledListings_searchInput: SellerScheduledListingSearchInput?, accessToken: String?) =
+        scope.future { sellerListingSearchAsync(activeListings_searchInput, endedListings_searchInput, scheduledListings_searchInput, accessToken) }
+
+    fun startListingPreviewsCreationFuture(input: StartListingPreviewsCreationInput, accessToken: String?) =
+        scope.future { startListingPreviewsCreationAsync(input, accessToken) }
 
     fun updateListingFuture(input: UpdateListingInput, accessToken: String?) =
         scope.future { updateListingAsync(input, accessToken) }
 
-    // ══════════════════════════════════════════════════════════════════════════
-    // ESCAPE HATCH: RAW GRAPHQL
-    // ══════════════════════════════════════════════════════════════════════════
+    fun userSavedSearchesFuture(input: UserSavedSearchesInput?, accessToken: String?) =
+        scope.future { userSavedSearchesAsync(input, accessToken) }
+
+    fun videosByIdsFuture(input: VideosByIdsInput?, accessToken: String?) =
+        scope.future { videosByIdsAsync(input, accessToken) }
 
     /**
      * Execute an arbitrary GraphQL query or mutation (escape hatch).
@@ -242,17 +281,6 @@ class ListingGraphQLClient @JvmOverloads internal constructor(
      * **WARNING — GraphQL injection risk.** Never interpolate user-supplied input
      * directly into the query string. Always pass dynamic values via [variables]
      * so the server handles escaping.
-     *
-     * Unsafe:
-     * ```
-     * executeRawUnsafe("query { listing(id: \"$userId\") { title } }", null, token)  // ❌
-     * ```
-     * Safe:
-     * ```
-     * executeRawUnsafe("query(\$id: ID!) { listing(id: \$id) { title } }", mapOf("id" to userId), token)  // ✅
-     * ```
-     *
-     * Prefer the typed methods ([sellerListingsAsync], [createListingAsync], etc.) whenever possible.
      */
     fun executeRawUnsafe(
         query: String,

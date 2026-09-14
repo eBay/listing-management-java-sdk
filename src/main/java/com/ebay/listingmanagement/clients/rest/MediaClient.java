@@ -19,15 +19,12 @@ import com.ebay.listingmanagement.configuration.RequestOptions;
 import com.ebay.listingmanagement.configuration.TokenContext;
 import com.ebay.listingmanagement.generated.media.MediaApiClient;
 import com.ebay.listingmanagement.generated.media.models.*;
-import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
+import java.io.InputStream;
+import com.microsoft.kiota.serialization.UntypedNode;
 
-/**
- * Client for the Media API.
- * Provides methods to manage documents, images, and videos.
- */
 public final class MediaClient {
     private final MediaApiClient kiota;
     private final ListingManagementConfiguration config;
@@ -45,134 +42,106 @@ public final class MediaClient {
         return headers;
     }
 
-    // ── Documents ────────────────────────────────────────────────────────────
-
-    public CompletableFuture<Object> getDocumentAsync(
-            String documentId, String accessToken, RequestOptions requestOptions) {
-        Params.requireValid("documentId", documentId);
-        return CompletableFuture.supplyAsync(() ->
-            TokenContext.runWith(accessToken, () -> {
-                Map<String, String> headers = mergedHeaders(requestOptions);
-                return kiota.document().byDocument_id(documentId).get(config -> {
-                    headers.forEach((k, v) -> config.headers.add(k, v));
-                });
-            })
-        );
+    public CompletableFuture<ImageResponse> createImageFromFileAsync(
+            byte[] body, String accessToken, RequestOptions requestOptions) {
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
+            Map<String, String> headers = mergedHeaders(requestOptions);
+            return kiota.image().createImageFromFile().post(config -> {
+                headers.forEach((k, v) -> config.headers.add(k, v));
+            });
+        }));
     }
 
-    public CompletableFuture<Object> createDocumentAsync(
-            CreateDocumentRequest body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() ->
-            TokenContext.runWith(accessToken, () -> {
-                Map<String, String> headers = mergedHeaders(requestOptions);
-                return kiota.document().post(body, config -> {
-                    headers.forEach((k, v) -> config.headers.add(k, v));
-                });
-            })
-        );
-    }
-
-    public CompletableFuture<Object> createDocumentFromUrlAsync(
-            CreateDocumentFromUrlRequest body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() ->
-            TokenContext.runWith(accessToken, () -> {
-                Map<String, String> headers = mergedHeaders(requestOptions);
-                return kiota.document().createDocumentFromUrl().post(body, config -> {
-                    headers.forEach((k, v) -> config.headers.add(k, v));
-                });
-            })
-        );
-    }
-
-    public CompletableFuture<Object> uploadDocumentAsync(
-            String documentId, String accessToken, RequestOptions requestOptions) {
-        Params.requireValid("documentId", documentId);
-        return CompletableFuture.supplyAsync(() ->
-            TokenContext.runWith(accessToken, () -> {
-                Map<String, String> headers = mergedHeaders(requestOptions);
-                return kiota.document().byDocument_id(documentId).upload().post(config -> {
-                    headers.forEach((k, v) -> config.headers.add(k, v));
-                });
-            })
-        );
-    }
-
-    // ── Images ───────────────────────────────────────────────────────────────
-
-    public CompletableFuture<Object> getImageAsync(
-            String imageId, String accessToken, RequestOptions requestOptions) {
-        Params.requireValid("imageId", imageId);
-        return CompletableFuture.supplyAsync(() ->
-            TokenContext.runWith(accessToken, () -> {
-                Map<String, String> headers = mergedHeaders(requestOptions);
-                return kiota.image().byImage_id(imageId).get(config -> {
-                    headers.forEach((k, v) -> config.headers.add(k, v));
-                });
-            })
-        );
-    }
-
-    public CompletableFuture<Object> createImageFromFileAsync(
-            String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() ->
-            TokenContext.runWith(accessToken, () -> {
-                Map<String, String> headers = mergedHeaders(requestOptions);
-                return kiota.image().createImageFromFile().post(config -> {
-                    headers.forEach((k, v) -> config.headers.add(k, v));
-                });
-            })
-        );
-    }
-
-    public CompletableFuture<Object> createImageFromUrlAsync(
+    public CompletableFuture<ImageResponse> createImageFromUrlAsync(
             CreateImageFromUrlRequest body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() ->
-            TokenContext.runWith(accessToken, () -> {
-                Map<String, String> headers = mergedHeaders(requestOptions);
-                return kiota.image().createImageFromUrl().post(body, config -> {
-                    headers.forEach((k, v) -> config.headers.add(k, v));
-                });
-            })
-        );
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
+            Map<String, String> headers = mergedHeaders(requestOptions);
+            return kiota.image().createImageFromUrl().post(body, config -> {
+                headers.forEach((k, v) -> config.headers.add(k, v));
+            });
+        }));
     }
 
-    // ── Videos ───────────────────────────────────────────────────────────────
-
-    public CompletableFuture<Object> getVideoAsync(
-            String videoId, String accessToken, RequestOptions requestOptions) {
-        Params.requireValid("videoId", videoId);
-        return CompletableFuture.supplyAsync(() ->
-            TokenContext.runWith(accessToken, () -> {
-                Map<String, String> headers = mergedHeaders(requestOptions);
-                return kiota.video().byVideo_id(videoId).get(config -> {
-                    headers.forEach((k, v) -> config.headers.add(k, v));
-                });
-            })
-        );
+    public CompletableFuture<ImageResponse> getImageAsync(
+            String imageId, String accessToken, RequestOptions requestOptions) {
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
+            Map<String, String> headers = mergedHeaders(requestOptions);
+            return kiota.image().byImage_id(Params.requireValid("imageId", imageId)).get(config -> {
+                headers.forEach((k, v) -> config.headers.add(k, v));
+            });
+        }));
     }
 
     public CompletableFuture<Void> createVideoAsync(
             CreateVideoRequest body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.runAsync(() ->
-            TokenContext.runWith(accessToken, () -> {
-                Map<String, String> headers = mergedHeaders(requestOptions);
-                kiota.video().post(body, config -> {
-                    headers.forEach((k, v) -> config.headers.add(k, v));
-                });
-            })
-        );
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
+            Map<String, String> headers = mergedHeaders(requestOptions);
+            kiota.video().post(body, config -> {
+                headers.forEach((k, v) -> config.headers.add(k, v));
+            });
+            return null;
+        }));
     }
 
-    public CompletableFuture<Void> uploadVideoAsync(
-            String videoId, InputStream body, String accessToken, RequestOptions requestOptions) {
-        Params.requireValid("videoId", videoId);
-        return CompletableFuture.runAsync(() ->
-            TokenContext.runWith(accessToken, () -> {
-                Map<String, String> headers = mergedHeaders(requestOptions);
-                kiota.video().byVideo_id(videoId).upload().post(body, config -> {
-                    headers.forEach((k, v) -> config.headers.add(k, v));
-                });
-            })
-        );
+    public CompletableFuture<Video> getVideoAsync(
+            String videoId, String accessToken, RequestOptions requestOptions) {
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
+            Map<String, String> headers = mergedHeaders(requestOptions);
+            return kiota.video().byVideo_id(Params.requireValid("videoId", videoId)).get(config -> {
+                headers.forEach((k, v) -> config.headers.add(k, v));
+            });
+        }));
+    }
+
+    public CompletableFuture<InputStream> uploadVideoAsync(
+            String videoId, InputStream body, String contentLength, String contentRange, String accessToken, RequestOptions requestOptions) {
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
+            Map<String, String> headers = mergedHeaders(requestOptions);
+            return kiota.video().byVideo_id(Params.requireValid("videoId", videoId)).upload().post(body, config -> {
+                headers.forEach((k, v) -> config.headers.add(k, v));
+                if (contentLength != null) config.headers.add("Content-Length", contentLength);
+                if (contentRange != null) config.headers.add("Content-Range", contentRange);
+            });
+        }));
+    }
+
+    public CompletableFuture<CreateDocumentResponse> createDocumentAsync(
+            CreateDocumentRequest body, String accessToken, RequestOptions requestOptions) {
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
+            Map<String, String> headers = mergedHeaders(requestOptions);
+            return kiota.document().post(body, config -> {
+                headers.forEach((k, v) -> config.headers.add(k, v));
+            });
+        }));
+    }
+
+    public CompletableFuture<CreateDocumentResponse> createDocumentFromUrlAsync(
+            CreateDocumentFromUrlRequest body, String accessToken, RequestOptions requestOptions) {
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
+            Map<String, String> headers = mergedHeaders(requestOptions);
+            return kiota.document().createDocumentFromUrl().post(body, config -> {
+                headers.forEach((k, v) -> config.headers.add(k, v));
+            });
+        }));
+    }
+
+    public CompletableFuture<DocumentResponse> getDocumentAsync(
+            String documentId, String accessToken, RequestOptions requestOptions) {
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
+            Map<String, String> headers = mergedHeaders(requestOptions);
+            return kiota.document().byDocument_id(Params.requireValid("documentId", documentId)).get(config -> {
+                headers.forEach((k, v) -> config.headers.add(k, v));
+            });
+        }));
+    }
+
+    public CompletableFuture<DocumentResponse> uploadDocumentAsync(
+            String documentId, byte[] body, String accessToken, RequestOptions requestOptions) {
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
+            Map<String, String> headers = mergedHeaders(requestOptions);
+            return kiota.document().byDocument_id(Params.requireValid("documentId", documentId)).upload().post(config -> {
+                headers.forEach((k, v) -> config.headers.add(k, v));
+            });
+        }));
     }
 }

@@ -22,11 +22,9 @@ import com.ebay.listingmanagement.generated.stores.models.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
+import java.io.InputStream;
+import com.microsoft.kiota.serialization.UntypedNode;
 
-/**
- * Client for the Stores API.
- * Provides methods to manage eBay stores, categories, and tasks.
- */
 public final class StoresClient {
     private final StoresApiClient kiota;
     private final ListingManagementConfiguration config;
@@ -44,110 +42,87 @@ public final class StoresClient {
         return headers;
     }
 
-    // ── Store ────────────────────────────────────────────────────────────────
-
-    public CompletableFuture<Object> getStoreAsync(
+    public CompletableFuture<GetStoreCategoriesResponseType> getStoreCategoriesAsync(
             String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() ->
-            TokenContext.runWith(accessToken, () -> {
-                Map<String, String> headers = mergedHeaders(requestOptions);
-                return kiota.store().get(config -> {
-                    headers.forEach((k, v) -> config.headers.add(k, v));
-                });
-            })
-        );
-    }
-
-    // ── Store Categories ─────────────────────────────────────────────────────
-
-    public CompletableFuture<Object> getStoreCategoriesAsync(
-            String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() ->
-            TokenContext.runWith(accessToken, () -> {
-                Map<String, String> headers = mergedHeaders(requestOptions);
-                return kiota.store().categories().get(config -> {
-                    headers.forEach((k, v) -> config.headers.add(k, v));
-                });
-            })
-        );
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
+            Map<String, String> headers = mergedHeaders(requestOptions);
+            return kiota.store().categories().get(config -> {
+                headers.forEach((k, v) -> config.headers.add(k, v));
+            });
+        }));
     }
 
     public CompletableFuture<Void> addStoreCategoryAsync(
             AddStoreCategoryRequestType body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.runAsync(() ->
-            TokenContext.runWith(accessToken, () -> {
-                Map<String, String> headers = mergedHeaders(requestOptions);
-                kiota.store().categories().post(body, config -> {
-                    headers.forEach((k, v) -> config.headers.add(k, v));
-                });
-            })
-        );
-    }
-
-    public CompletableFuture<Void> deleteStoreCategoryAsync(
-            String categoryId, DeleteStoreCategoryRequestType body,
-            String accessToken, RequestOptions requestOptions) {
-        Params.requireValid("categoryId", categoryId);
-        return CompletableFuture.runAsync(() ->
-            TokenContext.runWith(accessToken, () -> {
-                Map<String, String> headers = mergedHeaders(requestOptions);
-                kiota.store().categories().byCategory_id(categoryId).delete(body, config -> {
-                    headers.forEach((k, v) -> config.headers.add(k, v));
-                });
-            })
-        );
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
+            Map<String, String> headers = mergedHeaders(requestOptions);
+            kiota.store().categories().post(body, config -> {
+                headers.forEach((k, v) -> config.headers.add(k, v));
+            });
+            return null;
+        }));
     }
 
     public CompletableFuture<Void> renameStoreCategoryAsync(
-            String categoryId, RenameStoreCategoryRequestType body,
+            String categoryId, RenameStoreCategoryRequestType body, String accessToken, RequestOptions requestOptions) {
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
+            Map<String, String> headers = mergedHeaders(requestOptions);
+            kiota.store().categories().byCategory_id(Params.requireValid("categoryId", categoryId)).put(body, config -> {
+                headers.forEach((k, v) -> config.headers.add(k, v));
+            });
+            return null;
+        }));
+    }
+
+    public CompletableFuture<Void> deleteStoreCategoryAsync(
+            String categoryId, DeleteStoreCategoryRequestType body, String accessToken, RequestOptions requestOptions) {
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
+            Map<String, String> headers = mergedHeaders(requestOptions);
+            kiota.store().categories().byCategory_id(Params.requireValid("categoryId", categoryId)).delete(body, config -> {
+                headers.forEach((k, v) -> config.headers.add(k, v));
+            });
+            return null;
+        }));
+    }
+
+    public CompletableFuture<GetStoreResponseType> getStoreAsync(
             String accessToken, RequestOptions requestOptions) {
-        Params.requireValid("categoryId", categoryId);
-        return CompletableFuture.runAsync(() ->
-            TokenContext.runWith(accessToken, () -> {
-                Map<String, String> headers = mergedHeaders(requestOptions);
-                kiota.store().categories().byCategory_id(categoryId).put(body, config -> {
-                    headers.forEach((k, v) -> config.headers.add(k, v));
-                });
-            })
-        );
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
+            Map<String, String> headers = mergedHeaders(requestOptions);
+            return kiota.store().get(config -> {
+                headers.forEach((k, v) -> config.headers.add(k, v));
+            });
+        }));
+    }
+
+    public CompletableFuture<GetStoreTaskResponseType> getStoreTaskAsync(
+            String taskId, String accessToken, RequestOptions requestOptions) {
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
+            Map<String, String> headers = mergedHeaders(requestOptions);
+            return kiota.store().tasks().byTask_id(Params.requireValid("taskId", taskId)).get(config -> {
+                headers.forEach((k, v) -> config.headers.add(k, v));
+            });
+        }));
+    }
+
+    public CompletableFuture<GetStoreTasksResponseType> getStoreTasksAsync(
+            String accessToken, RequestOptions requestOptions) {
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
+            Map<String, String> headers = mergedHeaders(requestOptions);
+            return kiota.store().tasks().get(config -> {
+                headers.forEach((k, v) -> config.headers.add(k, v));
+            });
+        }));
     }
 
     public CompletableFuture<Void> moveStoreCategoryAsync(
             MoveStoreCategoryRequestType body, String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.runAsync(() ->
-            TokenContext.runWith(accessToken, () -> {
-                Map<String, String> headers = mergedHeaders(requestOptions);
-                kiota.store().categories().moveCategory().post(body, config -> {
-                    headers.forEach((k, v) -> config.headers.add(k, v));
-                });
-            })
-        );
-    }
-
-    // ── Store Tasks ──────────────────────────────────────────────────────────
-
-    public CompletableFuture<Object> getStoreTasksAsync(
-            String accessToken, RequestOptions requestOptions) {
-        return CompletableFuture.supplyAsync(() ->
-            TokenContext.runWith(accessToken, () -> {
-                Map<String, String> headers = mergedHeaders(requestOptions);
-                return kiota.store().tasks().get(config -> {
-                    headers.forEach((k, v) -> config.headers.add(k, v));
-                });
-            })
-        );
-    }
-
-    public CompletableFuture<Object> getStoreTaskAsync(
-            String taskId, String accessToken, RequestOptions requestOptions) {
-        Params.requireValid("taskId", taskId);
-        return CompletableFuture.supplyAsync(() ->
-            TokenContext.runWith(accessToken, () -> {
-                Map<String, String> headers = mergedHeaders(requestOptions);
-                return kiota.store().tasks().byTask_id(taskId).get(config -> {
-                    headers.forEach((k, v) -> config.headers.add(k, v));
-                });
-            })
-        );
+        return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
+            Map<String, String> headers = mergedHeaders(requestOptions);
+            kiota.store().categories().moveCategory().post(body, config -> {
+                headers.forEach((k, v) -> config.headers.add(k, v));
+            });
+            return null;
+        }));
     }
 }
