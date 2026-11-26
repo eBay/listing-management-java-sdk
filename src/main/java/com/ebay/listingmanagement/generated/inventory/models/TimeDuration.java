@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 /**
- * This type is used to indicate the fulfillment time for an In-Store Pickup order, or for an order than will be shipped to the buyer.
+ * This type is used to indicate the fulfillment time for an order that will be shipped to the buyer.
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class TimeDuration implements AdditionalDataHolder, Parsable {

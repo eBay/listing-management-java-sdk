@@ -1,6 +1,6 @@
 {
-  "descriptionHash": "EED5F671601F4B53370D4C1BFFDAAE0F85C8873D1A0889032E121BA4EB73D482C6E38CEAC5165EC03365D4FD1CDE8BC478FD2D5D6BF79075C5BF3698E40EA9DB",
-  "descriptionLocation": "../../../../../../../../specs/openapi/media.json",
+  "descriptionHash": "49A8743E9B37503862A1C0B0C6746DB658F6E4796F181A92EF7CEA52C333639B110EEEAC06698DE7EB1E9264C3F328BD4501D1C6DEDE3922033B9B4D03B37C56",
+  "descriptionLocation": "../../../../../../../../specs/kiota/media.json",
   "lockFileVersion": "1.0.0",
   "kiotaVersion": "1.35.0",
   "clientClassName": "MediaApiClient",

@@ -16,6 +16,13 @@
 
 set -euo pipefail
 
+KIOTA_VERSION=$(kiota --version 2>/dev/null | cut -d'+' -f1)
+if [ "$KIOTA_VERSION" != "1.35.0" ]; then
+  echo "Error: kiota 1.35.0 required, found '${KIOTA_VERSION:-not installed}'"
+  echo "See https://learn.microsoft.com/en-us/openapi/kiota/install for installation options."
+  exit 1
+fi
+
 echo "Generating Listing Management Java SDK with Kiota..."
 rm -rf src/main/java/com/ebay/listingmanagement/generated
 
@@ -30,7 +37,7 @@ kiota generate -l java -d specs/openapi/inventory.json \
   -o src/main/java/com/ebay/listingmanagement/generated/inventory --ebc --co
 
 echo "Generating MediaApiClient..."
-kiota generate -l java -d specs/openapi/media.json \
+kiota generate -l java -d specs/kiota/media.json \
   -c MediaApiClient -n com.ebay.listingmanagement.generated.media \
   -o src/main/java/com/ebay/listingmanagement/generated/media --ebc --co
 

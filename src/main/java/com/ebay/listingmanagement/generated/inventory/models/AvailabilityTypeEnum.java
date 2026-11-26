@@ -19,7 +19,10 @@ import java.util.Objects;
 
 /**
  * The enumeration value in this field indicates the availability status of the inventory item at the merchant&apos;s physical store specified by the &lt;strong&gt;pickupAtLocationAvailability.merchantLocationKey&lt;/strong&gt; field. This field is required if the &lt;strong&gt;pickupAtLocationAvailability&lt;/strong&gt; container is used, and is always returned with the &lt;strong&gt;pickupAtLocationAvailability&lt;/strong&gt; container.  &lt;br&gt;&lt;br&gt;See &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-inventory_item-bulkcreateorreplaceinventoryitem.availabilitytypeenum&quot; target=&quot;_blank&quot;&gt;AvailabilityTypeEnum&lt;/a&gt; for more information about how/when you use each enumeration value.
+ * @deprecated
+ * 
  */
+@Deprecated
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public enum AvailabilityTypeEnum implements ValuedEnum {
     IN_STOCK("IN_STOCK"),

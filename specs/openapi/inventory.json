@@ -7070,7 +7070,7 @@
         "tags": [
           "location"
         ],
-        "description": "Use this call to create a new inventory location. In order to create and publish an offer (and create an eBay listing), a seller must have at least one location, as every offer must be associated with at least one location.<br><br><div class=\"msgbox_important\"><p class=\"msgbox_importantInDiv\" data-mc-autonum=\"&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important! &lt;/span&gt;&lt;/b&gt;\"><span class=\"autonumber\"><span><b><span style=\"color: #dd1e31;\" class=\"mcFormatColor\">Important!</span></b></span></span>Publish offer note: Fields may be optional or conditionally required when calling this method, but become required when publishing the offer to create an active listing. For this method, see <a href=\"/api-docs/sell/static/inventory/publishing-offers.html#location \" target=\"_blank\">Location fields</a> for a list of fields required to publish an offer.</p></span></div><br>Upon first creating an inventory location, only a seller-defined location identifier and a physical location is required, and once set, these values can not be changed. The unique identifier value (<a href=\"/develop/api/sell/inventory_api#sell-inventory_api-location-getinventorylocations.inventorylocationresponse.merchantlocationkey\" target=\"_blank\">merchantLocationKey</a>) is passed in at the end of the call URI. This <strong>merchantLocationKey</strong> value will be used in other Inventory Location calls to identify the location to perform an action against.<br><br>When creating an inventory location, the <a href=\"/develop/api/sell/inventory_api#sell-inventory_api-location-createinventorylocation.inventorylocationfull.locationtypes\" target=\"_blank\">locationTypes</a> can be specified to define the function of a location. At this time, the following <strong>locationTypes</strong> are supported:<ul><li><b>Fulfillment center</b> locations are used by sellers selling products through the Multi-warehouse program to get improved estimated delivery dates on their listings. A full address is required when creating a fulfillment center location, as well as the <b>fulfillmentCenterSpecifications</b> of the location. For more information on using the fulfillment center location type to get improved delivery dates, see <a href=\"/api-docs/sell/static/inventory/multi-warehouse-program.html\" target=\"_blank \">Multi-warehouse program</a>.</li><li><b>Warehouse</b> locations are used for traditional shipping. A full street address is not needed, but the <b>postalCode</b> and <b>country</b> OR <b>city</b>, <b>stateOrProvince</b>, and <b>country</b> of the location must be provided.</li><li><b>Store</b> locations are generally used by merchants selling product through the In-Store Pickup program. A full address is required when creating a store location.</li></ul><br>Note that all inventory locations are \"enabled\" by default when they are created, and you must specifically disable them (by passing in a value of <code>DISABLED</code> in the <strong>merchantLocationStatus</strong> field) if you want them to be set to the disabled state. The seller's inventory cannot be loaded to inventory locations in the disabled state.<br><br>Unless one or more errors and/or warnings occur with the call, there is no response payload for this call. A successful call will return an HTTP status value of <code>204 No Content</code>.",
+        "description": "Use this call to create a new inventory location. In order to create and publish an offer (and create an eBay listing), a seller must have at least one location, as every offer must be associated with at least one location.<br><br><div class=\"msgbox_important\"><p class=\"msgbox_importantInDiv\" data-mc-autonum=\"&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important! &lt;/span&gt;&lt;/b&gt;\"><span class=\"autonumber\"><span><b><span style=\"color: #dd1e31;\" class=\"mcFormatColor\">Important!</span></b></span></span>Publish offer note: Fields may be optional or conditionally required when calling this method, but become required when publishing the offer to create an active listing. For this method, see <a href=\"/api-docs/sell/static/inventory/publishing-offers.html#location \" target=\"_blank\">Location fields</a> for a list of fields required to publish an offer.</p></span></div><br>Upon first creating an inventory location, only a seller-defined location identifier and a physical location is required, and once set, these values can not be changed. The unique identifier value (<a href=\"/develop/api/sell/inventory_api#sell-inventory_api-location-getinventorylocations.inventorylocationresponse.merchantlocationkey\" target=\"_blank\">merchantLocationKey</a>) is passed in at the end of the call URI. This <strong>merchantLocationKey</strong> value will be used in other Inventory Location calls to identify the location to perform an action against.<br><br>When creating an inventory location, the <a href=\"/develop/api/sell/inventory_api#sell-inventory_api-location-createinventorylocation.inventorylocationfull.locationtypes\" target=\"_blank\">locationTypes</a> can be specified to define the function of a location. At this time, the following <strong>locationTypes</strong> are supported:<ul><li><b>Fulfillment center</b> locations are used by sellers selling products through the Multi-warehouse program to get improved estimated delivery dates on their listings. A full address is required when creating a fulfillment center location, as well as the <b>fulfillmentCenterSpecifications</b> of the location. For more information on using the fulfillment center location type to get improved delivery dates, see <a href=\"/api-docs/sell/static/inventory/multi-warehouse-program.html\" target=\"_blank \">Multi-warehouse program</a>.</li><li><b>Warehouse</b> locations are used for traditional shipping. A full street address is not needed, but the <b>postalCode</b> and <b>country</b> OR <b>city</b>, <b>stateOrProvince</b>, and <b>country</b> of the location must be provided.</li></ul><br>Note that all inventory locations are \"enabled\" by default when they are created, and you must specifically disable them (by passing in a value of <code>DISABLED</code> in the <strong>merchantLocationStatus</strong> field) if you want them to be set to the disabled state. The seller's inventory cannot be loaded to inventory locations in the disabled state.<br><br>Unless one or more errors and/or warnings occur with the call, there is no response payload for this call. A successful call will return an HTTP status value of <code>204 No Content</code>.",
         "operationId": "createInventoryLocation",
         "parameters": [
           {
@@ -7570,7 +7570,7 @@
         "tags": [
           "location"
         ],
-        "description": "Use this call to update location details for an existing inventory location. Specify the inventory location you want to update using the <b>merchantLocationKey</b> path parameter. <p>You can update the following text-based fields: <strong>name</strong>, <strong>phone</strong>, <strong>timeZoneId</strong>, <strong>geoCoordinates</strong>, <strong>fulfillmentCenterSpecifications</strong>, <strong>locationTypes</strong>, <strong>locationWebUrl</strong>, <strong>locationInstructions</strong> and <strong>locationAdditionalInformation</strong> any number of times for any location type.</p> <p>For warehouse and store inventory locations, address fields can be updated any number of times. Address fields <b>cannot</b> be updated for fulfillment center locations. However, if any address fields were omitted during the <b>createInventoryLocation</b> call, they can be added through this method.<br><span class=\"tablenote\"><b>Note:</b> When updating a warehouse location to a fulfillment center, sellers can update any of the address fields a single time during the same call used to make this update. After this, they can no longer be updated.</span><p>For store locations, the operating hours and/or the special hours can also be updated.</p><p>Whatever text is passed in for these fields in an <strong>updateInventoryLocation</strong> call will replace the current text strings defined for these fields.</p><p>Unless one or more errors and/or warnings occurs with the call, there is no response payload for this call. A successful call will return an HTTP status value of <code>204 No Content</code>.",
+        "description": "Use this call to update location details for an existing inventory location. Specify the inventory location you want to update using the <b>merchantLocationKey</b> path parameter. <p>You can update the following text-based fields: <strong>name</strong>, <strong>phone</strong>, <strong>timeZoneId</strong>, <strong>geoCoordinates</strong>, <strong>fulfillmentCenterSpecifications</strong>, <strong>locationTypes</strong>, <strong>locationWebUrl</strong>, <strong>locationInstructions</strong> and <strong>locationAdditionalInformation</strong> any number of times for any location type.</p> <p>For warehouse inventory locations, address fields can be updated any number of times. Address fields <b>cannot</b> be updated for fulfillment center locations. However, if any address fields were omitted during the <b>createInventoryLocation</b> call, they can be added through this method.<br><span class=\"tablenote\"><b>Note:</b> When updating a warehouse location to a fulfillment center, sellers can update any of the address fields a single time during the same call used to make this update. After this, they can no longer be updated.</span><p>Whatever text is passed in for these fields in an <strong>updateInventoryLocation</strong> call will replace the current text strings defined for these fields.</p><p>Unless one or more errors and/or warnings occurs with the call, there is no response payload for this call. A successful call will return an HTTP status value of <code>204 No Content</code>.",
         "operationId": "updateInventoryLocation",
         "parameters": [
           {
@@ -7707,7 +7707,7 @@
         "properties": {
           "addressLine1": {
             "type": "string",
-            "description": "The first line of a street address. This field is required for store and fulfillment center locations. A street address is not required for warehouse locations.<br><br>This field will be returned if defined for an inventory location. <br><br><b>Maximum length</b>: 128"
+            "description": "The first line of a street address. This field is required for fulfillment center locations. A street address is not required for warehouse locations.<br><br>This field will be returned if defined for an inventory location. <br><br><b>Maximum length</b>: 128"
           },
           "addressLine2": {
             "type": "string",
@@ -7715,7 +7715,7 @@
           },
           "city": {
             "type": "string",
-            "description": "The city in which the inventory location resides. This field is required for store and fulfillment center locations. For warehouse locations, this field is conditionally required as part of a <strong>city</strong> and <strong>stateOrProvince</strong> pair if a <strong>postalCode</strong> is not provided. If a <strong>postalCode</strong> is provided, the city is derived from the provided postal code and this field is technically optional.<br><br>This field is returned if defined for an inventory location. <br><br><b>Maximum length</b>: 128"
+            "description": "The city in which the inventory location resides. This field is required for fulfillment center locations. For warehouse locations, this field is conditionally required as part of a <strong>city</strong> and <strong>stateOrProvince</strong> pair if a <strong>postalCode</strong> is not provided. If a <strong>postalCode</strong> is provided, the city is derived from the provided postal code and this field is technically optional.<br><br>This field is returned if defined for an inventory location. <br><br><b>Maximum length</b>: 128"
           },
           "country": {
             "description": "The country in which the address resides, represented as two-letter <a href=\"https://www.iso.org/iso-3166-country-codes.html \" title=\"https://www.iso.org \" target=\"_blank\">ISO 3166</a> country code. For example, <code>US</code> represents the United States, and <code>DE</code> represents Germany.",
@@ -7727,11 +7727,11 @@
           },
           "postalCode": {
             "type": "string",
-            "description": "The postal/zip code of the address. eBay uses postal codes to surface In-Store Pickup items within the vicinity of a buyer's location, and it also uses postal codes (origin and destination) to estimate shipping costs when the seller uses calculated shipping. This field is required for store and fulfillment center locations. <br><br>For warehouse locations, this field is conditionally required if a <strong>city</strong> and <strong>stateOrProvince</strong> pair is not provided.<br><br><span class=\"tablenote\"> <strong>Note:</strong> For warehouse locations, <strong>city</strong> and <strong>stateOrProvince</strong> pair can be used instead of a <strong>postalCode</strong> value, and then the postal code is just derived from the city and state/province.</span><br>This field is returned if defined for an inventory location. <br><br><b>Maximum length</b>: 16"
+            "description": "The postal/zip code of the address. eBay also uses postal codes (origin and destination) to estimate shipping costs when the seller uses calculated shipping. This field is required for fulfillment center locations. <br><br>For warehouse locations, this field is conditionally required if a <strong>city</strong> and <strong>stateOrProvince</strong> pair is not provided.<br><br><span class=\"tablenote\"> <strong>Note:</strong> For warehouse locations, <strong>city</strong> and <strong>stateOrProvince</strong> pair can be used instead of a <strong>postalCode</strong> value, and then the postal code is just derived from the city and state/province.</span><br>This field is returned if defined for an inventory location. <br><br><b>Maximum length</b>: 16"
           },
           "stateOrProvince": {
             "type": "string",
-            "description": "The state/province in which the inventory location resides. This field is required for store and fulfillment center locations. For warehouse locations, this field is conditionally required as part of a <strong>city</strong> and <strong>stateOrProvince</strong> pair if a <strong>postalCode</strong> is not provided. If a <strong>postalCode</strong> is provided, the state or province is derived from the provided zip code and this field is technically optional.<br><br><b>Maximum length</b>: 128"
+            "description": "The state/province in which the inventory location resides. This field is required for fulfillment center locations. For warehouse locations, this field is conditionally required as part of a <strong>city</strong> and <strong>stateOrProvince</strong> pair if a <strong>postalCode</strong> is not provided. If a <strong>postalCode</strong> is provided, the state or province is derived from the provided zip code and this field is technically optional.<br><br><b>Maximum length</b>: 128"
           }
         },
         "description": "This type is used to define the physical address of an inventory location."
@@ -7755,17 +7755,18 @@
         "properties": {
           "pickupAtLocationAvailability": {
             "type": "array",
-            "description": "This container consists of an array of one or more of the merchant's physical store locations where the inventory item is available for In-Store Pickup orders. The merchant's location, the quantity available, and the fulfillment time (how soon the item will be ready for pickup after the order takes place) are all in this container. In-Store Pickup is only available to large merchants selling on the US, UK, Germany, and Australia sites.",
+            "description": "<b>Deprecated.</b> Do not use as STORE location types are no longer supported.",
             "items": {
               "$ref": "#/components/schemas/PickupAtLocationAvailability"
-            }
+            },
+            "deprecated": true
           },
           "shipToLocationAvailability": {
             "description": "This container specifies the quantity of the inventory item that are available for purchase across one or more eBay marketplaces.",
             "$ref": "#/components/schemas/ShipToLocationAvailability"
           }
         },
-        "description": "This type is used to specify the quantity of the inventory item that is available for purchase if the item will be shipped to the buyer, and the quantity of the inventory item that is available for In-Store Pickup at one or more of the merchant's physical stores. In-Store Pickup is only available to large merchants selling on the US, UK, Germany, and Australia sites."
+        "description": "This type is used to specify the quantity of the inventory item that is available for purchase if the item will be shipped to the buyer."
       },
       "AvailabilityDistribution": {
         "type": "object",
@@ -7788,29 +7789,31 @@
       },
       "AvailabilityTypeEnum": {
         "type": "object",
-        "description": "This enumeration type is used to indicate whether an inventory item has quantity available for purchase at the merchant's store indicated in the <strong>pickupAtLocationAvailability.merchantLocationKey</strong> field. This type is only applicable to inventory available for In-Store Pickup orders. | - **IN_STOCK**: This enumeration value indicates that the inventory item has quantity available for purchase at the merchant's store indicated in the <strong>pickupAtLocationAvailability.merchantLocationKey</strong> field. The quantity available for purchase is shown in the <strong>pickupAtLocationAvailability.quantity</strong> field. If the product is \"In Stock\", the corresponding <strong>pickupAtLocationAvailability.Quantity</strong> value should be an integer value greater than 0. - **OUT_OF_STOCK**: This enumeration value indicates that the inventory item is out of stock at the merchant's store indicated in the <strong>pickupAtLocationAvailability.merchantLocationKey</strong> field. If the product is \"Out of Stock\", the corresponding <strong>pickupAtLocationAvailability.Quantity</strong> value should be 0. - **SHIP_TO_STORE**: This enumeration value indicates that the merchant's store (indicated in the <strong>pickupAtLocationAvailability.merchantLocationKey</strong> field) is temporarily out of stock of the product, but some inventory of the product is being shipped from a warehouse to that store. The quantity being shipped is shown in the <strong>pickupAtLocationAvailability.quantity</strong> field, and this value should be an integer value greater than 0.",
+        "description": "<b>Deprecated.</b> Do not use as STORE location types are no longer supported.",
         "enum": [
           "IN_STOCK",
           "OUT_OF_STOCK",
           "SHIP_TO_STORE"
-        ]
+        ],
+        "deprecated": true
       },
       "AvailabilityWithAll": {
         "type": "object",
         "properties": {
           "pickupAtLocationAvailability": {
             "type": "array",
-            "description": "This container consists of an array of one or more of the merchant's physical stores where the inventory item is available for in-store pickup.<br><br>The store ID, the quantity available, and the fulfillment time (how soon the item will be ready for pickup after the order occurs) are all returned in this container.",
+            "description": "<b>Deprecated.</b> Do not use as STORE location types are no longer supported.",
             "items": {
               "$ref": "#/components/schemas/PickupAtLocationAvailability"
-            }
+            },
+            "deprecated": true
           },
           "shipToLocationAvailability": {
             "description": "This container specifies the quantity of the inventory items that are available for a standard purchase, where the item is shipped to the buyer.",
             "$ref": "#/components/schemas/ShipToLocationAvailabilityWithAll"
           }
         },
-        "description": "This type is used to specify the quantity of the inventory items that are available for purchase if the items will be shipped to the buyer, and the quantity of the inventory items that are available for In-Store Pickup at one or more of the merchant's physical stores.<br><br>In-Store Pickup is only available to large merchants selling on the US, UK, Germany, and Australia sites."
+        "description": "This type is used to specify the quantity of the inventory items that are available for purchase if the items will be shipped to the buyer."
       },
       "BaseResponse": {
         "type": "object",
@@ -8574,7 +8577,7 @@
       },
       "DayOfWeekEnum": {
         "type": "object",
-        "description": "An enumerated type defining the days of the week. This type is used by the <strong>dayOfWeekEnum</strong> field under the <strong>operatingHours</strong> container to indicate which days a merchant's store is open to pick up In-Store Pickup or Click and Collect orders. It is also used by the <b>weeklySchedule</b> container to specify cut-off hours for a fulfillment center. | - **MONDAY**: This enumeration value indicates that the store is open on Monday for the hours specified through the operatingHours.intervals container, or that a fulfillment center has a cut-off time specified through the weeklySchedule.cutOffTime field on Monday. - **TUESDAY**: This enumeration value indicates that the store is open on Tuesday for the hours specified through the operatingHours.intervals container, or that a fulfillment center has a cut-off time specified through the weeklySchedule.cutOffTime field on Tuesday. - **WEDNESDAY**: This enumeration value indicates that the store is open on Wednesday for the hours specified through the operatingHours.intervals container, or that a fulfillment center has a cut-off time specified through the weeklySchedule.cutOffTime field on Wednesday. - **THURSDAY**: This enumeration value indicates that the store is open on Thursday for the hours specified through the operatingHours.intervals container, or that a fulfillment center has a cut-off time specified through the weeklySchedule.cutOffTime field on Thursday. - **FRIDAY**: This enumeration value indicates that the store is open on Friday for the hours specified through the operatingHours.intervals container, or that a fulfillment center has a cut-off time specified through the weeklySchedule.cutOffTime field on Friday. - **SATURDAY**: This enumeration value indicates that the store is open on Saturday for the hours specified through the operatingHours.intervals container, or that a fulfillment center has a cut-off time specified through the weeklySchedule.cutOffTime field on Saturday. - **SUNDAY**: This enumeration value indicates that the store is open on Sunday for the hours specified through the operatingHours.intervals container, or that a fulfillment center has a cut-off time specified through the weeklySchedule.cutOffTime field on Sunday.",
+        "description": "An enumerated type defining the days of the week. This type is used by the <b>weeklySchedule</b> container to specify cut-off hours for a fulfillment center. | - **MONDAY**: This enumeration value indicates that a fulfillment center has a cut-off time specified through the weeklySchedule.cutOffTime field on Monday. - **TUESDAY**: This enumeration value indicates that a fulfillment center has a cut-off time specified through the weeklySchedule.cutOffTime field on Tuesday. - **WEDNESDAY**: This enumeration value indicates that a fulfillment center has a cut-off time specified through the weeklySchedule.cutOffTime field on Wednesday. - **THURSDAY**: This enumeration value indicates that a fulfillment center has a cut-off time specified through the weeklySchedule.cutOffTime field on Thursday. - **FRIDAY**: This enumeration value indicates that a fulfillment center has a cut-off time specified through the weeklySchedule.cutOffTime field on Friday. - **SATURDAY**: This enumeration value indicates that a fulfillment center has a cut-off time specified through the weeklySchedule.cutOffTime field on Saturday. - **SUNDAY**: This enumeration value indicates that a fulfillment center has a cut-off time specified through the weeklySchedule.cutOffTime field on Sunday.",
         "enum": [
           "MONDAY",
           "TUESDAY",
@@ -8646,7 +8649,7 @@
             "$ref": "#/components/schemas/Charity"
           },
           "extendedProducerResponsibility": {
-            "description": "This container is used to provide the eco-participation fee for a product. Use the <a href=\"/develop/api/sell/metadata_api#sell-metadata_api-marketplace-getextendedproducerresponsibilitypolicies\" target=\"_blank\">getExtendedProducerResponsibilityPolicies</a>Â method of theÂ <strong>Sell Metadata API</strong> to retrieve categories that support eco-participation fee for a specified marketplace.",
+            "description": "This container is used to provide the eco-participation fee for a product. Use the <a href=\"/develop/api/sell/metadata_api#sell-metadata_api-marketplace-getextendedproducerresponsibilitypolicies\" target=\"_blank\">getExtendedProducerResponsibilityPolicies</a> method of the <strong>Sell Metadata API</strong> to retrieve categories that support eco-participation fee for a specified marketplace.",
             "$ref": "#/components/schemas/ExtendedProducerResponsibility"
           },
           "format": {
@@ -8757,7 +8760,7 @@
             "$ref": "#/components/schemas/Charity"
           },
           "extendedProducerResponsibility": {
-            "description": "This container is used to provide the eco-participation fee for a product. Use the <a href=\"/develop/api/sell/metadata_api#sell-metadata_api-marketplace-getextendedproducerresponsibilitypolicies\" target=\"_blank\">getExtendedProducerResponsibilityPolicies</a>Â method of theÂ <strong>Sell Metadata API</strong> to retrieve categories that support eco-participation fee for a specified marketplace.",
+            "description": "This container is used to provide the eco-participation fee for a product. Use the <a href=\"/develop/api/sell/metadata_api#sell-metadata_api-marketplace-getextendedproducerresponsibilitypolicies\" target=\"_blank\">getExtendedProducerResponsibilityPolicies</a> method of the <strong>Sell Metadata API</strong> to retrieve categories that support eco-participation fee for a specified marketplace.",
             "$ref": "#/components/schemas/ExtendedProducerResponsibility"
           },
           "hideBuyerDetails": {
@@ -8847,7 +8850,7 @@
             "$ref": "#/components/schemas/Charity"
           },
           "extendedProducerResponsibility": {
-            "description": "This container is used to provide the eco-participation fee for a product.<br><br>Use the <a href=\"develop/api/sell/metadata_api#sell-metadata_api-marketplace-getextendedproducerresponsibilitypolicies\" >getExtendedProducerResponsibilityPolicies</a>Â method of theÂ <strong>Sell Metadata API</strong> to retrieve categories that support eco-participation fee for a specified marketplace.",
+            "description": "This container is used to provide the eco-participation fee for a product.<br><br>Use the <a href=\"develop/api/sell/metadata_api#sell-metadata_api-marketplace-getextendedproducerresponsibilitypolicies\" >getExtendedProducerResponsibilityPolicies</a> method of the <strong>Sell Metadata API</strong> to retrieve categories that support eco-participation fee for a specified marketplace.",
             "$ref": "#/components/schemas/ExtendedProducerResponsibility"
           },
           "format": {
@@ -9306,7 +9309,8 @@
             "description": "The <strong>open</strong> value is actually the time that the store opens. Local time (in Military format) is used. So, if a store opens at 9 AM local time, the <strong>open</strong> time would look like the following: <code>09:00:00</code>. This field is conditionally required if the <strong>intervals</strong> container is used to specify working hours or special hours for a store. <br><br>This field is returned if set for the store location."
           }
         },
-        "description": "This type is used by the <strong>intervals</strong> container to define the opening and closing times of a store location's working day. Local time (in Military format) is used, with the following format: <code>hh:mm:ss</code>."
+        "description": "<b>Deprecated.</b> Do not use as STORE location types are no longer supported.",
+        "deprecated": true
       },
       "InventoryItem": {
         "type": "object",
@@ -9503,7 +9507,7 @@
         ],
         "properties": {
           "availability": {
-            "description": "This container shows the quantity of the inventory item that is available for purchase if the item will be shipped to the buyer, and/or the quantity of the inventory item that is available for In-Store Pickup at one or more of the merchant's physical stores.",
+            "description": "This container shows the quantity of the inventory item that is available for purchase if the item will be shipped to the buyer.",
             "$ref": "#/components/schemas/AvailabilityWithAll"
           },
           "condition": {
@@ -9555,7 +9559,7 @@
         "description": "This type is used to provide details of a single inventory item.",
         "properties": {
           "availability": {
-            "description": "This container is used to specify the quantity of the inventory item that are available for purchase if the item will be shipped to the buyer, and the quantity of the inventory item that are available for In-Store Pickup at one or more of the merchant's physical stores.",
+            "description": "This container is used to specify the quantity of the inventory item that is available for purchase if the item will be shipped to the buyer.",
             "$ref": "#/components/schemas/AvailabilityWithAll"
           },
           "condition": {
@@ -9656,7 +9660,7 @@
         "type": "object",
         "properties": {
           "location": {
-            "description": "This container is used to add any addition physical address and geographical coordinate information for a warehouse, store, or fulfillment center inventory location.<br><br><span class=\"tablenote\"><b>Note:</b> For warehouse and store inventory locations, address fields can be updated any number of times. For fulfilment center locations, address fields cannot be updated. However, if any address fields were omitted during the <b>createInventoryLocation</b> call, they can be added through this method.</span><br><span class=\"tablenote\"><b>Note:</b> When updating a warehouse location to a fulfillment center, sellers can update any of the address fields a single time during the same call used to make this update. After this, they can no longer be updated.</span> ",
+            "description": "This container is used to add any additional physical address and geographical coordinate information for a warehouse or fulfillment center inventory location.<br><br><span class=\"tablenote\"><b>Note:</b> For warehouse inventory locations, address fields can be updated any number of times. For fulfillment center locations, address fields cannot be updated. However, if any address fields were omitted during the <b>createInventoryLocation</b> call, they can be added through this method.</span><br><span class=\"tablenote\"><b>Note:</b> When updating a warehouse location to a fulfillment center, sellers can update any of the address fields a single time during the same call used to make this update. After this, they can no longer be updated.</span>",
             "$ref": "#/components/schemas/LocationDetails"
           },
           "locationAdditionalInformation": {
@@ -9665,7 +9669,8 @@
           },
           "locationInstructions": {
             "type": "string",
-            "description": "This text field is generally used by the merchant to provide/update special pickup instructions for a store inventory location. Although this field is optional, it is recommended that merchants provide this field to create a pleasant and easy pickup experience for In-Store Pickup and Click and Collect orders. If this field is not included in the call request payload, eBay will use the default pickup instructions contained in the merchant's profile (if available). Whatever text is passed in this field will replace the current text string defined for this field. If the text will not change, the same text should be passed in once again. <br><br><b>Maximum length</b>: 1000"
+            "description": "<b>Deprecated.</b> Do not use as STORE location types are no longer supported.",
+            "deprecated": true
           },
           "locationTypes": {
             "type": "array",
@@ -9680,14 +9685,15 @@
           },
           "name": {
             "type": "string",
-            "description": "This text field is used by the merchant to update the name of the inventory location. This name should be a human-friendly name as it will be in In-Store Pickup and Click and Collect listings. A name is not required for warehouse locations. For store locations, this field is not immediately required, but will be required before an offer enabled with the In-Store Pickup or Click and Collect capability can be published. So, if the seller omitted this field in the <strong>createInventoryLocation</strong> call, it is required for an <strong>updateInventoryLocation</strong> call. The name that is passed in this field will replace any other name that may be defined for this field."
+            "description": "This text field is used by the merchant to update the name of the inventory location. This name should be a human-friendly name. A name is not required for warehouse locations. The name that is passed in this field will replace any other name that may be defined for this field."
           },
           "operatingHours": {
             "type": "array",
-            "description": "This container is used to provide/update the regular operating hours for a store location during the days of the week. A <strong>dayOfWeekEnum</strong> field and an <strong>intervals</strong> container will be needed for each day of the week that the location is open. Note that if operating hours are already set for a location for a specific day of the week, whatever is set through an <strong>updateInventoryLocation</strong> call will override those existing hours.",
+            "description": "<b>Deprecated.</b> Do not use as STORE location types are no longer supported.",
             "items": {
               "$ref": "#/components/schemas/OperatingHours"
-            }
+            },
+            "deprecated": true
           },
           "phone": {
             "type": "string",
@@ -9695,10 +9701,11 @@
           },
           "specialHours": {
             "type": "array",
-            "description": "This container is used to provide/update the special operating hours for a store location on a specific date, such as a holiday. The special hours specified for the specific date will override the normal operating hours for that particular day of the week. If special hours have already been set up for an inventory location, specifying special hours through an <strong>updateInventoryLocation</strong> call will only add to the list, unless the date(s) used are the same special date(s) already set up, in which case, the special hours set up through the <strong>updateInventoryLocation</strong> call will override the existing special hours.",
+            "description": "<b>Deprecated.</b> Do not use as STORE location types are no longer supported.",
             "items": {
               "$ref": "#/components/schemas/SpecialHours"
-            }
+            },
+            "deprecated": true
           },
           "timeZoneId": {
             "type": "string",
@@ -9719,7 +9726,7 @@
         ],
         "properties": {
           "location": {
-            "description": "This required container is used to set the physical address and geographical coordinates of a warehouse, store, or fulfillment center inventory location. A warehouse location only requires the postal code and country OR city, province/state, and country, and does not require a full street address. However, the seller may still supply a full street address for a warehouse location. A complete address (<b>addressLine1</b>, <b>city</b>, <b>stateOrProvince</b>, <b>postalCode</b>, and <b>country</b>) is required for store and fulfillment center locations.<br><br><span class=\"tablenote\"><b>Note:</b> For fulfillment center locations, the <b>addressLine1</b>, <b>stateOrProvince</b>, <b>country</b> and <b>postalCode</b> fields cannot be changed once they have been set, though they can be added through the <strong>updateInventoryLocation</strong> method if they were omitted during location creation.</span>",
+            "description": "This required container is used to set the physical address and geographical coordinates of a warehouse or fulfillment center inventory location. A warehouse location only requires the postal code and country OR city, province/state, and country, and does not require a full street address. However, the seller may still supply a full street address for a warehouse location. A complete address (<b>addressLine1</b>, <b>city</b>, <b>stateOrProvince</b>, <b>postalCode</b>, and <b>country</b>) is required for fulfillment center locations.<br><br><span class=\"tablenote\"><b>Note:</b> For fulfillment center locations, the <b>addressLine1</b>, <b>stateOrProvince</b>, <b>country</b> and <b>postalCode</b> fields cannot be changed once they have been set, though they can be added through the <strong>updateInventoryLocation</strong> method if they were omitted during location creation.</span>",
             "$ref": "#/components/schemas/LocationDetails"
           },
           "locationAdditionalInformation": {
@@ -9728,11 +9735,12 @@
           },
           "locationInstructions": {
             "type": "string",
-            "description": "This text field is generally used by the merchant to provide special pickup instructions for a store inventory location. Although this field is optional, it is recommended that merchants provide this field to create a pleasant and easy pickup experience for In-Store Pickup and Click and Collect orders. If this field is not included in the call request payload, eBay will use the default pickup instructions contained in the merchant's profile (if available)."
+            "description": "<b>Deprecated.</b> Do not use as STORE location types are no longer supported.",
+            "deprecated": true
           },
           "locationTypes": {
             "type": "array",
-            "description": "This container is used to define the function of the inventory location. Typically, an inventory location will serve as a store, warehouse, or fulfillment center, but in some cases, an inventory location may be more than one type.<br><br>For In-Store Pickup inventory, set <b>StoreTypeEnum</b> to <code>STORE</code>.<br><br>To utilize the Multi-warehouse program, set <b>StoreTypeEnum</b> to <code>FULFILLMENT_CENTER</code>.<br><br>If this container is omitted, the location type of the inventory location will default to <code>WAREHOUSE</code>. See <a href=\"/develop/api/sell/inventory_api#sell-inventory_api-location-getinventorylocation.storetypeenum\">StoreTypeEnum</a> for the supported values.<br><br><b>Default</b>: <code>WAREHOUSE</code>",
+            "description": "This array is used to define the function of the inventory location as either a <code>WAREHOUSE</code> or a <code>FULFILLMENT_CENTER</code>.<br><br>To utilize the Multi-warehouse program, use <code>FULFILLMENT_CENTER</code>.<br><br><b>Default</b>: <code>WAREHOUSE</code>",
             "items": {
               "$ref": "#/components/schemas/StoreTypeEnum"
             }
@@ -9747,14 +9755,15 @@
           },
           "name": {
             "type": "string",
-            "description": "The seller-defined name of the inventory location. This name should be a human-friendly name as it will be displayed in In-Store Pickup and Click and Collect listings. A name is not required for warehouse locations. For store locations, this field is not immediately required, but will be required before an offer enabled with the In-Store Pickup or Click and Collect capability can be published. So, if the seller omits this field in a <strong>createInventoryLocation</strong> call, it becomes required for an <strong>updateInventoryLocation</strong> call.<br><br><b>Maximum length</b>: 1000"
+            "description": "The seller-defined name of the inventory location. This name should be a human-friendly name.<br><br><b>Maximum length</b>: 1000"
           },
           "operatingHours": {
             "type": "array",
-            "description": "This container is used to express the regular operating hours for a store location during each day of the week. A <strong>dayOfWeekEnum</strong> field and an <strong>intervals</strong> container will be needed for each day of the week that the store location is open.<br><br>Although not technically required, this container is highly recommended to be used to specify operating hours for a store location.",
+            "description": "<b>Deprecated.</b> Do not use as STORE location types are no longer supported.",
             "items": {
               "$ref": "#/components/schemas/OperatingHours"
-            }
+            },
+            "deprecated": true
           },
           "phone": {
             "type": "string",
@@ -9762,10 +9771,11 @@
           },
           "specialHours": {
             "type": "array",
-            "description": "This container is used to express the special operating hours for a store inventory location on a specific date, such as a holiday. The special hours specified for the specific date will override the normal operating hours for that particular day of the week.",
+            "description": "<b>Deprecated.</b> Do not use as STORE location types are no longer supported.",
             "items": {
               "$ref": "#/components/schemas/SpecialHours"
-            }
+            },
+            "deprecated": true
           },
           "timeZoneId": {
             "type": "string",
@@ -9789,7 +9799,7 @@
         ],
         "properties": {
           "location": {
-            "description": "This container provides location details of an inventory location. The <strong>address</strong> container will always be returned, but it will not always have a complete street address. Except in the case of a store or fulfillment center location, a full address is not a requirement when setting up an inventory location. The <strong>geoCoordinates</strong> container will only be returned if the merchant provided geographical coordinates. The <strong>locationId</strong> field is always returned, but this value is only used internally by eBay.",
+            "description": "This container provides details of an inventory location. The <strong>address</strong> container will always be returned, but it will not always have a complete street address, as a WAREHOUSE location does not require a full street address. The <strong>geoCoordinates</strong> container will only be returned if the seller provided geographical coordinates. The <strong>locationId</strong> field is always returned, but this value is only used internally by eBay.",
             "$ref": "#/components/schemas/Location"
           },
           "locationAdditionalInformation": {
@@ -9798,11 +9808,12 @@
           },
           "locationInstructions": {
             "type": "string",
-            "description": "This text field is used by the merchant to provide special pickup instructions for the store location. This field can help create a pleasant and easy pickup experience for In-Store Pickup and Click and Collect orders. If this field was not set up through a <strong>createInventoryLocation</strong> or a <strong>updateInventoryLocation</strong> call, eBay will use the default pickup instructions contained in the merchant's profile."
+            "description": "<b>Deprecated.</b> Do not use as STORE location types are no longer supported.",
+            "deprecated": true
           },
           "locationTypes": {
             "type": "array",
-            "description": "This container defines the function of the inventory location. Typically, a location will serve as a store, warehouse, or fulfillment center, but in some cases, an inventory location may be more than one type.",
+            "description": "This array indicates if the inventory location is a warehouse or a fulfillment center.",
             "items": {
               "$ref": "#/components/schemas/StoreTypeEnum"
             }
@@ -9821,25 +9832,28 @@
           },
           "name": {
             "type": "string",
-            "description": "The name of the inventory location. This name should be a human-friendly name as it will be displayed in In-Store Pickup and Click and Collect listings. For store inventory locations, this field is not required for the <strong>createInventoryLocation</strong> call, but a store inventory location must have a defined <strong>name</strong> value before an In-Store Pickup and Click and Collect enabled offer is published. So, if the seller omits this field in the <strong>createInventoryLocation</strong> call, it will have to be added later through a <strong>updateInventoryLocation</strong> call."
+            "description": "The name of the inventory location. This name should be a human-friendly name."
           },
           "operatingHours": {
             "type": "array",
-            "description": "This container shows the regular operating hours for a store location during the days of the week. A <strong>dayOfWeekEnum</strong> field and an <strong>intervals</strong> container is shown for each day of the week that the location is open.",
+            "description": "<b>Deprecated.</b> Do not use as STORE location types are no longer supported.",
             "items": {
               "$ref": "#/components/schemas/OperatingHours"
-            }
+            },
+            "deprecated": true
           },
           "phone": {
             "type": "string",
-            "description": "The phone number for an inventory location. This field will typically only be returned for store locations."
+            "description": "<b>Deprecated.</b> Do not use as STORE location types are no longer supported.",
+            "deprecated": true
           },
           "specialHours": {
             "type": "array",
-            "description": "This container shows the special operating hours for a store or fulfillment center location on a specific date or dates.",
+            "description": "<b>Deprecated.</b> Do not use as STORE location types are no longer supported.",
             "items": {
               "$ref": "#/components/schemas/SpecialHours"
-            }
+            },
+            "deprecated": true
           },
           "timeZoneId": {
             "type": "string",
@@ -10002,7 +10016,7 @@
         ],
         "properties": {
           "address": {
-            "description": "The <strong>address</strong> container is always returned in <strong>getInventoryLocation</strong>/<strong>getInventoryLocations</strong> calls. Except in the case of a store or fulfillment center location, a full address is not a requirement when setting up an inventory location.",
+            "description": "The <strong>address</strong> container is always returned in <strong>getInventoryLocation</strong>/<strong>getInventoryLocations</strong> calls. Except in the case of a fulfillment center location, a full address is not a requirement when setting up an inventory location.",
             "$ref": "#/components/schemas/Address"
           },
           "geoCoordinates": {
@@ -10036,11 +10050,11 @@
         ],
         "properties": {
           "address": {
-            "description": "This required container sets the physical address of an inventory location. Except in the case store or fulfillment center location, a full address is not a requirement when setting up a location. For warehouse locations, the fields required in this container are either of the following sets:<ul><li><b>city</b>, <b>stateOrProvince</b>, and <b>country</b></li><li><b>postalCode</b> and <b>country</b></li></ul>",
+            "description": "This required container sets the physical address of an inventory location. Except in the case of a fulfillment center location, a full address is not a requirement when setting up a location. For warehouse locations, the fields required in this container are either of the following sets:<ul><li><b>city</b>, <b>stateOrProvince</b>, and <b>country</b></li><li><b>postalCode</b> and <b>country</b></li></ul>",
             "$ref": "#/components/schemas/Address"
           },
           "geoCoordinates": {
-            "description": "This container is used to set the Global Positioning System (GPS) latitude and longitude coordinates for the inventory location.<br><br>Geographical coordinates are required for the location of In-Store Pickup inventory. ",
+            "description": "This container is used to set the Global Positioning System (GPS) latitude and longitude coordinates for the inventory location. Geo-coordinates are used for FULFILLMENT_CENTER locations for delivery route-planning purposes (shorter distance to buyer generally means faster delivery). They are optional for WAREHOUSE locations.",
             "$ref": "#/components/schemas/GeoCoordinates"
           }
         },
@@ -10499,7 +10513,8 @@
             }
           }
         },
-        "description": "This type is used to express the regular operating hours of a merchant's store or fulfillment center during the days of the week."
+        "description": "<b>Deprecated.</b> Do not use as STORE location types are no longer supported.",
+        "deprecated": true
       },
       "Overrides": {
         "type": "object",
@@ -10597,7 +10612,8 @@
             "format": "int32"
           }
         },
-        "description": "This type is used to specify/indicate the quantity of the inventory item that is available for an In-Store Pickup order at the merchant's physical store (specified by the <strong>merchantLocationKey</strong> field)."
+        "description": "<b>Deprecated.</b> Do not use as STORE location types are no longer supported.",
+        "deprecated": true
       },
       "PriceQuantity": {
         "type": "object",
@@ -11115,7 +11131,8 @@
             }
           }
         },
-        "description": "This type is used to express the special operating hours of a store location on a specific date. A <strong>specialHours</strong> container is needed when the store's opening hours on a specific date are different than the normal operating hours on that particular day of the week."
+        "description": "<b>Deprecated.</b> Do not use as STORE location types are no longer supported.",
+        "deprecated": true
       },
       "Specification": {
         "type": "object",
@@ -11144,7 +11161,7 @@
       },
       "StoreTypeEnum": {
         "type": "object",
-        "description": "An enumerated type defining the inventory location types. | - **STORE**: This enumeration value indicates the inventory location is a merchant's store. - **WAREHOUSE**: This enumeration value indicates the inventory location is a merchant's warehouse. - **FULFILLMENT_CENTER**: This enumeration value indicates the inventory location is a merchant's fulfillment center. <br /><br /><strong>Note</strong>: This location type must be used to take advantage of the Multi-warehouse program to get improved EDD on listing.",
+        "description": "An enumerated type defining the inventory location types. | - **STORE**: <b>Deprecated.</b> Do not use as STORE location types are no longer supported. - **WAREHOUSE**: This enumeration value indicates the inventory location is a merchant's warehouse. - **FULFILLMENT_CENTER**: This enumeration value indicates the inventory location is a merchant's fulfillment center. <br /><br /><strong>Note</strong>: This location type must be used to take advantage of the Multi-warehouse program to get improved EDD on listing.",
         "enum": [
           "STORE",
           "WAREHOUSE",
@@ -11182,11 +11199,11 @@
             "format": "int32"
           }
         },
-        "description": "This type is used to indicate the fulfillment time for an In-Store Pickup order, or for an order than will be shipped to the buyer."
+        "description": "This type is used to indicate the fulfillment time for an order that will be shipped to the buyer."
       },
       "TimeDurationUnitEnum": {
         "type": "object",
-        "description": "This enumeration type is used by the <strong>fulfillmentTime</strong> field of the <strong>PickupAtLocationAvailability</strong> type to specify the time unit that is used to indicate the fulfillment time, which is how soon an In-Store Pickup order will be ready for pickup at the store identified in the corresponding <strong>merchantLocationKey</strong> field. Typically, the unit value will be <code>HOUR</code>. | - **YEAR**: Time duration is based on a number of years. - **MONTH**: Time duration is based on a number of months - **DAY**: Time duration is based on a number of days. - **HOUR**: Time duration is based on a number of hours. - **CALENDAR_DAY**: Time duration is based on a number of calendar days, including Saturday and Sunday. This time duration does not exclude holidays. - **BUSINESS_DAY**: Time duration is based on a number of business days, or 'working days' (normally Monday through Friday). This excludes Sunday and all holidays in the time duration and, depending on the location, can include or exclude Saturday. - **MINUTE**: Time duration is based on a number of minutes. - **SECOND**: Time duration is based on a number of seconds. - **MILLISECOND**: Time duration is based on a number of milliseconds.",
+        "description": "This enumeration type is used by the <strong>unit</strong> field of the <strong>TimeDuration</strong> type to specify the time unit that is used to indicate the fulfillment time for an order that will be shipped to the buyer. Typically, the unit value will be <code>BUSINESS_DAY</code>. | - **YEAR**: Time duration is based on a number of years. - **MONTH**: Time duration is based on a number of months - **DAY**: Time duration is based on a number of days. - **HOUR**: Time duration is based on a number of hours. - **CALENDAR_DAY**: Time duration is based on a number of calendar days, including Saturday and Sunday. This time duration does not exclude holidays. - **BUSINESS_DAY**: Time duration is based on a number of business days, or 'working days' (normally Monday through Friday). This excludes Sunday and all holidays in the time duration and, depending on the location, can include or exclude Saturday. - **MINUTE**: Time duration is based on a number of minutes. - **SECOND**: Time duration is based on a number of seconds. - **MILLISECOND**: Time duration is based on a number of milliseconds.",
         "enum": [
           "YEAR",
           "MONTH",

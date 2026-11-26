@@ -46,7 +46,9 @@ public final class MediaClient {
             byte[] body, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.image().createImageFromFile().post(config -> {
+            com.microsoft.kiota.MultipartBody multipartBody = new com.microsoft.kiota.MultipartBody();
+            multipartBody.addOrReplacePart("image", "application/octet-stream", body);
+            return kiota.image().createImageFromFile().post(multipartBody, config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
         }));
@@ -94,10 +96,10 @@ public final class MediaClient {
     }
 
     public CompletableFuture<Void> uploadVideoAsync(
-            String videoId, String contentLength, String contentRange, String accessToken, RequestOptions requestOptions) {
+            String videoId, String contentLength, String contentRange, InputStream body, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
-            kiota.video().byVideo_id(Params.requireValid("videoId", videoId)).upload().post(config -> {
+            kiota.video().byVideo_id(Params.requireValid("videoId", videoId)).upload().post(body, config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
                 if (contentLength != null) config.headers.add("Content-Length", contentLength);
                 if (contentRange != null) config.headers.add("Content-Range", contentRange);
@@ -140,20 +142,21 @@ public final class MediaClient {
             String documentId, byte[] body, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
-            return kiota.document().byDocument_id(Params.requireValid("documentId", documentId)).upload().post(config -> {
+            com.microsoft.kiota.MultipartBody multipartBody = new com.microsoft.kiota.MultipartBody();
+            multipartBody.addOrReplacePart("file", "application/octet-stream", body);
+            return kiota.document().byDocument_id(Params.requireValid("documentId", documentId)).upload().post(multipartBody, config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
         }));
     }
 
-    public CompletableFuture<Void> downloadPostOrderDocumentAsync(
+    public CompletableFuture<InputStream> downloadPostOrderDocumentAsync(
             String documentId, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
-            kiota.postOrder().document().byDocument_id(Params.requireValid("documentId", documentId)).get(config -> {
+            return kiota.postOrder().document().byDocument_id(Params.requireValid("documentId", documentId)).get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
-            return null;
         }));
     }
 
@@ -172,7 +175,9 @@ public final class MediaClient {
             byte[] body, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
-            kiota.postOrder().document().post(config -> {
+            com.microsoft.kiota.MultipartBody multipartBody = new com.microsoft.kiota.MultipartBody();
+            multipartBody.addOrReplacePart("file", "application/octet-stream", body);
+            kiota.postOrder().document().post(multipartBody, config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
             return null;

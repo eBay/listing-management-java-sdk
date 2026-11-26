@@ -1,5 +1,27 @@
 # ChangeLog
 
+## 0.3.0 (11/26/2026)
+
+### Breaking changes
+
+- The following operations changed signature on `MediaClient`:
+| Operation | Previous signature | New signature |
+| --- | --- | --- |
+| `uploadVideoAsync` | `uploadVideoAsync(String videoId, String contentLength, String contentRange, String accessToken, RequestOptions requestOptions)` | `uploadVideoAsync(String videoId, String contentLength, String contentRange, InputStream body, String accessToken, RequestOptions requestOptions)` |
+
+### Added
+
+- Local mock servers: a base URL may use plain `http` when its host is a loopback host (`127.0.0.1`, `::1` or `localhost`) that you also pass in `allowedHosts`, for example `List.of("127.0.0.1")`. Every other host still requires `https`. `ListingManagementConfiguration.LOOPBACK_HOSTS` lists the loopback hosts.
+
+### Changed
+
+- Updated the `inventory`, `media` OpenAPI documents to the latest definitions.
+- Updated the GraphQL schema to the latest definitions.
+- `ListingManagementConfiguration.isTrustedUrl` and the auth provider and GraphQL clients apply the same rule.
+- Hosts are compared lowercased and without IPv6 brackets, so `[::1]` and `::1` match.
+- A rejected base URL now says whether the scheme or the host is not trusted.
+- Fixed multipart uploads so `createImageFromFileAsync`, `uploadDocumentAsync` and `uploadPostOrderDocumentAsync` send the file through Kiota.
+
 ## 0.2.3 (10/28/2026)
 
 ### Dependencies

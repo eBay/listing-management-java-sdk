@@ -22,7 +22,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 /**
- * This type is used by the &lt;strong&gt;intervals&lt;/strong&gt; container to define the opening and closing times of a store location&apos;s working day. Local time (in Military format) is used, with the following format: &lt;code&gt;hh:mm:ss&lt;/code&gt;.
+ * &lt;b&gt;Deprecated.&lt;/b&gt; Do not use as STORE location types are no longer supported.
+ * @deprecated
+ * 
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class Interval implements AdditionalDataHolder, Parsable {

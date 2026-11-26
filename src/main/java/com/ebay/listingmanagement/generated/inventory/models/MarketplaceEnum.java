@@ -18,7 +18,7 @@ import com.microsoft.kiota.serialization.ValuedEnum;
 import java.util.Objects;
 
 /**
- * This is the unique identifier of the eBay Marketplace where the listing resides. The value fo the eBay US site will be &lt;code&gt;EBAY_US&lt;/code&gt;.
+ * This enumeration value is the unique identifier of the eBay marketplace for which the offer will be made available. This enumeration value should be the same for all offers since the &lt;strong&gt;bulkCreateOffer&lt;/strong&gt; method can only be used to create offers for one eBay marketplace at a time.
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public enum MarketplaceEnum implements ValuedEnum {

@@ -84,7 +84,7 @@ public class MediaApiClient extends BaseRequestBuilder {
         ApiClientBuilder.registerDefaultDeserializer(() -> new FormParseNodeFactory());
         ApiClientBuilder.registerDefaultDeserializer(() -> new TextParseNodeFactory());
         if (requestAdapter.getBaseUrl() == null || requestAdapter.getBaseUrl().isEmpty()) {
-            requestAdapter.setBaseUrl("https://apim.ebay.com/commerce/media/v1_beta");
+            requestAdapter.setBaseUrl("https://apim.ebay.com{basePath}");
         }
         pathParameters.put("baseurl", requestAdapter.getBaseUrl());
     }

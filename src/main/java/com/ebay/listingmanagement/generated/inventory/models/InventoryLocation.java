@@ -35,7 +35,7 @@ public class InventoryLocation implements AdditionalDataHolder, Parsable {
      */
     private FulfillmentCenterSpecifications fulfillmentCenterSpecifications;
     /**
-     * This container is used to add any addition physical address and geographical coordinate information for a warehouse, store, or fulfillment center inventory location.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; For warehouse and store inventory locations, address fields can be updated any number of times. For fulfilment center locations, address fields cannot be updated. However, if any address fields were omitted during the &lt;b&gt;createInventoryLocation&lt;/b&gt; call, they can be added through this method.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; When updating a warehouse location to a fulfillment center, sellers can update any of the address fields a single time during the same call used to make this update. After this, they can no longer be updated.&lt;/span&gt; 
+     * This container is used to add any additional physical address and geographical coordinate information for a warehouse or fulfillment center inventory location.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; For warehouse inventory locations, address fields can be updated any number of times. For fulfillment center locations, address fields cannot be updated. However, if any address fields were omitted during the &lt;b&gt;createInventoryLocation&lt;/b&gt; call, they can be added through this method.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; When updating a warehouse location to a fulfillment center, sellers can update any of the address fields a single time during the same call used to make this update. After this, they can no longer be updated.&lt;/span&gt;
      */
     private LocationDetails location;
     /**
@@ -43,8 +43,11 @@ public class InventoryLocation implements AdditionalDataHolder, Parsable {
      */
     private String locationAdditionalInformation;
     /**
-     * This text field is generally used by the merchant to provide/update special pickup instructions for a store inventory location. Although this field is optional, it is recommended that merchants provide this field to create a pleasant and easy pickup experience for In-Store Pickup and Click and Collect orders. If this field is not included in the call request payload, eBay will use the default pickup instructions contained in the merchant&apos;s profile (if available). Whatever text is passed in this field will replace the current text string defined for this field. If the text will not change, the same text should be passed in once again. &lt;br&gt;&lt;br&gt;&lt;b&gt;Maximum length&lt;/b&gt;: 1000
+     * &lt;b&gt;Deprecated.&lt;/b&gt; Do not use as STORE location types are no longer supported.
+     * @deprecated
+     * 
      */
+    @Deprecated
     private String locationInstructions;
     /**
      * This container is used to update the location type(s) associated with an inventory location.
@@ -55,20 +58,26 @@ public class InventoryLocation implements AdditionalDataHolder, Parsable {
      */
     private String locationWebUrl;
     /**
-     * This text field is used by the merchant to update the name of the inventory location. This name should be a human-friendly name as it will be in In-Store Pickup and Click and Collect listings. A name is not required for warehouse locations. For store locations, this field is not immediately required, but will be required before an offer enabled with the In-Store Pickup or Click and Collect capability can be published. So, if the seller omitted this field in the &lt;strong&gt;createInventoryLocation&lt;/strong&gt; call, it is required for an &lt;strong&gt;updateInventoryLocation&lt;/strong&gt; call. The name that is passed in this field will replace any other name that may be defined for this field.
+     * This text field is used by the merchant to update the name of the inventory location. This name should be a human-friendly name. A name is not required for warehouse locations. The name that is passed in this field will replace any other name that may be defined for this field.
      */
     private String name;
     /**
-     * This container is used to provide/update the regular operating hours for a store location during the days of the week. A &lt;strong&gt;dayOfWeekEnum&lt;/strong&gt; field and an &lt;strong&gt;intervals&lt;/strong&gt; container will be needed for each day of the week that the location is open. Note that if operating hours are already set for a location for a specific day of the week, whatever is set through an &lt;strong&gt;updateInventoryLocation&lt;/strong&gt; call will override those existing hours.
+     * &lt;b&gt;Deprecated.&lt;/b&gt; Do not use as STORE location types are no longer supported.
+     * @deprecated
+     * 
      */
+    @Deprecated
     private java.util.List<OperatingHours> operatingHours;
     /**
      * This text field is used by the merchant to provide/update the phone number for the inventory location. The phone number that is passed in this field will replace any other phone number that may be defined for this field. &lt;br&gt;&lt;br&gt;&lt;b&gt;Maximum length&lt;/b&gt;: 36
      */
     private String phone;
     /**
-     * This container is used to provide/update the special operating hours for a store location on a specific date, such as a holiday. The special hours specified for the specific date will override the normal operating hours for that particular day of the week. If special hours have already been set up for an inventory location, specifying special hours through an &lt;strong&gt;updateInventoryLocation&lt;/strong&gt; call will only add to the list, unless the date(s) used are the same special date(s) already set up, in which case, the special hours set up through the &lt;strong&gt;updateInventoryLocation&lt;/strong&gt; call will override the existing special hours.
+     * &lt;b&gt;Deprecated.&lt;/b&gt; Do not use as STORE location types are no longer supported.
+     * @deprecated
+     * 
      */
+    @Deprecated
     private java.util.List<SpecialHours> specialHours;
     /**
      * This field is used to provide/update the time zone of the inventory location being created. This value should be in Olson format (for example &lt;code&gt;America/Vancouver&lt;/code&gt;). For supported values, see &lt;a href=&quot;https://howtodoinjava.com/java/date-time/supported-zone-ids-offsets/#3-java-supported-zone-ids-and-offsets&quot; target=&quot;_blank&quot;&gt;Java Supported Zone Ids and Offsets&lt;/a&gt;.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; If specified, this time zone will be used for all hour related fields. If this field is not specified, the time zone will be calculated from the provided address fields.&lt;/span&gt;
@@ -127,7 +136,7 @@ public class InventoryLocation implements AdditionalDataHolder, Parsable {
         return this.fulfillmentCenterSpecifications;
     }
     /**
-     * Gets the location property value. This container is used to add any addition physical address and geographical coordinate information for a warehouse, store, or fulfillment center inventory location.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; For warehouse and store inventory locations, address fields can be updated any number of times. For fulfilment center locations, address fields cannot be updated. However, if any address fields were omitted during the &lt;b&gt;createInventoryLocation&lt;/b&gt; call, they can be added through this method.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; When updating a warehouse location to a fulfillment center, sellers can update any of the address fields a single time during the same call used to make this update. After this, they can no longer be updated.&lt;/span&gt; 
+     * Gets the location property value. This container is used to add any additional physical address and geographical coordinate information for a warehouse or fulfillment center inventory location.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; For warehouse inventory locations, address fields can be updated any number of times. For fulfillment center locations, address fields cannot be updated. However, if any address fields were omitted during the &lt;b&gt;createInventoryLocation&lt;/b&gt; call, they can be added through this method.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; When updating a warehouse location to a fulfillment center, sellers can update any of the address fields a single time during the same call used to make this update. After this, they can no longer be updated.&lt;/span&gt;
      * @return a {@link LocationDetails}
      */
     @jakarta.annotation.Nullable
@@ -143,10 +152,13 @@ public class InventoryLocation implements AdditionalDataHolder, Parsable {
         return this.locationAdditionalInformation;
     }
     /**
-     * Gets the locationInstructions property value. This text field is generally used by the merchant to provide/update special pickup instructions for a store inventory location. Although this field is optional, it is recommended that merchants provide this field to create a pleasant and easy pickup experience for In-Store Pickup and Click and Collect orders. If this field is not included in the call request payload, eBay will use the default pickup instructions contained in the merchant&apos;s profile (if available). Whatever text is passed in this field will replace the current text string defined for this field. If the text will not change, the same text should be passed in once again. &lt;br&gt;&lt;br&gt;&lt;b&gt;Maximum length&lt;/b&gt;: 1000
+     * Gets the locationInstructions property value. &lt;b&gt;Deprecated.&lt;/b&gt; Do not use as STORE location types are no longer supported.
      * @return a {@link String}
+     * @deprecated
+     * 
      */
     @jakarta.annotation.Nullable
+    @Deprecated
     public String getLocationInstructions() {
         return this.locationInstructions;
     }
@@ -167,7 +179,7 @@ public class InventoryLocation implements AdditionalDataHolder, Parsable {
         return this.locationWebUrl;
     }
     /**
-     * Gets the name property value. This text field is used by the merchant to update the name of the inventory location. This name should be a human-friendly name as it will be in In-Store Pickup and Click and Collect listings. A name is not required for warehouse locations. For store locations, this field is not immediately required, but will be required before an offer enabled with the In-Store Pickup or Click and Collect capability can be published. So, if the seller omitted this field in the &lt;strong&gt;createInventoryLocation&lt;/strong&gt; call, it is required for an &lt;strong&gt;updateInventoryLocation&lt;/strong&gt; call. The name that is passed in this field will replace any other name that may be defined for this field.
+     * Gets the name property value. This text field is used by the merchant to update the name of the inventory location. This name should be a human-friendly name. A name is not required for warehouse locations. The name that is passed in this field will replace any other name that may be defined for this field.
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -175,10 +187,13 @@ public class InventoryLocation implements AdditionalDataHolder, Parsable {
         return this.name;
     }
     /**
-     * Gets the operatingHours property value. This container is used to provide/update the regular operating hours for a store location during the days of the week. A &lt;strong&gt;dayOfWeekEnum&lt;/strong&gt; field and an &lt;strong&gt;intervals&lt;/strong&gt; container will be needed for each day of the week that the location is open. Note that if operating hours are already set for a location for a specific day of the week, whatever is set through an &lt;strong&gt;updateInventoryLocation&lt;/strong&gt; call will override those existing hours.
+     * Gets the operatingHours property value. &lt;b&gt;Deprecated.&lt;/b&gt; Do not use as STORE location types are no longer supported.
      * @return a {@link java.util.List<OperatingHours>}
+     * @deprecated
+     * 
      */
     @jakarta.annotation.Nullable
+    @Deprecated
     public java.util.List<OperatingHours> getOperatingHours() {
         return this.operatingHours;
     }
@@ -191,10 +206,13 @@ public class InventoryLocation implements AdditionalDataHolder, Parsable {
         return this.phone;
     }
     /**
-     * Gets the specialHours property value. This container is used to provide/update the special operating hours for a store location on a specific date, such as a holiday. The special hours specified for the specific date will override the normal operating hours for that particular day of the week. If special hours have already been set up for an inventory location, specifying special hours through an &lt;strong&gt;updateInventoryLocation&lt;/strong&gt; call will only add to the list, unless the date(s) used are the same special date(s) already set up, in which case, the special hours set up through the &lt;strong&gt;updateInventoryLocation&lt;/strong&gt; call will override the existing special hours.
+     * Gets the specialHours property value. &lt;b&gt;Deprecated.&lt;/b&gt; Do not use as STORE location types are no longer supported.
      * @return a {@link java.util.List<SpecialHours>}
+     * @deprecated
+     * 
      */
     @jakarta.annotation.Nullable
+    @Deprecated
     public java.util.List<SpecialHours> getSpecialHours() {
         return this.specialHours;
     }
@@ -240,7 +258,7 @@ public class InventoryLocation implements AdditionalDataHolder, Parsable {
         this.fulfillmentCenterSpecifications = value;
     }
     /**
-     * Sets the location property value. This container is used to add any addition physical address and geographical coordinate information for a warehouse, store, or fulfillment center inventory location.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; For warehouse and store inventory locations, address fields can be updated any number of times. For fulfilment center locations, address fields cannot be updated. However, if any address fields were omitted during the &lt;b&gt;createInventoryLocation&lt;/b&gt; call, they can be added through this method.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; When updating a warehouse location to a fulfillment center, sellers can update any of the address fields a single time during the same call used to make this update. After this, they can no longer be updated.&lt;/span&gt; 
+     * Sets the location property value. This container is used to add any additional physical address and geographical coordinate information for a warehouse or fulfillment center inventory location.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; For warehouse inventory locations, address fields can be updated any number of times. For fulfillment center locations, address fields cannot be updated. However, if any address fields were omitted during the &lt;b&gt;createInventoryLocation&lt;/b&gt; call, they can be added through this method.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; When updating a warehouse location to a fulfillment center, sellers can update any of the address fields a single time during the same call used to make this update. After this, they can no longer be updated.&lt;/span&gt;
      * @param value Value to set for the location property.
      */
     public void setLocation(@jakarta.annotation.Nullable final LocationDetails value) {
@@ -254,9 +272,12 @@ public class InventoryLocation implements AdditionalDataHolder, Parsable {
         this.locationAdditionalInformation = value;
     }
     /**
-     * Sets the locationInstructions property value. This text field is generally used by the merchant to provide/update special pickup instructions for a store inventory location. Although this field is optional, it is recommended that merchants provide this field to create a pleasant and easy pickup experience for In-Store Pickup and Click and Collect orders. If this field is not included in the call request payload, eBay will use the default pickup instructions contained in the merchant&apos;s profile (if available). Whatever text is passed in this field will replace the current text string defined for this field. If the text will not change, the same text should be passed in once again. &lt;br&gt;&lt;br&gt;&lt;b&gt;Maximum length&lt;/b&gt;: 1000
+     * Sets the locationInstructions property value. &lt;b&gt;Deprecated.&lt;/b&gt; Do not use as STORE location types are no longer supported.
      * @param value Value to set for the locationInstructions property.
+     * @deprecated
+     * 
      */
+    @Deprecated
     public void setLocationInstructions(@jakarta.annotation.Nullable final String value) {
         this.locationInstructions = value;
     }
@@ -275,16 +296,19 @@ public class InventoryLocation implements AdditionalDataHolder, Parsable {
         this.locationWebUrl = value;
     }
     /**
-     * Sets the name property value. This text field is used by the merchant to update the name of the inventory location. This name should be a human-friendly name as it will be in In-Store Pickup and Click and Collect listings. A name is not required for warehouse locations. For store locations, this field is not immediately required, but will be required before an offer enabled with the In-Store Pickup or Click and Collect capability can be published. So, if the seller omitted this field in the &lt;strong&gt;createInventoryLocation&lt;/strong&gt; call, it is required for an &lt;strong&gt;updateInventoryLocation&lt;/strong&gt; call. The name that is passed in this field will replace any other name that may be defined for this field.
+     * Sets the name property value. This text field is used by the merchant to update the name of the inventory location. This name should be a human-friendly name. A name is not required for warehouse locations. The name that is passed in this field will replace any other name that may be defined for this field.
      * @param value Value to set for the name property.
      */
     public void setName(@jakarta.annotation.Nullable final String value) {
         this.name = value;
     }
     /**
-     * Sets the operatingHours property value. This container is used to provide/update the regular operating hours for a store location during the days of the week. A &lt;strong&gt;dayOfWeekEnum&lt;/strong&gt; field and an &lt;strong&gt;intervals&lt;/strong&gt; container will be needed for each day of the week that the location is open. Note that if operating hours are already set for a location for a specific day of the week, whatever is set through an &lt;strong&gt;updateInventoryLocation&lt;/strong&gt; call will override those existing hours.
+     * Sets the operatingHours property value. &lt;b&gt;Deprecated.&lt;/b&gt; Do not use as STORE location types are no longer supported.
      * @param value Value to set for the operatingHours property.
+     * @deprecated
+     * 
      */
+    @Deprecated
     public void setOperatingHours(@jakarta.annotation.Nullable final java.util.List<OperatingHours> value) {
         this.operatingHours = value;
     }
@@ -296,9 +320,12 @@ public class InventoryLocation implements AdditionalDataHolder, Parsable {
         this.phone = value;
     }
     /**
-     * Sets the specialHours property value. This container is used to provide/update the special operating hours for a store location on a specific date, such as a holiday. The special hours specified for the specific date will override the normal operating hours for that particular day of the week. If special hours have already been set up for an inventory location, specifying special hours through an &lt;strong&gt;updateInventoryLocation&lt;/strong&gt; call will only add to the list, unless the date(s) used are the same special date(s) already set up, in which case, the special hours set up through the &lt;strong&gt;updateInventoryLocation&lt;/strong&gt; call will override the existing special hours.
+     * Sets the specialHours property value. &lt;b&gt;Deprecated.&lt;/b&gt; Do not use as STORE location types are no longer supported.
      * @param value Value to set for the specialHours property.
+     * @deprecated
+     * 
      */
+    @Deprecated
     public void setSpecialHours(@jakarta.annotation.Nullable final java.util.List<SpecialHours> value) {
         this.specialHours = value;
     }

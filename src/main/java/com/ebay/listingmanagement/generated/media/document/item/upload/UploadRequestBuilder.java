@@ -19,6 +19,7 @@ import com.ebay.listingmanagement.generated.media.models.Error;
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.BaseRequestConfiguration;
 import com.microsoft.kiota.HttpMethod;
+import com.microsoft.kiota.MultipartBody;
 import com.microsoft.kiota.RequestAdapter;
 import com.microsoft.kiota.RequestInformation;
 import com.microsoft.kiota.RequestOption;
@@ -51,17 +52,19 @@ public class UploadRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * This method associates the specified file with the specified document ID and uploads the input file. After the file has been uploaded, the processing of the file begins. Supported file types include .PDF, .JPEG/.JPG, and .PNG, with a maximum file size of 10 MB (10485760 bytes).&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Animated and multi-page PNG files are not currently supported.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;span style=&quot;color:#004680&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;/span&gt; The document ID value returned in the response of the &lt;a href=&quot;/develop/api/sell/media_api#sell-media_api-document-createdocument&quot;&gt;createDocument&lt;/a&gt; method is a required input path parameter for this method. This value is also returned in the &lt;strong&gt;location&lt;/strong&gt; header of the &lt;strong&gt;createDocument&lt;/strong&gt; response payload.&lt;/span&gt;&lt;br&gt;A successful upload returns the HTTP Status Code &lt;code&gt;200 OK&lt;/code&gt;.&lt;br&gt;&lt;p&gt;See &lt;a href=&quot;/api-docs/sell/static/inventory/managing-document-media.html&quot; target=&quot;_blank&quot;&gt;Managing documents&lt;/a&gt; for additional information.&lt;/p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; You must use a &lt;strong&gt;Content-Type&lt;/strong&gt; header with its value set to &lt;strong&gt;multipart/form-data&lt;/strong&gt;.&lt;/p&gt;&lt;/span&gt;&lt;/p&gt;This call does not have a JSON Request payload but uploads the file as form-data. For example:&lt;br /&gt; &lt;pre&gt;file: @&amp;quot;/C:/Users/.../drone_user_warranty.pdf&amp;quot;&lt;/pre&gt;See &lt;a href=&quot;/develop/api/sell/media_api#sell-media_api-document-uploadDocument#h2-samples&quot;&gt;Samples&lt;/a&gt; for information.&lt;br&gt;&lt;br&gt;&lt;div class=&quot;msgbox_important&quot;&gt;&lt;p class=&quot;msgbox_importantInDiv&quot; data-mc-autonum=&quot;&amp;lt;b&amp;gt;&amp;lt;span style=&amp;quot;color: #dd1e31;&amp;quot; class=&amp;quot;mcFormatColor&amp;quot;&amp;gt;Important! &amp;lt;/span&amp;gt;&amp;lt;/b&amp;gt;&quot;&gt;&lt;span class=&quot;autonumber&quot;&gt;&lt;span&gt;&lt;strong&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important!&lt;/span&gt;&lt;/strong&gt;&lt;/span&gt;&lt;/span&gt;All POST methods in the Media API, including this method, are subject to short-duration rate limits at the user level: 50 requests per 5 seconds.&lt;/p&gt;&lt;/div&gt;
+     * @param body The request body
      * @return a {@link DocumentResponse}
      * @throws Error When receiving a 400 status code
      * @throws Error When receiving a 404 status code
      * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
-    public DocumentResponse post() {
-        return post(null);
+    public DocumentResponse post(@jakarta.annotation.Nonnull final MultipartBody body) {
+        return post(body, null);
     }
     /**
      * This method associates the specified file with the specified document ID and uploads the input file. After the file has been uploaded, the processing of the file begins. Supported file types include .PDF, .JPEG/.JPG, and .PNG, with a maximum file size of 10 MB (10485760 bytes).&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Animated and multi-page PNG files are not currently supported.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;span style=&quot;color:#004680&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;/span&gt; The document ID value returned in the response of the &lt;a href=&quot;/develop/api/sell/media_api#sell-media_api-document-createdocument&quot;&gt;createDocument&lt;/a&gt; method is a required input path parameter for this method. This value is also returned in the &lt;strong&gt;location&lt;/strong&gt; header of the &lt;strong&gt;createDocument&lt;/strong&gt; response payload.&lt;/span&gt;&lt;br&gt;A successful upload returns the HTTP Status Code &lt;code&gt;200 OK&lt;/code&gt;.&lt;br&gt;&lt;p&gt;See &lt;a href=&quot;/api-docs/sell/static/inventory/managing-document-media.html&quot; target=&quot;_blank&quot;&gt;Managing documents&lt;/a&gt; for additional information.&lt;/p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; You must use a &lt;strong&gt;Content-Type&lt;/strong&gt; header with its value set to &lt;strong&gt;multipart/form-data&lt;/strong&gt;.&lt;/p&gt;&lt;/span&gt;&lt;/p&gt;This call does not have a JSON Request payload but uploads the file as form-data. For example:&lt;br /&gt; &lt;pre&gt;file: @&amp;quot;/C:/Users/.../drone_user_warranty.pdf&amp;quot;&lt;/pre&gt;See &lt;a href=&quot;/develop/api/sell/media_api#sell-media_api-document-uploadDocument#h2-samples&quot;&gt;Samples&lt;/a&gt; for information.&lt;br&gt;&lt;br&gt;&lt;div class=&quot;msgbox_important&quot;&gt;&lt;p class=&quot;msgbox_importantInDiv&quot; data-mc-autonum=&quot;&amp;lt;b&amp;gt;&amp;lt;span style=&amp;quot;color: #dd1e31;&amp;quot; class=&amp;quot;mcFormatColor&amp;quot;&amp;gt;Important! &amp;lt;/span&amp;gt;&amp;lt;/b&amp;gt;&quot;&gt;&lt;span class=&quot;autonumber&quot;&gt;&lt;span&gt;&lt;strong&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important!&lt;/span&gt;&lt;/strong&gt;&lt;/span&gt;&lt;/span&gt;All POST methods in the Media API, including this method, are subject to short-duration rate limits at the user level: 50 requests per 5 seconds.&lt;/p&gt;&lt;/div&gt;
+     * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link DocumentResponse}
      * @throws Error When receiving a 400 status code
@@ -69,8 +72,9 @@ public class UploadRequestBuilder extends BaseRequestBuilder {
      * @throws Error When receiving a 500 status code
      */
     @jakarta.annotation.Nullable
-    public DocumentResponse post(@jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
-        final RequestInformation requestInfo = toPostRequestInformation(requestConfiguration);
+    public DocumentResponse post(@jakarta.annotation.Nonnull final MultipartBody body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
+        Objects.requireNonNull(body);
+        final RequestInformation requestInfo = toPostRequestInformation(body, requestConfiguration);
         final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
         errorMapping.put("400", Error::createFromDiscriminatorValue);
         errorMapping.put("404", Error::createFromDiscriminatorValue);
@@ -79,22 +83,26 @@ public class UploadRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * This method associates the specified file with the specified document ID and uploads the input file. After the file has been uploaded, the processing of the file begins. Supported file types include .PDF, .JPEG/.JPG, and .PNG, with a maximum file size of 10 MB (10485760 bytes).&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Animated and multi-page PNG files are not currently supported.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;span style=&quot;color:#004680&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;/span&gt; The document ID value returned in the response of the &lt;a href=&quot;/develop/api/sell/media_api#sell-media_api-document-createdocument&quot;&gt;createDocument&lt;/a&gt; method is a required input path parameter for this method. This value is also returned in the &lt;strong&gt;location&lt;/strong&gt; header of the &lt;strong&gt;createDocument&lt;/strong&gt; response payload.&lt;/span&gt;&lt;br&gt;A successful upload returns the HTTP Status Code &lt;code&gt;200 OK&lt;/code&gt;.&lt;br&gt;&lt;p&gt;See &lt;a href=&quot;/api-docs/sell/static/inventory/managing-document-media.html&quot; target=&quot;_blank&quot;&gt;Managing documents&lt;/a&gt; for additional information.&lt;/p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; You must use a &lt;strong&gt;Content-Type&lt;/strong&gt; header with its value set to &lt;strong&gt;multipart/form-data&lt;/strong&gt;.&lt;/p&gt;&lt;/span&gt;&lt;/p&gt;This call does not have a JSON Request payload but uploads the file as form-data. For example:&lt;br /&gt; &lt;pre&gt;file: @&amp;quot;/C:/Users/.../drone_user_warranty.pdf&amp;quot;&lt;/pre&gt;See &lt;a href=&quot;/develop/api/sell/media_api#sell-media_api-document-uploadDocument#h2-samples&quot;&gt;Samples&lt;/a&gt; for information.&lt;br&gt;&lt;br&gt;&lt;div class=&quot;msgbox_important&quot;&gt;&lt;p class=&quot;msgbox_importantInDiv&quot; data-mc-autonum=&quot;&amp;lt;b&amp;gt;&amp;lt;span style=&amp;quot;color: #dd1e31;&amp;quot; class=&amp;quot;mcFormatColor&amp;quot;&amp;gt;Important! &amp;lt;/span&amp;gt;&amp;lt;/b&amp;gt;&quot;&gt;&lt;span class=&quot;autonumber&quot;&gt;&lt;span&gt;&lt;strong&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important!&lt;/span&gt;&lt;/strong&gt;&lt;/span&gt;&lt;/span&gt;All POST methods in the Media API, including this method, are subject to short-duration rate limits at the user level: 50 requests per 5 seconds.&lt;/p&gt;&lt;/div&gt;
+     * @param body The request body
      * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
-    public RequestInformation toPostRequestInformation() {
-        return toPostRequestInformation(null);
+    public RequestInformation toPostRequestInformation(@jakarta.annotation.Nonnull final MultipartBody body) {
+        return toPostRequestInformation(body, null);
     }
     /**
      * This method associates the specified file with the specified document ID and uploads the input file. After the file has been uploaded, the processing of the file begins. Supported file types include .PDF, .JPEG/.JPG, and .PNG, with a maximum file size of 10 MB (10485760 bytes).&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Animated and multi-page PNG files are not currently supported.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;span style=&quot;color:#004680&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;/span&gt; The document ID value returned in the response of the &lt;a href=&quot;/develop/api/sell/media_api#sell-media_api-document-createdocument&quot;&gt;createDocument&lt;/a&gt; method is a required input path parameter for this method. This value is also returned in the &lt;strong&gt;location&lt;/strong&gt; header of the &lt;strong&gt;createDocument&lt;/strong&gt; response payload.&lt;/span&gt;&lt;br&gt;A successful upload returns the HTTP Status Code &lt;code&gt;200 OK&lt;/code&gt;.&lt;br&gt;&lt;p&gt;See &lt;a href=&quot;/api-docs/sell/static/inventory/managing-document-media.html&quot; target=&quot;_blank&quot;&gt;Managing documents&lt;/a&gt; for additional information.&lt;/p&gt; &lt;span class=&quot;tablenote&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; You must use a &lt;strong&gt;Content-Type&lt;/strong&gt; header with its value set to &lt;strong&gt;multipart/form-data&lt;/strong&gt;.&lt;/p&gt;&lt;/span&gt;&lt;/p&gt;This call does not have a JSON Request payload but uploads the file as form-data. For example:&lt;br /&gt; &lt;pre&gt;file: @&amp;quot;/C:/Users/.../drone_user_warranty.pdf&amp;quot;&lt;/pre&gt;See &lt;a href=&quot;/develop/api/sell/media_api#sell-media_api-document-uploadDocument#h2-samples&quot;&gt;Samples&lt;/a&gt; for information.&lt;br&gt;&lt;br&gt;&lt;div class=&quot;msgbox_important&quot;&gt;&lt;p class=&quot;msgbox_importantInDiv&quot; data-mc-autonum=&quot;&amp;lt;b&amp;gt;&amp;lt;span style=&amp;quot;color: #dd1e31;&amp;quot; class=&amp;quot;mcFormatColor&amp;quot;&amp;gt;Important! &amp;lt;/span&amp;gt;&amp;lt;/b&amp;gt;&quot;&gt;&lt;span class=&quot;autonumber&quot;&gt;&lt;span&gt;&lt;strong&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important!&lt;/span&gt;&lt;/strong&gt;&lt;/span&gt;&lt;/span&gt;All POST methods in the Media API, including this method, are subject to short-duration rate limits at the user level: 50 requests per 5 seconds.&lt;/p&gt;&lt;/div&gt;
+     * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
-    public RequestInformation toPostRequestInformation(@jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
+    public RequestInformation toPostRequestInformation(@jakarta.annotation.Nonnull final MultipartBody body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
+        Objects.requireNonNull(body);
         final RequestInformation requestInfo = new RequestInformation(HttpMethod.POST, urlTemplate, pathParameters);
         requestInfo.configure(requestConfiguration, PostRequestConfiguration::new);
         requestInfo.headers.tryAdd("Accept", "application/json");
+        requestInfo.setContentFromParsable(requestAdapter, "multipart/form-data", body);
         return requestInfo;
     }
     /**

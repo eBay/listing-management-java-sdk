@@ -1,13 +1,21 @@
 query SellerListings($input: SellerListingsInput!) {
   sellerListings(input: $input) {
-    listings {
-      __typename
-      ... on ListingSuccess {
-        listingId
-        listing {
-          ...ListingFields
+    __typename
+    ... on ListingsSuccess {
+      listings {
+        __typename
+        ... on ListingSuccess {
+          listingId
+          listing {
+            ...ListingFields
+          }
         }
       }
+    }
+    ... on ListingIdsMaxLimitError {
+      errorCode
+      errorMessage
+      maxAllowed
     }
   }
 }

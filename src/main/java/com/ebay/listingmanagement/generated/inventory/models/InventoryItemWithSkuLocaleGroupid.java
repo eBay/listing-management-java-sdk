@@ -31,7 +31,7 @@ public class InventoryItemWithSkuLocaleGroupid implements AdditionalDataHolder, 
      */
     private Map<String, Object> additionalData;
     /**
-     * This container is used to specify the quantity of the inventory item that are available for purchase if the item will be shipped to the buyer, and the quantity of the inventory item that are available for In-Store Pickup at one or more of the merchant&apos;s physical stores.
+     * This container is used to specify the quantity of the inventory item that is available for purchase if the item will be shipped to the buyer.
      */
     private AvailabilityWithAll availability;
     /**
@@ -95,7 +95,7 @@ public class InventoryItemWithSkuLocaleGroupid implements AdditionalDataHolder, 
         return this.additionalData;
     }
     /**
-     * Gets the availability property value. This container is used to specify the quantity of the inventory item that are available for purchase if the item will be shipped to the buyer, and the quantity of the inventory item that are available for In-Store Pickup at one or more of the merchant&apos;s physical stores.
+     * Gets the availability property value. This container is used to specify the quantity of the inventory item that is available for purchase if the item will be shipped to the buyer.
      * @return a {@link AvailabilityWithAll}
      */
     @jakarta.annotation.Nullable
@@ -219,7 +219,7 @@ public class InventoryItemWithSkuLocaleGroupid implements AdditionalDataHolder, 
         this.additionalData = value;
     }
     /**
-     * Sets the availability property value. This container is used to specify the quantity of the inventory item that are available for purchase if the item will be shipped to the buyer, and the quantity of the inventory item that are available for In-Store Pickup at one or more of the merchant&apos;s physical stores.
+     * Sets the availability property value. This container is used to specify the quantity of the inventory item that is available for purchase if the item will be shipped to the buyer.
      * @param value Value to set for the availability property.
      */
     public void setAvailability(@jakarta.annotation.Nullable final AvailabilityWithAll value) {

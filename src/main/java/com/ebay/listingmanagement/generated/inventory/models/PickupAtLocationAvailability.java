@@ -22,7 +22,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 /**
- * This type is used to specify/indicate the quantity of the inventory item that is available for an In-Store Pickup order at the merchant&apos;s physical store (specified by the &lt;strong&gt;merchantLocationKey&lt;/strong&gt; field).
+ * &lt;b&gt;Deprecated.&lt;/b&gt; Do not use as STORE location types are no longer supported.
+ * @deprecated
+ * 
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class PickupAtLocationAvailability implements AdditionalDataHolder, Parsable {
@@ -32,7 +34,10 @@ public class PickupAtLocationAvailability implements AdditionalDataHolder, Parsa
     private Map<String, Object> additionalData;
     /**
      * The enumeration value in this field indicates the availability status of the inventory item at the merchant&apos;s physical store specified by the &lt;strong&gt;pickupAtLocationAvailability.merchantLocationKey&lt;/strong&gt; field. This field is required if the &lt;strong&gt;pickupAtLocationAvailability&lt;/strong&gt; container is used, and is always returned with the &lt;strong&gt;pickupAtLocationAvailability&lt;/strong&gt; container.  &lt;br&gt;&lt;br&gt;See &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-inventory_item-bulkcreateorreplaceinventoryitem.availabilitytypeenum&quot; target=&quot;_blank&quot;&gt;AvailabilityTypeEnum&lt;/a&gt; for more information about how/when you use each enumeration value.
+     * @deprecated
+     * 
      */
+    @Deprecated
     private AvailabilityTypeEnum availabilityType;
     /**
      * This container is used to indicate how soon an In-Store Pickup order will be available for pickup by the buyer after the order takes place. This container is required if the &lt;strong&gt;pickupAtLocationAvailability&lt;/strong&gt; container is used, and is always returned with the &lt;strong&gt;pickupAtLocationAvailability&lt;/strong&gt; container.
@@ -73,8 +78,11 @@ public class PickupAtLocationAvailability implements AdditionalDataHolder, Parsa
     /**
      * Gets the availabilityType property value. The enumeration value in this field indicates the availability status of the inventory item at the merchant&apos;s physical store specified by the &lt;strong&gt;pickupAtLocationAvailability.merchantLocationKey&lt;/strong&gt; field. This field is required if the &lt;strong&gt;pickupAtLocationAvailability&lt;/strong&gt; container is used, and is always returned with the &lt;strong&gt;pickupAtLocationAvailability&lt;/strong&gt; container.  &lt;br&gt;&lt;br&gt;See &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-inventory_item-bulkcreateorreplaceinventoryitem.availabilitytypeenum&quot; target=&quot;_blank&quot;&gt;AvailabilityTypeEnum&lt;/a&gt; for more information about how/when you use each enumeration value.
      * @return a {@link AvailabilityTypeEnum}
+     * @deprecated
+     * 
      */
     @jakarta.annotation.Nullable
+    @Deprecated
     public AvailabilityTypeEnum getAvailabilityType() {
         return this.availabilityType;
     }
@@ -137,7 +145,10 @@ public class PickupAtLocationAvailability implements AdditionalDataHolder, Parsa
     /**
      * Sets the availabilityType property value. The enumeration value in this field indicates the availability status of the inventory item at the merchant&apos;s physical store specified by the &lt;strong&gt;pickupAtLocationAvailability.merchantLocationKey&lt;/strong&gt; field. This field is required if the &lt;strong&gt;pickupAtLocationAvailability&lt;/strong&gt; container is used, and is always returned with the &lt;strong&gt;pickupAtLocationAvailability&lt;/strong&gt; container.  &lt;br&gt;&lt;br&gt;See &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-inventory_item-bulkcreateorreplaceinventoryitem.availabilitytypeenum&quot; target=&quot;_blank&quot;&gt;AvailabilityTypeEnum&lt;/a&gt; for more information about how/when you use each enumeration value.
      * @param value Value to set for the availabilityType property.
+     * @deprecated
+     * 
      */
+    @Deprecated
     public void setAvailabilityType(@jakarta.annotation.Nullable final AvailabilityTypeEnum value) {
         this.availabilityType = value;
     }
