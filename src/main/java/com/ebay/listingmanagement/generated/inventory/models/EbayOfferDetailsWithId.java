@@ -43,7 +43,7 @@ public class EbayOfferDetailsWithId implements AdditionalDataHolder, Parsable {
      */
     private Charity charity;
     /**
-     * This container is used to provide the eco-participation fee for a product. Use the &lt;a href=&quot;/develop/api/sell/metadata_api#sell-metadata_api-marketplace-getextendedproducerresponsibilitypolicies&quot; target=&quot;_blank&quot;&gt;getExtendedProducerResponsibilityPolicies&lt;/a&gt;method of the&lt;strong&gt;Sell Metadata API&lt;/strong&gt; to retrieve categories that support eco-participation fee for a specified marketplace.
+     * This container is used to provide the eco-participation fee for a product. Use the &lt;a href=&quot;/develop/api/sell/metadata_api#sell-metadata_api-marketplace-getextendedproducerresponsibilitypolicies&quot; target=&quot;_blank&quot;&gt;getExtendedProducerResponsibilityPolicies&lt;/a&gt; method of the &lt;strong&gt;Sell Metadata API&lt;/strong&gt; to retrieve categories that support eco-participation fee for a specified marketplace.
      */
     private ExtendedProducerResponsibility extendedProducerResponsibility;
     /**
@@ -151,7 +151,7 @@ public class EbayOfferDetailsWithId implements AdditionalDataHolder, Parsable {
         return this.charity;
     }
     /**
-     * Gets the extendedProducerResponsibility property value. This container is used to provide the eco-participation fee for a product. Use the &lt;a href=&quot;/develop/api/sell/metadata_api#sell-metadata_api-marketplace-getextendedproducerresponsibilitypolicies&quot; target=&quot;_blank&quot;&gt;getExtendedProducerResponsibilityPolicies&lt;/a&gt;method of the&lt;strong&gt;Sell Metadata API&lt;/strong&gt; to retrieve categories that support eco-participation fee for a specified marketplace.
+     * Gets the extendedProducerResponsibility property value. This container is used to provide the eco-participation fee for a product. Use the &lt;a href=&quot;/develop/api/sell/metadata_api#sell-metadata_api-marketplace-getextendedproducerresponsibilitypolicies&quot; target=&quot;_blank&quot;&gt;getExtendedProducerResponsibilityPolicies&lt;/a&gt; method of the &lt;strong&gt;Sell Metadata API&lt;/strong&gt; to retrieve categories that support eco-participation fee for a specified marketplace.
      * @return a {@link ExtendedProducerResponsibility}
      */
     @jakarta.annotation.Nullable
@@ -352,7 +352,7 @@ public class EbayOfferDetailsWithId implements AdditionalDataHolder, Parsable {
         this.charity = value;
     }
     /**
-     * Sets the extendedProducerResponsibility property value. This container is used to provide the eco-participation fee for a product. Use the &lt;a href=&quot;/develop/api/sell/metadata_api#sell-metadata_api-marketplace-getextendedproducerresponsibilitypolicies&quot; target=&quot;_blank&quot;&gt;getExtendedProducerResponsibilityPolicies&lt;/a&gt;method of the&lt;strong&gt;Sell Metadata API&lt;/strong&gt; to retrieve categories that support eco-participation fee for a specified marketplace.
+     * Sets the extendedProducerResponsibility property value. This container is used to provide the eco-participation fee for a product. Use the &lt;a href=&quot;/develop/api/sell/metadata_api#sell-metadata_api-marketplace-getextendedproducerresponsibilitypolicies&quot; target=&quot;_blank&quot;&gt;getExtendedProducerResponsibilityPolicies&lt;/a&gt; method of the &lt;strong&gt;Sell Metadata API&lt;/strong&gt; to retrieve categories that support eco-participation fee for a specified marketplace.
      * @param value Value to set for the extendedProducerResponsibility property.
      */
     public void setExtendedProducerResponsibility(@jakarta.annotation.Nullable final ExtendedProducerResponsibility value) {

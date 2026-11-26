@@ -35,7 +35,7 @@ public class InventoryLocationFull implements AdditionalDataHolder, Parsable {
      */
     private FulfillmentCenterSpecifications fulfillmentCenterSpecifications;
     /**
-     * This required container is used to set the physical address and geographical coordinates of a warehouse, store, or fulfillment center inventory location. A warehouse location only requires the postal code and country OR city, province/state, and country, and does not require a full street address. However, the seller may still supply a full street address for a warehouse location. A complete address (&lt;b&gt;addressLine1&lt;/b&gt;, &lt;b&gt;city&lt;/b&gt;, &lt;b&gt;stateOrProvince&lt;/b&gt;, &lt;b&gt;postalCode&lt;/b&gt;, and &lt;b&gt;country&lt;/b&gt;) is required for store and fulfillment center locations.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; For fulfillment center locations, the &lt;b&gt;addressLine1&lt;/b&gt;, &lt;b&gt;stateOrProvince&lt;/b&gt;, &lt;b&gt;country&lt;/b&gt; and &lt;b&gt;postalCode&lt;/b&gt; fields cannot be changed once they have been set, though they can be added through the &lt;strong&gt;updateInventoryLocation&lt;/strong&gt; method if they were omitted during location creation.&lt;/span&gt;
+     * This required container is used to set the physical address and geographical coordinates of a warehouse or fulfillment center inventory location. A warehouse location only requires the postal code and country OR city, province/state, and country, and does not require a full street address. However, the seller may still supply a full street address for a warehouse location. A complete address (&lt;b&gt;addressLine1&lt;/b&gt;, &lt;b&gt;city&lt;/b&gt;, &lt;b&gt;stateOrProvince&lt;/b&gt;, &lt;b&gt;postalCode&lt;/b&gt;, and &lt;b&gt;country&lt;/b&gt;) is required for fulfillment center locations.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; For fulfillment center locations, the &lt;b&gt;addressLine1&lt;/b&gt;, &lt;b&gt;stateOrProvince&lt;/b&gt;, &lt;b&gt;country&lt;/b&gt; and &lt;b&gt;postalCode&lt;/b&gt; fields cannot be changed once they have been set, though they can be added through the &lt;strong&gt;updateInventoryLocation&lt;/strong&gt; method if they were omitted during location creation.&lt;/span&gt;
      */
     private LocationDetails location;
     /**
@@ -43,11 +43,14 @@ public class InventoryLocationFull implements AdditionalDataHolder, Parsable {
      */
     private String locationAdditionalInformation;
     /**
-     * This text field is generally used by the merchant to provide special pickup instructions for a store inventory location. Although this field is optional, it is recommended that merchants provide this field to create a pleasant and easy pickup experience for In-Store Pickup and Click and Collect orders. If this field is not included in the call request payload, eBay will use the default pickup instructions contained in the merchant&apos;s profile (if available).
+     * &lt;b&gt;Deprecated.&lt;/b&gt; Do not use as STORE location types are no longer supported.
+     * @deprecated
+     * 
      */
+    @Deprecated
     private String locationInstructions;
     /**
-     * This container is used to define the function of the inventory location. Typically, an inventory location will serve as a store, warehouse, or fulfillment center, but in some cases, an inventory location may be more than one type.&lt;br&gt;&lt;br&gt;For In-Store Pickup inventory, set &lt;b&gt;StoreTypeEnum&lt;/b&gt; to &lt;code&gt;STORE&lt;/code&gt;.&lt;br&gt;&lt;br&gt;To utilize the Multi-warehouse program, set &lt;b&gt;StoreTypeEnum&lt;/b&gt; to &lt;code&gt;FULFILLMENT_CENTER&lt;/code&gt;.&lt;br&gt;&lt;br&gt;If this container is omitted, the location type of the inventory location will default to &lt;code&gt;WAREHOUSE&lt;/code&gt;. See &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-location-getinventorylocation.storetypeenum&quot;&gt;StoreTypeEnum&lt;/a&gt; for the supported values.&lt;br&gt;&lt;br&gt;&lt;b&gt;Default&lt;/b&gt;: &lt;code&gt;WAREHOUSE&lt;/code&gt;
+     * This array is used to define the function of the inventory location as either a &lt;code&gt;WAREHOUSE&lt;/code&gt; or a &lt;code&gt;FULFILLMENT_CENTER&lt;/code&gt;.&lt;br&gt;&lt;br&gt;To utilize the Multi-warehouse program, use &lt;code&gt;FULFILLMENT_CENTER&lt;/code&gt;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Default&lt;/b&gt;: &lt;code&gt;WAREHOUSE&lt;/code&gt;
      */
     private java.util.List<StoreTypeEnum> locationTypes;
     /**
@@ -59,20 +62,26 @@ public class InventoryLocationFull implements AdditionalDataHolder, Parsable {
      */
     private StatusEnum merchantLocationStatus;
     /**
-     * The seller-defined name of the inventory location. This name should be a human-friendly name as it will be displayed in In-Store Pickup and Click and Collect listings. A name is not required for warehouse locations. For store locations, this field is not immediately required, but will be required before an offer enabled with the In-Store Pickup or Click and Collect capability can be published. So, if the seller omits this field in a &lt;strong&gt;createInventoryLocation&lt;/strong&gt; call, it becomes required for an &lt;strong&gt;updateInventoryLocation&lt;/strong&gt; call.&lt;br&gt;&lt;br&gt;&lt;b&gt;Maximum length&lt;/b&gt;: 1000
+     * The seller-defined name of the inventory location. This name should be a human-friendly name.&lt;br&gt;&lt;br&gt;&lt;b&gt;Maximum length&lt;/b&gt;: 1000
      */
     private String name;
     /**
-     * This container is used to express the regular operating hours for a store location during each day of the week. A &lt;strong&gt;dayOfWeekEnum&lt;/strong&gt; field and an &lt;strong&gt;intervals&lt;/strong&gt; container will be needed for each day of the week that the store location is open.&lt;br&gt;&lt;br&gt;Although not technically required, this container is highly recommended to be used to specify operating hours for a store location.
+     * &lt;b&gt;Deprecated.&lt;/b&gt; Do not use as STORE location types are no longer supported.
+     * @deprecated
+     * 
      */
+    @Deprecated
     private java.util.List<OperatingHours> operatingHours;
     /**
      * This field is used to specify the phone number for an inventory location.&lt;br&gt;&lt;br&gt;&lt;b&gt;Maximum length&lt;/b&gt;: 36
      */
     private String phone;
     /**
-     * This container is used to express the special operating hours for a store inventory location on a specific date, such as a holiday. The special hours specified for the specific date will override the normal operating hours for that particular day of the week.
+     * &lt;b&gt;Deprecated.&lt;/b&gt; Do not use as STORE location types are no longer supported.
+     * @deprecated
+     * 
      */
+    @Deprecated
     private java.util.List<SpecialHours> specialHours;
     /**
      * This field specifies the time zone of the inventory location being created. This value should be in Olson format (for example &lt;code&gt;America/Vancouver&lt;/code&gt;). For supported values, see &lt;a href=&quot;https://howtodoinjava.com/java/date-time/supported-zone-ids-offsets/#3-java-supported-zone-ids-and-offsets&quot; target=&quot;_blank&quot;&gt;Java Supported Zone Ids and Offsets&lt;/a&gt;.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; If specified, this time zone will be used for all hour related fields. If this field is not specified for a fulfillment center location, the time zone will be calculated from the provided address fields.&lt;/span&gt;
@@ -132,7 +141,7 @@ public class InventoryLocationFull implements AdditionalDataHolder, Parsable {
         return this.fulfillmentCenterSpecifications;
     }
     /**
-     * Gets the location property value. This required container is used to set the physical address and geographical coordinates of a warehouse, store, or fulfillment center inventory location. A warehouse location only requires the postal code and country OR city, province/state, and country, and does not require a full street address. However, the seller may still supply a full street address for a warehouse location. A complete address (&lt;b&gt;addressLine1&lt;/b&gt;, &lt;b&gt;city&lt;/b&gt;, &lt;b&gt;stateOrProvince&lt;/b&gt;, &lt;b&gt;postalCode&lt;/b&gt;, and &lt;b&gt;country&lt;/b&gt;) is required for store and fulfillment center locations.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; For fulfillment center locations, the &lt;b&gt;addressLine1&lt;/b&gt;, &lt;b&gt;stateOrProvince&lt;/b&gt;, &lt;b&gt;country&lt;/b&gt; and &lt;b&gt;postalCode&lt;/b&gt; fields cannot be changed once they have been set, though they can be added through the &lt;strong&gt;updateInventoryLocation&lt;/strong&gt; method if they were omitted during location creation.&lt;/span&gt;
+     * Gets the location property value. This required container is used to set the physical address and geographical coordinates of a warehouse or fulfillment center inventory location. A warehouse location only requires the postal code and country OR city, province/state, and country, and does not require a full street address. However, the seller may still supply a full street address for a warehouse location. A complete address (&lt;b&gt;addressLine1&lt;/b&gt;, &lt;b&gt;city&lt;/b&gt;, &lt;b&gt;stateOrProvince&lt;/b&gt;, &lt;b&gt;postalCode&lt;/b&gt;, and &lt;b&gt;country&lt;/b&gt;) is required for fulfillment center locations.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; For fulfillment center locations, the &lt;b&gt;addressLine1&lt;/b&gt;, &lt;b&gt;stateOrProvince&lt;/b&gt;, &lt;b&gt;country&lt;/b&gt; and &lt;b&gt;postalCode&lt;/b&gt; fields cannot be changed once they have been set, though they can be added through the &lt;strong&gt;updateInventoryLocation&lt;/strong&gt; method if they were omitted during location creation.&lt;/span&gt;
      * @return a {@link LocationDetails}
      */
     @jakarta.annotation.Nullable
@@ -148,15 +157,18 @@ public class InventoryLocationFull implements AdditionalDataHolder, Parsable {
         return this.locationAdditionalInformation;
     }
     /**
-     * Gets the locationInstructions property value. This text field is generally used by the merchant to provide special pickup instructions for a store inventory location. Although this field is optional, it is recommended that merchants provide this field to create a pleasant and easy pickup experience for In-Store Pickup and Click and Collect orders. If this field is not included in the call request payload, eBay will use the default pickup instructions contained in the merchant&apos;s profile (if available).
+     * Gets the locationInstructions property value. &lt;b&gt;Deprecated.&lt;/b&gt; Do not use as STORE location types are no longer supported.
      * @return a {@link String}
+     * @deprecated
+     * 
      */
     @jakarta.annotation.Nullable
+    @Deprecated
     public String getLocationInstructions() {
         return this.locationInstructions;
     }
     /**
-     * Gets the locationTypes property value. This container is used to define the function of the inventory location. Typically, an inventory location will serve as a store, warehouse, or fulfillment center, but in some cases, an inventory location may be more than one type.&lt;br&gt;&lt;br&gt;For In-Store Pickup inventory, set &lt;b&gt;StoreTypeEnum&lt;/b&gt; to &lt;code&gt;STORE&lt;/code&gt;.&lt;br&gt;&lt;br&gt;To utilize the Multi-warehouse program, set &lt;b&gt;StoreTypeEnum&lt;/b&gt; to &lt;code&gt;FULFILLMENT_CENTER&lt;/code&gt;.&lt;br&gt;&lt;br&gt;If this container is omitted, the location type of the inventory location will default to &lt;code&gt;WAREHOUSE&lt;/code&gt;. See &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-location-getinventorylocation.storetypeenum&quot;&gt;StoreTypeEnum&lt;/a&gt; for the supported values.&lt;br&gt;&lt;br&gt;&lt;b&gt;Default&lt;/b&gt;: &lt;code&gt;WAREHOUSE&lt;/code&gt;
+     * Gets the locationTypes property value. This array is used to define the function of the inventory location as either a &lt;code&gt;WAREHOUSE&lt;/code&gt; or a &lt;code&gt;FULFILLMENT_CENTER&lt;/code&gt;.&lt;br&gt;&lt;br&gt;To utilize the Multi-warehouse program, use &lt;code&gt;FULFILLMENT_CENTER&lt;/code&gt;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Default&lt;/b&gt;: &lt;code&gt;WAREHOUSE&lt;/code&gt;
      * @return a {@link java.util.List<StoreTypeEnum>}
      */
     @jakarta.annotation.Nullable
@@ -180,7 +192,7 @@ public class InventoryLocationFull implements AdditionalDataHolder, Parsable {
         return this.merchantLocationStatus;
     }
     /**
-     * Gets the name property value. The seller-defined name of the inventory location. This name should be a human-friendly name as it will be displayed in In-Store Pickup and Click and Collect listings. A name is not required for warehouse locations. For store locations, this field is not immediately required, but will be required before an offer enabled with the In-Store Pickup or Click and Collect capability can be published. So, if the seller omits this field in a &lt;strong&gt;createInventoryLocation&lt;/strong&gt; call, it becomes required for an &lt;strong&gt;updateInventoryLocation&lt;/strong&gt; call.&lt;br&gt;&lt;br&gt;&lt;b&gt;Maximum length&lt;/b&gt;: 1000
+     * Gets the name property value. The seller-defined name of the inventory location. This name should be a human-friendly name.&lt;br&gt;&lt;br&gt;&lt;b&gt;Maximum length&lt;/b&gt;: 1000
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -188,10 +200,13 @@ public class InventoryLocationFull implements AdditionalDataHolder, Parsable {
         return this.name;
     }
     /**
-     * Gets the operatingHours property value. This container is used to express the regular operating hours for a store location during each day of the week. A &lt;strong&gt;dayOfWeekEnum&lt;/strong&gt; field and an &lt;strong&gt;intervals&lt;/strong&gt; container will be needed for each day of the week that the store location is open.&lt;br&gt;&lt;br&gt;Although not technically required, this container is highly recommended to be used to specify operating hours for a store location.
+     * Gets the operatingHours property value. &lt;b&gt;Deprecated.&lt;/b&gt; Do not use as STORE location types are no longer supported.
      * @return a {@link java.util.List<OperatingHours>}
+     * @deprecated
+     * 
      */
     @jakarta.annotation.Nullable
+    @Deprecated
     public java.util.List<OperatingHours> getOperatingHours() {
         return this.operatingHours;
     }
@@ -204,10 +219,13 @@ public class InventoryLocationFull implements AdditionalDataHolder, Parsable {
         return this.phone;
     }
     /**
-     * Gets the specialHours property value. This container is used to express the special operating hours for a store inventory location on a specific date, such as a holiday. The special hours specified for the specific date will override the normal operating hours for that particular day of the week.
+     * Gets the specialHours property value. &lt;b&gt;Deprecated.&lt;/b&gt; Do not use as STORE location types are no longer supported.
      * @return a {@link java.util.List<SpecialHours>}
+     * @deprecated
+     * 
      */
     @jakarta.annotation.Nullable
+    @Deprecated
     public java.util.List<SpecialHours> getSpecialHours() {
         return this.specialHours;
     }
@@ -254,7 +272,7 @@ public class InventoryLocationFull implements AdditionalDataHolder, Parsable {
         this.fulfillmentCenterSpecifications = value;
     }
     /**
-     * Sets the location property value. This required container is used to set the physical address and geographical coordinates of a warehouse, store, or fulfillment center inventory location. A warehouse location only requires the postal code and country OR city, province/state, and country, and does not require a full street address. However, the seller may still supply a full street address for a warehouse location. A complete address (&lt;b&gt;addressLine1&lt;/b&gt;, &lt;b&gt;city&lt;/b&gt;, &lt;b&gt;stateOrProvince&lt;/b&gt;, &lt;b&gt;postalCode&lt;/b&gt;, and &lt;b&gt;country&lt;/b&gt;) is required for store and fulfillment center locations.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; For fulfillment center locations, the &lt;b&gt;addressLine1&lt;/b&gt;, &lt;b&gt;stateOrProvince&lt;/b&gt;, &lt;b&gt;country&lt;/b&gt; and &lt;b&gt;postalCode&lt;/b&gt; fields cannot be changed once they have been set, though they can be added through the &lt;strong&gt;updateInventoryLocation&lt;/strong&gt; method if they were omitted during location creation.&lt;/span&gt;
+     * Sets the location property value. This required container is used to set the physical address and geographical coordinates of a warehouse or fulfillment center inventory location. A warehouse location only requires the postal code and country OR city, province/state, and country, and does not require a full street address. However, the seller may still supply a full street address for a warehouse location. A complete address (&lt;b&gt;addressLine1&lt;/b&gt;, &lt;b&gt;city&lt;/b&gt;, &lt;b&gt;stateOrProvince&lt;/b&gt;, &lt;b&gt;postalCode&lt;/b&gt;, and &lt;b&gt;country&lt;/b&gt;) is required for fulfillment center locations.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; For fulfillment center locations, the &lt;b&gt;addressLine1&lt;/b&gt;, &lt;b&gt;stateOrProvince&lt;/b&gt;, &lt;b&gt;country&lt;/b&gt; and &lt;b&gt;postalCode&lt;/b&gt; fields cannot be changed once they have been set, though they can be added through the &lt;strong&gt;updateInventoryLocation&lt;/strong&gt; method if they were omitted during location creation.&lt;/span&gt;
      * @param value Value to set for the location property.
      */
     public void setLocation(@jakarta.annotation.Nullable final LocationDetails value) {
@@ -268,14 +286,17 @@ public class InventoryLocationFull implements AdditionalDataHolder, Parsable {
         this.locationAdditionalInformation = value;
     }
     /**
-     * Sets the locationInstructions property value. This text field is generally used by the merchant to provide special pickup instructions for a store inventory location. Although this field is optional, it is recommended that merchants provide this field to create a pleasant and easy pickup experience for In-Store Pickup and Click and Collect orders. If this field is not included in the call request payload, eBay will use the default pickup instructions contained in the merchant&apos;s profile (if available).
+     * Sets the locationInstructions property value. &lt;b&gt;Deprecated.&lt;/b&gt; Do not use as STORE location types are no longer supported.
      * @param value Value to set for the locationInstructions property.
+     * @deprecated
+     * 
      */
+    @Deprecated
     public void setLocationInstructions(@jakarta.annotation.Nullable final String value) {
         this.locationInstructions = value;
     }
     /**
-     * Sets the locationTypes property value. This container is used to define the function of the inventory location. Typically, an inventory location will serve as a store, warehouse, or fulfillment center, but in some cases, an inventory location may be more than one type.&lt;br&gt;&lt;br&gt;For In-Store Pickup inventory, set &lt;b&gt;StoreTypeEnum&lt;/b&gt; to &lt;code&gt;STORE&lt;/code&gt;.&lt;br&gt;&lt;br&gt;To utilize the Multi-warehouse program, set &lt;b&gt;StoreTypeEnum&lt;/b&gt; to &lt;code&gt;FULFILLMENT_CENTER&lt;/code&gt;.&lt;br&gt;&lt;br&gt;If this container is omitted, the location type of the inventory location will default to &lt;code&gt;WAREHOUSE&lt;/code&gt;. See &lt;a href=&quot;/develop/api/sell/inventory_api#sell-inventory_api-location-getinventorylocation.storetypeenum&quot;&gt;StoreTypeEnum&lt;/a&gt; for the supported values.&lt;br&gt;&lt;br&gt;&lt;b&gt;Default&lt;/b&gt;: &lt;code&gt;WAREHOUSE&lt;/code&gt;
+     * Sets the locationTypes property value. This array is used to define the function of the inventory location as either a &lt;code&gt;WAREHOUSE&lt;/code&gt; or a &lt;code&gt;FULFILLMENT_CENTER&lt;/code&gt;.&lt;br&gt;&lt;br&gt;To utilize the Multi-warehouse program, use &lt;code&gt;FULFILLMENT_CENTER&lt;/code&gt;.&lt;br&gt;&lt;br&gt;&lt;b&gt;Default&lt;/b&gt;: &lt;code&gt;WAREHOUSE&lt;/code&gt;
      * @param value Value to set for the locationTypes property.
      */
     public void setLocationTypes(@jakarta.annotation.Nullable final java.util.List<StoreTypeEnum> value) {
@@ -296,16 +317,19 @@ public class InventoryLocationFull implements AdditionalDataHolder, Parsable {
         this.merchantLocationStatus = value;
     }
     /**
-     * Sets the name property value. The seller-defined name of the inventory location. This name should be a human-friendly name as it will be displayed in In-Store Pickup and Click and Collect listings. A name is not required for warehouse locations. For store locations, this field is not immediately required, but will be required before an offer enabled with the In-Store Pickup or Click and Collect capability can be published. So, if the seller omits this field in a &lt;strong&gt;createInventoryLocation&lt;/strong&gt; call, it becomes required for an &lt;strong&gt;updateInventoryLocation&lt;/strong&gt; call.&lt;br&gt;&lt;br&gt;&lt;b&gt;Maximum length&lt;/b&gt;: 1000
+     * Sets the name property value. The seller-defined name of the inventory location. This name should be a human-friendly name.&lt;br&gt;&lt;br&gt;&lt;b&gt;Maximum length&lt;/b&gt;: 1000
      * @param value Value to set for the name property.
      */
     public void setName(@jakarta.annotation.Nullable final String value) {
         this.name = value;
     }
     /**
-     * Sets the operatingHours property value. This container is used to express the regular operating hours for a store location during each day of the week. A &lt;strong&gt;dayOfWeekEnum&lt;/strong&gt; field and an &lt;strong&gt;intervals&lt;/strong&gt; container will be needed for each day of the week that the store location is open.&lt;br&gt;&lt;br&gt;Although not technically required, this container is highly recommended to be used to specify operating hours for a store location.
+     * Sets the operatingHours property value. &lt;b&gt;Deprecated.&lt;/b&gt; Do not use as STORE location types are no longer supported.
      * @param value Value to set for the operatingHours property.
+     * @deprecated
+     * 
      */
+    @Deprecated
     public void setOperatingHours(@jakarta.annotation.Nullable final java.util.List<OperatingHours> value) {
         this.operatingHours = value;
     }
@@ -317,9 +341,12 @@ public class InventoryLocationFull implements AdditionalDataHolder, Parsable {
         this.phone = value;
     }
     /**
-     * Sets the specialHours property value. This container is used to express the special operating hours for a store inventory location on a specific date, such as a holiday. The special hours specified for the specific date will override the normal operating hours for that particular day of the week.
+     * Sets the specialHours property value. &lt;b&gt;Deprecated.&lt;/b&gt; Do not use as STORE location types are no longer supported.
      * @param value Value to set for the specialHours property.
+     * @deprecated
+     * 
      */
+    @Deprecated
     public void setSpecialHours(@jakarta.annotation.Nullable final java.util.List<SpecialHours> value) {
         this.specialHours = value;
     }

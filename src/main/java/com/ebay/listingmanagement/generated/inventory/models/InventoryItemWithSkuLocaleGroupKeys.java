@@ -31,7 +31,7 @@ public class InventoryItemWithSkuLocaleGroupKeys implements AdditionalDataHolder
      */
     private Map<String, Object> additionalData;
     /**
-     * This container shows the quantity of the inventory item that is available for purchase if the item will be shipped to the buyer, and/or the quantity of the inventory item that is available for In-Store Pickup at one or more of the merchant&apos;s physical stores.
+     * This container shows the quantity of the inventory item that is available for purchase if the item will be shipped to the buyer.
      */
     private AvailabilityWithAll availability;
     /**
@@ -91,7 +91,7 @@ public class InventoryItemWithSkuLocaleGroupKeys implements AdditionalDataHolder
         return this.additionalData;
     }
     /**
-     * Gets the availability property value. This container shows the quantity of the inventory item that is available for purchase if the item will be shipped to the buyer, and/or the quantity of the inventory item that is available for In-Store Pickup at one or more of the merchant&apos;s physical stores.
+     * Gets the availability property value. This container shows the quantity of the inventory item that is available for purchase if the item will be shipped to the buyer.
      * @return a {@link AvailabilityWithAll}
      */
     @jakarta.annotation.Nullable
@@ -205,7 +205,7 @@ public class InventoryItemWithSkuLocaleGroupKeys implements AdditionalDataHolder
         this.additionalData = value;
     }
     /**
-     * Sets the availability property value. This container shows the quantity of the inventory item that is available for purchase if the item will be shipped to the buyer, and/or the quantity of the inventory item that is available for In-Store Pickup at one or more of the merchant&apos;s physical stores.
+     * Sets the availability property value. This container shows the quantity of the inventory item that is available for purchase if the item will be shipped to the buyer.
      * @param value Value to set for the availability property.
      */
     public void setAvailability(@jakarta.annotation.Nullable final AvailabilityWithAll value) {

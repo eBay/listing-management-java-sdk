@@ -172,14 +172,13 @@ public final class FeedClient {
         }));
     }
 
-    public CompletableFuture<Void> getLatestResultFileAsync(
+    public CompletableFuture<InputStream> getLatestResultFileAsync(
             String scheduleId, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
-            kiota.schedule().bySchedule_id(Params.requireValid("scheduleId", scheduleId)).downloadResultFile().get(config -> {
+            return kiota.schedule().bySchedule_id(Params.requireValid("scheduleId", scheduleId)).downloadResultFile().get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
-            return null;
         }));
     }
 
@@ -235,25 +234,23 @@ public final class FeedClient {
         }));
     }
 
-    public CompletableFuture<Void> getInputFileAsync(
+    public CompletableFuture<InputStream> getInputFileAsync(
             String taskId, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
-            kiota.task().byTask_id(Params.requireValid("taskId", taskId)).downloadInputFile().get(config -> {
+            return kiota.task().byTask_id(Params.requireValid("taskId", taskId)).downloadInputFile().get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
-            return null;
         }));
     }
 
-    public CompletableFuture<Void> getResultFileAsync(
+    public CompletableFuture<InputStream> getResultFileAsync(
             String taskId, String accessToken, RequestOptions requestOptions) {
         return CompletableFuture.supplyAsync(() -> TokenContext.runWith(accessToken, () -> {
             Map<String, String> headers = mergedHeaders(requestOptions);
-            kiota.task().byTask_id(Params.requireValid("taskId", taskId)).downloadResultFile().get(config -> {
+            return kiota.task().byTask_id(Params.requireValid("taskId", taskId)).downloadResultFile().get(config -> {
                 headers.forEach((k, v) -> config.headers.add(k, v));
             });
-            return null;
         }));
     }
 

@@ -22,7 +22,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 /**
- * This type is used to express the special operating hours of a store location on a specific date. A &lt;strong&gt;specialHours&lt;/strong&gt; container is needed when the store&apos;s opening hours on a specific date are different than the normal operating hours on that particular day of the week.
+ * &lt;b&gt;Deprecated.&lt;/b&gt; Do not use as STORE location types are no longer supported.
+ * @deprecated
+ * 
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class SpecialHours implements AdditionalDataHolder, Parsable {

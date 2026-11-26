@@ -22,7 +22,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 /**
- * This type is used to express the regular operating hours of a merchant&apos;s store or fulfillment center during the days of the week.
+ * &lt;b&gt;Deprecated.&lt;/b&gt; Do not use as STORE location types are no longer supported.
+ * @deprecated
+ * 
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class OperatingHours implements AdditionalDataHolder, Parsable {

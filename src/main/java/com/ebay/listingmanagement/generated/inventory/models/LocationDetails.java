@@ -31,11 +31,11 @@ public class LocationDetails implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
-     * This required container sets the physical address of an inventory location. Except in the case store or fulfillment center location, a full address is not a requirement when setting up a location. For warehouse locations, the fields required in this container are either of the following sets:&lt;ul&gt;&lt;li&gt;&lt;b&gt;city&lt;/b&gt;, &lt;b&gt;stateOrProvince&lt;/b&gt;, and &lt;b&gt;country&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;postalCode&lt;/b&gt; and &lt;b&gt;country&lt;/b&gt;&lt;/li&gt;&lt;/ul&gt;
+     * This required container sets the physical address of an inventory location. Except in the case of a fulfillment center location, a full address is not a requirement when setting up a location. For warehouse locations, the fields required in this container are either of the following sets:&lt;ul&gt;&lt;li&gt;&lt;b&gt;city&lt;/b&gt;, &lt;b&gt;stateOrProvince&lt;/b&gt;, and &lt;b&gt;country&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;postalCode&lt;/b&gt; and &lt;b&gt;country&lt;/b&gt;&lt;/li&gt;&lt;/ul&gt;
      */
     private Address address;
     /**
-     * This container is used to set the Global Positioning System (GPS) latitude and longitude coordinates for the inventory location.&lt;br&gt;&lt;br&gt;Geographical coordinates are required for the location of In-Store Pickup inventory. 
+     * This container is used to set the Global Positioning System (GPS) latitude and longitude coordinates for the inventory location. Geo-coordinates are used for FULFILLMENT_CENTER locations for delivery route-planning purposes (shorter distance to buyer generally means faster delivery). They are optional for WAREHOUSE locations.
      */
     private GeoCoordinates geoCoordinates;
     /**
@@ -63,7 +63,7 @@ public class LocationDetails implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the address property value. This required container sets the physical address of an inventory location. Except in the case store or fulfillment center location, a full address is not a requirement when setting up a location. For warehouse locations, the fields required in this container are either of the following sets:&lt;ul&gt;&lt;li&gt;&lt;b&gt;city&lt;/b&gt;, &lt;b&gt;stateOrProvince&lt;/b&gt;, and &lt;b&gt;country&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;postalCode&lt;/b&gt; and &lt;b&gt;country&lt;/b&gt;&lt;/li&gt;&lt;/ul&gt;
+     * Gets the address property value. This required container sets the physical address of an inventory location. Except in the case of a fulfillment center location, a full address is not a requirement when setting up a location. For warehouse locations, the fields required in this container are either of the following sets:&lt;ul&gt;&lt;li&gt;&lt;b&gt;city&lt;/b&gt;, &lt;b&gt;stateOrProvince&lt;/b&gt;, and &lt;b&gt;country&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;postalCode&lt;/b&gt; and &lt;b&gt;country&lt;/b&gt;&lt;/li&gt;&lt;/ul&gt;
      * @return a {@link Address}
      */
     @jakarta.annotation.Nullable
@@ -82,7 +82,7 @@ public class LocationDetails implements AdditionalDataHolder, Parsable {
         return deserializerMap;
     }
     /**
-     * Gets the geoCoordinates property value. This container is used to set the Global Positioning System (GPS) latitude and longitude coordinates for the inventory location.&lt;br&gt;&lt;br&gt;Geographical coordinates are required for the location of In-Store Pickup inventory. 
+     * Gets the geoCoordinates property value. This container is used to set the Global Positioning System (GPS) latitude and longitude coordinates for the inventory location. Geo-coordinates are used for FULFILLMENT_CENTER locations for delivery route-planning purposes (shorter distance to buyer generally means faster delivery). They are optional for WAREHOUSE locations.
      * @return a {@link GeoCoordinates}
      */
     @jakarta.annotation.Nullable
@@ -107,14 +107,14 @@ public class LocationDetails implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the address property value. This required container sets the physical address of an inventory location. Except in the case store or fulfillment center location, a full address is not a requirement when setting up a location. For warehouse locations, the fields required in this container are either of the following sets:&lt;ul&gt;&lt;li&gt;&lt;b&gt;city&lt;/b&gt;, &lt;b&gt;stateOrProvince&lt;/b&gt;, and &lt;b&gt;country&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;postalCode&lt;/b&gt; and &lt;b&gt;country&lt;/b&gt;&lt;/li&gt;&lt;/ul&gt;
+     * Sets the address property value. This required container sets the physical address of an inventory location. Except in the case of a fulfillment center location, a full address is not a requirement when setting up a location. For warehouse locations, the fields required in this container are either of the following sets:&lt;ul&gt;&lt;li&gt;&lt;b&gt;city&lt;/b&gt;, &lt;b&gt;stateOrProvince&lt;/b&gt;, and &lt;b&gt;country&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;postalCode&lt;/b&gt; and &lt;b&gt;country&lt;/b&gt;&lt;/li&gt;&lt;/ul&gt;
      * @param value Value to set for the address property.
      */
     public void setAddress(@jakarta.annotation.Nullable final Address value) {
         this.address = value;
     }
     /**
-     * Sets the geoCoordinates property value. This container is used to set the Global Positioning System (GPS) latitude and longitude coordinates for the inventory location.&lt;br&gt;&lt;br&gt;Geographical coordinates are required for the location of In-Store Pickup inventory. 
+     * Sets the geoCoordinates property value. This container is used to set the Global Positioning System (GPS) latitude and longitude coordinates for the inventory location. Geo-coordinates are used for FULFILLMENT_CENTER locations for delivery route-planning purposes (shorter distance to buyer generally means faster delivery). They are optional for WAREHOUSE locations.
      * @param value Value to set for the geoCoordinates property.
      */
     public void setGeoCoordinates(@jakarta.annotation.Nullable final GeoCoordinates value) {
